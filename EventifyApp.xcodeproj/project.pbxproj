@@ -7,16 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC4981E32C1B784F0072BD53 /* EventifyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4981E22C1B784F0072BD53 /* EventifyAppApp.swift */; };
-		EC4981E52C1B784F0072BD53 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4981E42C1B784F0072BD53 /* ContentView.swift */; };
+		EC268AFF2C1C99D400F26DC5 /* SUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = EC268AFE2C1C99D400F26DC5 /* SUINavigation */; };
+		EC268B012C1C9A9600F26DC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC268B002C1C9A9600F26DC5 /* GoogleService-Info.plist */; };
+		EC268B042C1C9AE600F26DC5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EC268B032C1C9AE600F26DC5 /* FirebaseAuth */; };
+		EC268B062C1C9AE600F26DC5 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EC268B052C1C9AE600F26DC5 /* FirebaseAuthCombine-Community */; };
+		EC268B082C1C9AE600F26DC5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EC268B072C1C9AE600F26DC5 /* FirebaseFirestore */; };
+		EC268B0A2C1C9AE600F26DC5 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EC268B092C1C9AE600F26DC5 /* FirebaseFirestoreCombine-Community */; };
+		EC268B122C1CA2E600F26DC5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC268B112C1CA2E600F26DC5 /* Fonts.swift */; };
+		EC268B172C1CA4DC00F26DC5 /* SF-Compact-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC268B142C1CA4DC00F26DC5 /* SF-Compact-Rounded-Medium.otf */; };
+		EC268B182C1CA4DC00F26DC5 /* SF-Compact-Rounded-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC268B152C1CA4DC00F26DC5 /* SF-Compact-Rounded-Regular.otf */; };
+		EC268B192C1CA4DC00F26DC5 /* SF-Compact-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC268B162C1CA4DC00F26DC5 /* SF-Compact-Rounded-Semibold.otf */; };
+		EC268B202C1CC52200F26DC5 /* EventifyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC268B1F2C1CC52200F26DC5 /* EventifyTextField.swift */; };
+		EC268B222C1CC59C00F26DC5 /* EventifyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC268B212C1CC59C00F26DC5 /* EventifyButton.swift */; };
+		EC4981E32C1B784F0072BD53 /* EventifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4981E22C1B784F0072BD53 /* EventifyApp.swift */; };
+		EC4981E52C1B784F0072BD53 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4981E42C1B784F0072BD53 /* SignUpView.swift */; };
 		EC4981E72C1B78500072BD53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4981E62C1B78500072BD53 /* Assets.xcassets */; };
 		EC4981EA2C1B78500072BD53 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4981E92C1B78500072BD53 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC268B002C1C9A9600F26DC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EC268B102C1CA1B800F26DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC268B112C1CA2E600F26DC5 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		EC268B142C1CA4DC00F26DC5 /* SF-Compact-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Compact-Rounded-Medium.otf"; path = "../../../../../../Desktop/SF-Compact-Rounded-Medium.otf"; sourceTree = "<group>"; };
+		EC268B152C1CA4DC00F26DC5 /* SF-Compact-Rounded-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Compact-Rounded-Regular.otf"; path = "../../../../../../Desktop/SF-Compact-Rounded-Regular.otf"; sourceTree = "<group>"; };
+		EC268B162C1CA4DC00F26DC5 /* SF-Compact-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Compact-Rounded-Semibold.otf"; path = "../../../../../../Desktop/SF-Compact-Rounded-Semibold.otf"; sourceTree = "<group>"; };
+		EC268B1F2C1CC52200F26DC5 /* EventifyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyTextField.swift; sourceTree = "<group>"; };
+		EC268B212C1CC59C00F26DC5 /* EventifyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyButton.swift; sourceTree = "<group>"; };
 		EC4981DF2C1B784F0072BD53 /* EventifyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventifyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC4981E22C1B784F0072BD53 /* EventifyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyAppApp.swift; sourceTree = "<group>"; };
-		EC4981E42C1B784F0072BD53 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EC4981E22C1B784F0072BD53 /* EventifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyApp.swift; sourceTree = "<group>"; };
+		EC4981E42C1B784F0072BD53 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		EC4981E62C1B78500072BD53 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC4981E92C1B78500072BD53 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -26,12 +46,79 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC268AFF2C1C99D400F26DC5 /* SUINavigation in Frameworks */,
+				EC268B082C1C9AE600F26DC5 /* FirebaseFirestore in Frameworks */,
+				EC268B062C1C9AE600F26DC5 /* FirebaseAuthCombine-Community in Frameworks */,
+				EC268B0A2C1C9AE600F26DC5 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				EC268B042C1C9AE600F26DC5 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC268B0B2C1CA0B200F26DC5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EC268B112C1CA2E600F26DC5 /* Fonts.swift */,
+				EC268B102C1CA1B800F26DC5 /* Info.plist */,
+				EC268B0C2C1CA0BE00F26DC5 /* Fonts */,
+				EC4981E62C1B78500072BD53 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EC268B0C2C1CA0BE00F26DC5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EC268B142C1CA4DC00F26DC5 /* SF-Compact-Rounded-Medium.otf */,
+				EC268B152C1CA4DC00F26DC5 /* SF-Compact-Rounded-Regular.otf */,
+				EC268B162C1CA4DC00F26DC5 /* SF-Compact-Rounded-Semibold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		EC268B1A2C1CC44700F26DC5 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EC268B1B2C1CC45200F26DC5 /* Auth */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		EC268B1B2C1CC45200F26DC5 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				EC268B1D2C1CC46600F26DC5 /* ViewModel */,
+				EC268B1C2C1CC46200F26DC5 /* View */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		EC268B1C2C1CC46200F26DC5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC4981E42C1B784F0072BD53 /* SignUpView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC268B1D2C1CC46600F26DC5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EC268B1E2C1CC4E400F26DC5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EC268B1F2C1CC52200F26DC5 /* EventifyTextField.swift */,
+				EC268B212C1CC59C00F26DC5 /* EventifyButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		EC4981D62C1B784F0072BD53 = {
 			isa = PBXGroup;
 			children = (
@@ -51,9 +138,11 @@
 		EC4981E12C1B784F0072BD53 /* EventifyApp */ = {
 			isa = PBXGroup;
 			children = (
-				EC4981E22C1B784F0072BD53 /* EventifyAppApp.swift */,
-				EC4981E42C1B784F0072BD53 /* ContentView.swift */,
-				EC4981E62C1B78500072BD53 /* Assets.xcassets */,
+				EC4981E22C1B784F0072BD53 /* EventifyApp.swift */,
+				EC268B1A2C1CC44700F26DC5 /* Core */,
+				EC268B1E2C1CC4E400F26DC5 /* Components */,
+				EC268B0B2C1CA0B200F26DC5 /* Resources */,
+				EC268B002C1C9A9600F26DC5 /* GoogleService-Info.plist */,
 				EC4981E82C1B78500072BD53 /* Preview Content */,
 			);
 			path = EventifyApp;
@@ -83,6 +172,13 @@
 			dependencies = (
 			);
 			name = EventifyApp;
+			packageProductDependencies = (
+				EC268AFE2C1C99D400F26DC5 /* SUINavigation */,
+				EC268B032C1C9AE600F26DC5 /* FirebaseAuth */,
+				EC268B052C1C9AE600F26DC5 /* FirebaseAuthCombine-Community */,
+				EC268B072C1C9AE600F26DC5 /* FirebaseFirestore */,
+				EC268B092C1C9AE600F26DC5 /* FirebaseFirestoreCombine-Community */,
+			);
 			productName = EventifyApp;
 			productReference = EC4981DF2C1B784F0072BD53 /* EventifyApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +207,10 @@
 				Base,
 			);
 			mainGroup = EC4981D62C1B784F0072BD53;
+			packageReferences = (
+				EC268AFD2C1C99D400F26DC5 /* XCRemoteSwiftPackageReference "SUINavigation" */,
+				EC268B022C1C9AE500F26DC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = EC4981E02C1B784F0072BD53 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,7 +226,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC4981EA2C1B78500072BD53 /* Preview Assets.xcassets in Resources */,
+				EC268B182C1CA4DC00F26DC5 /* SF-Compact-Rounded-Regular.otf in Resources */,
+				EC268B172C1CA4DC00F26DC5 /* SF-Compact-Rounded-Medium.otf in Resources */,
+				EC268B192C1CA4DC00F26DC5 /* SF-Compact-Rounded-Semibold.otf in Resources */,
 				EC4981E72C1B78500072BD53 /* Assets.xcassets in Resources */,
+				EC268B012C1C9A9600F26DC5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +241,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC4981E52C1B784F0072BD53 /* ContentView.swift in Sources */,
-				EC4981E32C1B784F0072BD53 /* EventifyAppApp.swift in Sources */,
+				EC268B122C1CA2E600F26DC5 /* Fonts.swift in Sources */,
+				EC268B222C1CC59C00F26DC5 /* EventifyButton.swift in Sources */,
+				EC268B202C1CC52200F26DC5 /* EventifyTextField.swift in Sources */,
+				EC4981E52C1B784F0072BD53 /* SignUpView.swift in Sources */,
+				EC4981E32C1B784F0072BD53 /* EventifyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,11 +382,13 @@
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EventifyApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,11 +413,13 @@
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EventifyApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,6 +455,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EC268AFD2C1C99D400F26DC5 /* XCRemoteSwiftPackageReference "SUINavigation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ozontech/SUINavigation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.4;
+			};
+		};
+		EC268B022C1C9AE500F26DC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.27.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EC268AFE2C1C99D400F26DC5 /* SUINavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC268AFD2C1C99D400F26DC5 /* XCRemoteSwiftPackageReference "SUINavigation" */;
+			productName = SUINavigation;
+		};
+		EC268B032C1C9AE600F26DC5 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC268B022C1C9AE500F26DC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		EC268B052C1C9AE600F26DC5 /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC268B022C1C9AE500F26DC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		EC268B072C1C9AE600F26DC5 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC268B022C1C9AE500F26DC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		EC268B092C1C9AE600F26DC5 /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC268B022C1C9AE500F26DC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EC4981D72C1B784F0072BD53 /* Project object */;
 }

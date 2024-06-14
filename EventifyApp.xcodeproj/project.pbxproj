@@ -14,11 +14,11 @@
 		EC268B082C1C9AE600F26DC5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EC268B072C1C9AE600F26DC5 /* FirebaseFirestore */; };
 		EC268B0A2C1C9AE600F26DC5 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EC268B092C1C9AE600F26DC5 /* FirebaseFirestoreCombine-Community */; };
 		EC268B122C1CA2E600F26DC5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC268B112C1CA2E600F26DC5 /* Fonts.swift */; };
-		EC268B172C1CA4DC00F26DC5 /* SF-Compact-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC268B142C1CA4DC00F26DC5 /* SF-Compact-Rounded-Medium.otf */; };
-		EC268B182C1CA4DC00F26DC5 /* SF-Compact-Rounded-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC268B152C1CA4DC00F26DC5 /* SF-Compact-Rounded-Regular.otf */; };
-		EC268B192C1CA4DC00F26DC5 /* SF-Compact-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC268B162C1CA4DC00F26DC5 /* SF-Compact-Rounded-Semibold.otf */; };
 		EC268B202C1CC52200F26DC5 /* EventifyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC268B1F2C1CC52200F26DC5 /* EventifyTextField.swift */; };
 		EC268B222C1CC59C00F26DC5 /* EventifyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC268B212C1CC59C00F26DC5 /* EventifyButton.swift */; };
+		EC268B2F2C1CD48B00F26DC5 /* SF-Compact-Rounded-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC268B2C2C1CD48B00F26DC5 /* SF-Compact-Rounded-Regular.otf */; };
+		EC268B302C1CD48B00F26DC5 /* SF-Compact-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC268B2D2C1CD48B00F26DC5 /* SF-Compact-Rounded-Medium.otf */; };
+		EC268B312C1CD48B00F26DC5 /* SF-Compact-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC268B2E2C1CD48B00F26DC5 /* SF-Compact-Rounded-Semibold.otf */; };
 		EC4981E32C1B784F0072BD53 /* EventifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4981E22C1B784F0072BD53 /* EventifyApp.swift */; };
 		EC4981E52C1B784F0072BD53 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4981E42C1B784F0072BD53 /* SignUpView.swift */; };
 		EC4981E72C1B78500072BD53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4981E62C1B78500072BD53 /* Assets.xcassets */; };
@@ -29,11 +29,11 @@
 		EC268B002C1C9A9600F26DC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC268B102C1CA1B800F26DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC268B112C1CA2E600F26DC5 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		EC268B142C1CA4DC00F26DC5 /* SF-Compact-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Compact-Rounded-Medium.otf"; path = "../../../../../../Desktop/SF-Compact-Rounded-Medium.otf"; sourceTree = "<group>"; };
-		EC268B152C1CA4DC00F26DC5 /* SF-Compact-Rounded-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Compact-Rounded-Regular.otf"; path = "../../../../../../Desktop/SF-Compact-Rounded-Regular.otf"; sourceTree = "<group>"; };
-		EC268B162C1CA4DC00F26DC5 /* SF-Compact-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Compact-Rounded-Semibold.otf"; path = "../../../../../../Desktop/SF-Compact-Rounded-Semibold.otf"; sourceTree = "<group>"; };
 		EC268B1F2C1CC52200F26DC5 /* EventifyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyTextField.swift; sourceTree = "<group>"; };
 		EC268B212C1CC59C00F26DC5 /* EventifyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyButton.swift; sourceTree = "<group>"; };
+		EC268B2C2C1CD48B00F26DC5 /* SF-Compact-Rounded-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Rounded-Regular.otf"; sourceTree = "<group>"; };
+		EC268B2D2C1CD48B00F26DC5 /* SF-Compact-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Rounded-Medium.otf"; sourceTree = "<group>"; };
+		EC268B2E2C1CD48B00F26DC5 /* SF-Compact-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Rounded-Semibold.otf"; sourceTree = "<group>"; };
 		EC4981DF2C1B784F0072BD53 /* EventifyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventifyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC4981E22C1B784F0072BD53 /* EventifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyApp.swift; sourceTree = "<group>"; };
 		EC4981E42C1B784F0072BD53 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -71,9 +71,9 @@
 		EC268B0C2C1CA0BE00F26DC5 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				EC268B142C1CA4DC00F26DC5 /* SF-Compact-Rounded-Medium.otf */,
-				EC268B152C1CA4DC00F26DC5 /* SF-Compact-Rounded-Regular.otf */,
-				EC268B162C1CA4DC00F26DC5 /* SF-Compact-Rounded-Semibold.otf */,
+				EC268B2D2C1CD48B00F26DC5 /* SF-Compact-Rounded-Medium.otf */,
+				EC268B2C2C1CD48B00F26DC5 /* SF-Compact-Rounded-Regular.otf */,
+				EC268B2E2C1CD48B00F26DC5 /* SF-Compact-Rounded-Semibold.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -226,11 +226,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC4981EA2C1B78500072BD53 /* Preview Assets.xcassets in Resources */,
-				EC268B182C1CA4DC00F26DC5 /* SF-Compact-Rounded-Regular.otf in Resources */,
-				EC268B172C1CA4DC00F26DC5 /* SF-Compact-Rounded-Medium.otf in Resources */,
-				EC268B192C1CA4DC00F26DC5 /* SF-Compact-Rounded-Semibold.otf in Resources */,
 				EC4981E72C1B78500072BD53 /* Assets.xcassets in Resources */,
 				EC268B012C1C9A9600F26DC5 /* GoogleService-Info.plist in Resources */,
+				EC268B312C1CD48B00F26DC5 /* SF-Compact-Rounded-Semibold.otf in Resources */,
+				EC268B302C1CD48B00F26DC5 /* SF-Compact-Rounded-Medium.otf in Resources */,
+				EC268B2F2C1CD48B00F26DC5 /* SF-Compact-Rounded-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

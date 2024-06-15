@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SUINavigation
 import FirebaseCore
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -19,10 +20,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct EventifyApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-	
-    var body: some Scene {
-        WindowGroup {
-			SignUpView()
-        }
-    }
+
+	var body: some Scene {
+		WindowGroup {
+			NavigationViewStorage {
+				SignUpView(isSignIn: false)
+			}
+		}
+	}
 }

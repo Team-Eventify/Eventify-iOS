@@ -6,24 +6,38 @@
 //
 
 import SwiftUI
+import SUINavigation
 
 struct SignUpView: View {
-    @State private var emailText: String = ""
-    @State private var passwordText: String = ""
+	@StateObject private var viewModel: AuthenticationViewModel
+
+	@State private var isShown: Bool = false
+
+	init(viewModel: AuthenticationViewModel? = nil, isSignIn: Bool) {
+		_viewModel = StateObject(
+			wrappedValue: viewModel ?? AuthenticationViewModel(authenticationService: AuthenticationManager())
+		)
+	}
 
     var body: some View {
-        ZStack {
-            Color.background.ignoresSafeArea()
+		ZStack {
+			Color.background.ignoresSafeArea()
 
-            VStack(alignment: .leading, spacing: 60) {
-                registrationContentContainerView
-                registrationButtonContainerView
-            }
-            .foregroundStyle(Color.secondaryText)
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 16)
-        }
-    }
+			VStack(alignment: .leading, spacing: 60) {
+				Spacer()
+				registrationContentContainerView
+				registrationButtonContainerView
+				Spacer()
+				Spacer()
+			}
+			.foregroundStyle(Color.secondaryText)
+			.frame(maxWidth: .infinity)
+			.padding(.horizontal, 16)
+		}
+		.navigation(isActive: $isShown) {
+			TestView()
+		}
+	}
     
     private var registrationContentContainerView: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -34,25 +48,37 @@ struct SignUpView: View {
             Text("Пожалуйста, создайте новый аккаунт. Это займёт меньше минуты.")
                 .font(.regularCompact(size: 17))
                 .frame(width: 296)
-        }
-    }
-    
-    private var registrationButtonContainerView: some View {
-        VStack(spacing: 20) {
-            EventifyButton(title: "Зарегистрироваться") {
-                print("Tapped")
-            }
 
-            haveAccountContainerView
+			authTextFields
         }
     }
+
+	private var authTextFields: some View {
+		VStack(spacing: 8) {
+			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true)
+			EventifyTextField(text: $viewModel.password, placeholder: "Пароль", isSucceededValidation: true)
+		}
+		.padding(.top, 40)
+	}
+
+    private var registrationButtonContainerView: some View {
+		VStack(spacing: 20) {
+			EventifyButton(title: "Зарегистрироваться") {
+				Task {
+					try await viewModel.signIn()
+				}
+			}
+
+			haveAccountContainerView
+		}
+	}
 
     private var haveAccountContainerView: some View {
         HStack(spacing: 12) {
             Text("Уже есть аккаунт?")
                 .font(.regularCompact(size: 16))
             Button {
-                print("Войти tapped!")
+				isShown.toggle()
             } label: {
                 Text("Войти")
                     .underline()
@@ -65,5 +91,7 @@ struct SignUpView: View {
 }
 
 #Preview {
-    SignUpView()
+	NavigationViewStorage {
+		SignUpView(isSignIn: false)
+	}
 }

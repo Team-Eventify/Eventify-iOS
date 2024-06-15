@@ -8,23 +8,33 @@
 import SwiftUI
 
 struct EventifyTextField: View {
+	@FocusState var isFocused: Bool
     @Binding var text: String
     let placeholder: String
     let isSucceededValidation: Bool
-    
+
+	private var focusedColor: Color {
+		if isFocused && isSucceededValidation {
+			return Color.mainText
+		} else {
+			return isSucceededValidation ? Color.gray : Color.red
+		}
+	}
+
     var body: some View {
         TextField("", text: $text)
+			.focused($isFocused)
             .frame(maxWidth: .infinity)
             .padding(.horizontal, 16)
             .padding(.vertical, 11)
-            .background(.white)
-            .overlay( // TODO: Сделать модифаер setBorder, который принимает ширину линии + цвет + радиус
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(isSucceededValidation ? Color.gray : Color.red, lineWidth: 1)
-            )
-            .overlay(placeholderTextContainerView)
+			.setBorder(
+				width: 1,
+				color: focusedColor,
+				radius: 10
+			)
+			.overlay(placeholderTextContainerView)
             .font(.regularCompact(size: 17))
-            .foregroundStyle(isSucceededValidation ? .gray : .red)
+            .foregroundStyle(focusedColor)
     }
     
     private var placeholderTextContainerView: some View {
@@ -32,8 +42,10 @@ struct EventifyTextField: View {
             Text(placeholder)
                 .padding(.leading, 16)
                 .opacity(text.isEmpty ? 1 : 0.0001)
+				.foregroundStyle(.gray)
             Spacer()
         }
+		.allowsHitTesting(false)
     }
 }
 

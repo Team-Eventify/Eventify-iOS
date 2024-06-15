@@ -23,6 +23,11 @@
 		EC4981E52C1B784F0072BD53 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4981E42C1B784F0072BD53 /* SignUpView.swift */; };
 		EC4981E72C1B78500072BD53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4981E62C1B78500072BD53 /* Assets.xcassets */; };
 		EC4981EA2C1B78500072BD53 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4981E92C1B78500072BD53 /* Preview Assets.xcassets */; };
+		ECCAE2052C1DDA1100C19E40 /* SetBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCAE2042C1DDA1100C19E40 /* SetBorder.swift */; };
+		ECCAE2072C1DE22700C19E40 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCAE2062C1DE22700C19E40 /* AuthenticationViewModel.swift */; };
+		ECCAE2092C1DE54F00C19E40 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCAE2082C1DE54F00C19E40 /* AuthenticationManager.swift */; };
+		ECD326992C1DF1BC00FA18AB /* AuthDataResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD326982C1DF1BC00FA18AB /* AuthDataResultModel.swift */; };
+		ECD3269B2C1E1C9000FA18AB /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3269A2C1E1C9000FA18AB /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +44,11 @@
 		EC4981E42C1B784F0072BD53 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		EC4981E62C1B78500072BD53 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC4981E92C1B78500072BD53 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ECCAE2042C1DDA1100C19E40 /* SetBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBorder.swift; sourceTree = "<group>"; };
+		ECCAE2062C1DE22700C19E40 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		ECCAE2082C1DE54F00C19E40 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		ECD326982C1DF1BC00FA18AB /* AuthDataResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataResultModel.swift; sourceTree = "<group>"; };
+		ECD3269A2C1E1C9000FA18AB /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				EC4981E42C1B784F0072BD53 /* SignUpView.swift */,
+				ECD3269A2C1E1C9000FA18AB /* TestView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -106,6 +117,9 @@
 		EC268B1D2C1CC46600F26DC5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				ECD326982C1DF1BC00FA18AB /* AuthDataResultModel.swift */,
+				ECCAE2062C1DE22700C19E40 /* AuthenticationViewModel.swift */,
+				ECCAE2082C1DE54F00C19E40 /* AuthenticationManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -113,6 +127,7 @@
 		EC268B1E2C1CC4E400F26DC5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				ECCAE2032C1DD9C600C19E40 /* Modifiers */,
 				EC268B1F2C1CC52200F26DC5 /* EventifyTextField.swift */,
 				EC268B212C1CC59C00F26DC5 /* EventifyButton.swift */,
 			);
@@ -154,6 +169,14 @@
 				EC4981E92C1B78500072BD53 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ECCAE2032C1DD9C600C19E40 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAE2042C1DDA1100C19E40 /* SetBorder.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,8 +264,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECCAE2052C1DDA1100C19E40 /* SetBorder.swift in Sources */,
+				ECCAE2092C1DE54F00C19E40 /* AuthenticationManager.swift in Sources */,
 				EC268B122C1CA2E600F26DC5 /* Fonts.swift in Sources */,
+				ECCAE2072C1DE22700C19E40 /* AuthenticationViewModel.swift in Sources */,
+				ECD326992C1DF1BC00FA18AB /* AuthDataResultModel.swift in Sources */,
 				EC268B222C1CC59C00F26DC5 /* EventifyButton.swift in Sources */,
+				ECD3269B2C1E1C9000FA18AB /* TestView.swift in Sources */,
 				EC268B202C1CC52200F26DC5 /* EventifyTextField.swift in Sources */,
 				EC4981E52C1B784F0072BD53 /* SignUpView.swift in Sources */,
 				EC4981E32C1B784F0072BD53 /* EventifyApp.swift in Sources */,
@@ -388,13 +416,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.raynelz.EventifyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = io.raynelz.Eventify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -419,13 +447,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.raynelz.EventifyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = io.raynelz.Eventify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

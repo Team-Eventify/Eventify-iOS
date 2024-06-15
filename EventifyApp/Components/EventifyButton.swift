@@ -16,7 +16,7 @@ struct EventifyButton: View {
 			action()
 		} label: {
 			Text(title)
-				.font(.custom(Fonts.medium, size: 17))
+				.font(.mediumCompact(size: 17))
 				.foregroundStyle(.black)
 				.padding(.vertical, 13)
 				.frame(maxWidth: .infinity)

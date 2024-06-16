@@ -11,6 +11,7 @@ import FirebaseAuth
 protocol AuthenticationService {
 	func getAuthenticatedUser() throws -> AuthDataResultModel
 	func createUser(email: String, password: String) async throws -> AuthDataResultModel
+	func loginUser(email: String, password: String) async throws -> AuthDataResultModel
 	func signOut() throws
 }
 
@@ -25,6 +26,11 @@ final class AuthenticationManager: AuthenticationService {
 
 	func createUser(email: String, password: String) async throws -> AuthDataResultModel {
 		let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
+		return AuthDataResultModel(user: authDataResult.user)
+	}
+
+	func loginUser(email: String, password: String) async throws -> AuthDataResultModel {
+		let authDataResult = try await Auth.auth().signIn(withEmail: email, password: password)
 		return AuthDataResultModel(user: authDataResult.user)
 	}
 

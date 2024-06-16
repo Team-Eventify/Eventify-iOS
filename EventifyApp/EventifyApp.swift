@@ -24,7 +24,7 @@ struct EventifyApp: App {
 	var body: some Scene {
 		WindowGroup {
 			NavigationViewStorage {
-				SignUpView(isSignIn: false)
+				SignUpView()
 			}
 		}
 	}

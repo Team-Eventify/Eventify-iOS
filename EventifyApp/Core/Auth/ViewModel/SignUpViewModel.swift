@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-final class AuthenticationViewModel: ObservableObject {
+final class SignUpViewModel: ObservableObject {
 	@Published var email: String = ""
 	@Published var password: String = ""
 
@@ -18,7 +18,7 @@ final class AuthenticationViewModel: ObservableObject {
 		self.authenticationService = authenticationService
 	}
 
-	func signIn() async throws {
+	func signUp() async throws {
 		guard !email.isEmpty, !password.isEmpty else {
 			print("No email or password found.")
 			return

@@ -23,11 +23,15 @@
 		EC4981E52C1B784F0072BD53 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4981E42C1B784F0072BD53 /* SignUpView.swift */; };
 		EC4981E72C1B78500072BD53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4981E62C1B78500072BD53 /* Assets.xcassets */; };
 		EC4981EA2C1B78500072BD53 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4981E92C1B78500072BD53 /* Preview Assets.xcassets */; };
+		EC4B4FB62C1F39650039D8A3 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4B4FB52C1F39650039D8A3 /* ForgotPasswordView.swift */; };
 		ECCAE2052C1DDA1100C19E40 /* SetBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCAE2042C1DDA1100C19E40 /* SetBorder.swift */; };
-		ECCAE2072C1DE22700C19E40 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCAE2062C1DE22700C19E40 /* AuthenticationViewModel.swift */; };
+		ECCAE2072C1DE22700C19E40 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCAE2062C1DE22700C19E40 /* SignUpViewModel.swift */; };
 		ECCAE2092C1DE54F00C19E40 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCAE2082C1DE54F00C19E40 /* AuthenticationManager.swift */; };
 		ECD326992C1DF1BC00FA18AB /* AuthDataResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD326982C1DF1BC00FA18AB /* AuthDataResultModel.swift */; };
 		ECD3269B2C1E1C9000FA18AB /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3269A2C1E1C9000FA18AB /* TestView.swift */; };
+		ECD3269D2C1E246100FA18AB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3269C2C1E246100FA18AB /* SignInView.swift */; };
+		ECD3269F2C1E249C00FA18AB /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3269E2C1E249C00FA18AB /* SignInViewModel.swift */; };
+		ECD326A42C1E302100FA18AB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD326A32C1E302100FA18AB /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,11 +48,15 @@
 		EC4981E42C1B784F0072BD53 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		EC4981E62C1B78500072BD53 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC4981E92C1B78500072BD53 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EC4B4FB52C1F39650039D8A3 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		ECCAE2042C1DDA1100C19E40 /* SetBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBorder.swift; sourceTree = "<group>"; };
-		ECCAE2062C1DE22700C19E40 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		ECCAE2062C1DE22700C19E40 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		ECCAE2082C1DE54F00C19E40 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		ECD326982C1DF1BC00FA18AB /* AuthDataResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataResultModel.swift; sourceTree = "<group>"; };
 		ECD3269A2C1E1C9000FA18AB /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		ECD3269C2C1E246100FA18AB /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		ECD3269E2C1E249C00FA18AB /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		ECD326A32C1E302100FA18AB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,7 @@
 		EC268B1A2C1CC44700F26DC5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				ECD326A02C1E2FFB00FA18AB /* Main */,
 				EC268B1B2C1CC45200F26DC5 /* Auth */,
 			);
 			path = Core;
@@ -99,6 +108,7 @@
 		EC268B1B2C1CC45200F26DC5 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				EC29FC092C1F67A20044FB90 /* Firebase Models */,
 				EC268B1D2C1CC46600F26DC5 /* ViewModel */,
 				EC268B1C2C1CC46200F26DC5 /* View */,
 			);
@@ -110,6 +120,8 @@
 			children = (
 				EC4981E42C1B784F0072BD53 /* SignUpView.swift */,
 				ECD3269A2C1E1C9000FA18AB /* TestView.swift */,
+				ECD3269C2C1E246100FA18AB /* SignInView.swift */,
+				EC4B4FB52C1F39650039D8A3 /* ForgotPasswordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -117,9 +129,8 @@
 		EC268B1D2C1CC46600F26DC5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				ECD326982C1DF1BC00FA18AB /* AuthDataResultModel.swift */,
-				ECCAE2062C1DE22700C19E40 /* AuthenticationViewModel.swift */,
-				ECCAE2082C1DE54F00C19E40 /* AuthenticationManager.swift */,
+				ECCAE2062C1DE22700C19E40 /* SignUpViewModel.swift */,
+				ECD3269E2C1E249C00FA18AB /* SignInViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -132,6 +143,15 @@
 				EC268B212C1CC59C00F26DC5 /* EventifyButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		EC29FC092C1F67A20044FB90 /* Firebase Models */ = {
+			isa = PBXGroup;
+			children = (
+				ECD326982C1DF1BC00FA18AB /* AuthDataResultModel.swift */,
+				ECCAE2082C1DE54F00C19E40 /* AuthenticationManager.swift */,
+			);
+			path = "Firebase Models";
 			sourceTree = "<group>";
 		};
 		EC4981D62C1B784F0072BD53 = {
@@ -177,6 +197,30 @@
 				ECCAE2042C1DDA1100C19E40 /* SetBorder.swift */,
 			);
 			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		ECD326A02C1E2FFB00FA18AB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				ECD326A22C1E300300FA18AB /* ViewModel */,
+				ECD326A12C1E300000FA18AB /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		ECD326A12C1E300000FA18AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ECD326A32C1E302100FA18AB /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECD326A22C1E300300FA18AB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,14 +309,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECCAE2052C1DDA1100C19E40 /* SetBorder.swift in Sources */,
+				ECD326A42C1E302100FA18AB /* MainView.swift in Sources */,
 				ECCAE2092C1DE54F00C19E40 /* AuthenticationManager.swift in Sources */,
 				EC268B122C1CA2E600F26DC5 /* Fonts.swift in Sources */,
-				ECCAE2072C1DE22700C19E40 /* AuthenticationViewModel.swift in Sources */,
+				ECCAE2072C1DE22700C19E40 /* SignUpViewModel.swift in Sources */,
 				ECD326992C1DF1BC00FA18AB /* AuthDataResultModel.swift in Sources */,
 				EC268B222C1CC59C00F26DC5 /* EventifyButton.swift in Sources */,
 				ECD3269B2C1E1C9000FA18AB /* TestView.swift in Sources */,
+				EC4B4FB62C1F39650039D8A3 /* ForgotPasswordView.swift in Sources */,
 				EC268B202C1CC52200F26DC5 /* EventifyTextField.swift in Sources */,
+				ECD3269F2C1E249C00FA18AB /* SignInViewModel.swift in Sources */,
 				EC4981E52C1B784F0072BD53 /* SignUpView.swift in Sources */,
+				ECD3269D2C1E246100FA18AB /* SignInView.swift in Sources */,
 				EC4981E32C1B784F0072BD53 /* EventifyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

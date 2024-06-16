@@ -9,33 +9,35 @@ import SwiftUI
 import SUINavigation
 
 struct SignUpView: View {
-	@StateObject private var viewModel: AuthenticationViewModel
+	@StateObject private var viewModel: SignUpViewModel
 
-	@State private var isShown: Bool = false
+	@State private var isRegistered: Bool = false
+	@State private var isLogin: Bool = false
 
-	init(viewModel: AuthenticationViewModel? = nil, isSignIn: Bool) {
+	init(viewModel: SignUpViewModel? = nil) {
 		_viewModel = StateObject(
-			wrappedValue: viewModel ?? AuthenticationViewModel(authenticationService: AuthenticationManager())
+			wrappedValue: viewModel ?? SignUpViewModel(authenticationService: AuthenticationManager())
 		)
 	}
 
-    var body: some View {
-		ZStack {
-			Color.background.ignoresSafeArea()
-
-			VStack(alignment: .leading, spacing: 60) {
-				Spacer()
-				registrationContentContainerView
-				registrationButtonContainerView
-				Spacer()
-				Spacer()
-			}
-			.foregroundStyle(Color.secondaryText)
-			.frame(maxWidth: .infinity)
-			.padding(.horizontal, 16)
+	var body: some View {
+		VStack(alignment: .leading, spacing: 60) {
+			Spacer()
+			registrationContentContainerView
+			registrationButtonContainerView
+			Spacer()
+			Spacer()
 		}
-		.navigation(isActive: $isShown) {
-			TestView()
+		.foregroundStyle(Color.secondaryText)
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.padding(.horizontal, 16)
+		.navigationBarBackButtonHidden(true)
+		.background(Color.background,ignoresSafeAreaEdges: .all)
+		.navigation(isActive: $isRegistered) {
+			MainView()
+		}
+		.navigation(isActive: $isLogin) {
+			SignInView()
 		}
 	}
     
@@ -65,8 +67,9 @@ struct SignUpView: View {
 		VStack(spacing: 20) {
 			EventifyButton(title: "Зарегистрироваться") {
 				Task {
-					try await viewModel.signIn()
+					try await viewModel.signUp()
 				}
+				isRegistered.toggle()
 			}
 
 			haveAccountContainerView
@@ -78,7 +81,7 @@ struct SignUpView: View {
             Text("Уже есть аккаунт?")
                 .font(.regularCompact(size: 16))
             Button {
-				isShown.toggle()
+				isLogin.toggle()
             } label: {
                 Text("Войти")
                     .underline()
@@ -92,6 +95,6 @@ struct SignUpView: View {
 
 #Preview {
 	NavigationViewStorage {
-		SignUpView(isSignIn: false)
+		SignUpView()
 	}
 }

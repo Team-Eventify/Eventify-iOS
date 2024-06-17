@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventifyButton: View {
 	let title: String
-	var action: () -> ()
+	var action: () -> Void
 
     var body: some View {
 		Button {

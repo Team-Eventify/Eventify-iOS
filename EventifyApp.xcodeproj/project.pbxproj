@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC26487A2C20DD48009882FF /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2648792C20DD48009882FF /* ForgotPasswordViewModel.swift */; };
 		EC268AFF2C1C99D400F26DC5 /* SUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = EC268AFE2C1C99D400F26DC5 /* SUINavigation */; };
 		EC268B012C1C9A9600F26DC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC268B002C1C9A9600F26DC5 /* GoogleService-Info.plist */; };
 		EC268B042C1C9AE600F26DC5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EC268B032C1C9AE600F26DC5 /* FirebaseAuth */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC2648792C20DD48009882FF /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		EC268B002C1C9A9600F26DC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC268B102C1CA1B800F26DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC268B112C1CA2E600F26DC5 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				ECCAE2062C1DE22700C19E40 /* SignUpViewModel.swift */,
 				ECD3269E2C1E249C00FA18AB /* SignInViewModel.swift */,
+				EC2648792C20DD48009882FF /* ForgotPasswordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				EC4981DB2C1B784F0072BD53 /* Sources */,
 				EC4981DC2C1B784F0072BD53 /* Frameworks */,
 				EC4981DD2C1B784F0072BD53 /* Resources */,
+				EC2648782C20D8D6009882FF /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -303,6 +307,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		EC2648782C20D8D6009882FF /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EC4981DB2C1B784F0072BD53 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -314,6 +339,7 @@
 				EC268B122C1CA2E600F26DC5 /* Fonts.swift in Sources */,
 				ECCAE2072C1DE22700C19E40 /* SignUpViewModel.swift in Sources */,
 				ECD326992C1DF1BC00FA18AB /* AuthDataResultModel.swift in Sources */,
+				EC26487A2C20DD48009882FF /* ForgotPasswordViewModel.swift in Sources */,
 				EC268B222C1CC59C00F26DC5 /* EventifyButton.swift in Sources */,
 				ECD3269B2C1E1C9000FA18AB /* TestView.swift in Sources */,
 				EC4B4FB62C1F39650039D8A3 /* ForgotPasswordView.swift in Sources */,
@@ -457,6 +483,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"EventifyApp/Preview Content\"";
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventifyApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -488,6 +515,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"EventifyApp/Preview Content\"";
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventifyApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

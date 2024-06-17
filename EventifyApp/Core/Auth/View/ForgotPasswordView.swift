@@ -9,8 +9,16 @@ import SwiftUI
 import SUINavigation
 
 struct ForgotPasswordView: View {
-	@State private var email: String = ""
-	@State private var isSended: Bool = false
+	@StateObject private var viewModel: ForgotPasswordViewModel
+
+	@Environment(\.dismiss)
+	var dismiss
+
+	init(viewModel: ForgotPasswordViewModel? = nil) {
+		_viewModel = StateObject(
+			wrappedValue: viewModel ?? ForgotPasswordViewModel(authenticationService: AuthenticationManager())
+		)
+	}
 
 	var body: some View {
 			VStack(spacing: 40) {
@@ -24,9 +32,6 @@ struct ForgotPasswordView: View {
 			.padding(.horizontal, 16)
 			.background(Color.background, ignoresSafeAreaEdges: .all)
 			.navigationBarBackButtonHidden(true)
-			.navigation(isActive: $isSended) {
-				SignInView()
-			}
 	}
 
 	private var forgotPasswordContainerView: some View {
@@ -44,11 +49,18 @@ struct ForgotPasswordView: View {
 
 	private var restoreButtonContainerView: some View {
 		VStack(spacing: 40) {
-			EventifyTextField(text: $email, placeholder: "Email", isSucceededValidation: true)
+			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true)
 
 			EventifyButton(title: "Отправить") {
-				isSended.toggle()
-				print("Отправил!")
+
+				Task {
+					do {
+						try await viewModel.resetPassword()
+						dismiss()
+					} catch {
+						print(error)
+					}
+				}
 			}
 		}
 	}

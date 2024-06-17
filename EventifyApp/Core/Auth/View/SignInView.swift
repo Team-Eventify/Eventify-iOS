@@ -11,8 +11,10 @@ import SUINavigation
 struct SignInView: View {
 	@StateObject private var viewModel: SignInViewModel
 
+	@Environment(\.dismiss)
+	var dismiss
+
 	@State private var isLogined: Bool = false
-	@State private var isRegistered: Bool = false
 	@State private var isForgotPassword: Bool = false
 
 	init(viewModel: SignInViewModel? = nil) {
@@ -32,13 +34,10 @@ struct SignInView: View {
 		.foregroundStyle(Color.secondaryText)
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.padding(.horizontal, 16)
-		.background(Color.background,ignoresSafeAreaEdges: .all)
+		.background(Color.background, ignoresSafeAreaEdges: .all)
 		.navigationBarBackButtonHidden(true)
 		.navigation(isActive: $isLogined) {
 			MainView()
-		}
-		.navigation(isActive: $isRegistered) {
-			SignUpView()
 		}
 		.navigation(isActive: $isForgotPassword) {
 			ForgotPasswordView()
@@ -60,7 +59,7 @@ struct SignInView: View {
 	}
 
 	private var authTextFields: some View {
-		VStack(alignment: .trailing,spacing: 8) {
+		VStack(alignment: .trailing, spacing: 8) {
 			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true)
 			EventifyTextField(text: $viewModel.password, placeholder: "Пароль", isSucceededValidation: true)
 
@@ -73,8 +72,12 @@ struct SignInView: View {
 		VStack(spacing: 20) {
 			EventifyButton(title: "Войти") {
 				Task {
-					try await viewModel.signIn()
-					isLogined.toggle()
+					do {
+						try await viewModel.signIn()
+						isLogined.toggle()
+					} catch {
+						print(error.localizedDescription)
+					}
 				}
 			}
 
@@ -97,7 +100,7 @@ struct SignInView: View {
 			Text("Нет аккаунта?")
 				.font(.regularCompact(size: 16))
 			Button {
-				isRegistered.toggle()
+				dismiss()
 			} label: {
 				Text("Регистрация")
 					.underline()

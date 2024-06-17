@@ -1,0 +1,92 @@
+excluded:
+  - Pods
+analyzer_rules:
+  - unused_import
+  - unused_declaration
+opt_in_rules:
+  - operator_usage_whitespace
+  - force_unwrapping
+  - array_init
+  - attributes
+  - closure_end_indentation
+  - closure_spacing
+  - collection_alignment
+  - contains_over_first_not_nil
+  - empty_count
+  - empty_string
+  - empty_xctest_method
+  - explicit_init
+  - extension_access_modifier
+  - fallthrough
+  - first_where
+  - identical_operands
+  - joined_default_parameter
+  - last_where
+  - literal_expression_end_indentation
+  - nimble_operator
+  - number_separator
+  - overridden_super_call
+  - override_in_extension
+  - pattern_matching_keywords
+  - prohibited_super_call
+  - quick_discouraged_call
+  - quick_discouraged_focused_test
+  - quick_discouraged_pending_test
+  - redundant_nil_coalescing
+  - redundant_type_annotation
+  - single_test_class
+  - sorted_first_last
+  - static_operator
+  - untyped_error_in_catch
+  - vertical_parameter_alignment_on_call
+  - xct_specific_matcher
+  - yoda_condition
+disabled_rules:
+  - redundant_discardable_let
+  - nesting
+  - block_based_kvo
+  - trailing_whitespace
+  - identifier_name
+  - function_parameter_count
+  - closure_parameter_position
+  - empty_enum_arguments
+  - statement_position
+  - todo
+  - file_length
+  - inclusive_language
+  - void_function_in_ternary
+  - object_literal
+  - unavailable_function
+  - trailing_comma
+cyclomatic_complexity:
+  ignores_case_statements: true
+identifier_name:
+  min_length: 3
+  max_length:
+    warning: 50
+    error: 70
+  excluded:
+    - id
+    - min
+    - max
+    - key
+number_separator:
+  minimum_length: 5
+function_body_length:
+  warning: 100
+type_body_length:
+  warning: 300
+type_name:
+  min_length: 3
+  max_length:
+    warning: 50
+    error: 70
+line_length:
+  warning: 160
+  error: 400
+  ignores_function_declarations: true
+  ignores_comments: true
+  ignores_interpolated_strings: true
+  ignores_urls: true
+force_cast: warning
+force_try: warning

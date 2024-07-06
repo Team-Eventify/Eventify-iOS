@@ -62,7 +62,7 @@ struct EventifyView: View {
         }
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal)
-		.background(Color.background, ignoresSafeAreaEdges: .all)
+		.background(.bg, ignoresSafeAreaEdges: .all)
     }
 }
 

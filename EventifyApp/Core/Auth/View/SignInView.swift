@@ -34,10 +34,10 @@ struct SignInView: View {
 		.foregroundStyle(Color.secondaryText)
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.padding(.horizontal, 16)
-		.background(Color.background, ignoresSafeAreaEdges: .all)
+		.background(.bg, ignoresSafeAreaEdges: .all)
 		.navigationBarBackButtonHidden(true)
 		.navigation(isActive: $isLogined) {
-			MainView()
+			TabBarView()
 		}
 		.navigation(isActive: $isForgotPassword) {
 			ForgotPasswordView()

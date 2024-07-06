@@ -32,9 +32,9 @@ struct SignUpView: View {
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.padding(.horizontal, 16)
 		.navigationBarBackButtonHidden(true)
-		.background(Color.background, ignoresSafeAreaEdges: .all)
+		.background(.bg, ignoresSafeAreaEdges: .all)
 		.navigation(isActive: $isRegistered) {
-			MainView()
+			TabBarView()
 		}
 		.navigation(isActive: $isLogin) {
 			SignInView()

@@ -34,5 +34,5 @@ struct EventifyButton: View {
 	}
 	.frame(maxWidth: .infinity, maxHeight: .infinity)
 	.padding(.horizontal, 16)
-	.background(Color.background, ignoresSafeAreaEdges: .all)
+	.background(.bg, ignoresSafeAreaEdges: .all)
 }

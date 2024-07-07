@@ -9,14 +9,14 @@ import SwiftUI
 
 struct EventifyButton: View {
 	let title: String
-	var action: () -> ()
+	var action: () -> Void
 
     var body: some View {
 		Button {
 			action()
 		} label: {
 			Text(title)
-				.font(.custom(Fonts.medium, size: 17))
+				.font(.mediumCompact(size: 17))
 				.foregroundStyle(.black)
 				.padding(.vertical, 13)
 				.frame(maxWidth: .infinity)
@@ -32,5 +32,7 @@ struct EventifyButton: View {
 		EventifyButton(title: "Войти", action: {})
 		EventifyButton(title: "Отправить", action: {})
 	}
+	.frame(maxWidth: .infinity, maxHeight: .infinity)
 	.padding(.horizontal, 16)
+	.background(.bg, ignoresSafeAreaEdges: .all)
 }

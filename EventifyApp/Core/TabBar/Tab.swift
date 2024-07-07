@@ -40,11 +40,11 @@ struct TabbarScreens: View {
 	@ViewBuilder
 	var body: some View {
 		switch contentMode {
-			case .main:  Main()
-			case .search: Search()
-			case .myEvents: MyEvents()
-			case .favorites: Favorites()
-			case .profile: Profile()
+			case .main:  MainView()
+			case .search: SearchView()
+			case .myEvents: MyEventsView()
+			case .favorites: FavoritesView()
+			case .profile: ProfileView()
 		}
 	}
 }
@@ -63,6 +63,8 @@ struct TabButton: View {
 
 				Text(item.title)
 					.font(.caption)
+					.lineLimit(1)
+					.minimumScaleFactor(0.25)
 			}
 			.frame(maxWidth: .infinity)
 		}

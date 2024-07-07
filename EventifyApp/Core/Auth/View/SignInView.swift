@@ -60,8 +60,8 @@ struct SignInView: View {
 
 	private var authTextFields: some View {
 		VStack(alignment: .trailing, spacing: 8) {
-			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true)
-			EventifyTextField(text: $viewModel.password, placeholder: "Пароль", isSucceededValidation: true)
+			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true, isSecure: false)
+			EventifyTextField(text: $viewModel.password, placeholder: "Пароль", isSucceededValidation: true, isSecure: true)
 
 			forgotPasswordButtonContainerView
 		}

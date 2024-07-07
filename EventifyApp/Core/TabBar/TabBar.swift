@@ -26,18 +26,18 @@ private extension TabBarView {
 			.padding(.horizontal, 20)
 			.padding(.top, 7)
 			.frame(height: 83, alignment: .top)
-			.background(Color.bg)
 			.cornerRadius(10, corners: [.topLeft, .topRight])
 			.shadow(color: .white.opacity(0.15), radius: 1, x: 0, y: -0.33)
 		}
 		.ignoresSafeArea(edges: .bottom)
+		.background(Color.tabbarBg)
 	}
 
 	var buttons: some View {
 		ForEach(Tab.allCases, id: \.self) { item in
 			TabButton(item: item, selectedTab: $selectedTab)
 		}
-	}
+	} 
 }
 
 #Preview {

@@ -8,12 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		EC05CC8A2C35C36B00F2FC8E /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC892C35C36B00F2FC8E /* Tab.swift */; };
-		EC05CC8C2C35C4B000F2FC8E /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC8B2C35C4B000F2FC8E /* Main.swift */; };
-		EC05CC8E2C35C4B800F2FC8E /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC8D2C35C4B800F2FC8E /* Search.swift */; };
-		EC05CC902C35C4C500F2FC8E /* MyEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC8F2C35C4C500F2FC8E /* MyEvents.swift */; };
-		EC05CC922C35C4CA00F2FC8E /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC912C35C4CA00F2FC8E /* Favorites.swift */; };
-		EC05CC942C35C4CF00F2FC8E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC932C35C4CF00F2FC8E /* Profile.swift */; };
+		EC05CC8C2C35C4B000F2FC8E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC8B2C35C4B000F2FC8E /* MainView.swift */; };
+		EC05CC8E2C35C4B800F2FC8E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC8D2C35C4B800F2FC8E /* SearchView.swift */; };
+		EC05CC902C35C4C500F2FC8E /* MyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC8F2C35C4C500F2FC8E /* MyEventsView.swift */; };
+		EC05CC922C35C4CA00F2FC8E /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC912C35C4CA00F2FC8E /* FavoritesView.swift */; };
+		EC05CC942C35C4CF00F2FC8E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC932C35C4CF00F2FC8E /* ProfileView.swift */; };
 		EC05CC962C35C6D900F2FC8E /* View+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC952C35C6D900F2FC8E /* View+CornerRadius.swift */; };
+		EC1056642C3AC39F00CEB625 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056632C3AC39F00CEB625 /* SearchViewModel.swift */; };
+		EC1056662C3AC43B00CEB625 /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056652C3AC43B00CEB625 /* CategoriesModel.swift */; };
+		EC1056682C3AC65C00CEB625 /* SearchMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056672C3AC65C00CEB625 /* SearchMockData.swift */; };
+		EC10566A2C3AD9F500CEB625 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056692C3AD9F500CEB625 /* TestView.swift */; };
+		EC10566D2C3B00AA00CEB625 /* ProfileDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC10566C2C3B00AA00CEB625 /* ProfileDetail.swift */; };
+		EC10566F2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC10566E2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift */; };
+		EC1056712C3B11BA00CEB625 /* EventifyCheeps.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */; };
+		EC1056752C3B152300CEB625 /* MyEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056742C3B152300CEB625 /* MyEventsModel.swift */; };
+		EC1056772C3B158F00CEB625 /* MyEventsMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056762C3B158F00CEB625 /* MyEventsMockData.swift */; };
 		EC26487A2C20DD48009882FF /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2648792C20DD48009882FF /* ForgotPasswordViewModel.swift */; };
 		EC268AFF2C1C99D400F26DC5 /* SUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = EC268AFE2C1C99D400F26DC5 /* SUINavigation */; };
 		EC268B012C1C9A9600F26DC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC268B002C1C9A9600F26DC5 /* GoogleService-Info.plist */; };
@@ -40,16 +49,26 @@
 		ECD3269D2C1E246100FA18AB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3269C2C1E246100FA18AB /* SignInView.swift */; };
 		ECD3269F2C1E249C00FA18AB /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3269E2C1E249C00FA18AB /* SignInViewModel.swift */; };
 		ECD326A42C1E302100FA18AB /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD326A32C1E302100FA18AB /* TabBar.swift */; };
+		ECECFF8D2C3B2846002B4016 /* EventifyRecommendationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECECFF8C2C3B2846002B4016 /* EventifyRecommendationEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EC05CC892C35C36B00F2FC8E /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
-		EC05CC8B2C35C4B000F2FC8E /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
-		EC05CC8D2C35C4B800F2FC8E /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
-		EC05CC8F2C35C4C500F2FC8E /* MyEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEvents.swift; sourceTree = "<group>"; };
-		EC05CC912C35C4CA00F2FC8E /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
-		EC05CC932C35C4CF00F2FC8E /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		EC05CC8B2C35C4B000F2FC8E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		EC05CC8D2C35C4B800F2FC8E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		EC05CC8F2C35C4C500F2FC8E /* MyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsView.swift; sourceTree = "<group>"; };
+		EC05CC912C35C4CA00F2FC8E /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		EC05CC932C35C4CF00F2FC8E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		EC05CC952C35C6D900F2FC8E /* View+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+CornerRadius.swift"; sourceTree = "<group>"; };
+		EC1056632C3AC39F00CEB625 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		EC1056652C3AC43B00CEB625 /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
+		EC1056672C3AC65C00CEB625 /* SearchMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMockData.swift; sourceTree = "<group>"; };
+		EC1056692C3AD9F500CEB625 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		EC10566C2C3B00AA00CEB625 /* ProfileDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetail.swift; sourceTree = "<group>"; };
+		EC10566E2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyUpcomingEvent.swift; sourceTree = "<group>"; };
+		EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyCheeps.swift; sourceTree = "<group>"; };
+		EC1056742C3B152300CEB625 /* MyEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsModel.swift; sourceTree = "<group>"; };
+		EC1056762C3B158F00CEB625 /* MyEventsMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsMockData.swift; sourceTree = "<group>"; };
 		EC2648792C20DD48009882FF /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		EC268B002C1C9A9600F26DC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC268B102C1CA1B800F26DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,6 +92,7 @@
 		ECD3269C2C1E246100FA18AB /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		ECD3269E2C1E249C00FA18AB /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		ECD326A32C1E302100FA18AB /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		ECECFF8C2C3B2846002B4016 /* EventifyRecommendationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyRecommendationEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +111,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC1056602C3AC38000CEB625 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC05CC8D2C35C4B800F2FC8E /* SearchView.swift */,
+				EC1056692C3AD9F500CEB625 /* TestView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC1056612C3AC38400CEB625 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EC1056632C3AC39F00CEB625 /* SearchViewModel.swift */,
+				EC1056652C3AC43B00CEB625 /* CategoriesModel.swift */,
+				EC1056672C3AC65C00CEB625 /* SearchMockData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EC10566B2C3B009700CEB625 /* ProfileDetail */ = {
+			isa = PBXGroup;
+			children = (
+				EC10566C2C3B00AA00CEB625 /* ProfileDetail.swift */,
+			);
+			path = ProfileDetail;
+			sourceTree = "<group>";
+		};
+		EC1056722C3B14F600CEB625 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EC1056742C3B152300CEB625 /* MyEventsModel.swift */,
+				EC1056762C3B158F00CEB625 /* MyEventsMockData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EC1056732C3B14FA00CEB625 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC05CC8F2C35C4C500F2FC8E /* MyEventsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		EC268B0B2C1CA0B200F26DC5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +226,9 @@
 				EC268B1F2C1CC52200F26DC5 /* EventifyTextField.swift */,
 				EC268B212C1CC59C00F26DC5 /* EventifyButton.swift */,
 				EC8116FA2C3897210083419D /* EventifyCategories.swift */,
+				EC10566E2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift */,
+				EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */,
+				ECECFF8C2C3B2846002B4016 /* EventifyRecommendationEvent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -215,7 +282,7 @@
 		EC8116F32C3892290083419D /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				EC05CC8B2C35C4B000F2FC8E /* Main.swift */,
+				EC05CC8B2C35C4B000F2FC8E /* MainView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -223,7 +290,8 @@
 		EC8116F52C3892420083419D /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				EC05CC8D2C35C4B800F2FC8E /* Search.swift */,
+				EC1056612C3AC38400CEB625 /* Model */,
+				EC1056602C3AC38000CEB625 /* View */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -231,7 +299,8 @@
 		EC8116F62C38924A0083419D /* MyEvents */ = {
 			isa = PBXGroup;
 			children = (
-				EC05CC8F2C35C4C500F2FC8E /* MyEvents.swift */,
+				EC1056722C3B14F600CEB625 /* Model */,
+				EC1056732C3B14FA00CEB625 /* View */,
 			);
 			path = MyEvents;
 			sourceTree = "<group>";
@@ -248,7 +317,7 @@
 		EC8116F82C3892AB0083419D /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				EC05CC912C35C4CA00F2FC8E /* Favorites.swift */,
+				EC05CC912C35C4CA00F2FC8E /* FavoritesView.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -256,7 +325,8 @@
 		EC8116F92C3892E30083419D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				EC05CC932C35C4CF00F2FC8E /* Profile.swift */,
+				EC05CC932C35C4CF00F2FC8E /* ProfileView.swift */,
+				EC10566B2C3B009700CEB625 /* ProfileDetail */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -289,7 +359,6 @@
 				EC4981DB2C1B784F0072BD53 /* Sources */,
 				EC4981DC2C1B784F0072BD53 /* Frameworks */,
 				EC4981DD2C1B784F0072BD53 /* Resources */,
-				EC2648782C20D8D6009882FF /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -324,11 +393,11 @@
 			};
 			buildConfigurationList = EC4981DA2C1B784F0072BD53 /* Build configuration list for PBXProject "EventifyApp" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ru,
 			);
 			mainGroup = EC4981D62C1B784F0072BD53;
 			packageReferences = (
@@ -360,33 +429,12 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		EC2648782C20D8D6009882FF /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		EC4981DB2C1B784F0072BD53 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC05CC8C2C35C4B000F2FC8E /* Main.swift in Sources */,
+				EC05CC8C2C35C4B000F2FC8E /* MainView.swift in Sources */,
 				ECCAE2052C1DDA1100C19E40 /* SetBorder.swift in Sources */,
 				EC05CC8A2C35C36B00F2FC8E /* Tab.swift in Sources */,
 				ECD326A42C1E302100FA18AB /* TabBar.swift in Sources */,
@@ -399,14 +447,24 @@
 				EC26487A2C20DD48009882FF /* ForgotPasswordViewModel.swift in Sources */,
 				EC268B222C1CC59C00F26DC5 /* EventifyButton.swift in Sources */,
 				EC4B4FB62C1F39650039D8A3 /* ForgotPasswordView.swift in Sources */,
-				EC05CC902C35C4C500F2FC8E /* MyEvents.swift in Sources */,
-				EC05CC8E2C35C4B800F2FC8E /* Search.swift in Sources */,
+				EC10566D2C3B00AA00CEB625 /* ProfileDetail.swift in Sources */,
+				EC05CC902C35C4C500F2FC8E /* MyEventsView.swift in Sources */,
+				EC1056642C3AC39F00CEB625 /* SearchViewModel.swift in Sources */,
+				EC1056662C3AC43B00CEB625 /* CategoriesModel.swift in Sources */,
+				EC1056712C3B11BA00CEB625 /* EventifyCheeps.swift in Sources */,
+				EC05CC8E2C35C4B800F2FC8E /* SearchView.swift in Sources */,
 				EC268B202C1CC52200F26DC5 /* EventifyTextField.swift in Sources */,
+				EC1056752C3B152300CEB625 /* MyEventsModel.swift in Sources */,
 				ECD3269F2C1E249C00FA18AB /* SignInViewModel.swift in Sources */,
+				EC1056682C3AC65C00CEB625 /* SearchMockData.swift in Sources */,
+				ECECFF8D2C3B2846002B4016 /* EventifyRecommendationEvent.swift in Sources */,
 				EC4981E52C1B784F0072BD53 /* SignUpView.swift in Sources */,
 				ECD3269D2C1E246100FA18AB /* SignInView.swift in Sources */,
-				EC05CC922C35C4CA00F2FC8E /* Favorites.swift in Sources */,
-				EC05CC942C35C4CF00F2FC8E /* Profile.swift in Sources */,
+				EC05CC922C35C4CA00F2FC8E /* FavoritesView.swift in Sources */,
+				EC1056772C3B158F00CEB625 /* MyEventsMockData.swift in Sources */,
+				EC10566F2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift in Sources */,
+				EC05CC942C35C4CF00F2FC8E /* ProfileView.swift in Sources */,
+				EC10566A2C3AD9F500CEB625 /* TestView.swift in Sources */,
 				EC4981E32C1B784F0072BD53 /* EventifyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

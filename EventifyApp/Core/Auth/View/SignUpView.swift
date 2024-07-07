@@ -57,8 +57,8 @@ struct SignUpView: View {
 
 	private var authTextFields: some View {
 		VStack(spacing: 8) {
-			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true)
-			EventifyTextField(text: $viewModel.password, placeholder: "Пароль", isSucceededValidation: true)
+			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true, isSecure: false)
+			EventifyTextField(text: $viewModel.password, placeholder: "Пароль", isSucceededValidation: true, isSecure: true)
 		}
 		.padding(.top, 40)
 	}

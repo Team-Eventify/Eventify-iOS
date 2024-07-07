@@ -10,6 +10,7 @@ import Foundation
 @MainActor
 final class ForgotPasswordViewModel: ObservableObject {
 	@Published var email: String = ""
+	@Published var isResetSuccessful: Bool = false
 
 	private let authenticationService: AuthenticationService
 
@@ -26,8 +27,10 @@ final class ForgotPasswordViewModel: ObservableObject {
 		Task {
 			do {
 				try await authenticationService.resetPassword(email: email)
+				isResetSuccessful = true
 				print("✅ Success")
 			} catch {
+				isResetSuccessful = false
 				print("❌ Error: \(error)")
 			}
 		}

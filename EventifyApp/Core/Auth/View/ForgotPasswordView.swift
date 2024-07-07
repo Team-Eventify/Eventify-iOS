@@ -5,8 +5,8 @@
 //  Created by Захар Литвинчук on 16.06.2024.
 //
 
-import SwiftUI
 import SUINavigation
+import SwiftUI
 
 struct ForgotPasswordView: View {
 	@StateObject private var viewModel: ForgotPasswordViewModel
@@ -21,17 +21,17 @@ struct ForgotPasswordView: View {
 	}
 
 	var body: some View {
-			VStack(spacing: 40) {
-				Spacer()
-				forgotPasswordContainerView
-				restoreButtonContainerView
-				Spacer()
-				Spacer()
-			}
-			.frame(maxWidth: .infinity, maxHeight: .infinity)
-			.padding(.horizontal, 16)
-			.background(.bg, ignoresSafeAreaEdges: .all)
-			.navigationBarBackButtonHidden(true)
+		VStack(spacing: 40) {
+			Spacer()
+			forgotPasswordContainerView
+			restoreButtonContainerView
+			Spacer()
+			Spacer()
+		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.padding(.horizontal, 16)
+		.background(.bg, ignoresSafeAreaEdges: .all)
+		.navigationBarBackButtonHidden(true)
 	}
 
 	private var forgotPasswordContainerView: some View {
@@ -49,16 +49,17 @@ struct ForgotPasswordView: View {
 
 	private var restoreButtonContainerView: some View {
 		VStack(spacing: 40) {
-			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true)
+			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true, isSecure: false)
 
 			EventifyButton(title: "Отправить") {
-
 				Task {
 					do {
 						try await viewModel.resetPassword()
-						dismiss()
+						if viewModel.isResetSuccessful {
+							dismiss()
+						}
 					} catch {
-						print(error)
+						 print(error.localizedDescription)
 					}
 				}
 			}

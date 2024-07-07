@@ -10,6 +10,7 @@ import SwiftUI
 struct EventifyCategories: View {
 	let text: String
 	let image: String
+	let color: Color
 
 	var body: some View {
 		ZStack {
@@ -20,17 +21,18 @@ struct EventifyCategories: View {
 		}
 		.frame(maxWidth: .infinity)
 		.frame(height: 160)
-		.background(.blue)
+		.background(color)
 		.clipShape(.rect(cornerRadius: 10))
 		.overlay(alignment: .topLeading) {
 			Text(text)
 				.font(.mediumCompact(size: 24))
+				.foregroundColor(.white)
 				.padding([.leading, .top], 16)
 		}
 	}
 }
 
 #Preview {
-	EventifyCategories(text: "Спорт", image: "sport")
+	EventifyCategories(text: "Наука", image: "science", color: .science)
 		.padding(.horizontal, 16)
 }

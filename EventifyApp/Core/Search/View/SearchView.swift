@@ -13,7 +13,7 @@ struct SearchView: View {
 	var body: some View {
 		NavigationStack {
 			VStack {
-				Picker("test", selection: $viewModel.selectedPicker) {
+				Picker("", selection: $viewModel.selectedPicker) {
 					Text("Для студентов").tag(0)
 					Text("Для поступающих").tag(1)
 				}

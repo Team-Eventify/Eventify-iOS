@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MyEventsModel: Identifiable {
+struct UpcomingEventsModel: Identifiable {
 	let id = UUID()
 	let title: String
 	let cheepTitles: [String]

@@ -1,5 +1,5 @@
 //
-//  MyEvents.swift
+//  Favorites.swift
 //  EventifyApp
 //
 //  Created by Захар Литвинчук on 03.07.2024.
@@ -7,34 +7,37 @@
 
 import SwiftUI
 
-struct MyEventsView: View {
+struct FavoritesView: View {
+	@StateObject var viewModel = FavoritesViewModel()
 	var body: some View {
 		NavigationStack {
 			VStack(alignment: .leading, spacing: 56) {
+				Picker("", selection: $viewModel.selectedPicker) {
+					Text("Ивенты").tag(0)
+					Text("Организаторы").tag(1)
+				}
+				.pickerStyle(.segmented
+				)
 				ScrollView(showsIndicators: false) {
-					upcomingEvents
+					FlowLayout(horizontalSpacing: 16, verticalSpacing: 8) {
+						ForEach(viewModel.favoritesData()) {
+							EventifyRecommendationEvent(
+								image: $0.image,
+								title: $0.title,
+								cheepsItems: $0.cheepsItems,
+								size: .slim
+							)
+						}
+					}
 					recomendedEvents
 					Spacer()
 				}
 			}
-			.navigationTitle("Мои ивенты")
+			.navigationTitle("Избранное")
 			.navigationBarTitleDisplayMode(.large)
 			.padding(.horizontal, 16)
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
-			.background(.bg, ignoresSafeAreaEdges: .all)
-		}
-	}
-}
-
-private var upcomingEvents: some View {
-	VStack(alignment: .leading) {
-		Text("Предстоящие мероприятия")
-			.font(.mediumCompact(size: 20))
-			.foregroundStyle(.mainText)
-		VStack(spacing: 8) {
-			ForEach(MyEventsMockData.upcomingEventsData) {
-				EventifyUpcomingEvent(title: $0.title, items: $0.cheepTitles, color: $0.color)
-			}
+			.background(.bg)
 		}
 	}
 }
@@ -46,7 +49,7 @@ private var recomendedEvents: some View {
 			.foregroundStyle(.mainText)
 		ScrollView(.horizontal, showsIndicators: false) {
 			HStack(spacing: 8) {
-				ForEach(MyEventsMockData.recommendedEventsData) {
+				ForEach(FavoritesMockData.recomendedEventsData) {
 					EventifyRecommendationEvent(
 						image: $0.image,
 						title: $0.title,

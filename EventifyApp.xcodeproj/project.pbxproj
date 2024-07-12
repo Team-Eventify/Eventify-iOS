@@ -21,7 +21,7 @@
 		EC10566D2C3B00AA00CEB625 /* ProfileDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC10566C2C3B00AA00CEB625 /* ProfileDetail.swift */; };
 		EC10566F2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC10566E2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift */; };
 		EC1056712C3B11BA00CEB625 /* EventifyCheeps.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */; };
-		EC1056752C3B152300CEB625 /* MyEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056742C3B152300CEB625 /* MyEventsModel.swift */; };
+		EC1056752C3B152300CEB625 /* UpcomingEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056742C3B152300CEB625 /* UpcomingEventsModel.swift */; };
 		EC1056772C3B158F00CEB625 /* MyEventsMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056762C3B158F00CEB625 /* MyEventsMockData.swift */; };
 		EC26487A2C20DD48009882FF /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2648792C20DD48009882FF /* ForgotPasswordViewModel.swift */; };
 		EC268AFF2C1C99D400F26DC5 /* SUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = EC268AFE2C1C99D400F26DC5 /* SUINavigation */; };
@@ -42,6 +42,11 @@
 		EC4981EA2C1B78500072BD53 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4981E92C1B78500072BD53 /* Preview Assets.xcassets */; };
 		EC4B4FB62C1F39650039D8A3 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4B4FB52C1F39650039D8A3 /* ForgotPasswordView.swift */; };
 		EC8116FB2C3897210083419D /* EventifyCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8116FA2C3897210083419D /* EventifyCategories.swift */; };
+		ECB823792C41C759001AD8AB /* RecommendedEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB823782C41C759001AD8AB /* RecommendedEventsModel.swift */; };
+		ECB8237D2C41CA7B001AD8AB /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB8237C2C41CA7B001AD8AB /* FavoritesViewModel.swift */; };
+		ECB823802C41CAB8001AD8AB /* FavoritesMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB8237F2C41CAB8001AD8AB /* FavoritesMockData.swift */; };
+		ECB823822C41D81C001AD8AB /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB823812C41D81C001AD8AB /* FlowLayout.swift */; };
+		ECB823842C41DACC001AD8AB /* EventCellSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB823832C41DACC001AD8AB /* EventCellSize.swift */; };
 		ECCAE2052C1DDA1100C19E40 /* SetBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCAE2042C1DDA1100C19E40 /* SetBorder.swift */; };
 		ECCAE2072C1DE22700C19E40 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCAE2062C1DE22700C19E40 /* SignUpViewModel.swift */; };
 		ECCAE2092C1DE54F00C19E40 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCAE2082C1DE54F00C19E40 /* AuthenticationManager.swift */; };
@@ -67,7 +72,7 @@
 		EC10566C2C3B00AA00CEB625 /* ProfileDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetail.swift; sourceTree = "<group>"; };
 		EC10566E2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyUpcomingEvent.swift; sourceTree = "<group>"; };
 		EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyCheeps.swift; sourceTree = "<group>"; };
-		EC1056742C3B152300CEB625 /* MyEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsModel.swift; sourceTree = "<group>"; };
+		EC1056742C3B152300CEB625 /* UpcomingEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsModel.swift; sourceTree = "<group>"; };
 		EC1056762C3B158F00CEB625 /* MyEventsMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsMockData.swift; sourceTree = "<group>"; };
 		EC2648792C20DD48009882FF /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		EC268B002C1C9A9600F26DC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -85,6 +90,11 @@
 		EC4981E92C1B78500072BD53 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EC4B4FB52C1F39650039D8A3 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		EC8116FA2C3897210083419D /* EventifyCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyCategories.swift; sourceTree = "<group>"; };
+		ECB823782C41C759001AD8AB /* RecommendedEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedEventsModel.swift; sourceTree = "<group>"; };
+		ECB8237C2C41CA7B001AD8AB /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		ECB8237F2C41CAB8001AD8AB /* FavoritesMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMockData.swift; sourceTree = "<group>"; };
+		ECB823812C41D81C001AD8AB /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		ECB823832C41DACC001AD8AB /* EventCellSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCellSize.swift; sourceTree = "<group>"; };
 		ECCAE2042C1DDA1100C19E40 /* SetBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBorder.swift; sourceTree = "<group>"; };
 		ECCAE2062C1DE22700C19E40 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		ECCAE2082C1DE54F00C19E40 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -141,8 +151,9 @@
 		EC1056722C3B14F600CEB625 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EC1056742C3B152300CEB625 /* MyEventsModel.swift */,
+				EC1056742C3B152300CEB625 /* UpcomingEventsModel.swift */,
 				EC1056762C3B158F00CEB625 /* MyEventsMockData.swift */,
+				ECB823782C41C759001AD8AB /* RecommendedEventsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -317,7 +328,9 @@
 		EC8116F82C3892AB0083419D /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				EC05CC912C35C4CA00F2FC8E /* FavoritesView.swift */,
+				ECB8237E2C41CAA6001AD8AB /* Model */,
+				ECB8237B2C41CA6B001AD8AB /* ViewModel */,
+				ECB8237A2C41CA64001AD8AB /* View */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -331,11 +344,37 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		ECB8237A2C41CA64001AD8AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC05CC912C35C4CA00F2FC8E /* FavoritesView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECB8237B2C41CA6B001AD8AB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				ECB8237C2C41CA7B001AD8AB /* FavoritesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ECB8237E2C41CAA6001AD8AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ECB8237F2C41CAB8001AD8AB /* FavoritesMockData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		ECCAE2032C1DD9C600C19E40 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
 				ECCAE2042C1DDA1100C19E40 /* SetBorder.swift */,
 				EC05CC952C35C6D900F2FC8E /* View+CornerRadius.swift */,
+				ECB823812C41D81C001AD8AB /* FlowLayout.swift */,
+				ECB823832C41DACC001AD8AB /* EventCellSize.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -447,16 +486,21 @@
 				EC26487A2C20DD48009882FF /* ForgotPasswordViewModel.swift in Sources */,
 				EC268B222C1CC59C00F26DC5 /* EventifyButton.swift in Sources */,
 				EC4B4FB62C1F39650039D8A3 /* ForgotPasswordView.swift in Sources */,
+				ECB823822C41D81C001AD8AB /* FlowLayout.swift in Sources */,
+				ECB823842C41DACC001AD8AB /* EventCellSize.swift in Sources */,
 				EC10566D2C3B00AA00CEB625 /* ProfileDetail.swift in Sources */,
+				ECB823792C41C759001AD8AB /* RecommendedEventsModel.swift in Sources */,
 				EC05CC902C35C4C500F2FC8E /* MyEventsView.swift in Sources */,
 				EC1056642C3AC39F00CEB625 /* SearchViewModel.swift in Sources */,
 				EC1056662C3AC43B00CEB625 /* CategoriesModel.swift in Sources */,
 				EC1056712C3B11BA00CEB625 /* EventifyCheeps.swift in Sources */,
+				ECB823802C41CAB8001AD8AB /* FavoritesMockData.swift in Sources */,
 				EC05CC8E2C35C4B800F2FC8E /* SearchView.swift in Sources */,
 				EC268B202C1CC52200F26DC5 /* EventifyTextField.swift in Sources */,
-				EC1056752C3B152300CEB625 /* MyEventsModel.swift in Sources */,
+				EC1056752C3B152300CEB625 /* UpcomingEventsModel.swift in Sources */,
 				ECD3269F2C1E249C00FA18AB /* SignInViewModel.swift in Sources */,
 				EC1056682C3AC65C00CEB625 /* SearchMockData.swift in Sources */,
+				ECB8237D2C41CA7B001AD8AB /* FavoritesViewModel.swift in Sources */,
 				ECECFF8D2C3B2846002B4016 /* EventifyRecommendationEvent.swift in Sources */,
 				EC4981E52C1B784F0072BD53 /* SignUpView.swift in Sources */,
 				ECD3269D2C1E246100FA18AB /* SignInView.swift in Sources */,

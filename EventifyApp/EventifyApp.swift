@@ -5,29 +5,28 @@
 //  Created by Захар Литвинчук on 13.06.2024.
 //
 
-import SwiftUI
 import SUINavigation
-import FirebaseCore
-
-class AppDelegate: NSObject, UIApplicationDelegate {
-	func application(
-		_ application: UIApplication,
-		didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
-	) -> Bool {
-	FirebaseApp.configure()
-	return true
-  }
-}
+import SwiftUI
 
 @main
 struct EventifyApp: App {
-	@UIApplicationDelegateAdaptor(AppDelegate.self) 
-	var delegate
-
+	@StateObject private var appColorScheme = AppColorScheme.shared
+	@StateObject private var profileViewModel = ProfileViewModel()
+	@AppStorage("isLogin") var isLogin: Bool = false
 	var body: some Scene {
 		WindowGroup {
 			NavigationViewStorage {
-				SignUpView()
+				if isLogin {
+					TabBarView()
+						.environmentObject(profileViewModel)
+						.environmentObject(appColorScheme)
+						.preferredColorScheme(appColorScheme.colorScheme)
+				} else {
+					SignUpView()
+						.environmentObject(profileViewModel)
+						.environmentObject(appColorScheme)
+						.preferredColorScheme(appColorScheme.colorScheme)
+				}
 			}
 		}
 	}

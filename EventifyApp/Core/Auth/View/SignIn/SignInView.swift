@@ -5,8 +5,8 @@
 //  Created by Захар Литвинчук on 15.06.2024.
 //
 
-import SwiftUI
 import SUINavigation
+import SwiftUI
 
 struct SignInView: View {
 	@StateObject private var viewModel: SignInViewModel
@@ -19,7 +19,7 @@ struct SignInView: View {
 
 	init(viewModel: SignInViewModel? = nil) {
 		_viewModel = StateObject(
-			wrappedValue: viewModel ?? SignInViewModel(authenticationService: AuthenticationManager())
+			wrappedValue: viewModel ?? SignInViewModel()
 		)
 	}
 
@@ -70,17 +70,14 @@ struct SignInView: View {
 
 	private var signInButtonContainerView: some View {
 		VStack(spacing: 20) {
-			EventifyButton(title: "Войти") {
+			EventifyButton(title: "Войти", isLoading: viewModel.isLoading) {
 				Task {
-					do {
-						try await viewModel.signIn()
+					await viewModel.signIn()
+					if viewModel.isLogin == true {
 						isLogined.toggle()
-					} catch {
-						print(error.localizedDescription)
 					}
 				}
 			}
-
 			haveAccountContainerView
 		}
 	}

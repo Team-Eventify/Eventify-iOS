@@ -8,57 +8,26 @@
 import SwiftUI
 
 struct ProfileView: View {
+	@StateObject private var viewModel = ProfileViewModel()
+
+	init(viewModel: ProfileViewModel? = nil) {
+		_viewModel = StateObject(
+			wrappedValue: viewModel ?? ProfileViewModel()
+		)
+	}
+
 	var body: some View {
 		NavigationStack {
 			VStack {
 				header
-				List {
-					Section {
-						NavigationLink {
-							TestView()
-						} label: {
-							Text("Добавить мероприятие")
-						}
-					}
-
-					Section {
-						NavigationLink {
-							TestView()
-						} label: {
-							Text("Уведомления")
-						}
-
-						NavigationLink {} label: {
-							Text("Помощь и поддержка")
-						}
-					}
-
-					Section {
-						NavigationLink {
-							TestView()
-						} label: {
-							Text("О приложении")
-						}
-						NavigationLink {
-							TestView()
-						} label: {
-							Text("Оценить")
-						}
-					}
-
-					Section {
-						NavigationLink {
-							SignUpView()
-						}
-						label: {
-							Text("Выйти")
-								.foregroundStyle(.mainText)
-						}
-					}
+				Picker("", selection: $viewModel.selectedPicker) {
+					Text("Тёмная тема").tag(0)
+					Text("Светлая тема").tag(1)
 				}
-				.scrollDisabled(true)
-				.scrollContentBackground(.hidden)
-				.listStyle(.insetGrouped)
+				.pickerStyle(.segmented)
+				.padding(.top, 18)
+				.padding(.horizontal, 16)
+				settingsList
 			}
 			.navigationTitle("Профиль")
 			.navigationBarTitleDisplayMode(.large)
@@ -91,6 +60,56 @@ private var header: some View {
 		.cornerRadius(10)
 		.padding(.horizontal)
 	}
+}
+
+private var settingsList: some View {
+	List {
+		Section {
+			NavigationLink {
+				TestView()
+			} label: {
+				Text("Добавить мероприятие")
+			}
+		}
+
+		Section {
+			NavigationLink {
+				TestView()
+			} label: {
+				Text("Уведомления")
+			}
+
+			NavigationLink {} label: {
+				Text("Помощь и поддержка")
+			}
+		}
+
+		Section {
+			NavigationLink {
+				TestView()
+			} label: {
+				Text("О приложении")
+			}
+			NavigationLink {
+				TestView()
+			} label: {
+				Text("Оценить")
+			}
+		}
+
+		Section {
+			NavigationLink {
+				SignUpView()
+			}
+			label: {
+				Text("Выйти")
+					.foregroundStyle(.mainText)
+			}
+		}
+	}
+	.scrollDisabled(true)
+	.scrollContentBackground(.hidden)
+	.listStyle(.insetGrouped)
 }
 
 #Preview {

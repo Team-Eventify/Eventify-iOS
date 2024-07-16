@@ -16,7 +16,7 @@ struct ForgotPasswordView: View {
 
 	init(viewModel: ForgotPasswordViewModel? = nil) {
 		_viewModel = StateObject(
-			wrappedValue: viewModel ?? ForgotPasswordViewModel(authenticationService: AuthenticationManager())
+			wrappedValue: viewModel ?? ForgotPasswordViewModel()
 		)
 	}
 
@@ -51,7 +51,7 @@ struct ForgotPasswordView: View {
 		VStack(spacing: 40) {
 			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true, isSecure: false)
 
-			EventifyButton(title: "Отправить") {
+			EventifyButton(title: "Отправить", isLoading: false) {
 				Task {
 					do {
 						try await viewModel.resetPassword()

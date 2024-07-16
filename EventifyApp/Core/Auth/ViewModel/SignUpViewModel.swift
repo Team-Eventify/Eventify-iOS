@@ -5,33 +5,45 @@
 //  Created by Захар Литвинчук on 15.06.2024.
 //
 
-import Foundation
+import SwiftUI
 
 @MainActor
-final class SignUpViewModel: ObservableObject {
+class SignUpViewModel: ObservableObject {
 	@Published var email: String = ""
 	@Published var password: String = ""
+	@Published var signUpStatusMessage: String = ""
+	@Published var isLoading: Bool = false
+	@Published var isError: Bool = true
+	@AppStorage("isLoading") var isLogin: Bool = false
 
-	private let authenticationService: AuthenticationService
+	private let signUpService: SignUpServiceProtocol
 
-	init(authenticationService: AuthenticationService) {
-		self.authenticationService = authenticationService
+	init(signUpService: SignUpServiceProtocol = SignUpService()) {
+		self.signUpService = signUpService
 	}
 
-	func signUp() async throws {
+	func signUp() async {
+
 		guard !email.isEmpty, !password.isEmpty else {
-			print("No email or password found.")
+			signUpStatusMessage = "No email or password found."
+			print(signUpStatusMessage)
 			return
 		}
 
-		Task {
-			do {
-				let returnedUserData = try await authenticationService.createUser(email: email, password: password)
-				print("✅ Success")
-				print(returnedUserData)
-			} catch {
-				print("❌ Error: \(error)")
-			}
+		isLoading = true
+		let userData: JSON = ["password": password, "email": email]
+
+		do {
+			let _ = try await signUpService.signUp(json: userData)
+			signUpStatusMessage = "Success ✅"
+			print(signUpStatusMessage)
+			isLogin = true
+		} catch {
+			signUpStatusMessage = "Error: \(error.localizedDescription)"
+			print(signUpStatusMessage)
+			isLogin = false
+			isError = false
 		}
+		isLoading = false
 	}
 }

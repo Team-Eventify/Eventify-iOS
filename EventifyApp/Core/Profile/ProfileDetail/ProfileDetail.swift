@@ -38,7 +38,7 @@ struct ProfileDetail: View {
 				.foregroundStyle(.mainText)
 			EventifyTextField(text: $telegramText, placeholder: "Введите email", isSucceededValidation: true, isSecure: false)
 
-			EventifyButton(title: "Сохранить изменения") {
+			EventifyButton(title: "Сохранить изменения", isLoading: false) {
 				print("📙 Saved! 📙")
 				dismiss()
 			}

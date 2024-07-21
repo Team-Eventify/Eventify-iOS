@@ -7,8 +7,14 @@
 
 import SwiftUI
 
+/// Вью Таб-бара
 struct TabBarView: View {
+	// MARK: - Private Properties
+
 	@State private var selectedTab: Tab = .main
+
+	// MARK: - Body
+
 	var body: some View {
 		tabbarContent
 			.navigationBarBackButtonHidden()
@@ -16,6 +22,7 @@ struct TabBarView: View {
 }
 
 private extension TabBarView {
+	/// Содержимое таб-бара
 	var tabbarContent: some View {
 		VStack(spacing: 0) {
 			TabbarScreens(contentMode: selectedTab)
@@ -33,6 +40,7 @@ private extension TabBarView {
 		.background(Color.tabbarBg)
 	}
 
+	/// Кнопки для всех вкладок
 	var buttons: some View {
 		ForEach(Tab.allCases, id: \.self) { item in
 			TabButton(item: item, selectedTab: $selectedTab)

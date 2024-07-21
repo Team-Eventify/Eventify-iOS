@@ -7,13 +7,17 @@
 
 import Foundation
 
+/// Моковые данные экрана Поиск
 struct SearchMockData {
+
+	/// Данные категорий для студентов
 	static let studentsData: [CategoriesModel] = [
 		.init(title: "Спорт", image: "sport", color: .sport),
 		.init(title: "Наука", image: "science", color: .science),
 		.init(title: "ITAM", image: "itam", color: .black),
 	]
 
+	/// Данные категорий для абитуриентов
 	static let abiturientsData: [CategoriesModel] = [
 		.init(title: "Экскурсии", image: "excursions", color: .excursions),
 		.init(title: "Курсы", image: "courses", color: .courses),

@@ -6,13 +6,24 @@
 //
 import SwiftUI
 
+/// Вкладки приложения
 enum Tab: CaseIterable, Hashable {
+	/// Главный экран
 	case main
+
+	/// Экран "Поиск"
 	case search
+
+	/// Экран "Мои Ивенты"
 	case myEvents
+
+	/// Экран "Избранное"
 	case favorites
+
+	/// Экран "Профиль"
 	case profile
 
+	/// Заголовок для каждой вкладки
 	var title: String {
 		switch self {
 			case .main: "Главная"
@@ -23,6 +34,7 @@ enum Tab: CaseIterable, Hashable {
 		}
 	}
 
+	/// Иконка для каждой вкладки
 	var icon: String {
 		switch self {
 			case .main: "house"
@@ -34,6 +46,7 @@ enum Tab: CaseIterable, Hashable {
 	}
 }
 
+/// Экраны вкладок
 struct TabbarScreens: View {
 	var contentMode: Tab
 
@@ -49,6 +62,7 @@ struct TabbarScreens: View {
 	}
 }
 
+/// Кнопка для переключения вкладок
 struct TabButton: View {
 	let item: Tab
 	@Binding var selectedTab: Tab

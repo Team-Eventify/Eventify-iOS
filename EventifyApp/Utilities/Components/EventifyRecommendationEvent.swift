@@ -8,21 +8,38 @@
 import SwiftUI
 
 struct EventifyRecommendationEvent: View {
+	let image: String
+	let title: String
+	let cheepsItems: [String]
+	let size: EventCellSize
+
     var body: some View {
 		VStack(alignment: .leading,spacing: 16) {
-			Image("recomm")
-			Text("День открытых дверей университета МИСИС")
+			Image(image)
+				.resizable()
+				.aspectRatio(contentMode: .fill)
+				.frame(width: size.width, height: size.height / 2)
+				.clipped()
+			Text(title)
 				.font(.mediumCompact(size: 14))
 				.foregroundStyle(.mainText)
+				.padding(.horizontal, 16)
+			EventifyCheeps(items: cheepsItems)
+				.padding(.horizontal, 16)
+			Spacer()
 		}
-		.frame(maxWidth: .infinity)
-		.frame(width: 235, height: 278)
-		.background(.bg)
+		.frame(width: size.width, height: size.height)
+		.background(.cards)
 		.clipShape(.rect(cornerRadius: 10))
     }
 }
 
 #Preview {
-    EventifyRecommendationEvent()
+	EventifyRecommendationEvent(
+		image: "recomm",
+		title: "День открытых дверей университета МИСИС", 
+		cheepsItems: ["12 декабря", "17:30", "онлайн"],
+		size: .slim
+	)
 		.padding(.horizontal, 16)
 }

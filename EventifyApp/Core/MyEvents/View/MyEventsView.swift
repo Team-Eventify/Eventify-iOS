@@ -7,7 +7,11 @@
 
 import SwiftUI
 
+/// Вью экрана "Мои Ивенты"
 struct MyEventsView: View {
+
+	// MARK: - Body
+
 	var body: some View {
 		NavigationStack {
 			VStack(alignment: .leading, spacing: 56) {
@@ -26,8 +30,11 @@ struct MyEventsView: View {
 	}
 }
 
+// MARK: - UI Components
+
+/// Карточки предстоящих мероприятий
 private var upcomingEvents: some View {
-	VStack(alignment: .leading, spacing: 24) {
+	VStack(alignment: .leading) {
 		Text("Предстоящие мероприятия")
 			.font(.mediumCompact(size: 20))
 			.foregroundStyle(.mainText)
@@ -39,11 +46,24 @@ private var upcomingEvents: some View {
 	}
 }
 
+/// Карточки рекомендуемых мероприятий
 private var recomendedEvents: some View {
 	VStack(alignment: .leading) {
 		Text("Рекомедации")
 			.font(.mediumCompact(size: 20))
 			.foregroundStyle(.mainText)
+		ScrollView(.horizontal, showsIndicators: false) {
+			HStack(spacing: 8) {
+				ForEach(MyEventsMockData.recommendedEventsData) {
+					EventifyRecommendationEvent(
+						image: $0.image,
+						title: $0.title,
+						cheepsItems: $0.cheepsItems,
+						size: .large
+					)
+				}
+			}
+		}
 	}
 }
 

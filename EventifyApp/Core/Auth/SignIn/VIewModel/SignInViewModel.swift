@@ -9,18 +9,28 @@ import SwiftUI
 
 @MainActor
 final class SignInViewModel: ObservableObject {
+	// MARK: - Public Properties
+
 	@Published var email: String = ""
 	@Published var password: String = ""
 	@Published var signInStatusMessage: String = ""
 	@Published var isLoading: Bool = false
 	@AppStorage("isLoading") var isLogin: Bool = false
 
+	/// Приватное свойство для сервиса входа
 	private let signInService: SignInServiceProtocol
 
+	// MARK: - Initialization
+
+	/// Инициализатор
+	/// - Parameter signInService: сервис viewModel'и экрана Вход
 	init(signInService: SignInServiceProtocol = SignInService()) {
 		self.signInService = signInService
 	}
 
+	// MARK: - Public Functions
+
+	/// Отпарвляет запрос на вход
 	func signIn() async {
 		guard !email.isEmpty, !password.isEmpty else {
 			signInStatusMessage = "No email or password found."
@@ -30,7 +40,7 @@ final class SignInViewModel: ObservableObject {
 		}
 
 		isLoading = true
-		let userData: JSON = ["username": "BraveWolf257", "password": password]
+		let userData: JSON = ["email": email, "password": password]
 
 		do {
 			let _ = try await signInService.signIn(json: userData)

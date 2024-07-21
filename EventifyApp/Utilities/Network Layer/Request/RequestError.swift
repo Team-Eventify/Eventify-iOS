@@ -6,11 +6,21 @@
 //
 import Foundation
 
+/// Ошибки запросов
 enum RequestError: Error, LocalizedError {
+	/// Неверный url
 	case invalidURL
+
+	/// Нет ответа
 	case noResponse
+
+	/// Не может декодировать
 	case decode
+
+	/// Неизвестный статус код
 	case unexpectedStatusCode
+
+	/// Неизвестная ошибка
 	case unknown
 
 	var errorDescription: String? {

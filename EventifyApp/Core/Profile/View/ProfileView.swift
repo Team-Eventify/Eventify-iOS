@@ -7,14 +7,24 @@
 
 import SwiftUI
 
+/// Вью экрана "Профиль"
 struct ProfileView: View {
+	// MARK: - Private Properties
+
 	@StateObject private var viewModel = ProfileViewModel()
 
+	// MARK: - Initialization
+
+
+	/// Инициализатор
+	/// - Parameter viewModel: модель экрана профиля
 	init(viewModel: ProfileViewModel? = nil) {
 		_viewModel = StateObject(
 			wrappedValue: viewModel ?? ProfileViewModel()
 		)
 	}
+
+	// MARK: - Body
 
 	var body: some View {
 		NavigationStack {
@@ -37,6 +47,9 @@ struct ProfileView: View {
 	}
 }
 
+// MARK: - UI Components
+
+/// Хедер карточка
 private var header: some View {
 	NavigationLink {
 		ProfileDetail()
@@ -61,6 +74,8 @@ private var header: some View {
 		.padding(.horizontal)
 	}
 }
+
+/// Список настроек приложения
 
 private var settingsList: some View {
 	List {

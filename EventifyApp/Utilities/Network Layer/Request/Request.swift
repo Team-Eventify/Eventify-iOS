@@ -7,7 +7,14 @@
 
 import Foundation
 
+/// Основной класс запросов
 class Request {
+
+	/// Отправляет запросы в сеть
+	/// - Parameters:
+	///   - endpoint: конечная точка запроса
+	///   - responseModel: модель ответа
+	/// - Returns: данные из сети
 	func sendRequest<T: Decodable>(
 		endpoint: Endpoint,
 		responseModel: T.Type,

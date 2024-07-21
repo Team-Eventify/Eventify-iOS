@@ -8,8 +8,10 @@
 import Foundation
 
 enum API {
+	/// Базовый URL для API
 	static let baseURL: String = "http://185.128.107.9:8080/api/"
 
+	/// endpoint'ы для авторизации
 	enum Authorization {
 		static let register = "user/register"
 		static let login = "user/login"

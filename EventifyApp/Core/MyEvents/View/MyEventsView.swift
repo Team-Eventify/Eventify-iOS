@@ -7,7 +7,11 @@
 
 import SwiftUI
 
+/// Вью экрана "Мои Ивенты"
 struct MyEventsView: View {
+
+	// MARK: - Body
+
 	var body: some View {
 		NavigationStack {
 			VStack(alignment: .leading, spacing: 56) {
@@ -26,6 +30,9 @@ struct MyEventsView: View {
 	}
 }
 
+// MARK: - UI Components
+
+/// Карточки предстоящих мероприятий
 private var upcomingEvents: some View {
 	VStack(alignment: .leading) {
 		Text("Предстоящие мероприятия")
@@ -39,6 +46,7 @@ private var upcomingEvents: some View {
 	}
 }
 
+/// Карточки рекомендуемых мероприятий
 private var recomendedEvents: some View {
 	VStack(alignment: .leading) {
 		Text("Рекомедации")

@@ -7,8 +7,14 @@
 
 import SwiftUI
 
+/// Вью экрана "Избранное"
 struct FavoritesView: View {
-	@StateObject var viewModel = FavoritesViewModel()
+	// MARK: - Public Properties
+
+	@StateObject private var viewModel = FavoritesViewModel()
+
+	// MARK: - Body
+
 	var body: some View {
 		NavigationStack {
 			VStack(alignment: .leading, spacing: 56) {
@@ -16,8 +22,7 @@ struct FavoritesView: View {
 					Text("Ивенты").tag(0)
 					Text("Организаторы").tag(1)
 				}
-				.pickerStyle(.segmented
-				)
+				.pickerStyle(.segmented)
 				ScrollView(showsIndicators: false) {
 					FlowLayout(horizontalSpacing: 16, verticalSpacing: 8) {
 						ForEach(viewModel.favoritesData()) {
@@ -42,6 +47,9 @@ struct FavoritesView: View {
 	}
 }
 
+// MARK: - UI Components
+
+/// Рекоммендуемые меропрятия
 private var recomendedEvents: some View {
 	VStack(alignment: .leading) {
 		Text("Рекомедации")

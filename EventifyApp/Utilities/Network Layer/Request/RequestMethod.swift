@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Методы запросов
 enum RequestMethod: String {
 	case get = "GET"
 	case post = "POST"

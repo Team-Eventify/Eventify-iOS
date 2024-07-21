@@ -7,13 +7,19 @@
 
 import SwiftUI
 
+/// Вью главного экрана
 struct MainView: View {
+	// MARK: - Body
+
 	var body: some View {
 		NavigationStack {
-			VStack {
+			VStack(spacing: 16) {
 				Text("📺 Main Screen 📺")
 					.font(.semiboldCompact(size: 24))
 					.foregroundStyle(.mainText)
+				Text("⚠️ Work in progress ⚠️")
+					.font(.semiboldCompact(size: 16))
+					.foregroundStyle(.foreground)
 			}
 			.navigationTitle("Главная")
 			.navigationBarTitleDisplayMode(.large)

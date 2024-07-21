@@ -7,10 +7,16 @@
 
 import Foundation
 
+/// Протокол сервиса входа
 protocol SignUpServiceProtocol {
+
+	/// Вход в приложение
+	/// - Parameter json: данные в формате json
+	/// - Returns: ответ от сервера
 	func signUp(json: JSON) async throws -> SignUpResponse
 }
 
+/// Сервис входа в приложение
 final class SignUpService: Request, SignUpServiceProtocol {
 	func signUp(json: JSON) async throws -> SignUpResponse {
 		return try await sendRequest(
@@ -20,12 +26,19 @@ final class SignUpService: Request, SignUpServiceProtocol {
 	}
 }
 
+/// Модель ответа от сервера
 struct SignUpResponse: Decodable {
+	/// Сообщение
 	let message: String
+
+	/// Пользовательские данные
 	let user: SignUpUser
 }
 
 struct SignUpUser: Decodable {
+	/// Идентификатор
 	let id: Int
+
+	/// Почта пользователя
 	let email: String
 }

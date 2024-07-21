@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Конечная точка для запроса входа
 enum SignInEndpoint: Endpoint {
 	case signIn(json: JSON)
 

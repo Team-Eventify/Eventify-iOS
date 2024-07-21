@@ -7,10 +7,16 @@
 
 import Foundation
 
+/// Протокол сервиса входа в приложение
 protocol SignInServiceProtocol {
+
+	/// Вход в приложение
+	/// - Parameter json: данные в формате запроса
+	/// - Returns: ответ от сервера
 	func signIn(json: JSON) async throws -> SignInResponse
 }
 
+/// Сервис входа в приложение
 final class SignInService: Request, SignInServiceProtocol {
 	func signIn(json: JSON) async throws -> SignInResponse {
 		return try await sendRequest(
@@ -20,7 +26,11 @@ final class SignInService: Request, SignInServiceProtocol {
 	}
 }
 
+/// Модель ответа сервера
 struct SignInResponse: Decodable {
+	/// токен авторизационный
 	let token: String
+
+	/// Обновляемый токен
 	let refreshToken: String
 }

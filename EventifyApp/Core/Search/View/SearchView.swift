@@ -7,8 +7,13 @@
 
 import SwiftUI
 
+/// Вью экрана Поиска
 struct SearchView: View {
-	@StateObject var viewModel = SearchViewModel()
+	// MARK: - Private Properties
+
+	@StateObject private var viewModel = SearchViewModel()
+
+	// MARK: - Body
 
 	var body: some View {
 		NavigationStack {

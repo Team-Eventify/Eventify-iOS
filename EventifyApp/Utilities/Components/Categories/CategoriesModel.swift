@@ -7,9 +7,17 @@
 
 import SwiftUI
 
+/// Модель категорий
 struct CategoriesModel: Identifiable {
+	///
 	let id = UUID()
+
+	/// Заголовок категории
 	let title: String
+
+	/// Изображение  категории
 	let image: String
+
+	/// Цвет категории
 	let color: Color
 }

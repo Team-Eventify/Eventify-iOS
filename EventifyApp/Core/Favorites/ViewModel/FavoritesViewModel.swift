@@ -9,8 +9,12 @@ import SwiftUI
 
 @MainActor
 final class FavoritesViewModel: ObservableObject {
+	// MARK: - Public properties
+
 	@Published var selectedPicker: Int = 0
 
+	// MARK: - Public Functions
+	
 	func favoritesData() -> [RecommendedEventsModel] {
 		if selectedPicker == 0 {
 			return FavoritesMockData.eventsData

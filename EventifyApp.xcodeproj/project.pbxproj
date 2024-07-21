@@ -38,6 +38,7 @@
 		EC4981EA2C1B78500072BD53 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4981E92C1B78500072BD53 /* Preview Assets.xcassets */; };
 		EC4B4FB62C1F39650039D8A3 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4B4FB52C1F39650039D8A3 /* ForgotPasswordView.swift */; };
 		EC4BACEC2C46BD0E003C375B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC4BACEB2C46BD0E003C375B /* Launch Screen.storyboard */; };
+		EC7E42932C4C47EA00D3E72B /* ProfileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E42922C4C47EA00D3E72B /* ProfileDetailViewModel.swift */; };
 		EC7F302E2C43F27D00AFEECB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7F302D2C43F27D00AFEECB /* ProfileViewModel.swift */; };
 		EC7F30302C43F51300AFEECB /* AppColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7F302F2C43F51300AFEECB /* AppColorScheme.swift */; };
 		EC8116FB2C3897210083419D /* EventifyCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8116FA2C3897210083419D /* EventifyCategories.swift */; };
@@ -100,6 +101,7 @@
 		EC4981E92C1B78500072BD53 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EC4B4FB52C1F39650039D8A3 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		EC4BACEB2C46BD0E003C375B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		EC7E42922C4C47EA00D3E72B /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
 		EC7F302D2C43F27D00AFEECB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		EC7F302F2C43F51300AFEECB /* AppColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorScheme.swift; sourceTree = "<group>"; };
 		EC8116FA2C3897210083419D /* EventifyCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyCategories.swift; sourceTree = "<group>"; };
@@ -145,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				EC05CC8D2C35C4B800F2FC8E /* SearchView.swift */,
-				EC1056692C3AD9F500CEB625 /* TestView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -154,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				EC1056632C3AC39F00CEB625 /* SearchViewModel.swift */,
-				EC1056652C3AC43B00CEB625 /* CategoriesModel.swift */,
 				EC1056672C3AC65C00CEB625 /* SearchMockData.swift */,
 			);
 			path = Model;
@@ -163,7 +163,8 @@
 		EC10566B2C3B009700CEB625 /* ProfileDetail */ = {
 			isa = PBXGroup;
 			children = (
-				EC10566C2C3B00AA00CEB625 /* ProfileDetail.swift */,
+				EC7E42912C4C47DB00D3E72B /* ViewModel */,
+				ECEC36F32C4C0F8800C6BFD7 /* View */,
 			);
 			path = ProfileDetail;
 			sourceTree = "<group>";
@@ -224,40 +225,22 @@
 		EC268B1B2C1CC45200F26DC5 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				ECF430BC2C45BF6F00E5942B /* Model */,
-				EC268B1D2C1CC46600F26DC5 /* ViewModel */,
-				EC268B1C2C1CC46200F26DC5 /* View */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		EC268B1C2C1CC46200F26DC5 /* View */ = {
-			isa = PBXGroup;
-			children = (
 				EC2FEC682C4586CE0097D5BA /* SignUp */,
 				EC2FEC672C4586C20097D5BA /* SignIn */,
 				EC2FEC692C4586D70097D5BA /* ForgotPassword */,
 				EC2FEC6A2C4586EC0097D5BA /* ChooseCategories */,
+				ECF430BC2C45BF6F00E5942B /* Commoms */,
 			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		EC268B1D2C1CC46600F26DC5 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				ECCAE2062C1DE22700C19E40 /* SignUpViewModel.swift */,
-				ECD3269E2C1E249C00FA18AB /* SignInViewModel.swift */,
-				EC2648792C20DD48009882FF /* ForgotPasswordViewModel.swift */,
-			);
-			path = ViewModel;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		EC268B1E2C1CC4E400F26DC5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				ECEC36F12C4C0E9400C6BFD7 /* Categories */,
+				EC1056692C3AD9F500CEB625 /* TestView.swift */,
 				EC268B1F2C1CC52200F26DC5 /* EventifyTextField.swift */,
 				EC268B212C1CC59C00F26DC5 /* EventifyButton.swift */,
-				EC8116FA2C3897210083419D /* EventifyCategories.swift */,
 				EC10566E2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift */,
 				EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */,
 				ECECFF8C2C3B2846002B4016 /* EventifyRecommendationEvent.swift */,
@@ -268,7 +251,8 @@
 		EC2FEC672C4586C20097D5BA /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				ECD3269C2C1E246100FA18AB /* SignInView.swift */,
+				ECD7D9CE2C4B21D200C0AE37 /* VIewModel */,
+				ECD7D9CD2C4B21C900C0AE37 /* View */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -276,7 +260,8 @@
 		EC2FEC682C4586CE0097D5BA /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				EC4981E42C1B784F0072BD53 /* SignUpView.swift */,
+				ECD7D9CC2C4B219D00C0AE37 /* ViewModel */,
+				ECD7D9CB2C4B218F00C0AE37 /* View */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -284,7 +269,8 @@
 		EC2FEC692C4586D70097D5BA /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
-				EC4B4FB52C1F39650039D8A3 /* ForgotPasswordView.swift */,
+				ECD7D9D02C4B21F900C0AE37 /* ViewModel */,
+				ECD7D9CF2C4B21F500C0AE37 /* View */,
 			);
 			path = ForgotPassword;
 			sourceTree = "<group>";
@@ -292,7 +278,7 @@
 		EC2FEC6A2C4586EC0097D5BA /* ChooseCategories */ = {
 			isa = PBXGroup;
 			children = (
-				EC2FEC6B2C4587170097D5BA /* ChooseCategoriesView.swift */,
+				ECD7D9D12C4B221400C0AE37 /* View */,
 			);
 			path = ChooseCategories;
 			sourceTree = "<group>";
@@ -339,6 +325,14 @@
 				EC4BACEB2C46BD0E003C375B /* Launch Screen.storyboard */,
 			);
 			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		EC7E42912C4C47DB00D3E72B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EC7E42922C4C47EA00D3E72B /* ProfileDetailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		EC7F302C2C43F26D00AFEECB /* ViewModel */ = {
@@ -401,7 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				EC7F302C2C43F26D00AFEECB /* ViewModel */,
-				EC05CC932C35C4CF00F2FC8E /* ProfileView.swift */,
+				ECEC36F22C4C0F5C00C6BFD7 /* View */,
 				EC10566B2C3B009700CEB625 /* ProfileDetail */,
 			);
 			path = Profile;
@@ -502,12 +496,93 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		ECF430BC2C45BF6F00E5942B /* Model */ = {
+		ECD7D9CB2C4B218F00C0AE37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC4981E42C1B784F0072BD53 /* SignUpView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECD7D9CC2C4B219D00C0AE37 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAE2062C1DE22700C19E40 /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ECD7D9CD2C4B21C900C0AE37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ECD3269C2C1E246100FA18AB /* SignInView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECD7D9CE2C4B21D200C0AE37 /* VIewModel */ = {
+			isa = PBXGroup;
+			children = (
+				ECD3269E2C1E249C00FA18AB /* SignInViewModel.swift */,
+			);
+			path = VIewModel;
+			sourceTree = "<group>";
+		};
+		ECD7D9CF2C4B21F500C0AE37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC4B4FB52C1F39650039D8A3 /* ForgotPasswordView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECD7D9D02C4B21F900C0AE37 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EC2648792C20DD48009882FF /* ForgotPasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ECD7D9D12C4B221400C0AE37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC2FEC6B2C4587170097D5BA /* ChooseCategoriesView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECEC36F12C4C0E9400C6BFD7 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				EC1056652C3AC43B00CEB625 /* CategoriesModel.swift */,
+				EC8116FA2C3897210083419D /* EventifyCategories.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		ECEC36F22C4C0F5C00C6BFD7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC05CC932C35C4CF00F2FC8E /* ProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECEC36F32C4C0F8800C6BFD7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC10566C2C3B00AA00CEB625 /* ProfileDetail.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECF430BC2C45BF6F00E5942B /* Commoms */ = {
 			isa = PBXGroup;
 			children = (
 				ECF430C52C45C6FD00E5942B /* Constants.swift */,
 			);
-			path = Model;
+			path = Commoms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -625,6 +700,7 @@
 				EC268B202C1CC52200F26DC5 /* EventifyTextField.swift in Sources */,
 				EC1056752C3B152300CEB625 /* UpcomingEventsModel.swift in Sources */,
 				ECD3269F2C1E249C00FA18AB /* SignInViewModel.swift in Sources */,
+				EC7E42932C4C47EA00D3E72B /* ProfileDetailViewModel.swift in Sources */,
 				EC1056682C3AC65C00CEB625 /* SearchMockData.swift in Sources */,
 				ECB8237D2C41CA7B001AD8AB /* FavoritesViewModel.swift in Sources */,
 				ECECFF8D2C3B2846002B4016 /* EventifyRecommendationEvent.swift in Sources */,

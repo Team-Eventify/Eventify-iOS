@@ -8,27 +8,41 @@
 import SUINavigation
 import SwiftUI
 
+/// Вью экрана Входа
 struct SignInView: View {
-	@StateObject private var viewModel: SignInViewModel
+	// MARK: - Private Properties
 
-	@Environment(\.dismiss)
-	var dismiss
+	@StateObject private var viewModel: SignInViewModel
 
 	@State private var isLogined: Bool = false
 	@State private var isForgotPassword: Bool = false
 
+	@Environment(\.dismiss)
+	var dismiss
+
+	// MARK: - Initialization
+
+	/// Инициализатор
+	/// - Parameter viewModel: модель экрана Вход
 	init(viewModel: SignInViewModel? = nil) {
 		_viewModel = StateObject(
 			wrappedValue: viewModel ?? SignInViewModel()
 		)
 	}
 
+	// MARK: - Body
+
 	var body: some View {
 		VStack(alignment: .leading, spacing: 60) {
 			Spacer()
 			signInContentContainerView
 			signInButtonContainerView
-			Spacer()
+
+			if viewModel.isLogin == false {
+				Text(viewModel.signInStatusMessage)
+					.padding(.all, 16)
+					.foregroundStyle(.error)
+			}
 			Spacer()
 		}
 		.foregroundStyle(Color.secondaryText)
@@ -44,6 +58,7 @@ struct SignInView: View {
 		}
 	}
 
+	/// Контейнер для содержимого экрана входа
 	private var signInContentContainerView: some View {
 		VStack(alignment: .leading, spacing: 12) {
 			Text("Вход")
@@ -58,6 +73,7 @@ struct SignInView: View {
 		}
 	}
 
+	/// Поля ввода для авторизации (email и пароль)
 	private var authTextFields: some View {
 		VStack(alignment: .trailing, spacing: 8) {
 			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true, isSecure: false)
@@ -68,6 +84,7 @@ struct SignInView: View {
 		.padding(.top, 40)
 	}
 
+	/// Контейнер для кнопок входа и регистрации
 	private var signInButtonContainerView: some View {
 		VStack(spacing: 20) {
 			EventifyButton(title: "Войти", isLoading: viewModel.isLoading) {
@@ -82,6 +99,7 @@ struct SignInView: View {
 		}
 	}
 
+	/// Кнопка для перехода на экран восстановления пароля
 	private var forgotPasswordButtonContainerView: some View {
 		VStack(alignment: .trailing, spacing: .zero) {
 			Button {
@@ -92,6 +110,7 @@ struct SignInView: View {
 		}
 	}
 
+	/// Контейнер для кнопки регистрации
 	private var haveAccountContainerView: some View {
 		HStack(spacing: 12) {
 			Text("Нет аккаунта?")

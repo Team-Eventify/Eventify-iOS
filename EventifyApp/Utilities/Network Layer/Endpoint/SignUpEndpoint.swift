@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Конечная точка для запроса регистрации
 enum SignUpEndpoint: Endpoint {
 	case signUp(json: JSON)
 

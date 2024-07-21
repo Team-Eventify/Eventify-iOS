@@ -9,6 +9,8 @@ import SwiftUI
 
 @MainActor
 final class ProfileViewModel: ObservableObject {
+	// MARK: - Public Properties
+
 	@Published var selectedPicker: Int = 0 {
 		didSet {
 			if selectedPicker == 0 {

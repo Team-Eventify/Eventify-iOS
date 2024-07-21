@@ -8,15 +8,28 @@
 import SUINavigation
 import SwiftUI
 
+
+/// Вью экрана регистрации
 struct SignUpView: View {
+	// MARK: - Private Properties
+
+	/// ViewModel для управления логикой вью
 	@StateObject private var viewModel: SignUpViewModel
+
+	/// Состояние для навигации к экрану Входа
 	@State private var navigateToLoginView: Bool = false
 
+	// MARK: - Initialization
+
+	/// Инициализация
+	/// - Parameter viewModel: вью модель экрана регистрации
 	init(viewModel: SignUpViewModel? = nil) {
 		_viewModel = StateObject(
 			wrappedValue: viewModel ?? SignUpViewModel()
 		)
 	}
+
+	// MARK: - Body
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 60) {
@@ -24,12 +37,13 @@ struct SignUpView: View {
 			registrationContentContainerView
 			registrationButtonContainerView
 
+			/// Отображение сообщения о статусе регистрации при ошибке
+
 			if viewModel.isLogin == false {
 				Text(viewModel.signUpStatusMessage)
 					.padding(.all, 16)
 					.foregroundStyle(.error)
 			}
-			Spacer()
 			Spacer()
 		}
 		.foregroundStyle(Color.secondaryText)
@@ -37,14 +51,21 @@ struct SignUpView: View {
 		.padding(.horizontal, 16)
 		.navigationBarBackButtonHidden(true)
 		.background(.bg, ignoresSafeAreaEdges: .all)
+
+		/// Навигация к экрану входа
 		.navigation(isActive: $navigateToLoginView) {
 			SignInView()
 		}
+
+		/// Навигация к основному экрану после успешной регистрации
 		.navigation(isActive: $viewModel.isLogin) {
 			TabBarView()
 		}
 	}
 
+	// MARK: - UI Components
+
+	/// Контейнер с содержимым регистрации
 	private var registrationContentContainerView: some View {
 		VStack(alignment: .leading, spacing: 12) {
 			Text("Регистрация")
@@ -59,6 +80,7 @@ struct SignUpView: View {
 		}
 	}
 
+	/// Текстовые поля для ввода данных регистрации
 	private var authTextFields: some View {
 		VStack(spacing: 8) {
 			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: viewModel.isError, isSecure: false)
@@ -67,6 +89,7 @@ struct SignUpView: View {
 		.padding(.top, 40)
 	}
 
+	/// Контейнер с кнопкой регистрации
 	private var registrationButtonContainerView: some View {
 		VStack(spacing: 20) {
 			EventifyButton(title: "Зарегистрироваться", isLoading: viewModel.isLoading) {
@@ -78,6 +101,7 @@ struct SignUpView: View {
 		}
 	}
 
+	/// Контейнер с кнопкой для перехода на экран Входа
 	private var haveAccountContainerView: some View {
 		HStack(spacing: 12) {
 			Text("Уже есть аккаунт?")

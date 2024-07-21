@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Декодировщик запроса
 class RequestEncoder {
 	static func json(parameters: [String: Any]) -> Data? {
 		do {

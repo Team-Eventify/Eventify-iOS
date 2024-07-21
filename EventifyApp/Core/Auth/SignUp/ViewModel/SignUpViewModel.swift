@@ -8,7 +8,9 @@
 import SwiftUI
 
 @MainActor
-class SignUpViewModel: ObservableObject {
+final class SignUpViewModel: ObservableObject {
+	// MARK: - Public Properties
+
 	@Published var email: String = ""
 	@Published var password: String = ""
 	@Published var signUpStatusMessage: String = ""
@@ -16,14 +18,21 @@ class SignUpViewModel: ObservableObject {
 	@Published var isError: Bool = true
 	@AppStorage("isLoading") var isLogin: Bool = false
 
+	/// Приватное свойство для сервиса регистрации
 	private let signUpService: SignUpServiceProtocol
 
+	// MARK: - Initialization
+
+	/// Инициализатор
+	/// - Parameter signUpService: сервис viewModel'и экрана Регистрации
 	init(signUpService: SignUpServiceProtocol = SignUpService()) {
 		self.signUpService = signUpService
 	}
 
-	func signUp() async {
+	// MARK: - Public Functions
 
+	/// Отпарвляет запрос на регистрацию
+	func signUp() async {
 		guard !email.isEmpty, !password.isEmpty else {
 			signUpStatusMessage = "No email or password found."
 			print(signUpStatusMessage)

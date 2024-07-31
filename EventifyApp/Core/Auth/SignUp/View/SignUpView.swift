@@ -8,7 +8,6 @@
 import SUINavigation
 import SwiftUI
 
-
 /// Вью экрана регистрации
 struct SignUpView: View {
 	// MARK: - Private Properties
@@ -59,7 +58,11 @@ struct SignUpView: View {
 
 		/// Навигация к основному экрану после успешной регистрации
 		.navigation(isActive: $viewModel.isLogin) {
-			TabBarView()
+			if viewModel.hasCategories {
+				TabBarView()
+			} else {
+				PersonalCategoriesView()
+			}
 		}
 	}
 
@@ -92,7 +95,7 @@ struct SignUpView: View {
 	/// Контейнер с кнопкой регистрации
 	private var registrationButtonContainerView: some View {
 		VStack(spacing: 20) {
-			EventifyButton(title: "Зарегистрироваться", isLoading: viewModel.isLoading) {
+			EventifyButton(title: "Зарегистрироваться", isLoading: viewModel.isLoading, isDisabled: false) {
 				Task {
 					await viewModel.signUp()
 				}

@@ -17,7 +17,6 @@
 		EC1056642C3AC39F00CEB625 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056632C3AC39F00CEB625 /* SearchViewModel.swift */; };
 		EC1056662C3AC43B00CEB625 /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056652C3AC43B00CEB625 /* CategoriesModel.swift */; };
 		EC1056682C3AC65C00CEB625 /* SearchMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056672C3AC65C00CEB625 /* SearchMockData.swift */; };
-		EC10566A2C3AD9F500CEB625 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056692C3AD9F500CEB625 /* TestView.swift */; };
 		EC10566D2C3B00AA00CEB625 /* ProfileDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC10566C2C3B00AA00CEB625 /* ProfileDetail.swift */; };
 		EC10566F2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC10566E2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift */; };
 		EC1056712C3B11BA00CEB625 /* EventifyCheeps.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */; };
@@ -31,13 +30,16 @@
 		EC268B2F2C1CD48B00F26DC5 /* SF-Compact-Rounded-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC268B2C2C1CD48B00F26DC5 /* SF-Compact-Rounded-Regular.otf */; };
 		EC268B302C1CD48B00F26DC5 /* SF-Compact-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC268B2D2C1CD48B00F26DC5 /* SF-Compact-Rounded-Medium.otf */; };
 		EC268B312C1CD48B00F26DC5 /* SF-Compact-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC268B2E2C1CD48B00F26DC5 /* SF-Compact-Rounded-Semibold.otf */; };
-		EC2FEC6C2C4587170097D5BA /* ChooseCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2FEC6B2C4587170097D5BA /* ChooseCategoriesView.swift */; };
+		EC2FEC6C2C4587170097D5BA /* PersonalCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2FEC6B2C4587170097D5BA /* PersonalCategoriesView.swift */; };
 		EC4981E32C1B784F0072BD53 /* EventifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4981E22C1B784F0072BD53 /* EventifyApp.swift */; };
 		EC4981E52C1B784F0072BD53 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4981E42C1B784F0072BD53 /* SignUpView.swift */; };
 		EC4981E72C1B78500072BD53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4981E62C1B78500072BD53 /* Assets.xcassets */; };
 		EC4981EA2C1B78500072BD53 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4981E92C1B78500072BD53 /* Preview Assets.xcassets */; };
 		EC4B4FB62C1F39650039D8A3 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4B4FB52C1F39650039D8A3 /* ForgotPasswordView.swift */; };
 		EC4BACEC2C46BD0E003C375B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC4BACEB2C46BD0E003C375B /* Launch Screen.storyboard */; };
+		EC67C8F62C5A8BBB00316016 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67C8F52C5A8BBB00316016 /* TestView.swift */; };
+		EC7419892C56F57600E4892C /* PersonalCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7419882C56F57600E4892C /* PersonalCategories.swift */; };
+		EC74198B2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC74198A2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift */; };
 		EC7E42932C4C47EA00D3E72B /* ProfileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E42922C4C47EA00D3E72B /* ProfileDetailViewModel.swift */; };
 		EC7F302E2C43F27D00AFEECB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7F302D2C43F27D00AFEECB /* ProfileViewModel.swift */; };
 		EC7F30302C43F51300AFEECB /* AppColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7F302F2C43F51300AFEECB /* AppColorScheme.swift */; };
@@ -62,6 +64,7 @@
 		ECD3269D2C1E246100FA18AB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3269C2C1E246100FA18AB /* SignInView.swift */; };
 		ECD3269F2C1E249C00FA18AB /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3269E2C1E249C00FA18AB /* SignInViewModel.swift */; };
 		ECD326A42C1E302100FA18AB /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD326A32C1E302100FA18AB /* TabBar.swift */; };
+		ECDCC15F2C5A7A0D0013ADB6 /* PersonalCategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDCC15E2C5A7A0D0013ADB6 /* PersonalCategoriesViewModel.swift */; };
 		ECECFF8D2C3B2846002B4016 /* EventifyRecommendationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECECFF8C2C3B2846002B4016 /* EventifyRecommendationEvent.swift */; };
 		ECF430C02C45C0BB00E5942B /* SignInEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF430BF2C45C0BB00E5942B /* SignInEndpoint.swift */; };
 		ECF430C22C45C22D00E5942B /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF430C12C45C22D00E5942B /* SignInService.swift */; };
@@ -79,7 +82,6 @@
 		EC1056632C3AC39F00CEB625 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		EC1056652C3AC43B00CEB625 /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
 		EC1056672C3AC65C00CEB625 /* SearchMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMockData.swift; sourceTree = "<group>"; };
-		EC1056692C3AD9F500CEB625 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		EC10566C2C3B00AA00CEB625 /* ProfileDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetail.swift; sourceTree = "<group>"; };
 		EC10566E2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyUpcomingEvent.swift; sourceTree = "<group>"; };
 		EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyCheeps.swift; sourceTree = "<group>"; };
@@ -93,7 +95,7 @@
 		EC268B2C2C1CD48B00F26DC5 /* SF-Compact-Rounded-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Rounded-Regular.otf"; sourceTree = "<group>"; };
 		EC268B2D2C1CD48B00F26DC5 /* SF-Compact-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Rounded-Medium.otf"; sourceTree = "<group>"; };
 		EC268B2E2C1CD48B00F26DC5 /* SF-Compact-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Rounded-Semibold.otf"; sourceTree = "<group>"; };
-		EC2FEC6B2C4587170097D5BA /* ChooseCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCategoriesView.swift; sourceTree = "<group>"; };
+		EC2FEC6B2C4587170097D5BA /* PersonalCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCategoriesView.swift; sourceTree = "<group>"; };
 		EC4981DF2C1B784F0072BD53 /* EventifyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventifyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC4981E22C1B784F0072BD53 /* EventifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyApp.swift; sourceTree = "<group>"; };
 		EC4981E42C1B784F0072BD53 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,9 @@
 		EC4981E92C1B78500072BD53 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EC4B4FB52C1F39650039D8A3 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		EC4BACEB2C46BD0E003C375B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		EC67C8F52C5A8BBB00316016 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		EC7419882C56F57600E4892C /* PersonalCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCategories.swift; sourceTree = "<group>"; };
+		EC74198A2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCategoriesCheeps.swift; sourceTree = "<group>"; };
 		EC7E42922C4C47EA00D3E72B /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
 		EC7F302D2C43F27D00AFEECB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		EC7F302F2C43F51300AFEECB /* AppColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorScheme.swift; sourceTree = "<group>"; };
@@ -125,6 +130,7 @@
 		ECD3269C2C1E246100FA18AB /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		ECD3269E2C1E249C00FA18AB /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		ECD326A32C1E302100FA18AB /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		ECDCC15E2C5A7A0D0013ADB6 /* PersonalCategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCategoriesViewModel.swift; sourceTree = "<group>"; };
 		ECECFF8C2C3B2846002B4016 /* EventifyRecommendationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyRecommendationEvent.swift; sourceTree = "<group>"; };
 		ECF430BF2C45C0BB00E5942B /* SignInEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEndpoint.swift; sourceTree = "<group>"; };
 		ECF430C12C45C22D00E5942B /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
@@ -238,12 +244,13 @@
 			isa = PBXGroup;
 			children = (
 				ECEC36F12C4C0E9400C6BFD7 /* Categories */,
-				EC1056692C3AD9F500CEB625 /* TestView.swift */,
+				EC74198A2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift */,
 				EC268B1F2C1CC52200F26DC5 /* EventifyTextField.swift */,
 				EC268B212C1CC59C00F26DC5 /* EventifyButton.swift */,
 				EC10566E2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift */,
 				EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */,
 				ECECFF8C2C3B2846002B4016 /* EventifyRecommendationEvent.swift */,
+				EC67C8F52C5A8BBB00316016 /* TestView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -278,6 +285,8 @@
 		EC2FEC6A2C4586EC0097D5BA /* ChooseCategories */ = {
 			isa = PBXGroup;
 			children = (
+				EC7419872C56F55E00E4892C /* Model */,
+				ECDCC15D2C5A79FC0013ADB6 /* ViewModel */,
 				ECD7D9D12C4B221400C0AE37 /* View */,
 			);
 			path = ChooseCategories;
@@ -325,6 +334,14 @@
 				EC4BACEB2C46BD0E003C375B /* Launch Screen.storyboard */,
 			);
 			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		EC7419872C56F55E00E4892C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EC7419882C56F57600E4892C /* PersonalCategories.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EC7E42912C4C47DB00D3E72B /* ViewModel */ = {
@@ -547,9 +564,17 @@
 		ECD7D9D12C4B221400C0AE37 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EC2FEC6B2C4587170097D5BA /* ChooseCategoriesView.swift */,
+				EC2FEC6B2C4587170097D5BA /* PersonalCategoriesView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		ECDCC15D2C5A79FC0013ADB6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				ECDCC15E2C5A7A0D0013ADB6 /* PersonalCategoriesViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		ECEC36F12C4C0E9400C6BFD7 /* Categories */ = {
@@ -678,6 +703,7 @@
 				ECAE783D2C4481330022551C /* CharacterSet.swift in Sources */,
 				ECAE78382C4480D80022551C /* Endpoint.swift in Sources */,
 				EC05CC962C35C6D900F2FC8E /* View+CornerRadius.swift in Sources */,
+				EC7419892C56F57600E4892C /* PersonalCategories.swift in Sources */,
 				EC8116FB2C3897210083419D /* EventifyCategories.swift in Sources */,
 				EC26487A2C20DD48009882FF /* ForgotPasswordViewModel.swift in Sources */,
 				EC268B222C1CC59C00F26DC5 /* EventifyButton.swift in Sources */,
@@ -687,6 +713,7 @@
 				ECB823842C41DACC001AD8AB /* EventCellSize.swift in Sources */,
 				EC10566D2C3B00AA00CEB625 /* ProfileDetail.swift in Sources */,
 				ECB823792C41C759001AD8AB /* RecommendedEventsModel.swift in Sources */,
+				EC74198B2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift in Sources */,
 				ECAE78322C44803D0022551C /* RequestError.swift in Sources */,
 				EC05CC902C35C4C500F2FC8E /* MyEventsView.swift in Sources */,
 				EC1056642C3AC39F00CEB625 /* SearchViewModel.swift in Sources */,
@@ -694,6 +721,7 @@
 				ECF430C02C45C0BB00E5942B /* SignInEndpoint.swift in Sources */,
 				EC1056712C3B11BA00CEB625 /* EventifyCheeps.swift in Sources */,
 				ECAE783F2C4483090022551C /* SignUpEndpoint.swift in Sources */,
+				ECDCC15F2C5A7A0D0013ADB6 /* PersonalCategoriesViewModel.swift in Sources */,
 				ECB823802C41CAB8001AD8AB /* FavoritesMockData.swift in Sources */,
 				ECAE782B2C4477EA0022551C /* API.swift in Sources */,
 				EC05CC8E2C35C4B800F2FC8E /* SearchView.swift in Sources */,
@@ -708,14 +736,14 @@
 				ECD3269D2C1E246100FA18AB /* SignInView.swift in Sources */,
 				EC05CC922C35C4CA00F2FC8E /* FavoritesView.swift in Sources */,
 				EC7F302E2C43F27D00AFEECB /* ProfileViewModel.swift in Sources */,
+				EC67C8F62C5A8BBB00316016 /* TestView.swift in Sources */,
 				EC1056772C3B158F00CEB625 /* MyEventsMockData.swift in Sources */,
-				EC2FEC6C2C4587170097D5BA /* ChooseCategoriesView.swift in Sources */,
+				EC2FEC6C2C4587170097D5BA /* PersonalCategoriesView.swift in Sources */,
 				ECAE783B2C44811F0022551C /* Dictionary.swift in Sources */,
 				EC7F30302C43F51300AFEECB /* AppColorScheme.swift in Sources */,
 				ECAE78342C4480690022551C /* RequestEncoder.swift in Sources */,
 				EC10566F2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift in Sources */,
 				EC05CC942C35C4CF00F2FC8E /* ProfileView.swift in Sources */,
-				EC10566A2C3AD9F500CEB625 /* TestView.swift in Sources */,
 				EC4981E32C1B784F0072BD53 /* EventifyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

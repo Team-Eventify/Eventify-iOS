@@ -17,6 +17,7 @@ final class SignUpViewModel: ObservableObject {
 	@Published var isLoading: Bool = false
 	@Published var isError: Bool = true
 	@AppStorage("isLoading") var isLogin: Bool = false
+	@AppStorage("hasCategories") var hasCategories: Bool = false
 
 	/// Приватное свойство для сервиса регистрации
 	private let signUpService: SignUpServiceProtocol

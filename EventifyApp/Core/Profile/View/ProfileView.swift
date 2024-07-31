@@ -12,6 +12,7 @@ struct ProfileView: View {
 	// MARK: - Private Properties
 
 	@StateObject private var viewModel = ProfileViewModel()
+	@StateObject private var colorScheme = AppColorScheme.shared
 
 	// MARK: - Initialization
 
@@ -30,9 +31,9 @@ struct ProfileView: View {
 		NavigationStack {
 			VStack {
 				header
-				Picker("", selection: $viewModel.selectedPicker) {
-					Text("Тёмная тема").tag(0)
-					Text("Светлая тема").tag(1)
+				Picker("", selection: $colorScheme.selectedTheme) {
+					Text("Тёмная тема").tag(Theme.dark)
+					Text("Светлая тема").tag(Theme.light)
 				}
 				.pickerStyle(.segmented)
 				.padding(.top, 18)

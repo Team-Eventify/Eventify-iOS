@@ -62,7 +62,7 @@ struct ForgotPasswordView: View {
 		VStack(spacing: 40) {
 			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true, isSecure: false)
 
-			EventifyButton(title: "Отправить", isLoading: false) {
+			EventifyButton(title: "Отправить", isLoading: false, isDisabled: false) {
 				Task {
 					do {
 						try await viewModel.resetPassword()

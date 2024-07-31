@@ -87,7 +87,7 @@ struct SignInView: View {
 	/// Контейнер для кнопок входа и регистрации
 	private var signInButtonContainerView: some View {
 		VStack(spacing: 20) {
-			EventifyButton(title: "Войти", isLoading: viewModel.isLoading) {
+			EventifyButton(title: "Войти", isLoading: viewModel.isLoading, isDisabled: false) {
 				Task {
 					await viewModel.signIn()
 					if viewModel.isLogin == true {

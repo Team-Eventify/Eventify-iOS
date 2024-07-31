@@ -70,7 +70,7 @@ struct ProfileDetail: View {
 				isSecure: false
 			)
 
-			EventifyButton(title: "Сохранить изменения", isLoading: false) {
+			EventifyButton(title: "Сохранить изменения", isLoading: false, isDisabled: false) {
 				print("📙 Saved! 📙")
 				dismiss()
 			}

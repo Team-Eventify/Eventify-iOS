@@ -10,6 +10,7 @@ import SwiftUI
 struct EventifyButton: View {
 	let title: String
 	var isLoading: Bool
+	var isDisabled: Bool
 	var action: () -> Void
 
 	var body: some View {
@@ -31,19 +32,19 @@ struct EventifyButton: View {
 					.foregroundColor(.black)
 					.padding(.vertical, 13)
 					.frame(maxWidth: .infinity)
-					.background(Color.brandYellow)
+					.background(isDisabled ? Color.gray : Color.brandYellow)
 					.cornerRadius(10)
 			}
 		}
-		.disabled(isLoading) // Disable the button when loading
+		.disabled(isLoading || isDisabled) // Disable the button when loading
 	}
 }
 
 #Preview {
 	VStack {
-		EventifyButton(title: "Зарегистрироваться", isLoading: false, action: {})
-		EventifyButton(title: "Войти", isLoading: true, action: {})
-		EventifyButton(title: "Отправить", isLoading: false, action: {})
+		EventifyButton(title: "Зарегистрироваться", isLoading: false, isDisabled: false, action: {})
+		EventifyButton(title: "Войти", isLoading: true, isDisabled: false, action: {})
+		EventifyButton(title: "Отправить", isLoading: false, isDisabled: false, action: {})
 	}
 	.frame(maxWidth: .infinity, maxHeight: .infinity)
 	.padding(.horizontal, 16)

@@ -13,6 +13,7 @@ struct EventifyApp: App {
 	@StateObject private var appColorScheme = AppColorScheme.shared
 	@StateObject private var profileViewModel = ProfileViewModel()
 	@AppStorage("isLogin") var isLogin: Bool = false
+
 	var body: some Scene {
 		WindowGroup {
 			NavigationViewStorage {
@@ -20,12 +21,12 @@ struct EventifyApp: App {
 					TabBarView()
 						.environmentObject(profileViewModel)
 						.environmentObject(appColorScheme)
-						.preferredColorScheme(appColorScheme.colorScheme)
+						.preferredColorScheme(AppColorScheme.shared.selectedTheme == .light ? .light : .dark)
 				} else {
 					SignUpView()
 						.environmentObject(profileViewModel)
 						.environmentObject(appColorScheme)
-						.preferredColorScheme(appColorScheme.colorScheme)
+						.preferredColorScheme(AppColorScheme.shared.selectedTheme == .light ? .light : .dark)
 				}
 			}
 		}

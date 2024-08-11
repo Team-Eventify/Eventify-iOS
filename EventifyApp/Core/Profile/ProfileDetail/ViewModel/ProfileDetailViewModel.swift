@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-@MainActor
 final class ProfileDetailViewModel: ObservableObject {
 	// MARK: - Public Properties
 
 	@Published var name: String = ""
 	@Published var surname: String = ""
+	@Published var lastName: String = ""
 	@Published var email: String = ""
 	@Published var telegram: String = ""
 }

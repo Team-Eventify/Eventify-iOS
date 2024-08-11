@@ -13,6 +13,7 @@ struct ProfileView: View {
 
 	@StateObject private var viewModel = ProfileViewModel()
 	@StateObject private var colorScheme = AppColorScheme.shared
+	@State var showingAlert: Bool = false
 
 	// MARK: - Initialization
 
@@ -38,7 +39,74 @@ struct ProfileView: View {
 				.pickerStyle(.segmented)
 				.padding(.top, 18)
 				.padding(.horizontal, 16)
-				settingsList
+				List {
+					Section {
+						NavigationLink {
+							TestView()
+						} label: {
+							Text("Добавить мероприятие")
+						}
+					}
+
+					Section {
+						NavigationLink {
+							TestView()
+						} label: {
+							Text("Уведомления")
+						}
+
+						NavigationLink {} label: {
+							Text("Помощь и поддержка")
+						}
+					}
+
+					Section {
+						NavigationLink {
+							TestView()
+						} label: {
+							Text("О приложении")
+						}
+						NavigationLink {
+							TestView()
+						} label: {
+							Text("Оценить")
+						}
+					}
+
+					Section {
+						NavigationLink {
+							SignUpView()
+						}
+						label: {
+							Text("Выйти")
+								.foregroundStyle(.mainText)
+						}
+						Button {
+							showingAlert = true
+						} label: {
+							Text("Удалить аккаунт")
+								.foregroundStyle(.error)
+						}
+						.alert("Вы действительно хотите удалить аккаунт?", isPresented: $showingAlert) {
+							Button( role: .cancel) {
+								print("delete account")
+							} label: {
+								Text("Да")
+									.foregroundStyle(.error)
+							}
+
+							Button {
+								print("resume account")
+							} label: {
+								Text("Нет")
+									.foregroundStyle(.mainText)
+							}
+						}
+					}
+				}
+				.scrollDisabled(true)
+				.scrollContentBackground(.hidden)
+				.listStyle(.insetGrouped)
 			}
 			.navigationTitle("Профиль")
 			.navigationBarTitleDisplayMode(.large)
@@ -74,58 +142,6 @@ private var header: some View {
 		.cornerRadius(10)
 		.padding(.horizontal)
 	}
-}
-
-/// Список настроек приложения
-
-private var settingsList: some View {
-	List {
-		Section {
-			NavigationLink {
-				TestView()
-			} label: {
-				Text("Добавить мероприятие")
-			}
-		}
-
-		Section {
-			NavigationLink {
-				TestView()
-			} label: {
-				Text("Уведомления")
-			}
-
-			NavigationLink {} label: {
-				Text("Помощь и поддержка")
-			}
-		}
-
-		Section {
-			NavigationLink {
-				TestView()
-			} label: {
-				Text("О приложении")
-			}
-			NavigationLink {
-				TestView()
-			} label: {
-				Text("Оценить")
-			}
-		}
-
-		Section {
-			NavigationLink {
-				SignUpView()
-			}
-			label: {
-				Text("Выйти")
-					.foregroundStyle(.mainText)
-			}
-		}
-	}
-	.scrollDisabled(true)
-	.scrollContentBackground(.hidden)
-	.listStyle(.insetGrouped)
 }
 
 #Preview {

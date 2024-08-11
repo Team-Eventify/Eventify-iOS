@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@MainActor
 final class PersonalCategoriesViewModel: ObservableObject {
 	@Published var navigateWithCategories: Bool = false
 	@Published var skipCategories: Bool = false

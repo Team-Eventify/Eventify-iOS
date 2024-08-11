@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@MainActor
 final class ProfileViewModel: ObservableObject {
 	// MARK: - Public Properties
 

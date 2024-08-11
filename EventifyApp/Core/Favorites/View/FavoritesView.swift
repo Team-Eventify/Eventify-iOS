@@ -24,7 +24,7 @@ struct FavoritesView: View {
 				}
 				.pickerStyle(.segmented)
 				ScrollView(showsIndicators: false) {
-					FlowLayout(horizontalSpacing: 16, verticalSpacing: 8) {
+					FlowLayout(horizontalSpacing: 24, verticalSpacing: 8) {
 						ForEach(viewModel.favoritesData()) {
 							EventifyRecommendationEvent(
 								image: $0.image,

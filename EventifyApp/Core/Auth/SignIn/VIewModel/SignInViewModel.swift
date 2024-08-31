@@ -15,7 +15,7 @@ final class SignInViewModel: ObservableObject {
 	@Published var password: String = ""
 	@Published var signInStatusMessage: String = ""
 	@Published var isLoading: Bool = false
-	@AppStorage("isLoading") var isLogin: Bool = false
+	@Published var showForgotPassScreen: Bool = false
 
 	/// Приватное свойство для сервиса входа
 	private let signInService: SignInServiceProtocol
@@ -34,7 +34,7 @@ final class SignInViewModel: ObservableObject {
 	func signIn() async {
 		guard !email.isEmpty, !password.isEmpty else {
 			signInStatusMessage = "No email or password found."
-			isLogin = false
+			Constants.isLogin = false
 			print(signInStatusMessage)
 			return
 		}
@@ -45,11 +45,11 @@ final class SignInViewModel: ObservableObject {
 		do {
 			let _ = try await signInService.signIn(json: userData)
 			print(signInStatusMessage)
-			isLogin = true
+			Constants.isLogin = true
 		} catch {
 			signInStatusMessage = "Error: \(error.localizedDescription)"
 			print(signInStatusMessage)
-			isLogin = false
+			Constants.isLogin = false
 		}
 		isLoading = false
 	}

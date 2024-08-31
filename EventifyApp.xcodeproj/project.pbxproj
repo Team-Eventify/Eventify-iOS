@@ -58,7 +58,8 @@
 		ECAE783D2C4481330022551C /* CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAE783C2C4481330022551C /* CharacterSet.swift */; };
 		ECAE783F2C4483090022551C /* SignUpEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAE783E2C4483090022551C /* SignUpEndpoint.swift */; };
 		ECAE78412C4484990022551C /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAE78402C4484990022551C /* SignUpService.swift */; };
-		ECB823792C41C759001AD8AB /* RecommendedEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB823782C41C759001AD8AB /* RecommendedEventsModel.swift */; };
+		ECB0F5A92C83BBAA0072B99B /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB0F5A82C83BBAA0072B99B /* FlowLayout.swift */; };
+		ECB823792C41C759001AD8AB /* CellsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB823782C41C759001AD8AB /* CellsModel.swift */; };
 		ECB8237D2C41CA7B001AD8AB /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB8237C2C41CA7B001AD8AB /* FavoritesViewModel.swift */; };
 		ECB823802C41CAB8001AD8AB /* FavoritesMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB8237F2C41CAB8001AD8AB /* FavoritesMockData.swift */; };
 		ECB823842C41DACC001AD8AB /* EventCellSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB823832C41DACC001AD8AB /* EventCellSize.swift */; };
@@ -127,7 +128,8 @@
 		ECAE783C2C4481330022551C /* CharacterSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSet.swift; sourceTree = "<group>"; };
 		ECAE783E2C4483090022551C /* SignUpEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEndpoint.swift; sourceTree = "<group>"; };
 		ECAE78402C4484990022551C /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
-		ECB823782C41C759001AD8AB /* RecommendedEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedEventsModel.swift; sourceTree = "<group>"; };
+		ECB0F5A82C83BBAA0072B99B /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		ECB823782C41C759001AD8AB /* CellsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsModel.swift; sourceTree = "<group>"; };
 		ECB8237C2C41CA7B001AD8AB /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		ECB8237F2C41CAB8001AD8AB /* FavoritesMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMockData.swift; sourceTree = "<group>"; };
 		ECB823832C41DACC001AD8AB /* EventCellSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCellSize.swift; sourceTree = "<group>"; };
@@ -187,7 +189,7 @@
 			children = (
 				EC1056742C3B152300CEB625 /* UpcomingEventsModel.swift */,
 				EC1056762C3B158F00CEB625 /* MyEventsMockData.swift */,
-				ECB823782C41C759001AD8AB /* RecommendedEventsModel.swift */,
+				ECB823782C41C759001AD8AB /* CellsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,7 +233,6 @@
 				EC8116F62C38924A0083419D /* MyEvents */,
 				EC8116F82C3892AB0083419D /* Favorites */,
 				EC8116F92C3892E30083419D /* Profile */,
-				ECAA21EC2C83A87300A40CCD /* ContentView.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -514,6 +515,7 @@
 		ECCAE2032C1DD9C600C19E40 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				ECB0F5A82C83BBAA0072B99B /* FlowLayout.swift */,
 				ECCAE2042C1DDA1100C19E40 /* SetBorder.swift */,
 				EC05CC952C35C6D900F2FC8E /* View+CornerRadius.swift */,
 				ECB823832C41DACC001AD8AB /* EventCellSize.swift */,
@@ -622,6 +624,7 @@
 		ECF430BC2C45BF6F00E5942B /* Commoms */ = {
 			isa = PBXGroup;
 			children = (
+				ECAA21EC2C83A87300A40CCD /* ContentView.swift */,
 				ECF430C52C45C6FD00E5942B /* Constants.swift */,
 			);
 			path = Commoms;
@@ -728,7 +731,7 @@
 				ECAE78412C4484990022551C /* SignUpService.swift in Sources */,
 				ECB823842C41DACC001AD8AB /* EventCellSize.swift in Sources */,
 				EC10566D2C3B00AA00CEB625 /* ProfileDetail.swift in Sources */,
-				ECB823792C41C759001AD8AB /* RecommendedEventsModel.swift in Sources */,
+				ECB823792C41C759001AD8AB /* CellsModel.swift in Sources */,
 				EC74198B2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift in Sources */,
 				ECAE78322C44803D0022551C /* RequestError.swift in Sources */,
 				EC11BC7E2C76977100762468 /* EventifyFavoriteOrganizators.swift in Sources */,
@@ -741,6 +744,7 @@
 				EC1056712C3B11BA00CEB625 /* EventifyCheeps.swift in Sources */,
 				ECAE783F2C4483090022551C /* SignUpEndpoint.swift in Sources */,
 				ECDCC15F2C5A7A0D0013ADB6 /* PersonalCategoriesViewModel.swift in Sources */,
+				ECB0F5A92C83BBAA0072B99B /* FlowLayout.swift in Sources */,
 				ECB823802C41CAB8001AD8AB /* FavoritesMockData.swift in Sources */,
 				ECAE782B2C4477EA0022551C /* API.swift in Sources */,
 				EC05CC8E2C35C4B800F2FC8E /* SearchView.swift in Sources */,
@@ -896,7 +900,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"EventifyApp/Preview Content\"";
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
 				ENABLE_PREVIEWS = YES;
@@ -917,9 +921,13 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.raynelz.Eventify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -929,7 +937,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"EventifyApp/Preview Content\"";
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
 				ENABLE_PREVIEWS = YES;
@@ -950,9 +958,13 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.raynelz.Eventify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

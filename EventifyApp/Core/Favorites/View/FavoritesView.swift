@@ -13,6 +13,7 @@ struct FavoritesView: View {
 
 	@StateObject private var viewModel = FavoritesViewModel()
 
+
 	// MARK: - Body
 
 	var body: some View {
@@ -25,12 +26,21 @@ struct FavoritesView: View {
 				ScrollView(showsIndicators: false) {
 					LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
 						ForEach(viewModel.favoritesData()) {
-							EventifyRecommendationEvent(
-								image: $0.image,
-								title: $0.title,
-								cheepsItems: $0.cheepsItems,
-								size: .slim
-							)
+							if viewModel.showOrganizators {
+								EventifyFavoriteOrganizators(
+									image: $0.image,
+									name: $0.title,
+									size: .slim,
+									items: $0.cheepsItems
+								)
+							} else {
+								EventifyRecommendationEvent(
+									image: $0.image,
+									title: $0.title,
+									cheepsItems: $0.cheepsItems,
+									size: .slim
+								)
+							}
 						}
 					}
 					recomendedEvents

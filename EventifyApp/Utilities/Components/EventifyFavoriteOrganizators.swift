@@ -9,6 +9,8 @@ import SwiftUI
 
 /// Вью избранного организатора
 struct EventifyFavoriteOrganizators: View {
+	@State private var isLiked: Bool = false
+
 	let image: String
 	let name: String
 	let size: EventCellSize
@@ -16,14 +18,6 @@ struct EventifyFavoriteOrganizators: View {
 	var body: some View {
 		VStack {
 			VStack(alignment: .trailing, spacing: 8) {
-				Button {
-					print("Tapped!")
-				} label: {
-					Image(systemName: "heart")
-						.tint(.brandPink)
-				}
-				.padding(.trailing, 4)
-
 				Image(image)
 					.frame(maxWidth: 100, maxHeight: 100)
 					.clipShape(Circle())
@@ -35,14 +29,29 @@ struct EventifyFavoriteOrganizators: View {
 
 			EventifyCheeps(items: items)
 				.padding(.top, 21)
+				.padding(.leading, 16)
 
 		}
 		.frame(width: size.width, height: size.height)
 		.background(.cards)
 		.clipShape(.rect(cornerRadius: 20))
+		.overlay(alignment: .topTrailing) {
+			Button {
+				isLiked.toggle()
+			} label: {
+				Image(
+					systemName: isLiked 
+					? "heart"
+					: "heart.fill"
+				)
+					.tint(.brandPink)
+					.imageScale(.large)
+			}
+			.padding(12)
+		}
 	}
 }
 
 #Preview("large") {
-	EventifyFavoriteOrganizators(image: "itam", name: "ITAM", size: .large, items: ["backend", "frontend", "design"])
+	EventifyFavoriteOrganizators(image: "itam", name: "ITAM", size: .large, items: ["backend", "frontend", "design", "mobile"])
 }

@@ -14,9 +14,6 @@ struct SignInView: View {
 
 	@StateObject private var viewModel: SignInViewModel
 
-	@State private var isLogined: Bool = false
-	@State private var isForgotPassword: Bool = false
-
 	@Environment(\.dismiss)
 	var dismiss
 
@@ -37,12 +34,7 @@ struct SignInView: View {
 			Spacer()
 			signInContentContainerView
 			signInButtonContainerView
-
-			if viewModel.isLogin == false {
-				Text(viewModel.signInStatusMessage)
-					.padding(.all, 16)
-					.foregroundStyle(.error)
-			}
+			Spacer()
 			Spacer()
 		}
 		.foregroundStyle(Color.secondaryText)
@@ -50,10 +42,7 @@ struct SignInView: View {
 		.padding(.horizontal, 16)
 		.background(.bg, ignoresSafeAreaEdges: .all)
 		.navigationBarBackButtonHidden(true)
-		.navigation(isActive: $isLogined) {
-			TabBarView()
-		}
-		.navigation(isActive: $isForgotPassword) {
+		.navigation(isActive: $viewModel.showForgotPassScreen) {
 			ForgotPasswordView()
 		}
 	}
@@ -90,9 +79,6 @@ struct SignInView: View {
 			EventifyButton(title: "Войти", isLoading: viewModel.isLoading, isDisabled: false) {
 				Task {
 					await viewModel.signIn()
-					if viewModel.isLogin == true {
-						isLogined.toggle()
-					}
 				}
 			}
 			haveAccountContainerView
@@ -103,7 +89,7 @@ struct SignInView: View {
 	private var forgotPasswordButtonContainerView: some View {
 		VStack(alignment: .trailing, spacing: .zero) {
 			Button {
-				isForgotPassword.toggle()
+				viewModel.showForgotPassScreen.toggle()
 			} label: {
 				Text("Забыли пароль?")
 			}

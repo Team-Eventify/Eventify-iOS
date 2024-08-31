@@ -14,23 +14,21 @@ struct EventifyCheeps: View {
 		self.items = items
 	}
 
-    var body: some View {
-		HStack(spacing: 8) {
-			ForEach(items, id: \.self) { item in
-				Text(item)
-					.font(.mediumCompact(size: 12))
-					.frame(height: 20)
-					.padding(.vertical, 4)
-					.padding(.horizontal, 8)
-					.overlay {
-						Capsule()
-							.stroke(
-								style: .init(lineWidth: 1)
-							)
-					}
-			}
-		}
-    }
+	var body: some View {
+		FlowLayout(mode: .vstack, items: items, viewMapping: { items in
+			Text(items)
+				.font(.mediumCompact(size: 12))
+				.frame(height: 20)
+				.padding(.vertical, 4)
+				.padding(.horizontal, 8)
+				.overlay {
+					Capsule()
+						.stroke(
+							style: .init(lineWidth: 1)
+						)
+				}
+		})
+	}
 }
 
 #Preview {

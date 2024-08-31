@@ -8,7 +8,7 @@
 import Foundation
 
 /// Модель рекомммендуемых мероприятия
-struct RecommendedEventsModel: Identifiable {
+struct CellsModel: Identifiable {
 	/// Индификатор меропрития
 	let id = UUID()
 

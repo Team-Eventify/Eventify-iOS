@@ -84,7 +84,7 @@ struct ProfileView: View {
 						.alert("Вы действительно хотите выйти из приложения?", isPresented: $showingExitAlert) {
 							Button(role: .cancel) {
 								Constants.isLogin = false
-								print("Exit from account")
+								print("🚪 Exit from account")
 							} label: {
 								Text("Да")
 									.foregroundStyle(.error)
@@ -104,16 +104,17 @@ struct ProfileView: View {
 								.foregroundStyle(.error)
 						}
 						.alert("Вы действительно хотите удалить аккаунт?", isPresented: $showingDeleteAlert) {
+
 							Button(role: .cancel) {
-								navigateToSignUp.toggle()
-								print("delete account")
+								Constants.isLogin = false
+								print("🪓 delete account")
 							} label: {
 								Text("Да")
 									.foregroundStyle(.error)
 							}
 
 							Button {
-								print("resume account")
+								print("✏️ resume account")
 							} label: {
 								Text("Нет")
 									.foregroundStyle(.mainText)

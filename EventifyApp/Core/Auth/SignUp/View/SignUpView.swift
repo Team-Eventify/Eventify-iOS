@@ -106,7 +106,7 @@ struct SignUpView: View {
 			Text("Уже есть аккаунт?")
 				.font(.regularCompact(size: 16))
 			Button {
-				navigateToLoginView.toggle()
+                Constants.isLogin = true
 			} label: {
 				Text("Войти")
 					.underline()

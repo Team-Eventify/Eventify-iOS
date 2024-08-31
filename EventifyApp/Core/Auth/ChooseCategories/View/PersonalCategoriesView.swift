@@ -87,3 +87,5 @@ struct PersonalCategoriesView: View {
 #Preview {
 	PersonalCategoriesView()
 }
+
+

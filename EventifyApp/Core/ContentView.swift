@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SUINavigation
 
 struct ContentView: View {
 	@StateObject private var appColorScheme = AppColorScheme.shared
@@ -13,19 +14,25 @@ struct ContentView: View {
 
     var body: some View {
 		if profileViewModel.isLogin {
-			TabBarView()
-				.environmentObject(profileViewModel)
-				.environmentObject(appColorScheme)
-				.preferredColorScheme(AppColorScheme.shared.selectedTheme == .light ? .light : .dark)
+            NavigationViewStorage {
+                TabBarView()
+                    .environmentObject(profileViewModel)
+                    .environmentObject(appColorScheme)
+                    .preferredColorScheme(AppColorScheme.shared.selectedTheme == .light ? .light : .dark)
+            }
 		} else {
-			SignUpView()
-				.environmentObject(profileViewModel)
-				.environmentObject(appColorScheme)
-				.preferredColorScheme(AppColorScheme.shared.selectedTheme == .light ? .light : .dark)
+            NavigationViewStorage {
+                SignUpView()
+                    .environmentObject(profileViewModel)
+                    .environmentObject(appColorScheme)
+                    .preferredColorScheme(AppColorScheme.shared.selectedTheme == .light ? .light : .dark)
+            }
 		}
     }
 }
 
 #Preview {
     ContentView()
+    
 }
+

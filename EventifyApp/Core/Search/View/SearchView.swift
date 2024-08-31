@@ -16,7 +16,6 @@ struct SearchView: View {
 	// MARK: - Body
 
 	var body: some View {
-		NavigationStack {
 			VStack {
 				Picker("", selection: $viewModel.selectedPicker) {
 					Text("Для студентов").tag(0)
@@ -36,7 +35,6 @@ struct SearchView: View {
 			.searchable(text: $viewModel.searchText)
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
 			.background(.bg, ignoresSafeAreaEdges: .all)
-		}
 	}
 }
 

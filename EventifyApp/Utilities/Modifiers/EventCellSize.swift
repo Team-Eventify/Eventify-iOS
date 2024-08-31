@@ -13,7 +13,7 @@ enum EventCellSize {
 
 	var width: CGFloat {
 		switch self {
-			case .slim: return 150
+			case .slim: return 180
 			case .large: return 235
 		}
 	}

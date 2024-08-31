@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Вью ячейки организаторов
 struct EventifyRecommendationEvent: View {
 	let image: String
 	let title: String
@@ -14,7 +15,7 @@ struct EventifyRecommendationEvent: View {
 	let size: EventCellSize
 
     var body: some View {
-		VStack(alignment: .leading,spacing: 16) {
+		VStack(alignment: .leading, spacing: 16) {
 			Image(image)
 				.resizable()
 				.aspectRatio(contentMode: .fill)
@@ -39,7 +40,7 @@ struct EventifyRecommendationEvent: View {
 		image: "recomm",
 		title: "День открытых дверей университета МИСИС", 
 		cheepsItems: ["12 декабря", "17:30", "онлайн"],
-		size: .slim
+		size: .large
 	)
 		.padding(.horizontal, 16)
 }

@@ -38,7 +38,7 @@ struct SignUpView: View {
 
 			/// Отображение сообщения о статусе регистрации при ошибке
 
-			if viewModel.isLogin == false {
+			if Constants.isLogin == false {
 				Text(viewModel.signUpStatusMessage)
 					.padding(.all, 16)
 					.foregroundStyle(.error)
@@ -57,12 +57,8 @@ struct SignUpView: View {
 		}
 
 		/// Навигация к основному экрану после успешной регистрации
-		.navigation(isActive: $viewModel.isLogin) {
-			if viewModel.hasCategories {
-				TabBarView()
-			} else {
-				PersonalCategoriesView()
-			}
+		.navigation(isActive: $viewModel.showCategoriesView) {
+			PersonalCategoriesView()
 		}
 	}
 
@@ -123,7 +119,5 @@ struct SignUpView: View {
 }
 
 #Preview {
-	NavigationViewStorage {
-		SignUpView()
-	}
+	SignUpView()
 }

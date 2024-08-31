@@ -9,6 +9,7 @@ import SwiftUI
 
 final class ProfileViewModel: ObservableObject {
 	// MARK: - Public Properties
+	@AppStorage("isLogin") var isLogin: Bool = false
 
 	@Published var selectedPicker: Int = 0 {
 		didSet {

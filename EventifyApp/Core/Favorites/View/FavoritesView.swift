@@ -16,15 +16,14 @@ struct FavoritesView: View {
 	// MARK: - Body
 
 	var body: some View {
-		NavigationStack {
-			VStack(alignment: .leading, spacing: 56) {
+			VStack(alignment: .leading, spacing: 28) {
 				Picker("", selection: $viewModel.selectedPicker) {
 					Text("Ивенты").tag(0)
 					Text("Организаторы").tag(1)
 				}
 				.pickerStyle(.segmented)
 				ScrollView(showsIndicators: false) {
-					FlowLayout(horizontalSpacing: 24, verticalSpacing: 8) {
+					LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
 						ForEach(viewModel.favoritesData()) {
 							EventifyRecommendationEvent(
 								image: $0.image,
@@ -38,12 +37,11 @@ struct FavoritesView: View {
 					Spacer()
 				}
 			}
-			.navigationTitle("Избранное")
-			.navigationBarTitleDisplayMode(.large)
-			.padding(.horizontal, 16)
-			.frame(maxWidth: .infinity, maxHeight: .infinity)
-			.background(.bg)
-		}
+		.navigationTitle("Избранное")
+		.navigationBarTitleDisplayMode(.large)
+		.padding(.horizontal, 16)
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.background(.bg)
 	}
 }
 
@@ -71,5 +69,7 @@ private var recomendedEvents: some View {
 }
 
 #Preview {
-	TabBarView()
+	NavigationStack {
+		TabBarView()
+	}
 }

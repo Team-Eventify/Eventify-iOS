@@ -13,10 +13,11 @@ struct ProfileView: View {
 
 	@StateObject private var viewModel = ProfileViewModel()
 	@StateObject private var colorScheme = AppColorScheme.shared
-	@State var showingAlert: Bool = false
+	@State var showingDeleteAlert: Bool = false
+	@State var showingExitAlert: Bool = false
+	@State var navigateToSignUp: Bool = false
 
 	// MARK: - Initialization
-
 
 	/// Инициализатор
 	/// - Parameter viewModel: модель экрана профиля
@@ -74,21 +75,37 @@ struct ProfileView: View {
 					}
 
 					Section {
-						NavigationLink {
-							SignUpView()
-						}
-						label: {
+						Button {
+							showingExitAlert.toggle()
+						} label: {
 							Text("Выйти")
 								.foregroundStyle(.mainText)
 						}
+						.alert("Вы действительно хотите выйти из приложения?", isPresented: $showingExitAlert) {
+							Button(role: .cancel) {
+								Constants.isLogin = false
+								print("Exit from account")
+							} label: {
+								Text("Да")
+									.foregroundStyle(.error)
+							}
+
+							Button {
+								print("Continue work in app")
+							} label: {
+								Text("Нет")
+									.foregroundStyle(.mainText)
+							}
+						}
 						Button {
-							showingAlert = true
+							showingDeleteAlert.toggle()
 						} label: {
 							Text("Удалить аккаунт")
 								.foregroundStyle(.error)
 						}
-						.alert("Вы действительно хотите удалить аккаунт?", isPresented: $showingAlert) {
-							Button( role: .cancel) {
+						.alert("Вы действительно хотите удалить аккаунт?", isPresented: $showingDeleteAlert) {
+							Button(role: .cancel) {
+								navigateToSignUp.toggle()
 								print("delete account")
 							} label: {
 								Text("Да")

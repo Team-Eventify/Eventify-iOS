@@ -13,7 +13,6 @@ struct MyEventsView: View {
 	// MARK: - Body
 
 	var body: some View {
-		NavigationStack {
 			VStack(alignment: .leading, spacing: 56) {
 				ScrollView(showsIndicators: false) {
 					upcomingEvents
@@ -26,7 +25,6 @@ struct MyEventsView: View {
 			.padding(.horizontal, 16)
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
 			.background(.bg, ignoresSafeAreaEdges: .all)
-		}
 	}
 }
 
@@ -38,7 +36,7 @@ private var upcomingEvents: some View {
 		Text("Предстоящие мероприятия")
 			.font(.mediumCompact(size: 20))
 			.foregroundStyle(.mainText)
-		VStack(spacing: 8) {
+		LazyVStack(spacing: 8) {
 			ForEach(MyEventsMockData.upcomingEventsData) {
 				EventifyUpcomingEvent(title: $0.title, items: $0.cheepTitles, color: $0.color)
 			}
@@ -53,7 +51,7 @@ private var recomendedEvents: some View {
 			.font(.mediumCompact(size: 20))
 			.foregroundStyle(.mainText)
 		ScrollView(.horizontal, showsIndicators: false) {
-			HStack(spacing: 8) {
+			LazyHStack(spacing: 8) {
 				ForEach(MyEventsMockData.recommendedEventsData) {
 					EventifyRecommendationEvent(
 						image: $0.image,

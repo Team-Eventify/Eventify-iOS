@@ -15,9 +15,8 @@ final class SignUpViewModel: ObservableObject {
 	@Published var password: String = ""
 	@Published var signUpStatusMessage: String = ""
 	@Published var isLoading: Bool = false
+	@Published var showCategoriesView: Bool = false
 	@Published var isError: Bool = true
-	@AppStorage("isLoading") var isLogin: Bool = false
-	@AppStorage("hasCategories") var hasCategories: Bool = false
 
 	/// Приватное свойство для сервиса регистрации
 	private let signUpService: SignUpServiceProtocol
@@ -47,11 +46,11 @@ final class SignUpViewModel: ObservableObject {
 			let _ = try await signUpService.signUp(json: userData)
 			signUpStatusMessage = "Success ✅"
 			print(signUpStatusMessage)
-			isLogin = true
+			showCategoriesView = true
 		} catch {
 			signUpStatusMessage = "Error: \(error.localizedDescription)"
 			print(signUpStatusMessage)
-			isLogin = false
+			showCategoriesView = false
 			isError = false
 		}
 		isLoading = false

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SUINavigation
 
 struct PersonalCategoriesView: View {
 	// MARK: - Private Properties
@@ -20,34 +19,6 @@ struct PersonalCategoriesView: View {
 		)
 	}
 
-	private let categories: [[PersonalCategories]] = [
-		[
-			.init(name: "Наука", selectionColor: .red),
-			.init(name: "Спорт", selectionColor: .blue),
-			.init(name: "Творчество", selectionColor: .green)
-		],
-		[
-			.init(name: "Дизайн", selectionColor: .yellow),
-			.init(name: "Frontend", selectionColor: .orange),
-			.init(name: "Mobile", selectionColor: .purple),
-		],
-		[
-			.init(name: "Backend", selectionColor: .pink),
-			.init(name: "ML", selectionColor: .gray),
-			.init(name: "GameDev", selectionColor: .brown),
-			.init(name: "Media", selectionColor: .cyan),
-		],
-		[
-			.init(name: "Аналитика", selectionColor: .indigo),
-			.init(name: "Хакатоны", selectionColor: .mint),
-			.init(name: "Театр", selectionColor: .teal)
-		],
-		[
-			.init(name: "Наставничество", selectionColor: .science),
-			.init(name: "Студенческая жизнь", selectionColor: .sport),
-		],
-	]
-
 	// MARK: - Body
 
 	var body: some View {
@@ -56,12 +27,12 @@ struct PersonalCategoriesView: View {
 			headerContainer
 
 			VStack(alignment: .leading, spacing: 8) {
-				ForEach(categories.indices, id: \.self) { index in
+				ForEach(PersonalCategoriesMockData.categories.indices, id: \.self) { index in
 					HStack(spacing: 8) {
-						ForEach(categories[index].indices, id: \.self) { inner in
+						ForEach(PersonalCategoriesMockData.categories[index].indices, id: \.self) { inner in
 							PersonalCategoriesCheeps(
 								viewModel: viewModel,
-								category: categories[index][inner]
+								category: PersonalCategoriesMockData.categories[index][inner]
 							)
 						}
 					}
@@ -79,14 +50,6 @@ struct PersonalCategoriesView: View {
 		.padding(.horizontal, 16)
 		.background(.bg, ignoresSafeAreaEdges: .all)
 		.navigationBarBackButtonHidden()
-
-		.navigation(isActive: $viewModel.navigateWithCategories) {
-			TabBarView()
-		}
-
-		.navigation(isActive: $viewModel.skipCategories) {
-			TabBarView()
-		}
 	}
 
 	private var headerContainer: some View {
@@ -104,12 +67,13 @@ struct PersonalCategoriesView: View {
 	private var footerContainer: some View {
 		VStack(spacing: 24) {
 			EventifyButton(title: "Далее", isLoading: false, isDisabled: !viewModel.isAnyCategorySelected) {
-				viewModel.navigateWithCategories.toggle()
-				viewModel.hasCategories.toggle()
+				Constants.hasCategories = true
+				Constants.isLogin = true
+				print(Constants.isLogin)
 			}
 
 			Button {
-				viewModel.skipCategories.toggle()
+				Constants.isLogin = true
 			} label: {
 				Text("Пропустить")
 					.foregroundStyle(.gray)

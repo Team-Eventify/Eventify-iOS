@@ -12,7 +12,6 @@ struct MainView: View {
 	// MARK: - Body
 
 	var body: some View {
-		NavigationStack {
 			VStack(spacing: 16) {
 				Text("📺 Main Screen 📺")
 					.font(.semiboldCompact(size: 24))
@@ -25,7 +24,6 @@ struct MainView: View {
 			.navigationBarTitleDisplayMode(.large)
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
 			.background(.bg, ignoresSafeAreaEdges: .all)
-		}
 	}
 }
 

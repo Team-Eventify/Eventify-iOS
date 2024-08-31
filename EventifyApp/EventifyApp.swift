@@ -10,24 +10,10 @@ import SwiftUI
 
 @main
 struct EventifyApp: App {
-	@StateObject private var appColorScheme = AppColorScheme.shared
-	@StateObject private var profileViewModel = ProfileViewModel()
-	@AppStorage("isLogin") var isLogin: Bool = false
-
 	var body: some Scene {
 		WindowGroup {
 			NavigationViewStorage {
-				if isLogin {
-					TabBarView()
-						.environmentObject(profileViewModel)
-						.environmentObject(appColorScheme)
-						.preferredColorScheme(AppColorScheme.shared.selectedTheme == .light ? .light : .dark)
-				} else {
-					SignUpView()
-						.environmentObject(profileViewModel)
-						.environmentObject(appColorScheme)
-						.preferredColorScheme(AppColorScheme.shared.selectedTheme == .light ? .light : .dark)
-				}
+				ContentView()
 			}
 		}
 	}

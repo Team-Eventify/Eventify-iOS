@@ -9,4 +9,5 @@ import SwiftUI
 
 struct Constants {
 	@AppStorage("isLogin") static var isLogin: Bool = false
+	@AppStorage("hasCategories") static var hasCategories: Bool = false
 }

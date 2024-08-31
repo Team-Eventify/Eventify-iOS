@@ -22,6 +22,7 @@
 		EC1056712C3B11BA00CEB625 /* EventifyCheeps.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */; };
 		EC1056752C3B152300CEB625 /* UpcomingEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056742C3B152300CEB625 /* UpcomingEventsModel.swift */; };
 		EC1056772C3B158F00CEB625 /* MyEventsMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056762C3B158F00CEB625 /* MyEventsMockData.swift */; };
+		EC11BC7E2C76977100762468 /* EventifyFavoriteOrganizators.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC11BC7D2C76977100762468 /* EventifyFavoriteOrganizators.swift */; };
 		EC26487A2C20DD48009882FF /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2648792C20DD48009882FF /* ForgotPasswordViewModel.swift */; };
 		EC268AFF2C1C99D400F26DC5 /* SUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = EC268AFE2C1C99D400F26DC5 /* SUINavigation */; };
 		EC268B122C1CA2E600F26DC5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC268B112C1CA2E600F26DC5 /* Fonts.swift */; };
@@ -45,6 +46,8 @@
 		EC7F30302C43F51300AFEECB /* AppColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7F302F2C43F51300AFEECB /* AppColorScheme.swift */; };
 		EC8116FB2C3897210083419D /* EventifyCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8116FA2C3897210083419D /* EventifyCategories.swift */; };
 		ECA00CEC2C67EE5300DA4380 /* ProfileTextFieldModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA00CEB2C67EE5300DA4380 /* ProfileTextFieldModel.swift */; };
+		ECAA21EB2C83960300A40CCD /* PersonalCategoriesMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAA21EA2C83960300A40CCD /* PersonalCategoriesMockData.swift */; };
+		ECAA21ED2C83A87300A40CCD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAA21EC2C83A87300A40CCD /* ContentView.swift */; };
 		ECAE782B2C4477EA0022551C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAE782A2C4477EA0022551C /* API.swift */; };
 		ECAE78302C447FFE0022551C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAE782F2C447FFE0022551C /* Request.swift */; };
 		ECAE78322C44803D0022551C /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAE78312C44803D0022551C /* RequestError.swift */; };
@@ -58,7 +61,6 @@
 		ECB823792C41C759001AD8AB /* RecommendedEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB823782C41C759001AD8AB /* RecommendedEventsModel.swift */; };
 		ECB8237D2C41CA7B001AD8AB /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB8237C2C41CA7B001AD8AB /* FavoritesViewModel.swift */; };
 		ECB823802C41CAB8001AD8AB /* FavoritesMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB8237F2C41CAB8001AD8AB /* FavoritesMockData.swift */; };
-		ECB823822C41D81C001AD8AB /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB823812C41D81C001AD8AB /* FlowLayout.swift */; };
 		ECB823842C41DACC001AD8AB /* EventCellSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB823832C41DACC001AD8AB /* EventCellSize.swift */; };
 		ECCAE2052C1DDA1100C19E40 /* SetBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCAE2042C1DDA1100C19E40 /* SetBorder.swift */; };
 		ECCAE2072C1DE22700C19E40 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCAE2062C1DE22700C19E40 /* SignUpViewModel.swift */; };
@@ -88,6 +90,7 @@
 		EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyCheeps.swift; sourceTree = "<group>"; };
 		EC1056742C3B152300CEB625 /* UpcomingEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsModel.swift; sourceTree = "<group>"; };
 		EC1056762C3B158F00CEB625 /* MyEventsMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsMockData.swift; sourceTree = "<group>"; };
+		EC11BC7D2C76977100762468 /* EventifyFavoriteOrganizators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyFavoriteOrganizators.swift; sourceTree = "<group>"; };
 		EC2648792C20DD48009882FF /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		EC268B102C1CA1B800F26DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC268B112C1CA2E600F26DC5 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 		EC7F302F2C43F51300AFEECB /* AppColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorScheme.swift; sourceTree = "<group>"; };
 		EC8116FA2C3897210083419D /* EventifyCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyCategories.swift; sourceTree = "<group>"; };
 		ECA00CEB2C67EE5300DA4380 /* ProfileTextFieldModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTextFieldModel.swift; sourceTree = "<group>"; };
+		ECAA21EA2C83960300A40CCD /* PersonalCategoriesMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCategoriesMockData.swift; sourceTree = "<group>"; };
+		ECAA21EC2C83A87300A40CCD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ECAE782A2C4477EA0022551C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		ECAE782F2C447FFE0022551C /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		ECAE78312C44803D0022551C /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
@@ -125,7 +130,6 @@
 		ECB823782C41C759001AD8AB /* RecommendedEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedEventsModel.swift; sourceTree = "<group>"; };
 		ECB8237C2C41CA7B001AD8AB /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		ECB8237F2C41CAB8001AD8AB /* FavoritesMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMockData.swift; sourceTree = "<group>"; };
-		ECB823812C41D81C001AD8AB /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		ECB823832C41DACC001AD8AB /* EventCellSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCellSize.swift; sourceTree = "<group>"; };
 		ECCAE2042C1DDA1100C19E40 /* SetBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBorder.swift; sourceTree = "<group>"; };
 		ECCAE2062C1DE22700C19E40 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 				EC8116F62C38924A0083419D /* MyEvents */,
 				EC8116F82C3892AB0083419D /* Favorites */,
 				EC8116F92C3892E30083419D /* Profile */,
+				ECAA21EC2C83A87300A40CCD /* ContentView.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 				EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */,
 				ECECFF8C2C3B2846002B4016 /* EventifyRecommendationEvent.swift */,
 				EC67C8F52C5A8BBB00316016 /* TestView.swift */,
+				EC11BC7D2C76977100762468 /* EventifyFavoriteOrganizators.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				EC7419882C56F57600E4892C /* PersonalCategories.swift */,
+				ECAA21EA2C83960300A40CCD /* PersonalCategoriesMockData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -509,7 +516,6 @@
 			children = (
 				ECCAE2042C1DDA1100C19E40 /* SetBorder.swift */,
 				EC05CC952C35C6D900F2FC8E /* View+CornerRadius.swift */,
-				ECB823812C41D81C001AD8AB /* FlowLayout.swift */,
 				ECB823832C41DACC001AD8AB /* EventCellSize.swift */,
 			);
 			path = Modifiers;
@@ -719,14 +725,15 @@
 				EC26487A2C20DD48009882FF /* ForgotPasswordViewModel.swift in Sources */,
 				EC268B222C1CC59C00F26DC5 /* EventifyButton.swift in Sources */,
 				EC4B4FB62C1F39650039D8A3 /* ForgotPasswordView.swift in Sources */,
-				ECB823822C41D81C001AD8AB /* FlowLayout.swift in Sources */,
 				ECAE78412C4484990022551C /* SignUpService.swift in Sources */,
 				ECB823842C41DACC001AD8AB /* EventCellSize.swift in Sources */,
 				EC10566D2C3B00AA00CEB625 /* ProfileDetail.swift in Sources */,
 				ECB823792C41C759001AD8AB /* RecommendedEventsModel.swift in Sources */,
 				EC74198B2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift in Sources */,
 				ECAE78322C44803D0022551C /* RequestError.swift in Sources */,
+				EC11BC7E2C76977100762468 /* EventifyFavoriteOrganizators.swift in Sources */,
 				ECA00CEC2C67EE5300DA4380 /* ProfileTextFieldModel.swift in Sources */,
+				ECAA21ED2C83A87300A40CCD /* ContentView.swift in Sources */,
 				EC05CC902C35C4C500F2FC8E /* MyEventsView.swift in Sources */,
 				EC1056642C3AC39F00CEB625 /* SearchViewModel.swift in Sources */,
 				EC1056662C3AC43B00CEB625 /* CategoriesModel.swift in Sources */,
@@ -737,6 +744,7 @@
 				ECB823802C41CAB8001AD8AB /* FavoritesMockData.swift in Sources */,
 				ECAE782B2C4477EA0022551C /* API.swift in Sources */,
 				EC05CC8E2C35C4B800F2FC8E /* SearchView.swift in Sources */,
+				ECAA21EB2C83960300A40CCD /* PersonalCategoriesMockData.swift in Sources */,
 				EC268B202C1CC52200F26DC5 /* EventifyTextField.swift in Sources */,
 				EC1056752C3B152300CEB625 /* UpcomingEventsModel.swift in Sources */,
 				ECD3269F2C1E249C00FA18AB /* SignInViewModel.swift in Sources */,
@@ -906,7 +914,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.raynelz.Eventify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -939,7 +947,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.raynelz.Eventify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

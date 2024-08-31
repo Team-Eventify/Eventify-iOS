@@ -71,21 +71,65 @@ struct ProfileDetail: View {
 		ScrollView(showsIndicators: false) {
 			VStack(alignment: .leading, spacing: 20) {
 
-				// TODO: ForEach + DTO (Array)
-
-				ForEach(textFieldSections) { data in
-					Text(data.title)
-						.font(.mediumCompact(size: 20))
-						.foregroundStyle(.mainText)
+				Text("Имя")
+					.font(.mediumCompact(size: 20))
+					.foregroundStyle(.mainText)
 
 
-					EventifyTextField(
-						text: $viewModel.name,
-						placeholder: data.placeholder,
-						isSucceededValidation: true,
-						isSecure: false
-					)
-				}
+				EventifyTextField(
+					text: $viewModel.name,
+					placeholder: "Введите имя",
+					isSucceededValidation: true,
+					isSecure: false
+				)
+
+				Text("Фамилия")
+					.font(.mediumCompact(size: 20))
+					.foregroundStyle(.mainText)
+
+
+				EventifyTextField(
+					text: $viewModel.surname,
+					placeholder: "Введите фамилию",
+					isSucceededValidation: true,
+					isSecure: false
+				)
+
+				Text("Отчество")
+					.font(.mediumCompact(size: 20))
+					.foregroundStyle(.mainText)
+
+
+				EventifyTextField(
+					text: $viewModel.lastName,
+					placeholder: "Введите отчество",
+					isSucceededValidation: true,
+					isSecure: false
+				)
+
+				Text("Email")
+					.font(.mediumCompact(size: 20))
+					.foregroundStyle(.mainText)
+
+
+				EventifyTextField(
+					text: $viewModel.email,
+					placeholder: "Введите email",
+					isSucceededValidation: true,
+					isSecure: false
+				)
+
+				Text("Telegram")
+					.font(.mediumCompact(size: 20))
+					.foregroundStyle(.mainText)
+
+
+				EventifyTextField(
+					text: $viewModel.telegram,
+					placeholder: "Введите telegram",
+					isSucceededValidation: true,
+					isSecure: false
+				)
 
 				categoriesHeader
 

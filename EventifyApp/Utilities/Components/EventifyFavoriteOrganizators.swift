@@ -27,7 +27,7 @@ struct EventifyFavoriteOrganizators: View {
 				.font(.semiboldCompact(size: 17))
 				.padding(.top, 16)
 
-			EventifyCheeps(items: items)
+			EventifyCheeps(items: items, style: .common)
 				.padding(.top, 21)
 				.padding(.leading, 16)
 

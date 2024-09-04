@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		031D80E82C88327700CD4072 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031D80E72C88327700CD4072 /* PageControl.swift */; };
+		0331D2DE2C872D6700DA577C /* CheepsStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0331D2DD2C872D6700DA577C /* CheepsStyle.swift */; };
+		03A735492C8720040038F8E1 /* EventsRegistationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A735482C8720040038F8E1 /* EventsRegistationView.swift */; };
+		03A7354C2C87202D0038F8E1 /* EventsRegistationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A7354B2C87202D0038F8E1 /* EventsRegistationViewModel.swift */; };
 		EC05CC8A2C35C36B00F2FC8E /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC892C35C36B00F2FC8E /* Tab.swift */; };
 		EC05CC8C2C35C4B000F2FC8E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC8B2C35C4B000F2FC8E /* MainView.swift */; };
 		EC05CC8E2C35C4B800F2FC8E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC8D2C35C4B800F2FC8E /* SearchView.swift */; };
@@ -76,6 +80,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		031D80E72C88327700CD4072 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		0331D2DD2C872D6700DA577C /* CheepsStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheepsStyle.swift; sourceTree = "<group>"; };
+		03A735482C8720040038F8E1 /* EventsRegistationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRegistationView.swift; sourceTree = "<group>"; };
+		03A7354B2C87202D0038F8E1 /* EventsRegistationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRegistationViewModel.swift; sourceTree = "<group>"; };
 		EC05CC892C35C36B00F2FC8E /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		EC05CC8B2C35C4B000F2FC8E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EC05CC8D2C35C4B800F2FC8E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -157,6 +165,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0331D2DC2C872D5700DA577C /* Cheeps */ = {
+			isa = PBXGroup;
+			children = (
+				0331D2DD2C872D6700DA577C /* CheepsStyle.swift */,
+				EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */,
+			);
+			path = Cheeps;
+			sourceTree = "<group>";
+		};
+		03A735432C871FD80038F8E1 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				03A735442C871FDE0038F8E1 /* Registration */,
+				03A735452C871FE30038F8E1 /* Details */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		03A735442C871FDE0038F8E1 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				03A735472C871FEF0038F8E1 /* ViewModel */,
+				03A735462C871FEC0038F8E1 /* View */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		03A735452C871FE30038F8E1 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		03A735462C871FEC0038F8E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				03A735482C8720040038F8E1 /* EventsRegistationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		03A735472C871FEF0038F8E1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				03A7354B2C87202D0038F8E1 /* EventsRegistationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		EC1056602C3AC38000CEB625 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +284,7 @@
 		EC268B1A2C1CC44700F26DC5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				03A735432C871FD80038F8E1 /* Events */,
 				EC268B1B2C1CC45200F26DC5 /* Auth */,
 				ECD326A02C1E2FFB00FA18AB /* TabBar */,
 				EC8116F32C3892290083419D /* Main */,
@@ -257,10 +316,11 @@
 				EC268B1F2C1CC52200F26DC5 /* EventifyTextField.swift */,
 				EC268B212C1CC59C00F26DC5 /* EventifyButton.swift */,
 				EC10566E2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift */,
-				EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */,
+				0331D2DC2C872D5700DA577C /* Cheeps */,
 				ECECFF8C2C3B2846002B4016 /* EventifyRecommendationEvent.swift */,
 				EC67C8F52C5A8BBB00316016 /* TestView.swift */,
 				EC11BC7D2C76977100762468 /* EventifyFavoriteOrganizators.swift */,
+				031D80E72C88327700CD4072 /* PageControl.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -714,6 +774,7 @@
 				EC05CC8C2C35C4B000F2FC8E /* MainView.swift in Sources */,
 				ECAE78302C447FFE0022551C /* Request.swift in Sources */,
 				ECCAE2052C1DDA1100C19E40 /* SetBorder.swift in Sources */,
+				03A735492C8720040038F8E1 /* EventsRegistationView.swift in Sources */,
 				EC05CC8A2C35C36B00F2FC8E /* Tab.swift in Sources */,
 				ECAE78362C44808E0022551C /* RequestMethod.swift in Sources */,
 				ECD326A42C1E302100FA18AB /* TabBar.swift in Sources */,
@@ -738,6 +799,7 @@
 				ECA00CEC2C67EE5300DA4380 /* ProfileTextFieldModel.swift in Sources */,
 				ECAA21ED2C83A87300A40CCD /* ContentView.swift in Sources */,
 				EC05CC902C35C4C500F2FC8E /* MyEventsView.swift in Sources */,
+				031D80E82C88327700CD4072 /* PageControl.swift in Sources */,
 				EC1056642C3AC39F00CEB625 /* SearchViewModel.swift in Sources */,
 				EC1056662C3AC43B00CEB625 /* CategoriesModel.swift in Sources */,
 				ECF430C02C45C0BB00E5942B /* SignInEndpoint.swift in Sources */,
@@ -747,6 +809,7 @@
 				ECB0F5A92C83BBAA0072B99B /* FlowLayout.swift in Sources */,
 				ECB823802C41CAB8001AD8AB /* FavoritesMockData.swift in Sources */,
 				ECAE782B2C4477EA0022551C /* API.swift in Sources */,
+				03A7354C2C87202D0038F8E1 /* EventsRegistationViewModel.swift in Sources */,
 				EC05CC8E2C35C4B800F2FC8E /* SearchView.swift in Sources */,
 				ECAA21EB2C83960300A40CCD /* PersonalCategoriesMockData.swift in Sources */,
 				EC268B202C1CC52200F26DC5 /* EventifyTextField.swift in Sources */,
@@ -755,6 +818,7 @@
 				EC7E42932C4C47EA00D3E72B /* ProfileDetailViewModel.swift in Sources */,
 				EC1056682C3AC65C00CEB625 /* SearchMockData.swift in Sources */,
 				ECB8237D2C41CA7B001AD8AB /* FavoritesViewModel.swift in Sources */,
+				0331D2DE2C872D6700DA577C /* CheepsStyle.swift in Sources */,
 				ECECFF8D2C3B2846002B4016 /* EventifyRecommendationEvent.swift in Sources */,
 				EC4981E52C1B784F0072BD53 /* SignUpView.swift in Sources */,
 				ECD3269D2C1E246100FA18AB /* SignInView.swift in Sources */,

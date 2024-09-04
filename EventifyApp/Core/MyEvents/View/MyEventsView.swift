@@ -52,13 +52,18 @@ private var recomendedEvents: some View {
 			.foregroundStyle(.mainText)
 		ScrollView(.horizontal, showsIndicators: false) {
 			LazyHStack(spacing: 8) {
-				ForEach(MyEventsMockData.recommendedEventsData) {
-					EventifyRecommendationEvent(
-						image: $0.image,
-						title: $0.title,
-						cheepsItems: $0.cheepsItems,
-						size: .large
-					)
+				ForEach(MyEventsMockData.recommendedEventsData) { event in
+					NavigationLink {
+						EventsRegistationView(name: event.title)
+					} label: {
+						EventifyRecommendationEvent(
+							image: event.image,
+							title: event.title,
+							cheepsItems: event.cheepsItems,
+							size: .large
+						)
+					}
+					.buttonStyle(PlainButtonStyle())
 				}
 			}
 		}

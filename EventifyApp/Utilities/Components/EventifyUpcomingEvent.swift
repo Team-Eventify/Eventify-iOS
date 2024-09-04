@@ -13,15 +13,20 @@ struct EventifyUpcomingEvent: View {
 	let color: Color
     var body: some View {
 		HStack {
-			VStack(spacing: 16) {
+			VStack(alignment: .leading, spacing: 16) {
 				Text(title)
 					.font(.mediumCompact(size: 17))
 					.foregroundStyle(.black)
-				EventifyCheeps(items: items)
+					.padding([.top, .leading], 4)
+				EventifyCheeps(items: items, style: .upcoming)
 					.foregroundStyle(.black)
 			}
 			Spacer()
-			Image("qrSample")
+			Image("qr")
+				.resizable()
+				.clipShape(RoundedRectangle(cornerRadius: 10))
+				.frame(width: 90, height: 90)
+				.scaledToFill()
 		}
 		.frame(maxWidth: .infinity)
 		.frame(height: 112)

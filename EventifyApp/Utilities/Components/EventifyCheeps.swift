@@ -19,7 +19,6 @@ struct EventifyCheeps: View {
 			Text(items)
 				.font(.mediumCompact(size: 12))
 				.frame(height: 20)
-				.padding(.vertical, 4)
 				.padding(.horizontal, 8)
 				.overlay {
 					Capsule()

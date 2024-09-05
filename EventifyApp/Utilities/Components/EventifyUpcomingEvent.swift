@@ -13,10 +13,13 @@ struct EventifyUpcomingEvent: View {
 	let color: Color
     var body: some View {
 		HStack {
-			VStack(spacing: 16) {
+			VStack(alignment: .leading, spacing: 16) {
 				Text(title)
 					.font(.mediumCompact(size: 17))
 					.foregroundStyle(.black)
+					.lineLimit(3)
+					.padding(.trailing, 4)
+					.frame(height: 45)
 				EventifyCheeps(items: items)
 					.foregroundStyle(.black)
 			}
@@ -32,6 +35,10 @@ struct EventifyUpcomingEvent: View {
 }
 
 #Preview {
-	EventifyUpcomingEvent(title: "День открытых дверей университета МИСИС", items: ["12 декабря", "17:30", "онлайн"], color: .brandYellow)
+	EventifyUpcomingEvent(
+		title: "День открытых дверей университета МИСИС",
+		items: ["12 декабря", "17:30", "онлайн"],
+		color: .brandYellow
+	)
 		.padding(.horizontal, 16)
 }

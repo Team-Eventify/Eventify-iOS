@@ -48,7 +48,6 @@ struct FavoritesView: View {
 				}
 			}
 		.navigationTitle("Избранное")
-		.navigationBarTitleDisplayMode(.large)
 		.padding(.horizontal, 16)
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(.bg)

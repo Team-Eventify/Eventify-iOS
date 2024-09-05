@@ -19,7 +19,7 @@ enum MyEventsMockData {
 
 	/// Рекоммендации мероприятия
 	static let recommendedEventsData: [CellsModel] = [
-		.init(image: "recomm",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"]),
+		.init(image: "recomm",title: "Фестиваль ИКН", cheepsItems: ["12 декабря", "17:30", "онлайн"]),
 		.init(image: "recomm",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"]),
 		.init(image: "recomm",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"]),
 		.init(image: "recomm",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"])

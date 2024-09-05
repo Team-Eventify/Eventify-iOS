@@ -25,7 +25,7 @@ struct EventifyRecommendationEvent: View {
 				.font(.mediumCompact(size: 14))
 				.foregroundStyle(.mainText)
 				.padding(.horizontal, 16)
-			EventifyCheeps(items: cheepsItems)
+			EventifyCheeps(items: cheepsItems, style: .common)
 				.padding(.horizontal, 16)
 			Spacer()
 		}

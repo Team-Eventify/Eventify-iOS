@@ -89,7 +89,7 @@ struct SignInView: View {
 	private var forgotPasswordButtonContainerView: some View {
 		VStack(alignment: .trailing, spacing: .zero) {
 			Button {
-				viewModel.showForgotPassScreen.toggle()
+				Constants.isLogin = true
 			} label: {
 				Text("Забыли пароль?")
 			}

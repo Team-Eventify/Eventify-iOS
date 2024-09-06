@@ -17,16 +17,14 @@ struct EventifyUpcomingEvent: View {
 				Text(title)
 					.font(.mediumCompact(size: 17))
 					.foregroundStyle(.black)
-					.padding([.top, .leading], 4)
-				EventifyCheeps(items: items, style: .upcoming)
+					.lineLimit(3)
+					.padding(.trailing, 4)
+					.frame(height: 45)
+				EventifyCheeps(items: items)
 					.foregroundStyle(.black)
 			}
 			Spacer()
-			Image("qr")
-				.resizable()
-				.clipShape(RoundedRectangle(cornerRadius: 10))
-				.frame(width: 90, height: 90)
-				.scaledToFill()
+			Image("qrSample")
 		}
 		.frame(maxWidth: .infinity)
 		.frame(height: 112)
@@ -37,6 +35,10 @@ struct EventifyUpcomingEvent: View {
 }
 
 #Preview {
-	EventifyUpcomingEvent(title: "День открытых дверей университета МИСИС", items: ["12 декабря", "17:30", "онлайн"], color: .brandYellow)
+	EventifyUpcomingEvent(
+		title: "День открытых дверей университета МИСИС",
+		items: ["12 декабря", "17:30", "онлайн"],
+		color: .brandYellow
+	)
 		.padding(.horizontal, 16)
 }

@@ -11,14 +11,13 @@ struct EventifyTextField: View {
 	@FocusState var isFocused: Bool
 	@Binding var text: String
 	let placeholder: String
-	let isSucceededValidation: Bool
 	let isSecure: Bool
 
 	private var focusedColor: Color {
-		if isFocused && isSucceededValidation {
+		if isFocused {
 			return Color.mainText
 		} else {
-			return isSucceededValidation ? Color.gray : Color.red
+			return  Color.gray
 		}
 	}
 
@@ -62,7 +61,7 @@ struct EventifyView: View {
 
 	var body: some View {
 		VStack {
-			EventifyTextField(text: $text, placeholder: "Email", isSucceededValidation: !isValid, isSecure: false)
+			EventifyTextField(text: $text, placeholder: "Email", isSecure: false)
 			EventifyButton(title: "Переключить состояние", isLoading: false, isDisabled: false) {
 				isValid.toggle()
 			}

@@ -79,7 +79,6 @@ struct ProfileDetail: View {
 				EventifyTextField(
 					text: $viewModel.name,
 					placeholder: "Введите имя",
-					isSucceededValidation: true,
 					isSecure: false
 				)
 
@@ -91,7 +90,6 @@ struct ProfileDetail: View {
 				EventifyTextField(
 					text: $viewModel.surname,
 					placeholder: "Введите фамилию",
-					isSucceededValidation: true,
 					isSecure: false
 				)
 
@@ -103,7 +101,6 @@ struct ProfileDetail: View {
 				EventifyTextField(
 					text: $viewModel.lastName,
 					placeholder: "Введите отчество",
-					isSucceededValidation: true,
 					isSecure: false
 				)
 
@@ -115,7 +112,6 @@ struct ProfileDetail: View {
 				EventifyTextField(
 					text: $viewModel.email,
 					placeholder: "Введите email",
-					isSucceededValidation: true,
 					isSecure: false
 				)
 
@@ -127,7 +123,6 @@ struct ProfileDetail: View {
 				EventifyTextField(
 					text: $viewModel.telegram,
 					placeholder: "Введите telegram",
-					isSucceededValidation: true,
 					isSecure: false
 				)
 

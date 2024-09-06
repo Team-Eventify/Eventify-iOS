@@ -7,16 +7,13 @@
 
 import SwiftUI
 
-@MainActor
+/// TODO: ДОКА
 final class SignUpViewModel: ObservableObject {
 	// MARK: - Public Properties
 
 	@Published var email: String = ""
 	@Published var password: String = ""
-	@Published var signUpStatusMessage: String = ""
-	@Published var isLoading: Bool = false
-	@Published var showCategoriesView: Bool = false
-	@Published var isError: Bool = true
+	@Published var loadingState: LoadingState = .none
 
 	/// Приватное свойство для сервиса регистрации
 	private let signUpService: SignUpServiceProtocol
@@ -32,27 +29,23 @@ final class SignUpViewModel: ObservableObject {
 	// MARK: - Public Functions
 
 	/// Отпарвляет запрос на регистрацию
-	func signUp() async {
+	func signUp() {
 		guard !email.isEmpty, !password.isEmpty else {
-			signUpStatusMessage = "No email or password found."
-			print(signUpStatusMessage)
 			return
 		}
 
-		isLoading = true
+		loadingState = .loading
 		let userData: JSON = ["password": password, "email": email]
 
-		do {
-			let _ = try await signUpService.signUp(json: userData)
-			signUpStatusMessage = "Success ✅"
-			print(signUpStatusMessage)
-			showCategoriesView = true
-		} catch {
-			signUpStatusMessage = "Error: \(error.localizedDescription)"
-			print(signUpStatusMessage)
-			showCategoriesView = false
-			isError = false
+		Task { @MainActor in
+			do {
+				let _ = try await signUpService.signUp(json: userData)
+				loadingState = .loaded
+			} catch {
+				loadingState = .failure
+				try? await Task.sleep(nanoseconds: 2_000_000_000)
+				loadingState = .none
+			}
 		}
-		isLoading = false
 	}
 }

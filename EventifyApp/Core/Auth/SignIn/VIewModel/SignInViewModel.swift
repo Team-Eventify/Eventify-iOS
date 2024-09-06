@@ -7,14 +7,12 @@
 
 import SwiftUI
 
-@MainActor
 final class SignInViewModel: ObservableObject {
 	// MARK: - Public Properties
 
 	@Published var email: String = ""
 	@Published var password: String = ""
-	@Published var signInStatusMessage: String = ""
-	@Published var isLoading: Bool = false
+	@Published var loadingState: LoadingState = .none
 	@Published var showForgotPassScreen: Bool = false
 
 	/// Приватное свойство для сервиса входа
@@ -31,26 +29,26 @@ final class SignInViewModel: ObservableObject {
 	// MARK: - Public Functions
 
 	/// Отпарвляет запрос на вход
-	func signIn() async {
+	func signIn() {
 		guard !email.isEmpty, !password.isEmpty else {
-			signInStatusMessage = "No email or password found."
 			Constants.isLogin = false
-			print(signInStatusMessage)
 			return
 		}
 
-		isLoading = true
+		loadingState = .loading
 		let userData: JSON = ["email": email, "password": password]
 
-		do {
-			let _ = try await signInService.signIn(json: userData)
-			print(signInStatusMessage)
-			Constants.isLogin = true
-		} catch {
-			signInStatusMessage = "Error: \(error.localizedDescription)"
-			print(signInStatusMessage)
-			Constants.isLogin = false
+		Task { @MainActor in
+			do {
+				let _ = try await signInService.signIn(json: userData)
+				Constants.isLogin = true
+				loadingState = .loaded
+			} catch {
+				loadingState = .failure
+				Constants.isLogin = false
+				try? await Task.sleep(nanoseconds: 2_000_000_000)
+				loadingState = .none
+			}
 		}
-		isLoading = false
 	}
 }

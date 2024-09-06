@@ -5,8 +5,9 @@
 //  Created by Захар Литвинчук on 13.06.2024.
 //
 
-import SUINavigation
 import SwiftUI
+import SUINavigation
+import PopupView
 
 /// Вью экрана регистрации
 struct SignUpView: View {
@@ -35,14 +36,7 @@ struct SignUpView: View {
 			Spacer()
 			registrationContentContainerView
 			registrationButtonContainerView
-
-			/// Отображение сообщения о статусе регистрации при ошибке
-
-			if Constants.isLogin == false {
-				Text(viewModel.signUpStatusMessage)
-					.padding(.all, 16)
-					.foregroundStyle(.error)
-			}
+			Spacer()
 			Spacer()
 		}
 		.foregroundStyle(Color.secondaryText)
@@ -50,6 +44,7 @@ struct SignUpView: View {
 		.padding(.horizontal, 16)
 		.navigationBarBackButtonHidden(true)
 		.background(.bg, ignoresSafeAreaEdges: .all)
+		.edgesIgnoringSafeArea(.bottom)
 
 		/// Навигация к экрану входа
 		.navigation(isActive: $navigateToLoginView) {
@@ -57,9 +52,25 @@ struct SignUpView: View {
 		}
 
 		/// Навигация к основному экрану после успешной регистрации
-		.navigation(isActive: $viewModel.showCategoriesView) {
+		.navigation(isActive: Binding(
+			get: { viewModel.loadingState == .loaded },
+			set: { _ in }
+		)) {
 			PersonalCategoriesView()
 		}
+
+		// TODO: - Передавать текст ошибки в popup
+		.popup(isPresented: Binding(get: { viewModel.loadingState == .failure }, set: { _ in })) {
+					AuthSnackBar()
+				} customize: {
+					$0
+						.type(.floater())
+						.disappearTo(.bottomSlide)
+						.position(.bottom)
+						.useKeyboardSafeArea(true)
+						.closeOnTap(true)
+						.autohideIn(2)
+				}
 	}
 
 	// MARK: - UI Components
@@ -74,7 +85,6 @@ struct SignUpView: View {
 			Text("Пожалуйста, создайте новый аккаунт. Это займёт меньше минуты.")
 				.font(.regularCompact(size: 17))
 				.frame(width: 296)
-
 			authTextFields
 		}
 	}
@@ -82,8 +92,8 @@ struct SignUpView: View {
 	/// Текстовые поля для ввода данных регистрации
 	private var authTextFields: some View {
 		VStack(spacing: 8) {
-			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: viewModel.isError, isSecure: false)
-			EventifyTextField(text: $viewModel.password, placeholder: "Пароль", isSucceededValidation: viewModel.isError, isSecure: true)
+			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSecure: false)
+			EventifyTextField(text: $viewModel.password, placeholder: "Пароль", isSecure: true)
 		}
 		.padding(.top, 40)
 	}
@@ -91,10 +101,12 @@ struct SignUpView: View {
 	/// Контейнер с кнопкой регистрации
 	private var registrationButtonContainerView: some View {
 		VStack(spacing: 20) {
-			EventifyButton(title: "Зарегистрироваться", isLoading: viewModel.isLoading, isDisabled: false) {
-				Task {
-					await viewModel.signUp()
-				}
+			EventifyButton(
+				title: "Зарегистрироваться",
+				isLoading: viewModel.loadingState == .loading,
+				isDisabled: viewModel.loadingState == .loading
+			) {
+				viewModel.signUp()
 			}
 			haveAccountContainerView
 		}
@@ -117,6 +129,8 @@ struct SignUpView: View {
 		.frame(maxWidth: .infinity)
 	}
 }
+
+
 
 #Preview {
 	SignUpView()

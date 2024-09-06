@@ -45,6 +45,18 @@ struct SignInView: View {
 		.navigation(isActive: $viewModel.showForgotPassScreen) {
 			ForgotPasswordView()
 		}
+		
+		// TODO: - Передавать текст ошибки в popup
+		.popup(isPresented: Binding(get: { viewModel.loadingState == .failure }, set: { _ in })) {
+					AuthSnackBar()
+				} customize: {
+					$0
+						.type(.floater())
+						.disappearTo(.bottomSlide)
+						.position(.bottom)
+						.closeOnTap(true)
+						.autohideIn(2)
+				}
 	}
 
 	/// Контейнер для содержимого экрана входа
@@ -65,8 +77,8 @@ struct SignInView: View {
 	/// Поля ввода для авторизации (email и пароль)
 	private var authTextFields: some View {
 		VStack(alignment: .trailing, spacing: 8) {
-			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true, isSecure: false)
-			EventifyTextField(text: $viewModel.password, placeholder: "Пароль", isSucceededValidation: true, isSecure: true)
+			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSecure: false)
+			EventifyTextField(text: $viewModel.password, placeholder: "Пароль", isSecure: true)
 
 			forgotPasswordButtonContainerView
 		}
@@ -76,10 +88,8 @@ struct SignInView: View {
 	/// Контейнер для кнопок входа и регистрации
 	private var signInButtonContainerView: some View {
 		VStack(spacing: 20) {
-			EventifyButton(title: "Войти", isLoading: viewModel.isLoading, isDisabled: false) {
-				Task {
-					await viewModel.signIn()
-				}
+			EventifyButton(title: "Войти", isLoading: viewModel.loadingState == .loaded, isDisabled: false) {
+				viewModel.signIn()
 			}
 			haveAccountContainerView
 		}

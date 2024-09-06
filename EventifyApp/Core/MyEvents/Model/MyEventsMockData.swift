@@ -12,16 +12,14 @@ enum MyEventsMockData {
 
 	/// Предстоящие мероприятия
 	static let upcomingEventsData: [UpcomingEventsModel] = [
-		.init(title: "День открытых дверей университета МИСИС", cheepTitles: ["12 декабря", "17:30", "онлайн"], color: .brandPink),
-		.init(title: "День открытых дверей университета МИСИС", cheepTitles: ["12 декабря", "17:30", "онлайн"], color: .brandYellow),
-		.init(title: "День открытых дверей университета МИСИС", cheepTitles: ["12 декабря", "17:30", "онлайн"], color: .brandPink)
+		.init(title: "Фестиваль ИКН", cheepTitles: ["11 сентября", "18:00", "офлайн"], color: .brandYellow),
+		.init(title: "ITAM welcome MeetUp", cheepTitles: ["14 сентября", "18:30", "онлайн"], color: .brandPink),
+		.init(title: "Wake Up MeetUP", cheepTitles: ["26 сентября", "18:00", "Т-корпус"], color: .brandYellow)
 	]
 
 	/// Рекоммендации мероприятия
 	static let recommendedEventsData: [CellsModel] = [
-		.init(image: "recomm",title: "Фестиваль ИКН", cheepsItems: ["12 декабря", "17:30", "онлайн"]),
-		.init(image: "recomm",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"]),
-		.init(image: "recomm",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"]),
-		.init(image: "recomm",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"])
+		.init(image: "poster",title: "Фестиваль ИКН", cheepsItems: ["11 сентября", "18:00", "офлайн"]),
+		.init(image: "itam",title: "ITAM courses", cheepsItems: ["27 сентября", "18:00", "Б-3"])
 	]
 }

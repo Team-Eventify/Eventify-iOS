@@ -11,8 +11,8 @@ struct EventsRegistationView: View {
 	@State private var currentPage = 0
 
 	let name: String
-	let eventImages = ["recomm", "sport", "itam"]
-	let cheepsTitles: [String] = ["2 марта", "17:30", "Б-3"]
+	let eventImages = ["poster", "poster", "poster"]
+	let cheepsTitles: [String] = ["11 сентября", "18:30", "офлайн"]
 
 	var body: some View {
 		VStack(alignment: .center, spacing: 16) {
@@ -31,8 +31,8 @@ struct EventsRegistationView: View {
 			PageControl(numberOfPages: eventImages.count, currentPage: $currentPage)
 
 			EventifyCheeps(items: cheepsTitles, style: .registation)
-			Text("Доавоалвдладлалвоалвоаловлаовоаровроравропрроарропооалащыллшаооывоаооывлоарвыолаорвыаорораоыроарыоароыраорыорвораорывоароыврыороаыоврлорвыарврвоыароврыоарыолароыроаврыораолыроыоыарволваролыварораолраовроыарлаорыв")
-				.font(.mediumCompact(size: 16))
+			Text("Дни открытых дверей — это уникальная возможность для старшеклассников больше узнать о специальностях, которым обучают в одном из лучших технических университетов России, научной деятельности под руководством учёных с мировым именем, образовательных проектах и карьерных возможностях, которые предлагает вуз, яркой студенческой жизни в Москве.")
+				.font(.regularCompact(size: 17))
 			footerView
 		}
 		.navigationTitle(name)
@@ -43,17 +43,35 @@ struct EventsRegistationView: View {
 }
 
 private var footerView: some View {
-	VStack(alignment: .leading, spacing: 16) {
+	VStack(alignment: .leading, spacing: 0) {
 		NavigationLink {
 			TestView()
 		} label: {
 			Text("Полное описание >")
+				.font(.mediumCompact(size: 14))
 				.foregroundStyle(.linkButton)
 		}
 
-		EventifyButton(title: "Зарегистрироваться", isLoading: false, isDisabled: false) {
+		Text("Организатор")
+			.font(.semiboldCompact(size: 12))
+			.foregroundStyle(.secondaryText)
+			.padding(.top, 23)
+
+		HStack(spacing: 16) {
+			Image("misis")
+				.clipShape(Circle())
+				.frame(height: 40)
+				.padding(.top, 8)
+
+			Text("МИСИС")
+				.font(.semiboldCompact(size: 20))
+				.foregroundStyle(.mainText)
+		}
+
+		EventifyButton(title: "Записаться на ивент", isLoading: false, isDisabled: false) {
 			print("Register success ✅")
 		}
+		.padding(.top, 24)
 	}
 }
 

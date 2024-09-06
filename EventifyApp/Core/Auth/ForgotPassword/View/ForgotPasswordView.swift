@@ -59,7 +59,7 @@ struct ForgotPasswordView: View {
 	/// Контейнер для поля ввода email и кнопки отправки
 	private var restoreButtonContainerView: some View {
 		VStack(spacing: 40) {
-			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true, isSecure: false)
+			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSecure: false)
 
 			EventifyButton(title: "Отправить", isLoading: false, isDisabled: false) {
 				Task {

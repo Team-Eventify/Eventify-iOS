@@ -29,7 +29,7 @@ final class SignInService: Request, SignInServiceProtocol {
 /// Модель ответа сервера
 struct SignInResponse: Decodable {
 	/// токен авторизационный
-	let token: String
+	let accessToken: String
 
 	/// Обновляемый токен
 	let refreshToken: String

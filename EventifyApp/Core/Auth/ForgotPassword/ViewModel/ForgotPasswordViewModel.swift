@@ -12,7 +12,7 @@ final class ForgotPasswordViewModel: ObservableObject {
 	// MARK: - Public Properties
 
 	@Published var email: String = ""
-	@Published var isResetSuccessful: Bool = false
+	@Published var loadingState: LoadingState = .failure
 
 	// MARK: - Public Functions
 

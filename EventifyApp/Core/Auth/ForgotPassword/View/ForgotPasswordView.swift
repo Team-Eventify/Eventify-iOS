@@ -65,9 +65,6 @@ struct ForgotPasswordView: View {
 				Task {
 					do {
 						try await viewModel.resetPassword()
-						if viewModel.isResetSuccessful {
-							dismiss()
-						}
 					} catch {
 						 print(error.localizedDescription)
 					}

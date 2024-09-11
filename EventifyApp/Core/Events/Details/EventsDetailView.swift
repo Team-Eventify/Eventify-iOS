@@ -25,9 +25,10 @@ struct EventsDetailView: View {
 				EventifyCheeps(items: cheepsNames, style: .registation)
 
 				Text("nfdujfhgjfgjhkjhkkhjokjropkeolkerjhjigkprfkleqejkwnjjkfgsjkophkdsenjejkkighngphdgigsfdhjvnjk,kwopdgfkknjjkfedjmpepeorrgtskghjklnjdjkfopeolropkrlgtnhhjnmkkfep23olojkrmgesjgjnbjkikpfvo[dolpokqi4wlkirjnrggjghnbcjkgbkfvglcedlpo3kjnbgjbn jvkfpdeeookltgjmhnbjkgmjvfodel3e4qkrgtjf")
+					.frame(maxHeight: 300)
+					.truncationMode(.tail)
 
 				NavigationLink {
-
 				} label: {
 					Text("Перейти к странице мероприятия >")
 						.foregroundStyle(.linkButton)

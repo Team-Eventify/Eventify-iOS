@@ -53,9 +53,10 @@
 		EC7F30302C43F51300AFEECB /* AppColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7F302F2C43F51300AFEECB /* AppColorScheme.swift */; };
 		EC8116FB2C3897210083419D /* EventifyCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8116FA2C3897210083419D /* EventifyCategories.swift */; };
 		ECA00CEC2C67EE5300DA4380 /* ProfileTextFieldModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA00CEB2C67EE5300DA4380 /* ProfileTextFieldModel.swift */; };
+		ECA1DC7F2C8F02BC000DA0DD /* SnackbarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1DC7E2C8F02BC000DA0DD /* SnackbarConfig.swift */; };
 		ECAA21EB2C83960300A40CCD /* PersonalCategoriesMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAA21EA2C83960300A40CCD /* PersonalCategoriesMockData.swift */; };
 		ECAA21ED2C83A87300A40CCD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAA21EC2C83A87300A40CCD /* ContentView.swift */; };
-		ECAB35262C8BA6C20083E0CE /* AuthSnackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB35252C8BA6C20083E0CE /* AuthSnackBar.swift */; };
+		ECAB35262C8BA6C20083E0CE /* EventifySnackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB35252C8BA6C20083E0CE /* EventifySnackBar.swift */; };
 		ECAE782B2C4477EA0022551C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAE782A2C4477EA0022551C /* API.swift */; };
 		ECAE78302C447FFE0022551C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAE782F2C447FFE0022551C /* Request.swift */; };
 		ECAE78322C44803D0022551C /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAE78312C44803D0022551C /* RequestError.swift */; };
@@ -130,9 +131,10 @@
 		EC7F302F2C43F51300AFEECB /* AppColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorScheme.swift; sourceTree = "<group>"; };
 		EC8116FA2C3897210083419D /* EventifyCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyCategories.swift; sourceTree = "<group>"; };
 		ECA00CEB2C67EE5300DA4380 /* ProfileTextFieldModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTextFieldModel.swift; sourceTree = "<group>"; };
+		ECA1DC7E2C8F02BC000DA0DD /* SnackbarConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarConfig.swift; sourceTree = "<group>"; };
 		ECAA21EA2C83960300A40CCD /* PersonalCategoriesMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCategoriesMockData.swift; sourceTree = "<group>"; };
 		ECAA21EC2C83A87300A40CCD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		ECAB35252C8BA6C20083E0CE /* AuthSnackBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSnackBar.swift; sourceTree = "<group>"; };
+		ECAB35252C8BA6C20083E0CE /* EventifySnackBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifySnackBar.swift; sourceTree = "<group>"; };
 		ECAE782A2C4477EA0022551C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		ECAE782F2C447FFE0022551C /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		ECAE78312C44803D0022551C /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
@@ -331,7 +333,7 @@
 				EC11BC7D2C76977100762468 /* EventifyFavoriteOrganizators.swift */,
 				031D80E72C88327700CD4072 /* PageControl.swift */,
 				EC1B2B4A2C8A3464004A1FD4 /* LoadingState.swift */,
-				ECAB35252C8BA6C20083E0CE /* AuthSnackBar.swift */,
+				ECA1DC7D2C8F0294000DA0DD /* SnackBar */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -506,6 +508,15 @@
 				ECA00CEB2C67EE5300DA4380 /* ProfileTextFieldModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		ECA1DC7D2C8F0294000DA0DD /* SnackBar */ = {
+			isa = PBXGroup;
+			children = (
+				ECAB35252C8BA6C20083E0CE /* EventifySnackBar.swift */,
+				ECA1DC7E2C8F02BC000DA0DD /* SnackbarConfig.swift */,
+			);
+			path = SnackBar;
 			sourceTree = "<group>";
 		};
 		ECAE78292C4477C40022551C /* Network Layer */ = {
@@ -799,7 +810,7 @@
 				EC05CC962C35C6D900F2FC8E /* View+CornerRadius.swift in Sources */,
 				EC7419892C56F57600E4892C /* PersonalCategories.swift in Sources */,
 				EC8116FB2C3897210083419D /* EventifyCategories.swift in Sources */,
-				ECAB35262C8BA6C20083E0CE /* AuthSnackBar.swift in Sources */,
+				ECAB35262C8BA6C20083E0CE /* EventifySnackBar.swift in Sources */,
 				EC26487A2C20DD48009882FF /* ForgotPasswordViewModel.swift in Sources */,
 				EC268B222C1CC59C00F26DC5 /* EventifyButton.swift in Sources */,
 				EC4B4FB62C1F39650039D8A3 /* ForgotPasswordView.swift in Sources */,
@@ -822,6 +833,7 @@
 				ECAE783F2C4483090022551C /* SignUpEndpoint.swift in Sources */,
 				ECDCC15F2C5A7A0D0013ADB6 /* PersonalCategoriesViewModel.swift in Sources */,
 				ECB0F5A92C83BBAA0072B99B /* FlowLayout.swift in Sources */,
+				ECA1DC7F2C8F02BC000DA0DD /* SnackbarConfig.swift in Sources */,
 				ECB823802C41CAB8001AD8AB /* FavoritesMockData.swift in Sources */,
 				ECAE782B2C4477EA0022551C /* API.swift in Sources */,
 				03A7354C2C87202D0038F8E1 /* EventsRegistationViewModel.swift in Sources */,

@@ -46,17 +46,21 @@ struct SignInView: View {
 			ForgotPasswordView()
 		}
 		
-		// TODO: - Передавать текст ошибки в popup
 		.popup(isPresented: Binding(get: { viewModel.loadingState == .failure }, set: { _ in })) {
-					AuthSnackBar()
+			EventifySnackBar(config: .failure)
 				} customize: {
 					$0
-						.type(.floater())
+						.type(
+							.floater(
+								verticalPadding: 10,
+								useSafeAreaInset: true
+							)
+						)
 						.disappearTo(.bottomSlide)
 						.position(.bottom)
 						.closeOnTap(true)
-						.autohideIn(2)
-				}
+						.autohideIn(3)
+		}
 	}
 
 	/// Контейнер для содержимого экрана входа

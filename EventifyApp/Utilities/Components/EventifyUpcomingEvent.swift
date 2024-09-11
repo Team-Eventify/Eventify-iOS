@@ -20,11 +20,14 @@ struct EventifyUpcomingEvent: View {
 					.lineLimit(3)
 					.padding(.trailing, 4)
 					.frame(height: 45)
-				EventifyCheeps(items: items)
+				EventifyCheeps(items: items, style: .upcoming)
 					.foregroundStyle(.black)
 			}
 			Spacer()
-			Image("qrSample")
+			Image("qr")
+				.resizable()
+				.frame(width: 100, height: 100)
+				.clipShape(RoundedRectangle(cornerRadius: 10))
 		}
 		.frame(maxWidth: .infinity)
 		.frame(height: 112)

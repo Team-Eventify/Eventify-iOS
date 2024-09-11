@@ -29,16 +29,8 @@ final class SignUpService: Request, SignUpServiceProtocol {
 /// Модель ответа от сервера
 struct SignUpResponse: Decodable {
 	/// Сообщение
-	let message: String
+	let accessToken: String
 
-	/// Пользовательские данные
-	let user: SignUpUser
-}
-
-struct SignUpUser: Decodable {
-	/// Идентификатор
-	let id: Int
-
-	/// Почта пользователя
-	let email: String
+	/// Обновляемый токен
+	let refreshToken: String
 }

@@ -45,6 +45,10 @@ struct SignUpView: View {
 		.navigationBarBackButtonHidden(true)
 		.background(.bg, ignoresSafeAreaEdges: .all)
 		.edgesIgnoringSafeArea(.bottom)
+		
+		.onTapGesture {
+			hideKeyboard()
+		}
 
 		/// Навигация к экрану входа
 		.navigation(isActive: $navigateToLoginView) {
@@ -96,7 +100,10 @@ struct SignUpView: View {
 	private var authTextFields: some View {
 		VStack(spacing: 8) {
 			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSecure: false)
+				.textContentType(.emailAddress)
+				.autocorrectionDisabled()
 			EventifyTextField(text: $viewModel.password, placeholder: "Пароль", isSecure: true)
+				.textContentType(.newPassword)
 		}
 		.padding(.top, 40)
 	}

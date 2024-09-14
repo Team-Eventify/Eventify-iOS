@@ -65,6 +65,7 @@ class Request {
 			let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
 			print("400 Error: \(errorMessage)")
 			throw RequestError.unexpectedStatusCode
+
 		default:
 			let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
 			print("Unexpected Error: \(errorMessage)")

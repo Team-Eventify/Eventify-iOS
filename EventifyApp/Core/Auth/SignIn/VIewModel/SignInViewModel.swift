@@ -31,7 +31,6 @@ final class SignInViewModel: ObservableObject {
 	/// Отпарвляет запрос на вход
 	func signIn() {
 		guard !email.isEmpty, !password.isEmpty else {
-			Constants.isLogin = false
 			return
 		}
 
@@ -40,9 +39,13 @@ final class SignInViewModel: ObservableObject {
 
 		Task { @MainActor in
 			do {
-				let _ = try await signInService.signIn(json: userData)
-				Constants.isLogin = true
+				let response = try await signInService.signIn(json: userData)
+				KeychainManager.shared.set(response.accessToken, key: KeychainKeys.accessToken)
+				KeychainManager.shared.set(response.refreshToken, key: KeychainKeys.refreshToken)
+				KeychainManager.shared.set(email, key: KeychainKeys.userEmail)
+				KeychainManager.shared.set(password, key: KeychainKeys.userPassword)
 				loadingState = .loaded
+				Constants.isLogin = true
 			} catch {
 				loadingState = .failure
 				Constants.isLogin = false

@@ -29,6 +29,8 @@ struct EventifyTextField: View {
 				TextField("", text: $text)
 			}
 		}
+		.autocorrectionDisabled()
+		.autocapitalization(.none)
 		.focused($isFocused)
 		.frame(maxWidth: .infinity)
 		.padding(.horizontal, 16)

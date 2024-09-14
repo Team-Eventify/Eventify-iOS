@@ -45,6 +45,8 @@
 		EC4B4FB62C1F39650039D8A3 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4B4FB52C1F39650039D8A3 /* ForgotPasswordView.swift */; };
 		EC4BACEC2C46BD0E003C375B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC4BACEB2C46BD0E003C375B /* Launch Screen.storyboard */; };
 		EC4F39532C89B12B00DC3D66 /* EventsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4F39522C89B12B00DC3D66 /* EventsDetailView.swift */; };
+		EC5D4BB42C94CA5900548356 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EC5D4BB32C94CA5900548356 /* KeychainSwift */; };
+		EC5D4BB92C94D21700548356 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5D4BB82C94D21700548356 /* KeychainManager.swift */; };
 		EC67C8F62C5A8BBB00316016 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67C8F52C5A8BBB00316016 /* TestView.swift */; };
 		EC7419892C56F57600E4892C /* PersonalCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7419882C56F57600E4892C /* PersonalCategories.swift */; };
 		EC74198B2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC74198A2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift */; };
@@ -82,6 +84,11 @@
 		ECF430C02C45C0BB00E5942B /* SignInEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF430BF2C45C0BB00E5942B /* SignInEndpoint.swift */; };
 		ECF430C22C45C22D00E5942B /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF430C12C45C22D00E5942B /* SignInService.swift */; };
 		ECF430C62C45C6FD00E5942B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF430C52C45C6FD00E5942B /* Constants.swift */; };
+		ECFBADF62C957DC90034BB22 /* KeychainKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFBADF52C957DC90034BB22 /* KeychainKeys.swift */; };
+		ECFBADFA2C95EFF70034BB22 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFBADF92C95EFF70034BB22 /* AddEventView.swift */; };
+		ECFBADFC2C95F5440034BB22 /* AddPhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFBADFB2C95F5440034BB22 /* AddPhotoButton.swift */; };
+		ECFBAE002C96015A0034BB22 /* AddEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFBADFF2C96015A0034BB22 /* AddEventViewModel.swift */; };
+		ECFBAE032C96214A0034BB22 /* View+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFBAE022C96214A0034BB22 /* View+HideKeyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +130,7 @@
 		EC4B4FB52C1F39650039D8A3 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		EC4BACEB2C46BD0E003C375B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		EC4F39522C89B12B00DC3D66 /* EventsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDetailView.swift; sourceTree = "<group>"; };
+		EC5D4BB82C94D21700548356 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		EC67C8F52C5A8BBB00316016 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		EC7419882C56F57600E4892C /* PersonalCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCategories.swift; sourceTree = "<group>"; };
 		EC74198A2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCategoriesCheeps.swift; sourceTree = "<group>"; };
@@ -160,6 +168,12 @@
 		ECF430BF2C45C0BB00E5942B /* SignInEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEndpoint.swift; sourceTree = "<group>"; };
 		ECF430C12C45C22D00E5942B /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
 		ECF430C52C45C6FD00E5942B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		ECFBADF52C957DC90034BB22 /* KeychainKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainKeys.swift; sourceTree = "<group>"; };
+		ECFBADF72C957E760034BB22 /* EventifyApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EventifyApp.entitlements; sourceTree = "<group>"; };
+		ECFBADF92C95EFF70034BB22 /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
+		ECFBADFB2C95F5440034BB22 /* AddPhotoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoButton.swift; sourceTree = "<group>"; };
+		ECFBADFF2C96015A0034BB22 /* AddEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewModel.swift; sourceTree = "<group>"; };
+		ECFBAE022C96214A0034BB22 /* View+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+HideKeyboard.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC5D4BB42C94CA5900548356 /* KeychainSwift in Frameworks */,
 				EC1B2B492C8A2F8A004A1FD4 /* PopupView in Frameworks */,
 				EC268AFF2C1C99D400F26DC5 /* SUINavigation in Frameworks */,
 			);
@@ -314,7 +329,6 @@
 				EC2FEC672C4586C20097D5BA /* SignIn */,
 				EC2FEC692C4586D70097D5BA /* ForgotPassword */,
 				EC2FEC6A2C4586EC0097D5BA /* ChooseCategories */,
-				ECF430BC2C45BF6F00E5942B /* Commoms */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -334,6 +348,7 @@
 				031D80E72C88327700CD4072 /* PageControl.swift */,
 				EC1B2B4A2C8A3464004A1FD4 /* LoadingState.swift */,
 				ECA1DC7D2C8F0294000DA0DD /* SnackBar */,
+				ECFBADFB2C95F5440034BB22 /* AddPhotoButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -394,7 +409,9 @@
 		EC4981E12C1B784F0072BD53 /* EventifyApp */ = {
 			isa = PBXGroup;
 			children = (
+				ECFBADF72C957E760034BB22 /* EventifyApp.entitlements */,
 				EC4981E22C1B784F0072BD53 /* EventifyApp.swift */,
+				ECAA21EC2C83A87300A40CCD /* ContentView.swift */,
 				EC268B1A2C1CC44700F26DC5 /* Core */,
 				EC8116F72C3892690083419D /* Utilities */,
 				EC268B0B2C1CA0B200F26DC5 /* Resources */,
@@ -417,6 +434,16 @@
 				EC4BACEB2C46BD0E003C375B /* Launch Screen.storyboard */,
 			);
 			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		EC5D4BB72C94D1BA00548356 /* Dependecies */ = {
+			isa = PBXGroup;
+			children = (
+				ECF430C52C45C6FD00E5942B /* Constants.swift */,
+				EC5D4BB82C94D21700548356 /* KeychainManager.swift */,
+				ECFBADF52C957DC90034BB22 /* KeychainKeys.swift */,
+			);
+			path = Dependecies;
 			sourceTree = "<group>";
 		};
 		EC7419872C56F55E00E4892C /* Model */ = {
@@ -473,6 +500,8 @@
 		EC8116F72C3892690083419D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				ECFBAE012C9621360034BB22 /* Extensions */,
+				EC5D4BB72C94D1BA00548356 /* Dependecies */,
 				EC4BACEA2C46BD02003C375B /* LaunchScreen */,
 				ECAE78292C4477C40022551C /* Network Layer */,
 				EC268B1E2C1CC4E400F26DC5 /* Components */,
@@ -497,6 +526,7 @@
 			children = (
 				EC7F302C2C43F26D00AFEECB /* ViewModel */,
 				ECEC36F22C4C0F5C00C6BFD7 /* View */,
+				ECFBADF82C95EFD30034BB22 /* AddEvent */,
 				EC10566B2C3B009700CEB625 /* ProfileDetail */,
 			);
 			path = Profile;
@@ -703,13 +733,37 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		ECF430BC2C45BF6F00E5942B /* Commoms */ = {
+		ECFBADF82C95EFD30034BB22 /* AddEvent */ = {
 			isa = PBXGroup;
 			children = (
-				ECAA21EC2C83A87300A40CCD /* ContentView.swift */,
-				ECF430C52C45C6FD00E5942B /* Constants.swift */,
+				ECFBADFD2C9600800034BB22 /* ViewModel */,
+				ECFBADFE2C9600840034BB22 /* View */,
 			);
-			path = Commoms;
+			path = AddEvent;
+			sourceTree = "<group>";
+		};
+		ECFBADFD2C9600800034BB22 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				ECFBADFF2C96015A0034BB22 /* AddEventViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ECFBADFE2C9600840034BB22 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ECFBADF92C95EFF70034BB22 /* AddEventView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECFBAE012C9621360034BB22 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ECFBAE022C96214A0034BB22 /* View+HideKeyboard.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -731,6 +785,7 @@
 			packageProductDependencies = (
 				EC268AFE2C1C99D400F26DC5 /* SUINavigation */,
 				EC1B2B482C8A2F8A004A1FD4 /* PopupView */,
+				EC5D4BB32C94CA5900548356 /* KeychainSwift */,
 			);
 			productName = EventifyApp;
 			productReference = EC4981DF2C1B784F0072BD53 /* EventifyApp.app */;
@@ -763,6 +818,7 @@
 			packageReferences = (
 				EC268AFD2C1C99D400F26DC5 /* XCRemoteSwiftPackageReference "SUINavigation" */,
 				EC1B2B472C8A2F8A004A1FD4 /* XCRemoteSwiftPackageReference "popupview" */,
+				EC5D4BB22C94CA5900548356 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = EC4981E02C1B784F0072BD53 /* Products */;
 			projectDirPath = "";
@@ -797,6 +853,7 @@
 				ECF430C22C45C22D00E5942B /* SignInService.swift in Sources */,
 				EC05CC8C2C35C4B000F2FC8E /* MainView.swift in Sources */,
 				ECAE78302C447FFE0022551C /* Request.swift in Sources */,
+				ECFBADFC2C95F5440034BB22 /* AddPhotoButton.swift in Sources */,
 				ECCAE2052C1DDA1100C19E40 /* SetBorder.swift in Sources */,
 				03A735492C8720040038F8E1 /* EventsRegistationView.swift in Sources */,
 				EC05CC8A2C35C36B00F2FC8E /* Tab.swift in Sources */,
@@ -809,6 +866,8 @@
 				ECAE78382C4480D80022551C /* Endpoint.swift in Sources */,
 				EC05CC962C35C6D900F2FC8E /* View+CornerRadius.swift in Sources */,
 				EC7419892C56F57600E4892C /* PersonalCategories.swift in Sources */,
+				ECFBADFA2C95EFF70034BB22 /* AddEventView.swift in Sources */,
+				ECFBAE002C96015A0034BB22 /* AddEventViewModel.swift in Sources */,
 				EC8116FB2C3897210083419D /* EventifyCategories.swift in Sources */,
 				ECAB35262C8BA6C20083E0CE /* EventifySnackBar.swift in Sources */,
 				EC26487A2C20DD48009882FF /* ForgotPasswordViewModel.swift in Sources */,
@@ -817,12 +876,14 @@
 				ECAE78412C4484990022551C /* SignUpService.swift in Sources */,
 				EC4F39532C89B12B00DC3D66 /* EventsDetailView.swift in Sources */,
 				ECB823842C41DACC001AD8AB /* EventCellSize.swift in Sources */,
+				EC5D4BB92C94D21700548356 /* KeychainManager.swift in Sources */,
 				EC10566D2C3B00AA00CEB625 /* ProfileDetail.swift in Sources */,
 				ECB823792C41C759001AD8AB /* CellsModel.swift in Sources */,
 				EC74198B2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift in Sources */,
 				ECAE78322C44803D0022551C /* RequestError.swift in Sources */,
 				EC11BC7E2C76977100762468 /* EventifyFavoriteOrganizators.swift in Sources */,
 				ECA00CEC2C67EE5300DA4380 /* ProfileTextFieldModel.swift in Sources */,
+				ECFBADF62C957DC90034BB22 /* KeychainKeys.swift in Sources */,
 				ECAA21ED2C83A87300A40CCD /* ContentView.swift in Sources */,
 				EC05CC902C35C4C500F2FC8E /* MyEventsView.swift in Sources */,
 				031D80E82C88327700CD4072 /* PageControl.swift in Sources */,
@@ -836,6 +897,7 @@
 				ECA1DC7F2C8F02BC000DA0DD /* SnackbarConfig.swift in Sources */,
 				ECB823802C41CAB8001AD8AB /* FavoritesMockData.swift in Sources */,
 				ECAE782B2C4477EA0022551C /* API.swift in Sources */,
+				ECFBAE032C96214A0034BB22 /* View+HideKeyboard.swift in Sources */,
 				03A7354C2C87202D0038F8E1 /* EventsRegistationViewModel.swift in Sources */,
 				EC05CC8E2C35C4B800F2FC8E /* SearchView.swift in Sources */,
 				ECAA21EB2C83960300A40CCD /* PersonalCategoriesMockData.swift in Sources */,
@@ -991,8 +1053,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EventifyApp/EventifyApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"EventifyApp/Preview Content\"";
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
 				ENABLE_PREVIEWS = YES;
@@ -1004,8 +1067,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1029,8 +1092,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EventifyApp/EventifyApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"EventifyApp/Preview Content\"";
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
 				ENABLE_PREVIEWS = YES;
@@ -1042,8 +1106,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1102,6 +1166,14 @@
 				minimumVersion = 1.9.4;
 			};
 		};
+		EC5D4BB22C94CA5900548356 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1114,6 +1186,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EC268AFD2C1C99D400F26DC5 /* XCRemoteSwiftPackageReference "SUINavigation" */;
 			productName = SUINavigation;
+		};
+		EC5D4BB32C94CA5900548356 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC5D4BB22C94CA5900548356 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -42,6 +42,11 @@ struct SignInView: View {
 		.padding(.horizontal, 16)
 		.background(.bg, ignoresSafeAreaEdges: .all)
 		.navigationBarBackButtonHidden(true)
+		.edgesIgnoringSafeArea(.bottom)
+		.onTapGesture {
+			hideKeyboard()
+		}
+
 		.navigation(isActive: $viewModel.showForgotPassScreen) {
 			ForgotPasswordView()
 		}
@@ -92,7 +97,11 @@ struct SignInView: View {
 	/// Контейнер для кнопок входа и регистрации
 	private var signInButtonContainerView: some View {
 		VStack(spacing: 20) {
-			EventifyButton(title: "Войти", isLoading: viewModel.loadingState == .loaded, isDisabled: false) {
+			EventifyButton(
+				title: "Войти",
+				isLoading: viewModel.loadingState == .loading,
+				isDisabled: viewModel.loadingState == .loading
+			) {
 				viewModel.signIn()
 			}
 			haveAccountContainerView

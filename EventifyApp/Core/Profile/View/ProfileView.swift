@@ -43,7 +43,7 @@ struct ProfileView: View {
 				List {
 					Section {
 						NavigationLink {
-							TestView()
+							AddEventView()
 						} label: {
 							Text("Добавить мероприятие")
 						}

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// TODO: ДОКА
+/// Вью модель экрна Регистрации пользователя
 final class SignUpViewModel: ObservableObject {
 	// MARK: - Public Properties
 
@@ -39,7 +39,11 @@ final class SignUpViewModel: ObservableObject {
 
 		Task { @MainActor in
 			do {
-				let _ = try await signUpService.signUp(json: userData)
+				let response = try await signUpService.signUp(json: userData)
+				KeychainManager.shared.set(response.accessToken, key: KeychainKeys.accessToken)
+				KeychainManager.shared.set(response.refreshToken, key: KeychainKeys.refreshToken)
+				KeychainManager.shared.set(email, key: KeychainKeys.userEmail)
+				KeychainManager.shared.set(password, key: KeychainKeys.userPassword)
 				loadingState = .loaded
 			} catch {
 				loadingState = .failure

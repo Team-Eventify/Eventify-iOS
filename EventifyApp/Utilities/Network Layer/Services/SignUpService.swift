@@ -28,7 +28,10 @@ final class SignUpService: Request, SignUpServiceProtocol {
 
 /// Модель ответа от сервера
 struct SignUpResponse: Decodable {
-	/// Сообщение
+    /// ID юзера
+    let userId: String
+	
+    /// Токен доступа
 	let accessToken: String
 
 	/// Обновляемый токен

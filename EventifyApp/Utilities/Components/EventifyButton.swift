@@ -9,7 +9,8 @@ import SwiftUI
 
 struct EventifyButton: View {
 	let title: String
-	var isLoading: Bool
+    var color: Color = .brandCyan
+    var isLoading: Bool
 	var isDisabled: Bool
 	var action: () -> Void
 
@@ -23,7 +24,7 @@ struct EventifyButton: View {
 					.frame(maxWidth: .infinity)
 					.padding(.vertical, 13)
 					.tint(.black)
-					.background(Color.brandYellow)
+                    .background(color)
 					.foregroundStyle(.white)
 					.cornerRadius(10)
 			} else {
@@ -32,7 +33,7 @@ struct EventifyButton: View {
 					.foregroundColor(.black)
 					.padding(.vertical, 13)
 					.frame(maxWidth: .infinity)
-					.background(isDisabled ? Color.gray : Color.brandYellow)
+                    .background(isDisabled ? .gray : color)
 					.cornerRadius(10)
 			}
 		}
@@ -42,7 +43,7 @@ struct EventifyButton: View {
 
 #Preview {
 	VStack {
-		EventifyButton(title: "Зарегистрироваться", isLoading: false, isDisabled: false, action: {})
+        EventifyButton(title: "Зарегистрироваться", color: .error, isLoading: false, isDisabled: false, action: {})
 		EventifyButton(title: "Войти", isLoading: true, isDisabled: false, action: {})
 		EventifyButton(title: "Отправить", isLoading: false, isDisabled: false, action: {})
 	}

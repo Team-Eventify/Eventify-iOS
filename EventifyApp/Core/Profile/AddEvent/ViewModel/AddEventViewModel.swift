@@ -15,7 +15,6 @@ final class AddEventViewModel: ObservableObject {
 	@Published var startTime: Date = .init()
 	@Published var endTime: Date = .init()
 	@Published var description: String = ""
-	
 	@Published private(set) var selectedImages: [UIImage] = []
 	@Published var imageSelections: [PhotosPickerItem] = [] {
 		didSet {

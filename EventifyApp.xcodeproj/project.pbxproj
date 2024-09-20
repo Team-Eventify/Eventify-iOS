@@ -24,8 +24,6 @@
 		EC10566D2C3B00AA00CEB625 /* ProfileDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC10566C2C3B00AA00CEB625 /* ProfileDetail.swift */; };
 		EC10566F2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC10566E2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift */; };
 		EC1056712C3B11BA00CEB625 /* EventifyCheeps.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */; };
-		EC1056752C3B152300CEB625 /* UpcomingEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056742C3B152300CEB625 /* UpcomingEventsModel.swift */; };
-		EC1056772C3B158F00CEB625 /* MyEventsMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1056762C3B158F00CEB625 /* MyEventsMockData.swift */; };
 		EC11BC7E2C76977100762468 /* EventifyFavoriteOrganizators.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC11BC7D2C76977100762468 /* EventifyFavoriteOrganizators.swift */; };
 		EC1B2B492C8A2F8A004A1FD4 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = EC1B2B482C8A2F8A004A1FD4 /* PopupView */; };
 		EC1B2B4B2C8A3464004A1FD4 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B2B4A2C8A3464004A1FD4 /* LoadingState.swift */; };
@@ -47,6 +45,9 @@
 		EC4F39532C89B12B00DC3D66 /* EventsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4F39522C89B12B00DC3D66 /* EventsDetailView.swift */; };
 		EC5D4BB42C94CA5900548356 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EC5D4BB32C94CA5900548356 /* KeychainSwift */; };
 		EC5D4BB92C94D21700548356 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5D4BB82C94D21700548356 /* KeychainManager.swift */; };
+		EC6108B82C9D668A0088FD7B /* CellsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6108B42C9D668A0088FD7B /* CellsModel.swift */; };
+		EC6108B92C9D668A0088FD7B /* MyEventsMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6108B52C9D668A0088FD7B /* MyEventsMockData.swift */; };
+		EC6108BA2C9D668A0088FD7B /* UpcomingEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6108B62C9D668A0088FD7B /* UpcomingEventsModel.swift */; };
 		EC67C8F62C5A8BBB00316016 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67C8F52C5A8BBB00316016 /* TestView.swift */; };
 		EC7419892C56F57600E4892C /* PersonalCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7419882C56F57600E4892C /* PersonalCategories.swift */; };
 		EC74198B2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC74198A2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift */; };
@@ -54,6 +55,7 @@
 		EC7F302E2C43F27D00AFEECB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7F302D2C43F27D00AFEECB /* ProfileViewModel.swift */; };
 		EC7F30302C43F51300AFEECB /* AppColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7F302F2C43F51300AFEECB /* AppColorScheme.swift */; };
 		EC8116FB2C3897210083419D /* EventifyCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8116FA2C3897210083419D /* EventifyCategories.swift */; };
+		EC9195AD2C9B60CA0013DAD5 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EC9195AC2C9B60CA0013DAD5 /* SDWebImageSwiftUI */; };
 		ECA00CEC2C67EE5300DA4380 /* ProfileTextFieldModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA00CEB2C67EE5300DA4380 /* ProfileTextFieldModel.swift */; };
 		ECA1DC7F2C8F02BC000DA0DD /* SnackbarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1DC7E2C8F02BC000DA0DD /* SnackbarConfig.swift */; };
 		ECAA21EB2C83960300A40CCD /* PersonalCategoriesMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAA21EA2C83960300A40CCD /* PersonalCategoriesMockData.swift */; };
@@ -70,7 +72,6 @@
 		ECAE783F2C4483090022551C /* SignUpEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAE783E2C4483090022551C /* SignUpEndpoint.swift */; };
 		ECAE78412C4484990022551C /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAE78402C4484990022551C /* SignUpService.swift */; };
 		ECB0F5A92C83BBAA0072B99B /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB0F5A82C83BBAA0072B99B /* FlowLayout.swift */; };
-		ECB823792C41C759001AD8AB /* CellsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB823782C41C759001AD8AB /* CellsModel.swift */; };
 		ECB8237D2C41CA7B001AD8AB /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB8237C2C41CA7B001AD8AB /* FavoritesViewModel.swift */; };
 		ECB823802C41CAB8001AD8AB /* FavoritesMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB8237F2C41CAB8001AD8AB /* FavoritesMockData.swift */; };
 		ECB823842C41DACC001AD8AB /* EventCellSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB823832C41DACC001AD8AB /* EventCellSize.swift */; };
@@ -80,10 +81,17 @@
 		ECD3269F2C1E249C00FA18AB /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3269E2C1E249C00FA18AB /* SignInViewModel.swift */; };
 		ECD326A42C1E302100FA18AB /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD326A32C1E302100FA18AB /* TabBar.swift */; };
 		ECDCC15F2C5A7A0D0013ADB6 /* PersonalCategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDCC15E2C5A7A0D0013ADB6 /* PersonalCategoriesViewModel.swift */; };
+		ECE1F7582C9C183400A851C7 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = ECE1F7572C9C183400A851C7 /* Pow */; };
 		ECECFF8D2C3B2846002B4016 /* EventifyRecommendationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECECFF8C2C3B2846002B4016 /* EventifyRecommendationEvent.swift */; };
 		ECF430C02C45C0BB00E5942B /* SignInEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF430BF2C45C0BB00E5942B /* SignInEndpoint.swift */; };
 		ECF430C22C45C22D00E5942B /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF430C12C45C22D00E5942B /* SignInService.swift */; };
 		ECF430C62C45C6FD00E5942B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF430C52C45C6FD00E5942B /* Constants.swift */; };
+		ECFAEF432C9D726400BCBEFD /* UserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAEF422C9D726400BCBEFD /* UserEndpoint.swift */; };
+		ECFAEF472C9D8EFD00BCBEFD /* TokenEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAEF462C9D8EFD00BCBEFD /* TokenEndpoint.swift */; };
+		ECFAEF492C9D8FEF00BCBEFD /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAEF482C9D8FEF00BCBEFD /* TokenService.swift */; };
+		ECFAEF552C9DB09700BCBEFD /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAEF542C9DB09700BCBEFD /* UserService.swift */; };
+		ECFAEF572C9DCE0800BCBEFD /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAEF562C9DCE0800BCBEFD /* UserDefaultsManager.swift */; };
+		ECFAEF592C9DCF5000BCBEFD /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAEF582C9DCF5000BCBEFD /* UserDefaultsKeys.swift */; };
 		ECFBADF62C957DC90034BB22 /* KeychainKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFBADF52C957DC90034BB22 /* KeychainKeys.swift */; };
 		ECFBADFA2C95EFF70034BB22 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFBADF92C95EFF70034BB22 /* AddEventView.swift */; };
 		ECFBADFC2C95F5440034BB22 /* AddPhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFBADFB2C95F5440034BB22 /* AddPhotoButton.swift */; };
@@ -109,8 +117,6 @@
 		EC10566C2C3B00AA00CEB625 /* ProfileDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetail.swift; sourceTree = "<group>"; };
 		EC10566E2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyUpcomingEvent.swift; sourceTree = "<group>"; };
 		EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyCheeps.swift; sourceTree = "<group>"; };
-		EC1056742C3B152300CEB625 /* UpcomingEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsModel.swift; sourceTree = "<group>"; };
-		EC1056762C3B158F00CEB625 /* MyEventsMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsMockData.swift; sourceTree = "<group>"; };
 		EC11BC7D2C76977100762468 /* EventifyFavoriteOrganizators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyFavoriteOrganizators.swift; sourceTree = "<group>"; };
 		EC1B2B4A2C8A3464004A1FD4 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		EC2648792C20DD48009882FF /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -131,6 +137,9 @@
 		EC4BACEB2C46BD0E003C375B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		EC4F39522C89B12B00DC3D66 /* EventsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDetailView.swift; sourceTree = "<group>"; };
 		EC5D4BB82C94D21700548356 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		EC6108B42C9D668A0088FD7B /* CellsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsModel.swift; sourceTree = "<group>"; };
+		EC6108B52C9D668A0088FD7B /* MyEventsMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsMockData.swift; sourceTree = "<group>"; };
+		EC6108B62C9D668A0088FD7B /* UpcomingEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsModel.swift; sourceTree = "<group>"; };
 		EC67C8F52C5A8BBB00316016 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		EC7419882C56F57600E4892C /* PersonalCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCategories.swift; sourceTree = "<group>"; };
 		EC74198A2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCategoriesCheeps.swift; sourceTree = "<group>"; };
@@ -154,7 +163,6 @@
 		ECAE783E2C4483090022551C /* SignUpEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEndpoint.swift; sourceTree = "<group>"; };
 		ECAE78402C4484990022551C /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		ECB0F5A82C83BBAA0072B99B /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
-		ECB823782C41C759001AD8AB /* CellsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsModel.swift; sourceTree = "<group>"; };
 		ECB8237C2C41CA7B001AD8AB /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		ECB8237F2C41CAB8001AD8AB /* FavoritesMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMockData.swift; sourceTree = "<group>"; };
 		ECB823832C41DACC001AD8AB /* EventCellSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCellSize.swift; sourceTree = "<group>"; };
@@ -168,6 +176,12 @@
 		ECF430BF2C45C0BB00E5942B /* SignInEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEndpoint.swift; sourceTree = "<group>"; };
 		ECF430C12C45C22D00E5942B /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
 		ECF430C52C45C6FD00E5942B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		ECFAEF422C9D726400BCBEFD /* UserEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndpoint.swift; sourceTree = "<group>"; };
+		ECFAEF462C9D8EFD00BCBEFD /* TokenEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenEndpoint.swift; sourceTree = "<group>"; };
+		ECFAEF482C9D8FEF00BCBEFD /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
+		ECFAEF542C9DB09700BCBEFD /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		ECFAEF562C9DCE0800BCBEFD /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		ECFAEF582C9DCF5000BCBEFD /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		ECFBADF52C957DC90034BB22 /* KeychainKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainKeys.swift; sourceTree = "<group>"; };
 		ECFBADF72C957E760034BB22 /* EventifyApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EventifyApp.entitlements; sourceTree = "<group>"; };
 		ECFBADF92C95EFF70034BB22 /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
@@ -181,6 +195,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECE1F7582C9C183400A851C7 /* Pow in Frameworks */,
+				EC9195AD2C9B60CA0013DAD5 /* SDWebImageSwiftUI in Frameworks */,
 				EC5D4BB42C94CA5900548356 /* KeychainSwift in Frameworks */,
 				EC1B2B492C8A2F8A004A1FD4 /* PopupView in Frameworks */,
 				EC268AFF2C1C99D400F26DC5 /* SUINavigation in Frameworks */,
@@ -266,16 +282,6 @@
 				ECEC36F32C4C0F8800C6BFD7 /* View */,
 			);
 			path = ProfileDetail;
-			sourceTree = "<group>";
-		};
-		EC1056722C3B14F600CEB625 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				EC1056742C3B152300CEB625 /* UpcomingEventsModel.swift */,
-				EC1056762C3B158F00CEB625 /* MyEventsMockData.swift */,
-				ECB823782C41C759001AD8AB /* CellsModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		EC1056732C3B14FA00CEB625 /* View */ = {
@@ -442,8 +448,20 @@
 				ECF430C52C45C6FD00E5942B /* Constants.swift */,
 				EC5D4BB82C94D21700548356 /* KeychainManager.swift */,
 				ECFBADF52C957DC90034BB22 /* KeychainKeys.swift */,
+				ECFAEF562C9DCE0800BCBEFD /* UserDefaultsManager.swift */,
+				ECFAEF582C9DCF5000BCBEFD /* UserDefaultsKeys.swift */,
 			);
 			path = Dependecies;
+			sourceTree = "<group>";
+		};
+		EC6108B72C9D668A0088FD7B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EC6108B42C9D668A0088FD7B /* CellsModel.swift */,
+				EC6108B52C9D668A0088FD7B /* MyEventsMockData.swift */,
+				EC6108B62C9D668A0088FD7B /* UpcomingEventsModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EC7419872C56F55E00E4892C /* Model */ = {
@@ -491,7 +509,7 @@
 		EC8116F62C38924A0083419D /* MyEvents */ = {
 			isa = PBXGroup;
 			children = (
-				EC1056722C3B14F600CEB625 /* Model */,
+				EC6108B72C9D668A0088FD7B /* Model */,
 				EC1056732C3B14FA00CEB625 /* View */,
 			);
 			path = MyEvents;
@@ -554,7 +572,7 @@
 			children = (
 				ECAE782A2C4477EA0022551C /* API.swift */,
 				ECAE782C2C4479F90022551C /* Request */,
-				ECAE782E2C447A030022551C /* Service */,
+				ECAE782E2C447A030022551C /* Services */,
 				ECAE782D2C4479FE0022551C /* Endpoint */,
 				ECAE78392C4481110022551C /* Request Extensions */,
 			);
@@ -578,17 +596,21 @@
 				ECAE78372C4480D80022551C /* Endpoint.swift */,
 				ECAE783E2C4483090022551C /* SignUpEndpoint.swift */,
 				ECF430BF2C45C0BB00E5942B /* SignInEndpoint.swift */,
+				ECFAEF422C9D726400BCBEFD /* UserEndpoint.swift */,
+				ECFAEF462C9D8EFD00BCBEFD /* TokenEndpoint.swift */,
 			);
 			path = Endpoint;
 			sourceTree = "<group>";
 		};
-		ECAE782E2C447A030022551C /* Service */ = {
+		ECAE782E2C447A030022551C /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				ECAE78402C4484990022551C /* SignUpService.swift */,
 				ECF430C12C45C22D00E5942B /* SignInService.swift */,
+				ECFAEF482C9D8FEF00BCBEFD /* TokenService.swift */,
+				ECFAEF542C9DB09700BCBEFD /* UserService.swift */,
 			);
-			path = Service;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		ECAE78392C4481110022551C /* Request Extensions */ = {
@@ -786,6 +808,8 @@
 				EC268AFE2C1C99D400F26DC5 /* SUINavigation */,
 				EC1B2B482C8A2F8A004A1FD4 /* PopupView */,
 				EC5D4BB32C94CA5900548356 /* KeychainSwift */,
+				EC9195AC2C9B60CA0013DAD5 /* SDWebImageSwiftUI */,
+				ECE1F7572C9C183400A851C7 /* Pow */,
 			);
 			productName = EventifyApp;
 			productReference = EC4981DF2C1B784F0072BD53 /* EventifyApp.app */;
@@ -819,6 +843,8 @@
 				EC268AFD2C1C99D400F26DC5 /* XCRemoteSwiftPackageReference "SUINavigation" */,
 				EC1B2B472C8A2F8A004A1FD4 /* XCRemoteSwiftPackageReference "popupview" */,
 				EC5D4BB22C94CA5900548356 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				EC9195AB2C9B60CA0013DAD5 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				ECE1F7562C9C183400A851C7 /* XCRemoteSwiftPackageReference "Pow" */,
 			);
 			productRefGroup = EC4981E02C1B784F0072BD53 /* Products */;
 			projectDirPath = "";
@@ -859,6 +885,7 @@
 				EC05CC8A2C35C36B00F2FC8E /* Tab.swift in Sources */,
 				ECAE78362C44808E0022551C /* RequestMethod.swift in Sources */,
 				ECD326A42C1E302100FA18AB /* TabBar.swift in Sources */,
+				ECFAEF492C9D8FEF00BCBEFD /* TokenService.swift in Sources */,
 				ECF430C62C45C6FD00E5942B /* Constants.swift in Sources */,
 				EC268B122C1CA2E600F26DC5 /* Fonts.swift in Sources */,
 				ECCAE2072C1DE22700C19E40 /* SignUpViewModel.swift in Sources */,
@@ -870,6 +897,7 @@
 				ECFBAE002C96015A0034BB22 /* AddEventViewModel.swift in Sources */,
 				EC8116FB2C3897210083419D /* EventifyCategories.swift in Sources */,
 				ECAB35262C8BA6C20083E0CE /* EventifySnackBar.swift in Sources */,
+				ECFAEF572C9DCE0800BCBEFD /* UserDefaultsManager.swift in Sources */,
 				EC26487A2C20DD48009882FF /* ForgotPasswordViewModel.swift in Sources */,
 				EC268B222C1CC59C00F26DC5 /* EventifyButton.swift in Sources */,
 				EC4B4FB62C1F39650039D8A3 /* ForgotPasswordView.swift in Sources */,
@@ -878,7 +906,6 @@
 				ECB823842C41DACC001AD8AB /* EventCellSize.swift in Sources */,
 				EC5D4BB92C94D21700548356 /* KeychainManager.swift in Sources */,
 				EC10566D2C3B00AA00CEB625 /* ProfileDetail.swift in Sources */,
-				ECB823792C41C759001AD8AB /* CellsModel.swift in Sources */,
 				EC74198B2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift in Sources */,
 				ECAE78322C44803D0022551C /* RequestError.swift in Sources */,
 				EC11BC7E2C76977100762468 /* EventifyFavoriteOrganizators.swift in Sources */,
@@ -890,6 +917,7 @@
 				EC1056642C3AC39F00CEB625 /* SearchViewModel.swift in Sources */,
 				EC1056662C3AC43B00CEB625 /* CategoriesModel.swift in Sources */,
 				ECF430C02C45C0BB00E5942B /* SignInEndpoint.swift in Sources */,
+				ECFAEF472C9D8EFD00BCBEFD /* TokenEndpoint.swift in Sources */,
 				EC1056712C3B11BA00CEB625 /* EventifyCheeps.swift in Sources */,
 				ECAE783F2C4483090022551C /* SignUpEndpoint.swift in Sources */,
 				ECDCC15F2C5A7A0D0013ADB6 /* PersonalCategoriesViewModel.swift in Sources */,
@@ -902,7 +930,6 @@
 				EC05CC8E2C35C4B800F2FC8E /* SearchView.swift in Sources */,
 				ECAA21EB2C83960300A40CCD /* PersonalCategoriesMockData.swift in Sources */,
 				EC268B202C1CC52200F26DC5 /* EventifyTextField.swift in Sources */,
-				EC1056752C3B152300CEB625 /* UpcomingEventsModel.swift in Sources */,
 				ECD3269F2C1E249C00FA18AB /* SignInViewModel.swift in Sources */,
 				EC7E42932C4C47EA00D3E72B /* ProfileDetailViewModel.swift in Sources */,
 				EC1056682C3AC65C00CEB625 /* SearchMockData.swift in Sources */,
@@ -914,12 +941,17 @@
 				EC05CC922C35C4CA00F2FC8E /* FavoritesView.swift in Sources */,
 				EC7F302E2C43F27D00AFEECB /* ProfileViewModel.swift in Sources */,
 				EC67C8F62C5A8BBB00316016 /* TestView.swift in Sources */,
-				EC1056772C3B158F00CEB625 /* MyEventsMockData.swift in Sources */,
 				EC1B2B4B2C8A3464004A1FD4 /* LoadingState.swift in Sources */,
 				EC2FEC6C2C4587170097D5BA /* PersonalCategoriesView.swift in Sources */,
+				ECFAEF592C9DCF5000BCBEFD /* UserDefaultsKeys.swift in Sources */,
 				ECAE783B2C44811F0022551C /* Dictionary.swift in Sources */,
+				EC6108B82C9D668A0088FD7B /* CellsModel.swift in Sources */,
+				EC6108B92C9D668A0088FD7B /* MyEventsMockData.swift in Sources */,
+				ECFAEF432C9D726400BCBEFD /* UserEndpoint.swift in Sources */,
+				EC6108BA2C9D668A0088FD7B /* UpcomingEventsModel.swift in Sources */,
 				EC7F30302C43F51300AFEECB /* AppColorScheme.swift in Sources */,
 				ECAE78342C4480690022551C /* RequestEncoder.swift in Sources */,
+				ECFAEF552C9DB09700BCBEFD /* UserService.swift in Sources */,
 				EC10566F2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift in Sources */,
 				EC05CC942C35C4CF00F2FC8E /* ProfileView.swift in Sources */,
 				EC4981E32C1B784F0072BD53 /* EventifyApp.swift in Sources */,
@@ -1055,7 +1087,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EventifyApp/EventifyApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"EventifyApp/Preview Content\"";
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
 				ENABLE_PREVIEWS = YES;
@@ -1063,6 +1095,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventifyApp/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Eventify;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1094,7 +1127,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EventifyApp/EventifyApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"EventifyApp/Preview Content\"";
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
 				ENABLE_PREVIEWS = YES;
@@ -1102,6 +1135,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventifyApp/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Eventify;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1174,6 +1208,22 @@
 				minimumVersion = 24.0.0;
 			};
 		};
+		EC9195AB2C9B60CA0013DAD5 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.2;
+			};
+		};
+		ECE1F7562C9C183400A851C7 /* XCRemoteSwiftPackageReference "Pow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/EmergeTools/Pow.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1191,6 +1241,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EC5D4BB22C94CA5900548356 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
+		};
+		EC9195AC2C9B60CA0013DAD5 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC9195AB2C9B60CA0013DAD5 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		ECE1F7572C9C183400A851C7 /* Pow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ECE1F7562C9C183400A851C7 /* XCRemoteSwiftPackageReference "Pow" */;
+			productName = Pow;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

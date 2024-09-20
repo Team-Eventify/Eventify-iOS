@@ -8,5 +8,9 @@
 	<true/>
 	<key>com.apple.developer.usernotifications.time-sensitive</key>
 	<true/>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)io.raynelz.Eventify</string>
+	</array>
 </dict>
 </plist>

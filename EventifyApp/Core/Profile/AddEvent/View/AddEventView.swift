@@ -43,10 +43,6 @@ struct AddEventView: View {
 		}
 		.navigationTitle("Создание мероприятия")
 		.background(Color.bg.ignoresSafeArea())
-
-		.onTapGesture {
-			hideKeyboard()
-		}
 	}
 
 	private var eventNameSection: some View {

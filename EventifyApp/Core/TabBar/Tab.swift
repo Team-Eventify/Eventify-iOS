@@ -18,7 +18,7 @@ enum Tab: CaseIterable, Hashable {
 	case myEvents
 
 	/// Экран "Избранное"
-	case favorites
+	//case favorites
 
 	/// Экран "Профиль"
 	case profile
@@ -29,7 +29,7 @@ enum Tab: CaseIterable, Hashable {
 			case .main: "Главная"
 			case .search: "Поиск"
 			case .myEvents: "Мои ивенты"
-			case .favorites: "Избранное"
+			//case .favorites: "Избранное"
 			case .profile: "Профиль"
 		}
 	}
@@ -40,7 +40,7 @@ enum Tab: CaseIterable, Hashable {
 			case .main: "house"
 			case .search: "magnifyingglass"
 			case .myEvents: "bookmark"
-			case .favorites: "heart"
+			//case .favorites: "heart"
 			case .profile: "person"
 		}
 	}
@@ -56,7 +56,7 @@ struct TabbarScreens: View {
 			case .main:  MainView()
 			case .search: SearchView()
 			case .myEvents: MyEventsView()
-			case .favorites: FavoritesView()
+			//case .favorites: FavoritesView()
 			case .profile: ProfileView()
 		}
 	}

@@ -7,49 +7,53 @@
 
 import SwiftUI
 
-/// Вью модель экрна Регистрации пользователя
+/// Вью модель экрана Регистрации пользователя
 final class SignUpViewModel: ObservableObject {
-	// MARK: - Public Properties
+    // MARK: - Public Properties
 
-	@Published var email: String = ""
-	@Published var password: String = ""
-	@Published var loadingState: LoadingState = .none
+    @Published var email: String = ""
+    @Published var password: String = ""
+    @Published var loadingState: LoadingState = .none
 
-	/// Приватное свойство для сервиса регистрации
-	private let signUpService: SignUpServiceProtocol
+    // MARK: - Private Properties
 
-	// MARK: - Initialization
+    /// Приватное свойство для сервиса регистрации
+    private let signUpService: SignUpServiceProtocol
 
-	/// Инициализатор
-	/// - Parameter signUpService: сервис viewModel'и экрана Регистрации
-	init(signUpService: SignUpServiceProtocol = SignUpService()) {
-		self.signUpService = signUpService
-	}
+    // MARK: - Initialization
 
-	// MARK: - Public Functions
+    /// Инициализатор
+    /// - Parameters:
+    ///   - signUpService: сервис регистрации
+    init(signUpService: SignUpServiceProtocol) {
+        self.signUpService = signUpService
+    }
 
-	/// Отпарвляет запрос на регистрацию
-	func signUp() {
-		guard !email.isEmpty, !password.isEmpty else {
-			return
-		}
+    // MARK: - Public Functions
 
-		loadingState = .loading
-		let userData: JSON = ["password": password, "email": email]
+    /// Отправляет запрос на регистрацию
+    func signUp() {
+        guard !email.isEmpty, !password.isEmpty else {
+            return
+        }
 
-		Task { @MainActor in
-			do {
-				let response = try await signUpService.signUp(json: userData)
-				KeychainManager.shared.set(response.accessToken, key: KeychainKeys.accessToken)
-				KeychainManager.shared.set(response.refreshToken, key: KeychainKeys.refreshToken)
-				KeychainManager.shared.set(email, key: KeychainKeys.userEmail)
-				KeychainManager.shared.set(password, key: KeychainKeys.userPassword)
-				loadingState = .loaded
-			} catch {
-				loadingState = .failure
-				try? await Task.sleep(nanoseconds: 2_000_000_000)
-				loadingState = .none
-			}
-		}
-	}
+        loadingState = .loading
+        let userData: JSON = ["password": password, "email": email]
+
+        Task { @MainActor in
+            do {
+                let response = try await signUpService.signUp(json: userData)
+                KeychainManager.shared.set(response.userId, key: KeychainKeys.userId)
+                KeychainManager.shared.set(response.accessToken, key: KeychainKeys.accessToken)
+                KeychainManager.shared.set(response.refreshToken, key: KeychainKeys.refreshToken)
+                KeychainManager.shared.set(email, key: KeychainKeys.userEmail)
+                KeychainManager.shared.set(password, key: KeychainKeys.userPassword)
+                loadingState = .loaded
+            } catch {
+                loadingState = .failure
+                try? await Task.sleep(nanoseconds: 2_000_000_000)
+                loadingState = .none
+            }
+        }
+    }
 }

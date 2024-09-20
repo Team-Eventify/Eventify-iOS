@@ -12,9 +12,9 @@ enum MyEventsMockData {
 
 	/// Предстоящие мероприятия
 	static let upcomingEventsData: [UpcomingEventsModel] = [
-		.init(title: "Фестиваль ИКН", cheepTitles: ["11 сентября", "18:00", "офлайн"], color: .brandYellow),
-		.init(title: "ITAM welcome MeetUp", cheepTitles: ["14 сентября", "18:30", "онлайн"], color: .brandPink),
-		.init(title: "Wake Up MeetUP", cheepTitles: ["26 сентября", "18:00", "Т-корпус"], color: .brandYellow)
+        .init(title: "Фестиваль ИКН", cheepTitles: ["11 сентября", "18:00", "офлайн"], color: .brandPink),
+        .init(title: "ITAM welcome MeetUp", cheepTitles: ["14 сентября", "18:30", "онлайн"], color: .brandCyan),
+        .init(title: "Wake Up MeetUP", cheepTitles: ["26 сентября", "18:00", "Т-корпус"], color: .brandPink)
 	]
 
 	/// Рекоммендации мероприятия

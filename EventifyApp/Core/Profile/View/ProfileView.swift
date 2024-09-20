@@ -16,6 +16,9 @@ struct ProfileView: View {
 	@State var showingDeleteAlert: Bool = false
 	@State var showingExitAlert: Bool = false
 	@State var navigateToSignUp: Bool = false
+    
+    let name = UserDefaultsManager.shared.getFirstName() ?? "Имя"
+    let surname = UserDefaultsManager.shared.getMiddleName() ?? "Фамилия"
 
 	// MARK: - Initialization
 
@@ -84,6 +87,7 @@ struct ProfileView: View {
 						.alert("Вы действительно хотите выйти из приложения?", isPresented: $showingExitAlert) {
 							Button(role: .cancel) {
 								Constants.isLogin = false
+                                UserDefaultsManager.shared.clearAllUserData()
 								print("🚪 Exit from account")
 							} label: {
 								Text("Да")
@@ -107,6 +111,7 @@ struct ProfileView: View {
 
 							Button(role: .cancel) {
 								Constants.isLogin = false
+                                UserDefaultsManager.shared.clearAllUserData()
 								print("🪓 delete account")
 							} label: {
 								Text("Да")
@@ -132,34 +137,32 @@ struct ProfileView: View {
 			.background(.bg, ignoresSafeAreaEdges: .all)
 		}
 	}
-}
-
-// MARK: - UI Components
-
-/// Хедер карточка
-private var header: some View {
-	NavigationLink {
-		ProfileDetail()
-	} label: {
-		HStack {
-			VStack(alignment: .leading) {
-				Text("Иванов Иван")
-					.font(.mediumCompact(size: 24))
-					.foregroundStyle(.black)
-				Text("Редактировать профиль")
-					.font(.regularCompact(size: 17))
-					.foregroundStyle(.black)
-			}
-			Spacer()
-			Image(systemName: "chevron.right")
-				.foregroundColor(.black)
-				.padding(.trailing, 16)
-		}
-		.padding(.all)
-		.background(.brandYellow)
-		.cornerRadius(10)
-		.padding(.horizontal)
-	}
+    
+    /// Хедер карточка
+    private var header: some View {
+        NavigationLink {
+            ProfileDetail()
+        } label: {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(name + " " + surname)
+                        .font(.mediumCompact(size: 24))
+                        .foregroundStyle(.black)
+                    Text("Редактировать профиль")
+                        .font(.regularCompact(size: 17))
+                        .foregroundStyle(.black)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .foregroundColor(.black)
+                    .padding(.trailing, 16)
+            }
+            .padding(.all)
+            .background(.brandCyan)
+            .cornerRadius(10)
+            .padding(.horizontal)
+        }
+    }
 }
 
 #Preview {

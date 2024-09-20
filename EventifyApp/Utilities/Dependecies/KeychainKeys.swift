@@ -10,6 +10,7 @@ import Foundation
 enum KeychainKeys {
 	static let userEmail = "userEmail"
 	static let userPassword = "userPassword"
+    static let userId = "userId"
 	static let accessToken = "accessToken"
 	static let refreshToken = "refreshToken"
 }

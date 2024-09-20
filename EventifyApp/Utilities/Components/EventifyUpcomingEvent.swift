@@ -23,11 +23,6 @@ struct EventifyUpcomingEvent: View {
 				EventifyCheeps(items: items, style: .upcoming)
 					.foregroundStyle(.black)
 			}
-			Spacer()
-			Image("qr")
-				.resizable()
-				.frame(width: 100, height: 100)
-				.clipShape(RoundedRectangle(cornerRadius: 10))
 		}
 		.frame(maxWidth: .infinity)
 		.frame(height: 112)
@@ -41,7 +36,7 @@ struct EventifyUpcomingEvent: View {
 	EventifyUpcomingEvent(
 		title: "День открытых дверей университета МИСИС",
 		items: ["12 декабря", "17:30", "онлайн"],
-		color: .brandYellow
+        color: .brandCyan
 	)
 		.padding(.horizontal, 16)
 }

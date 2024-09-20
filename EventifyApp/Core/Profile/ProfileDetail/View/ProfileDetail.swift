@@ -58,7 +58,7 @@ struct ProfileDetail: View {
 		categoriesModel: PersonalCategoriesViewModel? = nil
 	) {
 		_viewModel = StateObject(
-			wrappedValue: viewModel ?? ProfileDetailViewModel()
+            wrappedValue: viewModel ?? ProfileDetailViewModel(userService: UserService())
 		)
 		_categoriesModel = StateObject(
 			wrappedValue: categoriesModel ?? PersonalCategoriesViewModel()
@@ -108,12 +108,12 @@ struct ProfileDetail: View {
 					.font(.mediumCompact(size: 20))
 					.foregroundStyle(.mainText)
 
-
 				EventifyTextField(
 					text: $viewModel.email,
 					placeholder: "Введите email",
 					isSecure: false
 				)
+                .disabled(true)
 
 				Text("Telegram")
 					.font(.mediumCompact(size: 20))
@@ -128,26 +128,30 @@ struct ProfileDetail: View {
 
 				categoriesHeader
 
-				VStack(alignment: .leading, spacing: 8) {
-					ForEach(categories.indices, id: \.self) { index in
-						HStack(spacing: 8) {
-							ForEach(categories[index].indices, id: \.self) { inner in
-								PersonalCategoriesCheeps(
-									viewModel: categoriesModel,
-									category: categories[index][inner]
-								)
-							}
-						}
-					}
-				}
+                VStack(alignment: .leading, spacing: 8) {
+                    ForEach(categories.indices, id: \.self) { index in
+                        HStack(spacing: 8) {
+                            ForEach(categories[index].indices, id: \.self) { inner in
+                                PersonalCategoriesCheeps(
+                                    viewModel: categoriesModel,
+                                    category: categories[index][inner]
+                                )
+                            }
+                        }
+                    }
+                }
 
 				EventifyButton(title: "Сохранить изменения", isLoading: false, isDisabled: false) {
+                    viewModel.patchUser()
 					print("📙 Saved! 📙")
 					dismiss()
 				}
 				Spacer()
 				Spacer()
 			}
+            .onAppear {
+                viewModel.getUser()
+            }
 		}
 		.padding(.horizontal, 16)
 		.frame(maxWidth: .infinity, maxHeight: .infinity)

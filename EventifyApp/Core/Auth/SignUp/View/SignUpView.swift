@@ -109,11 +109,14 @@ struct SignUpView: View {
             EventifyTextField(
                 text: $viewModel.email, placeholder: "Email", isSecure: false
             )
+            .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
+            .keyboardType(.emailAddress)
             .textContentType(.emailAddress)
-            .autocorrectionDisabled()
+            
             EventifyTextField(
                 text: $viewModel.password, placeholder: "Пароль", isSecure: true
             )
+            .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
             .textContentType(.newPassword)
         }
         .padding(.top, 40)

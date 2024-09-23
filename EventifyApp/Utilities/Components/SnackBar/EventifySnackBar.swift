@@ -26,5 +26,5 @@ struct EventifySnackBar: View {
 }
 
 #Preview {
-	EventifySnackBar(config: .failure)
+    EventifySnackBar(config: .registration)
 }

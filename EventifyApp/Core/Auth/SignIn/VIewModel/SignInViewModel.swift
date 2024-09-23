@@ -14,6 +14,7 @@ final class SignInViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var loadingState: LoadingState = .none
     @Published var showForgotPassScreen: Bool = false
+    @Published var loginAttempts = 0
 
     // MARK: - Private Properties
 
@@ -34,6 +35,7 @@ final class SignInViewModel: ObservableObject {
     /// Отправляет запрос на вход
     func signIn() {
         guard !email.isEmpty, !password.isEmpty else {
+            loginAttempts += 1
             return
         }
 
@@ -52,6 +54,7 @@ final class SignInViewModel: ObservableObject {
                 Constants.isLogin = true
                 print(response)
             } catch {
+                loginAttempts += 1
                 loadingState = .failure
                 Constants.isLogin = false
                 try? await Task.sleep(nanoseconds: 2_000_000_000)

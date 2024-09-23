@@ -6,6 +6,7 @@
 //
 
 import SUINavigation
+import PopupView
 import SwiftUI
 
 /// Вью экрана Входа
@@ -93,9 +94,15 @@ struct SignInView: View {
         VStack(alignment: .trailing, spacing: 8) {
             EventifyTextField(
                 text: $viewModel.email, placeholder: "Email", isSecure: false)
+            .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
+            .keyboardType(.emailAddress)
+            .textContentType(.emailAddress)
+            
             EventifyTextField(
                 text: $viewModel.password, placeholder: "Пароль", isSecure: true
             )
+            .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
+            .textContentType(.password)
 
             forgotPasswordButtonContainerView
         }
@@ -120,7 +127,7 @@ struct SignInView: View {
     private var forgotPasswordButtonContainerView: some View {
         VStack(alignment: .trailing, spacing: .zero) {
             Button {
-                Constants.isLogin = true
+                viewModel.showForgotPassScreen = true
             } label: {
                 Text("Забыли пароль?")
             }

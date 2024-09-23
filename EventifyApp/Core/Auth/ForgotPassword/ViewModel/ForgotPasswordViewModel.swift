@@ -13,12 +13,14 @@ final class ForgotPasswordViewModel: ObservableObject {
 
 	@Published var email: String = ""
 	@Published var loadingState: LoadingState = .failure
+    @Published var loginAttempts = 0
 
 	// MARK: - Public Functions
 
 	func resetPassword() async throws {
 		guard !email.isEmpty else {
 			print("🙏 Please enter email!")
+            loginAttempts += 1
 			return
 		}
 	}

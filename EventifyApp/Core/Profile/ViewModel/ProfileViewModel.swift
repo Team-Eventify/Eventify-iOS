@@ -10,6 +10,8 @@ import SwiftUI
 final class ProfileViewModel: ObservableObject {
 	// MARK: - Public Properties
 	@AppStorage("isLogin") var isLogin: Bool = false
+    @Published var name: String = ""
+    @Published var surname: String = ""
 
 	@Published var selectedPicker: Int = 0 {
 		didSet {
@@ -20,4 +22,9 @@ final class ProfileViewModel: ObservableObject {
 			}
 		}
 	}
+    
+    func updateUserInfo() {
+        name = UserDefaultsManager.shared.getFirstName() ?? "Имя"
+        surname = UserDefaultsManager.shared.getMiddleName() ?? "Фамилия"
+    }
 }

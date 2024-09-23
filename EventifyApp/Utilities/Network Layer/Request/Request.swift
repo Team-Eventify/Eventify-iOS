@@ -99,6 +99,7 @@ class Request {
                 let errorMessage =
                     String(data: data, encoding: .utf8) ?? "Unknown error"
                 print("Unexpected Error: \(errorMessage)")
+                print(errorMessage)
                 throw RequestError.unknown
             }
         } catch {

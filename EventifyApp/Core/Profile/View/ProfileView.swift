@@ -16,9 +16,6 @@ struct ProfileView: View {
 	@State var showingDeleteAlert: Bool = false
 	@State var showingExitAlert: Bool = false
 	@State var navigateToSignUp: Bool = false
-    
-    let name = UserDefaultsManager.shared.getFirstName() ?? "Имя"
-    let surname = UserDefaultsManager.shared.getMiddleName() ?? "Фамилия"
 
 	// MARK: - Initialization
 
@@ -131,6 +128,10 @@ struct ProfileView: View {
 				.scrollContentBackground(.hidden)
 				.listStyle(.insetGrouped)
 			}
+            .onAppear {
+                viewModel.updateUserInfo()
+            }
+            
 			.navigationTitle("Профиль")
 			.navigationBarTitleDisplayMode(.large)
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -145,7 +146,7 @@ struct ProfileView: View {
         } label: {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(name + " " + surname)
+                    Text(viewModel.name + " " + viewModel.surname)
                         .font(.mediumCompact(size: 24))
                         .foregroundStyle(.black)
                     Text("Редактировать профиль")

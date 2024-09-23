@@ -14,6 +14,7 @@ final class SignUpViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var loadingState: LoadingState = .none
+    @Published var loginAttempts = 0
 
     // MARK: - Private Properties
 
@@ -34,6 +35,7 @@ final class SignUpViewModel: ObservableObject {
     /// Отправляет запрос на регистрацию
     func signUp() {
         guard !email.isEmpty, !password.isEmpty else {
+            loginAttempts += 1
             return
         }
 
@@ -43,13 +45,14 @@ final class SignUpViewModel: ObservableObject {
         Task { @MainActor in
             do {
                 let response = try await signUpService.signUp(json: userData)
-                KeychainManager.shared.set(response.userId, key: KeychainKeys.userId)
+                KeychainManager.shared.set(response.userID, key: KeychainKeys.userId)
                 KeychainManager.shared.set(response.accessToken, key: KeychainKeys.accessToken)
                 KeychainManager.shared.set(response.refreshToken, key: KeychainKeys.refreshToken)
                 KeychainManager.shared.set(email, key: KeychainKeys.userEmail)
                 KeychainManager.shared.set(password, key: KeychainKeys.userPassword)
                 loadingState = .loaded
             } catch {
+                loginAttempts += 1
                 loadingState = .failure
                 try? await Task.sleep(nanoseconds: 2_000_000_000)
                 loadingState = .none

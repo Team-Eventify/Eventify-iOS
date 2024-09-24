@@ -104,7 +104,6 @@ private struct HeightReaderView: View {
     }
 }
 
-
 extension FlowLayout where RefreshBinding == Never? {
     init(mode: Mode,
          items: [Data],

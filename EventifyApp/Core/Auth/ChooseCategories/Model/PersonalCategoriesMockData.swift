@@ -8,31 +8,18 @@
 import Foundation
 
 enum PersonalCategoriesMockData {
-	static let categories: [[PersonalCategories]] = [
-		[
-			.init(name: "Наука", selectionColor: .red),
-			.init(name: "Спорт", selectionColor: .blue),
-			.init(name: "Творчество", selectionColor: .green)
-		],
-		[
-			.init(name: "Дизайн", selectionColor: .yellow),
-			.init(name: "Frontend", selectionColor: .orange),
-			.init(name: "Mobile", selectionColor: .purple),
-		],
-		[
-			.init(name: "Backend", selectionColor: .pink),
-			.init(name: "ML", selectionColor: .gray),
-			.init(name: "GameDev", selectionColor: .brown),
-			.init(name: "Media", selectionColor: .cyan),
-		],
-		[
-			.init(name: "Аналитика", selectionColor: .indigo),
-			.init(name: "Хакатоны", selectionColor: .mint),
-			.init(name: "Театр", selectionColor: .teal)
-		],
-		[
-			.init(name: "Наставничество", selectionColor: .science),
-			.init(name: "Студенческая жизнь", selectionColor: .sport),
-		],
-	]
+    static let categories: [PersonalCategories] = [
+        .init(name: "Наука", selectionColor: .science),
+        .init(name: "Спорт", selectionColor: .sport),
+        .init(name: "Творчество", selectionColor: .art),
+        .init(name: "Дизайн", selectionColor: .design),
+        .init(name: "Frontend", selectionColor: .frontend),
+        .init(name: "Backend", selectionColor: .backend),
+        .init(name: "ML", selectionColor: .ML),
+        .init(name: "GameDev", selectionColor: .gameDev),
+        .init(name: "Media", selectionColor: .media),
+        .init(name: "Хакатоны", selectionColor: .hackatons),
+        .init(name: "Наставничество", selectionColor: .mentoring),
+        .init(name: "Студенческая жизнь", selectionColor: .studLife)
+    ]
 }

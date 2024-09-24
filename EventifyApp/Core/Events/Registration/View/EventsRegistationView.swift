@@ -6,75 +6,104 @@
 //
 
 import SwiftUI
+import PopupView
 
 struct EventsRegistationView: View {
-	@State private var currentPage = 0
-
-	let name: String
-	let eventImages = ["poster", "poster", "poster"]
-	let cheepsTitles: [String] = ["11 сентября", "18:30", "офлайн"]
+    @StateObject private var viewModel: EventsRegistrationViewModel
+    
+    init(register: Bool) {
+           _viewModel = StateObject(wrappedValue: EventsRegistrationViewModel(register: register))
+    }
 
 	var body: some View {
 		VStack(alignment: .center, spacing: 16) {
-			TabView(selection: $currentPage) {
-				ForEach(0 ..< eventImages.count, id: \.self) { index in
-					Image(eventImages[index])
-						.resizable()
-						.scaledToFill()
-						.tag(index)
-				}
-			}
-			.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-			.frame(height: 250)
-			.clipShape(RoundedRectangle(cornerRadius: 10))
-
-			PageControl(numberOfPages: eventImages.count, currentPage: $currentPage)
-
-			EventifyCheeps(items: cheepsTitles, style: .registation)
-			Text("Дни открытых дверей — это уникальная возможность для старшеклассников больше узнать о специальностях, которым обучают в одном из лучших технических университетов России, научной деятельности под руководством учёных с мировым именем, образовательных проектах и карьерных возможностях, которые предлагает вуз, яркой студенческой жизни в Москве.")
-				.font(.regularCompact(size: 17))
+            photoCarousel
+            detailsView
 			footerView
 		}
-		.navigationTitle(name)
+        .navigationTitle(viewModel.name)
 		.padding(.horizontal, 16)
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(.bg, ignoresSafeAreaEdges: .all)
+        
+        .popup(
+            isPresented: $viewModel.isRegistered) {
+            EventifySnackBar(config: .registration)
+        } customize: {
+            $0
+                .type(
+                    .floater(
+                        useSafeAreaInset: true
+                    )
+                )
+                .disappearTo(.bottomSlide)
+                .position(.bottom)
+                .closeOnTap(true)
+                .autohideIn(3)
+        }
 	}
-}
+    
+    private var photoCarousel: some View {
+        VStack(spacing: 16) {
+            TabView(selection: $viewModel.currentPage) {
+                ForEach(0 ..< viewModel.eventImages.count, id: \.self) { index in
+                    Image(viewModel.eventImages[index])
+                        .resizable()
+                        .scaledToFill()
+                        .tag(index)
+                }
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .frame(height: 250)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            
+            PageControl(numberOfPages: viewModel.eventImages.count, currentPage: $viewModel.currentPage)
+        }
+    }
+    
+    private var detailsView: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            EventifyCheeps(items: viewModel.cheepsTitles, style: .registation)
+            Text(viewModel.description)
+                .font(.regularCompact(size: 17))
+        }
+    }
+    
+    private var footerView: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            NavigationLink {
+                TestView()
+            } label: {
+                Text("Полное описание >")
+                    .font(.mediumCompact(size: 14))
+                    .foregroundStyle(.linkButton)
+            }
 
-private var footerView: some View {
-	VStack(alignment: .leading, spacing: 0) {
-		NavigationLink {
-			TestView()
-		} label: {
-			Text("Полное описание >")
-				.font(.mediumCompact(size: 14))
-				.foregroundStyle(.linkButton)
-		}
+            Text("Организатор")
+                .font(.semiboldCompact(size: 12))
+                .foregroundStyle(.secondaryText)
+                .padding(.top, 23)
 
-		Text("Организатор")
-			.font(.semiboldCompact(size: 12))
-			.foregroundStyle(.secondaryText)
-			.padding(.top, 23)
+            HStack(spacing: 16) {
+                Image("misis")
+                    .clipShape(Circle())
+                    .frame(height: 40)
+                    .padding(.top, 8)
 
-		HStack(spacing: 16) {
-			Image("misis")
-				.clipShape(Circle())
-				.frame(height: 40)
-				.padding(.top, 8)
+                Text("МИСИС")
+                    .font(.semiboldCompact(size: 20))
+                    .foregroundStyle(.mainText)
+            }
 
-			Text("МИСИС")
-				.font(.semiboldCompact(size: 20))
-				.foregroundStyle(.mainText)
-		}
-
-		EventifyButton(title: "Записаться на ивент", isLoading: false, isDisabled: false) {
-			print("Register success ✅")
-		}
-		.padding(.top, 24)
-	}
+            EventifyButton(configuration: viewModel.register ? .registration : .cancel, isLoading: false, isDisabled: false) {
+                viewModel.isRegistered.toggle()
+                print("Register success ✅")
+            }
+            .padding(.top, 24)
+        }
+    }
 }
 
 #Preview {
-	EventsRegistationView(name: "День открытых дверей МИСИС")
+    EventsRegistationView(register: false)
 }

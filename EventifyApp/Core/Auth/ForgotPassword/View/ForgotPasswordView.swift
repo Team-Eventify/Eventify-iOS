@@ -66,7 +66,7 @@ struct ForgotPasswordView: View {
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
 
             EventifyButton(
-                title: "Отправить", isLoading: false, isDisabled: false
+                configuration: .forgotPassword, isLoading: false, isDisabled: false
             ) {
                 Task {
                     do {

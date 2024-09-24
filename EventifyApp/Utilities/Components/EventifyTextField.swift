@@ -64,7 +64,7 @@ struct EventifyView: View {
 	var body: some View {
 		VStack {
 			EventifyTextField(text: $text, placeholder: "Email", isSecure: false)
-			EventifyButton(title: "Переключить состояние", isLoading: false, isDisabled: false) {
+            EventifyButton(configuration: .commom, isLoading: false, isDisabled: false) {
 				isValid.toggle()
 			}
 		}

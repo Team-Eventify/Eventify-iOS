@@ -15,6 +15,7 @@ final class SignUpViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var loadingState: LoadingState = .none
     @Published var loginAttempts = 0
+    @Published var navigateToLoginView: Bool = false
 
     // MARK: - Private Properties
 

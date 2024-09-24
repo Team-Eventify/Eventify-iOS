@@ -13,7 +13,6 @@ struct FavoritesView: View {
 
 	@StateObject private var viewModel = FavoritesViewModel()
 
-
 	// MARK: - Body
 
 	var body: some View {

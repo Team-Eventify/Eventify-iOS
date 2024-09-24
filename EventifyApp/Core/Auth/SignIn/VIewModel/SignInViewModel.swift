@@ -45,6 +45,7 @@ final class SignInViewModel: ObservableObject {
         Task { @MainActor in
             do {
                 let response = try await signInService.signIn(json: userData)
+                print(response.accessToken)
                 KeychainManager.shared.set(response.userID, key: KeychainKeys.userId)
                 KeychainManager.shared.set(response.accessToken, key: KeychainKeys.accessToken)
                 KeychainManager.shared.set(response.refreshToken, key: KeychainKeys.refreshToken)
@@ -52,7 +53,6 @@ final class SignInViewModel: ObservableObject {
                 KeychainManager.shared.set(password, key: KeychainKeys.userPassword)
                 loadingState = .loaded
                 Constants.isLogin = true
-                print(response)
             } catch {
                 loginAttempts += 1
                 loadingState = .failure

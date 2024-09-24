@@ -5,6 +5,7 @@
 //  Created by Захар Литвинчук on 07.07.2024.
 //
 
+import Flow
 import Pow
 import SwiftUI
 
@@ -64,7 +65,7 @@ struct ProfileDetail: View {
                 ?? ProfileDetailViewModel(userService: UserService())
         )
         _categoriesModel = StateObject(
-            wrappedValue: categoriesModel ?? PersonalCategoriesViewModel()
+            wrappedValue: categoriesModel ?? PersonalCategoriesViewModel(categoriesService: CategoriesService())
         )
     }
 
@@ -85,6 +86,7 @@ struct ProfileDetail: View {
             }
             .onAppear {
                 viewModel.getUser()
+                categoriesModel.getCategories()
             }
         }
         .padding(.horizontal, 16)
@@ -171,17 +173,10 @@ struct ProfileDetail: View {
                 .foregroundStyle(.secondaryText)
                 .font(.regularCompact(size: 17))
 
-            VStack(alignment: .leading, spacing: 10) {
-                ForEach(categories.indices, id: \.self) { index in
-                    HStack(spacing: 8) {
-                        ForEach(categories[index].indices, id: \.self) {
-                            inner in
-                            PersonalCategoriesCheeps(
-                                viewModel: categoriesModel,
-                                category: categories[index][inner]
-                            )
-                        }
-                    }
+            HFlow {
+                ForEach(PersonalCategoriesMockData.categories, id: \.self) { index in
+                    PersonalCategoriesCheeps(
+                        viewModel: categoriesModel, category: index)
                 }
             }
         }
@@ -190,7 +185,8 @@ struct ProfileDetail: View {
     private var saveButton: some View {
         VStack(alignment: .center, spacing: 10) {
             EventifyButton(
-                title: "Сохранить изменения", isLoading: false,
+                configuration: .saving,
+                isLoading: false,
                 isDisabled: false
             ) {
                 viewModel.patchUser()

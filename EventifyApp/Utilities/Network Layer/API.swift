@@ -23,4 +23,9 @@ enum API {
     enum Users {
         static let getUser = "users"
     }
+    
+    /// endpoint's для категорий
+    enum Categories {
+        static let getCategories = "category"
+    }
 }

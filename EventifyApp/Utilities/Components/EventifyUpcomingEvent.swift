@@ -36,7 +36,7 @@ struct EventifyUpcomingEvent: View {
 	EventifyUpcomingEvent(
 		title: "День открытых дверей университета МИСИС",
 		items: ["12 декабря", "17:30", "онлайн"],
-        color: .brandCyan
+        color: Color.brandCyan
 	)
 		.padding(.horizontal, 16)
 }

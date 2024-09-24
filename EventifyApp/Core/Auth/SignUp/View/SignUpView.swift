@@ -5,10 +5,9 @@
 //  Created by Захар Литвинчук on 13.06.2024.
 //
 
-import PopupView
-import Pow
-import SUINavigation
 import SwiftUI
+import SUINavigation
+import PopupView
 
 /// Вью экрана регистрации
 struct SignUpView: View {
@@ -16,9 +15,6 @@ struct SignUpView: View {
 
     /// ViewModel для управления логикой вью
     @StateObject private var viewModel: SignUpViewModel
-
-    /// Состояние для навигации к экрану Входа
-    @State private var navigateToLoginView: Bool = false
 
     // MARK: - Initialization
 
@@ -51,7 +47,7 @@ struct SignUpView: View {
         }
 
         /// Навигация к экрану входа
-        .navigation(isActive: $navigateToLoginView) {
+        .navigation(isActive: $viewModel.navigateToLoginView) {
             SignInView(signInService: SignInService())
         }
 
@@ -126,7 +122,7 @@ struct SignUpView: View {
     private var registrationButtonContainerView: some View {
         VStack(spacing: 20) {
             EventifyButton(
-                title: "Зарегистрироваться",
+                configuration: .signUp,
                 isLoading: viewModel.loadingState == .loading,
                 isDisabled: viewModel.loadingState == .loading
             ) {
@@ -142,19 +138,13 @@ struct SignUpView: View {
             Text("Уже есть аккаунт?")
                 .font(.regularCompact(size: 16))
             Button {
-                navigateToLoginView.toggle()
+                viewModel.navigateToLoginView.toggle()
             } label: {
                 Text("Войти")
                     .underline()
                     .font(.mediumCompact(size: 16))
                     .foregroundStyle(.brandCyan)
             }
-            .animation(.default, value: navigateToLoginView)
-            .changeEffect(
-                .shine.delay(0.5),
-                value: navigateToLoginView,
-                isEnabled: navigateToLoginView
-            )
         }
         .frame(maxWidth: .infinity)
     }

@@ -27,13 +27,6 @@ final class TokenService: Request, TokenServiceProtocol {
     }
 }
 
-// Dummy класс для временной инициализации
-private class DummyTokenService: TokenServiceProtocol {
-    func refreshTokens() async throws -> TokenResponse {
-        fatalError("This method should never be called")
-    }
-}
-
 /// Response модель токена
 struct TokenResponse: Decodable {
     let userID: String

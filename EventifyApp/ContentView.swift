@@ -14,7 +14,6 @@ struct ContentView: View {
 
     // Создаем экземпляры сервисов
     private let tokenService: TokenServiceProtocol = TokenService()
-
     
     var body: some View {
         if profileViewModel.isLogin {

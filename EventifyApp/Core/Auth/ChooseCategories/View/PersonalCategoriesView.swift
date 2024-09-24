@@ -5,87 +5,90 @@
 //  Created by Захар Литвинчук on 15.07.2024.
 //
 
+import Flow
 import SwiftUI
 
 struct PersonalCategoriesView: View {
-	// MARK: - Private Properties
+    // MARK: - Private Properties
+    
+    /// ViewModel для управления логикой вью
+    @StateObject private var viewModel: PersonalCategoriesViewModel
 
-	/// ViewModel для управления логикой вью
-	@StateObject private var viewModel: PersonalCategoriesViewModel
+    init(viewModel: PersonalCategoriesViewModel? = nil) {
+        _viewModel = StateObject(
+            wrappedValue: viewModel ?? PersonalCategoriesViewModel(categoriesService: CategoriesService())
+        )
+    }
 
-	init(viewModel: PersonalCategoriesViewModel? = nil) {
-		_viewModel = StateObject(
-			wrappedValue: viewModel ?? PersonalCategoriesViewModel()
-		)
-	}
+    // MARK: - Body
 
-	// MARK: - Body
+    var body: some View {
+        VStack(alignment: .leading, spacing: 40) {
+            Spacer()
+            headerContainer
+            cheepsSection
+            descriptionSection
+            footerContainer
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, 16)
+        .background(.bg, ignoresSafeAreaEdges: .all)
+        .navigationBarBackButtonHidden()
+    }
 
-	var body: some View {
-		VStack(alignment: .leading, spacing: 40) {
-			Spacer()
-			headerContainer
+    private var headerContainer: some View {
+        VStack(alignment: .leading, spacing: 21) {
+            Text("Выбери интересные\nтебе категории!")
+                .font(.mediumCompact(size: 35))
+                .foregroundStyle(.mainText)
 
-			VStack(alignment: .leading, spacing: 8) {
-				ForEach(PersonalCategoriesMockData.categories.indices, id: \.self) { index in
-					HStack(spacing: 8) {
-						ForEach(PersonalCategoriesMockData.categories[index].indices, id: \.self) { inner in
-							PersonalCategoriesCheeps(
-								viewModel: viewModel,
-								category: PersonalCategoriesMockData.categories[index][inner]
-							)
-						}
-					}
-				}
-			}
-			Text("Ты всегда сможешь изменить свой выбор в настройках.")
-				.font(.regularCompact(size: 17))
-				.foregroundStyle(.secondaryText)
+            Text("Мы подберём рекомендации ивентов\nпод твои вкусы.")
+                .font(.regularCompact(size: 17))
+                .foregroundStyle(.secondaryText)
+        }
+    }
 
-			footerContainer
+    private var cheepsSection: some View {
+        HFlow {
+            ForEach(PersonalCategoriesMockData.categories, id: \.self) {
+                index in
+                PersonalCategoriesCheeps(viewModel: viewModel, category: index)
+            }
+        }
+    }
+    
+    private var descriptionSection: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Ты всегда сможешь изменить свой выбор в настройках.")
+                .font(.regularCompact(size: 17))
+                .foregroundStyle(.secondaryText)
+        }
+    }
 
-			Spacer()
-		}
-		.frame(maxWidth: .infinity, maxHeight: .infinity)
-		.padding(.horizontal, 16)
-		.background(.bg, ignoresSafeAreaEdges: .all)
-		.navigationBarBackButtonHidden()
-	}
+    private var footerContainer: some View {
+        VStack(spacing: 24) {
+            EventifyButton(
+                configuration: .commom, isLoading: false,
+                isDisabled: !viewModel.isAnyCategorySelected
+            ) {
+                Constants.hasCategories = true
+                Constants.isLogin = true
+                print(Constants.isLogin)
+            }
 
-	private var headerContainer: some View {
-		VStack(alignment: .leading, spacing: 21) {
-			Text("Выбери интересные\nтебе категории!")
-				.font(.mediumCompact(size: 35))
-				.foregroundStyle(.mainText)
-
-			Text("Мы подберём рекомендации ивентов\nпод твои вкусы.")
-				.font(.regularCompact(size: 17))
-				.foregroundStyle(.secondaryText)
-		}
-	}
-
-	private var footerContainer: some View {
-		VStack(spacing: 24) {
-			EventifyButton(title: "Далее", isLoading: false, isDisabled: !viewModel.isAnyCategorySelected) {
-				Constants.hasCategories = true
-				Constants.isLogin = true
-				print(Constants.isLogin)
-			}
-
-			Button {
-				Constants.isLogin = true
-			} label: {
-				Text("Пропустить")
-					.foregroundStyle(.gray)
-					.font(.mediumCompact(size: 17))
-					.underline()
-			}
-		}
-	}
+            Button {
+                Constants.isLogin = true
+            } label: {
+                Text("Пропустить")
+                    .foregroundStyle(.gray)
+                    .font(.mediumCompact(size: 17))
+                    .underline()
+            }
+        }
+    }
 }
 
 #Preview {
-	PersonalCategoriesView()
+    PersonalCategoriesView()
 }
-
-

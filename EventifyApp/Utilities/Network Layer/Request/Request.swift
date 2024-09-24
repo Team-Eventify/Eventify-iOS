@@ -29,8 +29,7 @@ class Request {
         request.allHTTPHeaderFields = endpoint.header
 
         if let accessToken = KeychainManager.shared.get(
-            key: KeychainKeys.accessToken)
-        {
+            key: KeychainKeys.accessToken) {
             request.addValue(
                 "Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         }
@@ -43,8 +42,7 @@ class Request {
                 urlComponents?.queryItems = body.map {
                     URLQueryItem(name: $0.key, value: "\($0.value)")
                 }
-                request.url =
-                    body.count > 0
+                request.url = body.count > 0
                     ? urlComponents?.url
                     : URL(string: API.baseURL + endpoint.path)
             case .post, .put, .patch:
@@ -99,7 +97,6 @@ class Request {
                 let errorMessage =
                     String(data: data, encoding: .utf8) ?? "Unknown error"
                 print("Unexpected Error: \(errorMessage)")
-                print(errorMessage)
                 throw RequestError.unknown
             }
         } catch {

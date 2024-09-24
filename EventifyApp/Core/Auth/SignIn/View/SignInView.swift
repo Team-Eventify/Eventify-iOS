@@ -113,7 +113,7 @@ struct SignInView: View {
     private var signInButtonContainerView: some View {
         VStack(spacing: 20) {
             EventifyButton(
-                title: "Войти",
+                configuration: .signIn,
                 isLoading: viewModel.loadingState == .loading,
                 isDisabled: viewModel.loadingState == .loading
             ) {

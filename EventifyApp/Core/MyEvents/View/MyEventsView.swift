@@ -37,8 +37,13 @@ private var upcomingEvents: some View {
 			.font(.mediumCompact(size: 20))
 			.foregroundStyle(.mainText)
 		LazyVStack(spacing: 8) {
-			ForEach(MyEventsMockData.upcomingEventsData) {
-				EventifyUpcomingEvent(title: $0.title, items: $0.cheepTitles, color: $0.color)
+			ForEach(MyEventsMockData.upcomingEventsData) { event in
+                NavigationLink {
+                    EventsRegistationView(register: false)
+                } label: {
+                    EventifyUpcomingEvent(title: event.title, items: event.cheepTitles, color: event.color)
+                }
+                .buttonStyle(.plain)
 			}
 		}
 	}
@@ -54,7 +59,7 @@ private var recomendedEvents: some View {
 			LazyHStack(spacing: 8) {
 				ForEach(MyEventsMockData.recommendedEventsData) { event in
 					NavigationLink {
-						EventsRegistationView(name: event.title)
+                        EventsRegistationView(register: true)
 					} label: {
 						EventifyRecommendationEvent(
 							image: event.image,
@@ -63,7 +68,7 @@ private var recomendedEvents: some View {
 							size: .large
 						)
 					}
-					.buttonStyle(PlainButtonStyle())
+                    .buttonStyle(.plain)
 				}
 			}
 		}

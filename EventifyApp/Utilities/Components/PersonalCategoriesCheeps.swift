@@ -17,8 +17,8 @@ struct PersonalCategoriesCheeps: View {
 
 		} label: {
 			Text(category.name)
-				.font(.mediumCompact(size: 16))
-				.foregroundStyle(.mainText)
+				.font(.mediumCompact(size: 18))
+                .foregroundStyle(viewModel.selectedCategories.contains(category) ? .black : .mainText)
 		}
 		.padding(.vertical, 8)
 		.padding(.horizontal, 16)

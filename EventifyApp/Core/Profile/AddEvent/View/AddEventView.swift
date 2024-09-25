@@ -5,6 +5,7 @@
 //  Created by Захар Литвинчук on 14.09.2024.
 //
 
+import Flow
 import PhotosUI
 import SwiftUI
 
@@ -22,10 +23,12 @@ struct AddEventView: View {
         categoriesVM: PersonalCategoriesViewModel? = nil
     ) {
         _viewModel = StateObject(
-            wrappedValue: viewModel ?? AddEventViewModel()
+            wrappedValue: viewModel ?? AddEventViewModel(eventService: EventsService())
         )
         _categoriesVM = StateObject(
-            wrappedValue: categoriesVM ?? PersonalCategoriesViewModel(categoriesService: CategoriesService())
+            wrappedValue: categoriesVM
+                ?? PersonalCategoriesViewModel(
+                    categoriesService: CategoriesService())
         )
     }
 
@@ -142,29 +145,19 @@ struct AddEventView: View {
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
-//            ForEach(PersonalCategoriesMockData.categories.indices, id: \.self) {
-//                index in
-//                HStack(spacing: 8) {
-//                    ForEach(
-//                        PersonalCategoriesMockData.categories[index].indices,
-//                        id: \.self
-//                    ) { inner in
-//                        PersonalCategoriesCheeps(
-//                            viewModel: categoriesVM,
-//                            category: PersonalCategoriesMockData.categories[
-//                                index][inner]
-//                        )
-//                    }
-//                }
-//            }
+            HFlow {
+                ForEach(PersonalCategoriesMockData.categories, id: \.self) {
+                    index in
+                    PersonalCategoriesCheeps(
+                        viewModel: categoriesVM, category: index)
+                }
+            }
         }
     }
 
     private var publishButton: some View {
-        EventifyButton(
-            configuration: .addEvent, isLoading: false, isDisabled: false
-        ) {
-            print("Ивент добавлен")
+        EventifyButton(configuration: .addEvent, isLoading: false, isDisabled: false) {
+            viewModel.sendEvent()
             dismiss()
         }
     }

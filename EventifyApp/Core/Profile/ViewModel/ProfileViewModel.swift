@@ -13,16 +13,6 @@ final class ProfileViewModel: ObservableObject {
     @AppStorage("isLogin") var isLogin: Bool = false
     @Published var name: String = ""
     @Published var surname: String = ""
-
-	@Published var selectedPicker: Int = 0 {
-		didSet {
-			if selectedPicker == 0 {
-				AppColorScheme.shared.colorScheme = .dark
-			} else {
-				AppColorScheme.shared.colorScheme = .light
-			}
-		}
-	}
     
     func updateUserInfo() {
         name = UserDefaultsManager.shared.getFirstName() ?? "Имя"

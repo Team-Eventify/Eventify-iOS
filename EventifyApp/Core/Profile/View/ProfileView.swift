@@ -12,7 +12,6 @@ struct ProfileView: View {
 	// MARK: - Private Properties
 
 	@StateObject private var viewModel = ProfileViewModel()
-	@StateObject private var colorScheme = AppColorScheme.shared
 	@State var showingDeleteAlert: Bool = false
 	@State var showingExitAlert: Bool = false
 	@State var navigateToSignUp: Bool = false
@@ -33,13 +32,6 @@ struct ProfileView: View {
 		NavigationStack {
 			VStack {
 				header
-				Picker("", selection: $colorScheme.selectedTheme) {
-					Text("Тёмная тема").tag(Theme.dark)
-					Text("Светлая тема").tag(Theme.light)
-				}
-				.pickerStyle(.segmented)
-				.padding(.top, 18)
-				.padding(.horizontal, 16)
 				List {
 					Section {
 						NavigationLink {
@@ -142,7 +134,7 @@ struct ProfileView: View {
     /// Хедер карточка
     private var header: some View {
         NavigationLink {
-            ProfileDetail()
+            ProfileDetailView()
         } label: {
             HStack {
                 VStack(alignment: .leading) {

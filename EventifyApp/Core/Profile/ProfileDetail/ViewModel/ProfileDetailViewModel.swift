@@ -83,6 +83,7 @@ final class ProfileDetailViewModel: ObservableObject {
         Task { @MainActor in
             do {
                 let _ = try await userService.patchUser(id: userID ?? "No key", json: json)
+                print(KeychainManager.shared.get(key: KeychainKeys.accessToken))
                 shouldDismiss = true
                 saveToUserDefaults()
             } catch {

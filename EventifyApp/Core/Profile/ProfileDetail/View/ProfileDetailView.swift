@@ -10,7 +10,7 @@ import Pow
 import SwiftUI
 
 /// Вью детального экрана профиля
-struct ProfileDetail: View {
+struct ProfileDetailView: View {
     // MARK: - Private Properties
 
     @StateObject private var viewModel: ProfileDetailViewModel
@@ -86,7 +86,6 @@ struct ProfileDetail: View {
             }
             .onAppear {
                 viewModel.getUser()
-                categoriesModel.getCategories()
             }
         }
         .padding(.horizontal, 16)
@@ -207,5 +206,5 @@ struct ProfileDetail: View {
 }
 
 #Preview {
-    ProfileDetail()
+    ProfileDetailView()
 }

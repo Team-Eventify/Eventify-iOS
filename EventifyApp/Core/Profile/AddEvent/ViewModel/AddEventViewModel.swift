@@ -21,6 +21,16 @@ final class AddEventViewModel: ObservableObject {
 			setImages(from: imageSelections)
 		}
 	}
+    
+    private let eventService: EventsServiceProtocol
+    
+    // MARK: - Initialization
+    
+    /// Инициализатор
+    /// - Parameter eventService: сервис для отправки ивентов на бэк
+    init(eventService: EventsServiceProtocol) {
+        self.eventService = eventService
+    }
 
 	private func setImages(from selections: [PhotosPickerItem]) {
 		Task {
@@ -42,4 +52,26 @@ final class AddEventViewModel: ObservableObject {
 			selectedImages = images
 		}
 	}
+    
+    func sendEvent() {
+        
+        guard name.isEmpty, description.isEmpty else {
+            return
+        }
+        
+        let ownerID = KeychainManager.shared.get(key: KeychainKeys.userId)
+        
+        let json: JSON = [
+            "title": name,
+            "description": description,
+            "start": Int(startTime.timeIntervalSince1970),
+            "end": Int(endTime.timeIntervalSince1970),
+            "ownerID": ownerID ?? "no id"
+        ]
+        
+        Task { @MainActor in
+            let response = try await eventService.newEvent(json: json)
+            print(response)
+        }
+    }
 }

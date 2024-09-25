@@ -28,4 +28,8 @@ enum API {
     enum Categories {
         static let getCategories = "category"
     }
+    
+    enum Events {
+        static let newEvent = "events"
+    }
 }

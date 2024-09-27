@@ -33,6 +33,8 @@ class Request {
             request.addValue(
                 "Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         }
+        
+        print("🛫 Request Headers: \(request.allHTTPHeaderFields ?? [:])")
 
         if let body = endpoint.parameters {
             switch endpoint.method {
@@ -63,10 +65,10 @@ class Request {
             }
 
             print("📋 HTTP Status Code: \(httpResponse.statusCode)")
+            print("🛬 Response Headers: \(httpResponse.allHeaderFields)")
 
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-
             switch httpResponse.statusCode {
             case 200...299:
                 do {

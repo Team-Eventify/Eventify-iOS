@@ -20,28 +20,20 @@ struct ProfileDetailView: View {
     @Environment(\.dismiss)
     var dismiss
 
-    private let categories: [[PersonalCategories]] = [
-        [
+    private let categories: [PersonalCategories] = [
             .init(name: "Наука", selectionColor: .red),
             .init(name: "Спорт", selectionColor: .blue),
             .init(name: "Творчество", selectionColor: .green),
-        ],
-        [
             .init(name: "Дизайн", selectionColor: .yellow),
             .init(name: "Frontend", selectionColor: .orange),
             .init(name: "Mobile", selectionColor: .purple),
-        ],
-        [
             .init(name: "Backend", selectionColor: .pink),
             .init(name: "ML", selectionColor: .gray),
             .init(name: "GameDev", selectionColor: .brown),
             .init(name: "Media", selectionColor: .cyan),
-        ],
-        [
             .init(name: "Хакатоны", selectionColor: .mint),
             .init(name: "Театр", selectionColor: .teal),
             .init(name: "Наставничество", selectionColor: .science),
-        ],
     ]
 
     private let textFieldSections: [ProfileTextFieldModel] = [
@@ -189,6 +181,7 @@ struct ProfileDetailView: View {
                 isDisabled: false
             ) {
                 viewModel.patchUser()
+                print(KeychainManager.shared.get(key: KeychainKeys.accessToken))
                 print("📙 Saved! 📙")
             }
             .onChange(of: viewModel.shouldDismiss) { newValue in

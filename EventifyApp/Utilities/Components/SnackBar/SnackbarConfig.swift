@@ -11,6 +11,7 @@ enum SnackbarConfig {
 	case registration
 	case failure
 	case recovery
+    case failureOfAddingEvent
 
 	var text: String {
 		switch self {
@@ -20,6 +21,8 @@ enum SnackbarConfig {
 				return "Ошибка авторизации!\nПроверьте логин или пароль."
 			case .recovery:
 				return "Письмо для сброса пароля\nуспешно отправлено на почту."
+            case .failureOfAddingEvent:
+                return "Ошибка добавления мероприятия!"
 		}
 	}
 
@@ -31,6 +34,8 @@ enum SnackbarConfig {
 				return "failureIcon"
 			case .recovery:
 				return "successIcon"
+            case .failureOfAddingEvent:
+                return "failureIcon"
 		}
 	}
 }

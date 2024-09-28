@@ -46,6 +46,22 @@ struct AddEventView: View {
         }
         .navigationTitle("Создание мероприятия")
         .background(Color.bg.ignoresSafeArea())
+        
+        .popup(isPresented: $viewModel.showPopUp) {
+            EventifySnackBar(config: .failureOfAddingEvent)
+                .padding(.vertical, 50)
+        } customize: {
+            $0
+                .type(
+                    .floater(
+                        useSafeAreaInset: true
+                    )
+                )
+                .disappearTo(.bottomSlide)
+                .position(.bottom)
+                .closeOnTap(true)
+                .autohideIn(3)
+        }
     }
 
     private var eventNameSection: some View {
@@ -158,7 +174,11 @@ struct AddEventView: View {
     private var publishButton: some View {
         EventifyButton(configuration: .addEvent, isLoading: false, isDisabled: false) {
             viewModel.sendEvent()
-            dismiss()
+        }
+        .onChange(of: viewModel.shouldDismiss) { newValue in
+            if newValue {
+                dismiss()
+            }
         }
     }
 }

@@ -16,6 +16,8 @@ final class AddEventViewModel: ObservableObject {
 	@Published var endTime: Date = .init()
 	@Published var description: String = ""
 	@Published private(set) var selectedImages: [UIImage] = []
+    @Published var shouldDismiss: Bool = false
+    @Published var showPopUp: Bool = false
 	@Published var imageSelections: [PhotosPickerItem] = [] {
 		didSet {
 			setImages(from: imageSelections)
@@ -70,8 +72,14 @@ final class AddEventViewModel: ObservableObject {
         ]
         
         Task { @MainActor in
-            let response = try await eventService.newEvent(json: json)
-            print(response)
+            do {
+                let response = try await eventService.newEvent(json: json)
+                print(response)
+                shouldDismiss = true
+            } catch {
+                showPopUp = true
+                print("Error: \(error.localizedDescription)")
+            }
         }
     }
 }

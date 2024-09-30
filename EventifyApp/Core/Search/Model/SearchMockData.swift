@@ -19,10 +19,10 @@ struct SearchMockData {
         .init(title: "Творчество", image: "art", color: .art),
         .init(title: "Frontend", image: "frontend", color: .frontend),
         .init(title: "Backend", image: "backend", color: .backend),
-        .init(title: "Machine\nLearning", image: "machineLearning", color: .ML),
+        .init(title: "Machine\nLearning", image: "ML", color: .ML),
         .init(title: "Медиа", image: "media", color: .media),
         .init(title: "Хакатоны", image: "hackathons", color: .hackatons),
-        .init(title: "Студенческая\nжизнь", image: "studentLife", color: .studLife),
+        .init(title: "Студенческая\nжизнь", image: "studLife", color: .studLife),
         .init(title: "Наставничество", image: "mentoring", color: .mentoring)
     ]
 }

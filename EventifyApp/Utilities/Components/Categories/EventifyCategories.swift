@@ -17,7 +17,6 @@ struct EventifyCategories: View {
 			HStack(spacing: .zero) {
                 Spacer()
 				Image(image)
-                    .padding(.trailing, 16)
 			}
 		}
 		.frame(maxWidth: .infinity)
@@ -27,7 +26,7 @@ struct EventifyCategories: View {
 		.overlay(alignment: .topLeading) {
 			Text(text)
 				.font(.mediumCompact(size: 24))
-				.foregroundColor(.white)
+				.foregroundColor(.black)
                 .padding([.leading, .top], 16)
 		}
 	}

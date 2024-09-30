@@ -24,7 +24,8 @@ struct SearchView: View {
 				.pickerStyle(.segmented)
 
 				ScrollView(showsIndicators: false) {
-					ForEach(viewModel.searchData()) {
+                    let displayedResults = viewModel.isSearching ? viewModel.filteredResults : viewModel.searchData()
+                    ForEach(displayedResults) {
 						EventifyCategories(text: $0.title, image: $0.image, color: $0.color)
 					}
 				}
@@ -39,5 +40,8 @@ struct SearchView: View {
 }
 
 #Preview {
-	TabBarView()
+//	TabBarView()
+    NavigationStack {
+        SearchView()
+    }
 }

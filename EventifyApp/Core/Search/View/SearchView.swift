@@ -17,12 +17,6 @@ struct SearchView: View {
 
 	var body: some View {
 			VStack {
-				Picker("", selection: $viewModel.selectedPicker) {
-					Text("Для студентов").tag(0)
-					Text("Для поступающих").tag(1)
-				}
-				.pickerStyle(.segmented)
-
 				ScrollView(showsIndicators: false) {
                     let displayedResults = viewModel.isSearching ? viewModel.filteredResults : viewModel.searchData()
                     ForEach(displayedResults) {
@@ -33,7 +27,10 @@ struct SearchView: View {
 			.navigationTitle("Поиск")
 			.navigationBarTitleDisplayMode(.large)
 			.padding(.horizontal, 16)
-			.searchable(text: $viewModel.searchText)
+            .searchable(
+                text: $viewModel.searchText,
+                placement: .navigationBarDrawer(displayMode: .always)
+            )
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
 			.background(.bg, ignoresSafeAreaEdges: .all)
 	}

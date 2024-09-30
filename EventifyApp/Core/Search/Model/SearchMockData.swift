@@ -17,11 +17,4 @@ struct SearchMockData {
         .init(title: "GameDev", image: "gameDev", color: .gameDev),
         .init(title: "Дизайн", image: "design", color: .design),
     ]
-
-    /// Данные категорий для абитуриентов
-    static let abiturientsData: [CategoriesModel] = [
-        .init(title: "Экскурсии", image: "excursions", color: .excursions),
-        .init(title: "Курсы", image: "courses", color: .courses),
-        .init(title: "Олимпиады", image: "olimpiads", color: .olimpiads),
-    ]
 }

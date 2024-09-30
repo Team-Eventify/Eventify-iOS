@@ -50,10 +50,6 @@ final class SearchViewModel: ObservableObject {
 	// MARK: - Public Functions
 	
 	func searchData() -> [CategoriesModel] {
-		if selectedPicker == 0 {
 			return SearchMockData.studentsData
-		} else {
-			return SearchMockData.abiturientsData
-		}
 	}
 }

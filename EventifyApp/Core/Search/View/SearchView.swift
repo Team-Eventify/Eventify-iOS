@@ -40,8 +40,5 @@ struct SearchView: View {
 }
 
 #Preview {
-//	TabBarView()
-    NavigationStack {
-        SearchView()
-    }
+	TabBarView()
 }

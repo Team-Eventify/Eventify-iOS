@@ -47,6 +47,8 @@
 		EC6108B82C9D668A0088FD7B /* CellsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6108B42C9D668A0088FD7B /* CellsModel.swift */; };
 		EC6108B92C9D668A0088FD7B /* MyEventsMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6108B52C9D668A0088FD7B /* MyEventsMockData.swift */; };
 		EC6108BA2C9D668A0088FD7B /* UpcomingEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6108B62C9D668A0088FD7B /* UpcomingEventsModel.swift */; };
+		EC6772D32CABF5A800A4A0B0 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6772D22CABF5A800A4A0B0 /* ValidationRule.swift */; };
+		EC6772D52CAC22E400A4A0B0 /* EventifySecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6772D42CAC22E400A4A0B0 /* EventifySecureField.swift */; };
 		EC67C8F62C5A8BBB00316016 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67C8F52C5A8BBB00316016 /* TestView.swift */; };
 		EC7419892C56F57600E4892C /* PersonalCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7419882C56F57600E4892C /* PersonalCategories.swift */; };
 		EC74198B2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC74198A2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift */; };
@@ -144,6 +146,8 @@
 		EC6108B42C9D668A0088FD7B /* CellsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsModel.swift; sourceTree = "<group>"; };
 		EC6108B52C9D668A0088FD7B /* MyEventsMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsMockData.swift; sourceTree = "<group>"; };
 		EC6108B62C9D668A0088FD7B /* UpcomingEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsModel.swift; sourceTree = "<group>"; };
+		EC6772D22CABF5A800A4A0B0 /* ValidationRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
+		EC6772D42CAC22E400A4A0B0 /* EventifySecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifySecureField.swift; sourceTree = "<group>"; };
 		EC67C8F52C5A8BBB00316016 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		EC7419882C56F57600E4892C /* PersonalCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCategories.swift; sourceTree = "<group>"; };
 		EC74198A2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCategoriesCheeps.swift; sourceTree = "<group>"; };
@@ -358,6 +362,7 @@
 				ECFBADFB2C95F5440034BB22 /* AddPhotoButton.swift */,
 				ECDE59102CA17704000B7EFF /* SavingState.swift */,
 				EC90B6EA2CA2ACB200E2FA34 /* ButtonConfigurations.swift */,
+				EC6772D42CAC22E400A4A0B0 /* EventifySecureField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 				ECFBADF52C957DC90034BB22 /* KeychainKeys.swift */,
 				ECFAEF562C9DCE0800BCBEFD /* UserDefaultsManager.swift */,
 				ECFAEF582C9DCF5000BCBEFD /* UserDefaultsKeys.swift */,
+				EC6772D22CABF5A800A4A0B0 /* ValidationRule.swift */,
 			);
 			path = Dependecies;
 			sourceTree = "<group>";
@@ -950,6 +956,7 @@
 				ECD3269D2C1E246100FA18AB /* SignInView.swift in Sources */,
 				EC05CC922C35C4CA00F2FC8E /* FavoritesView.swift in Sources */,
 				EC7F302E2C43F27D00AFEECB /* ProfileViewModel.swift in Sources */,
+				EC6772D32CABF5A800A4A0B0 /* ValidationRule.swift in Sources */,
 				EC67C8F62C5A8BBB00316016 /* TestView.swift in Sources */,
 				EC1B2B4B2C8A3464004A1FD4 /* LoadingState.swift in Sources */,
 				ECC30A022CA3E49F00A597B2 /* EventsEndpoint.swift in Sources */,
@@ -957,6 +964,7 @@
 				ECFAEF592C9DCF5000BCBEFD /* UserDefaultsKeys.swift in Sources */,
 				ECAE783B2C44811F0022551C /* Dictionary.swift in Sources */,
 				ECDE59112CA17704000B7EFF /* SavingState.swift in Sources */,
+				EC6772D52CAC22E400A4A0B0 /* EventifySecureField.swift in Sources */,
 				EC6108B82C9D668A0088FD7B /* CellsModel.swift in Sources */,
 				EC6108B92C9D668A0088FD7B /* MyEventsMockData.swift in Sources */,
 				ECFAEF432C9D726400BCBEFD /* UserEndpoint.swift in Sources */,
@@ -1099,7 +1107,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EventifyApp/EventifyApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"EventifyApp/Preview Content\"";
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
 				ENABLE_PREVIEWS = YES;
@@ -1139,7 +1147,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EventifyApp/EventifyApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"EventifyApp/Preview Content\"";
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
 				ENABLE_PREVIEWS = YES;

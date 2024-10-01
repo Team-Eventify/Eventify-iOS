@@ -92,14 +92,13 @@ struct SignInView: View {
     /// Поля ввода для авторизации (email и пароль)
     private var authTextFields: some View {
         VStack(alignment: .trailing, spacing: 8) {
-            EventifyTextField(
-                text: $viewModel.email, placeholder: "Email", isSecure: false)
+            EventifyTextField(text: $viewModel.email, placeholder: "Email", hasError: false)
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
             .keyboardType(.emailAddress)
             .textContentType(.emailAddress)
             
-            EventifyTextField(
-                text: $viewModel.password, placeholder: "Пароль", isSecure: true
+            EventifySecureField(
+                text: $viewModel.password, isSecure: true, placeholder: "Пароль"
             )
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
             .textContentType(.password)

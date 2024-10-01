@@ -91,11 +91,7 @@ struct ProfileDetailView: View {
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
-            EventifyTextField(
-                text: $viewModel.name,
-                placeholder: "Введите имя",
-                isSecure: false
-            )
+            EventifyTextField(text: $viewModel.name, placeholder: "Введите имя", hasError: false)
         }
     }
 
@@ -105,11 +101,7 @@ struct ProfileDetailView: View {
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
-            EventifyTextField(
-                text: $viewModel.surname,
-                placeholder: "Введите фамилию",
-                isSecure: false
-            )
+            EventifyTextField(text: $viewModel.surname, placeholder: "Введите фамилию", hasError: false)
         }
     }
 
@@ -119,11 +111,7 @@ struct ProfileDetailView: View {
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
-            EventifyTextField(
-                text: $viewModel.lastName,
-                placeholder: "Введите отчество",
-                isSecure: false
-            )
+            EventifyTextField(text: $viewModel.lastName, placeholder: "Введите отчество", hasError: false)
         }
     }
 
@@ -133,10 +121,7 @@ struct ProfileDetailView: View {
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
-            EventifyTextField(
-                text: $viewModel.email,
-                placeholder: "Введите Email",
-                isSecure: false)
+            EventifyTextField(text: $viewModel.email, placeholder: "Введите Email", hasError: false)
         }
     }
 
@@ -146,11 +131,7 @@ struct ProfileDetailView: View {
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
-            EventifyTextField(
-                text: $viewModel.telegram,
-                placeholder: "Введите telegram",
-                isSecure: false
-            )
+            EventifyTextField(text: $viewModel.telegram, placeholder: "Введите telegram", hasError: false)
         }
     }
 
@@ -181,8 +162,6 @@ struct ProfileDetailView: View {
                 isDisabled: false
             ) {
                 viewModel.patchUser()
-                print(KeychainManager.shared.get(key: KeychainKeys.accessToken))
-                print("📙 Saved! 📙")
             }
             .onChange(of: viewModel.shouldDismiss) { newValue in
                 if newValue {

@@ -71,8 +71,7 @@ struct AddEventView: View {
                 .foregroundStyle(viewModel.isError ? .error : .mainText)
 
             EventifyTextField(
-                text: $viewModel.name, placeholder: "Введите название",
-                isSecure: false, hasError: viewModel.isError)
+                text: $viewModel.name, placeholder: "Введите название", hasError: viewModel.isError)
         }
     }
 

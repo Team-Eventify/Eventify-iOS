@@ -5,27 +5,17 @@
 //  Created by Захар Литвинчук on 13.06.2024.
 //
 
-import SwiftUI
-import SUINavigation
 import PopupView
+import SUINavigation
+import SwiftUI
 
-/// Вью экрана регистрации
 struct SignUpView: View {
-    // MARK: - Private Properties
-
-    /// ViewModel для управления логикой вью
     @StateObject private var viewModel: SignUpViewModel
 
-    // MARK: - Initialization
-
-    /// Инициализация
-    /// - Parameters:
-    ///   - signUpService: сервис регистрации
     init(signUpService: SignUpServiceProtocol) {
-        _viewModel = StateObject(wrappedValue: SignUpViewModel(signUpService: signUpService))
+        _viewModel = StateObject(
+            wrappedValue: SignUpViewModel(signUpService: signUpService))
     }
-
-    // MARK: - Body
 
     var body: some View {
         VStack(alignment: .leading, spacing: 60) {
@@ -41,17 +31,12 @@ struct SignUpView: View {
         .navigationBarBackButtonHidden(true)
         .background(.bg, ignoresSafeAreaEdges: .all)
         .edgesIgnoringSafeArea(.bottom)
-
         .onTapGesture {
             hideKeyboard()
         }
-
-        /// Навигация к экрану входа
         .navigation(isActive: $viewModel.navigateToLoginView) {
             SignInView(signInService: SignInService())
         }
-
-        /// Навигация к основному экрану после успешной регистрации
         .navigation(
             isActive: Binding(
                 get: { viewModel.loadingState == .loaded },
@@ -60,7 +45,6 @@ struct SignUpView: View {
         ) {
             PersonalCategoriesView()
         }
-
         .popup(
             isPresented: Binding(
                 get: { viewModel.loadingState == .failure }, set: { _ in })
@@ -68,12 +52,7 @@ struct SignUpView: View {
             EventifySnackBar(config: .failure)
         } customize: {
             $0
-                .type(
-                    .floater(
-                        verticalPadding: 10,
-                        useSafeAreaInset: true
-                    )
-                )
+                .type(.floater(verticalPadding: 10, useSafeAreaInset: true))
                 .disappearTo(.bottomSlide)
                 .position(.bottom)
                 .closeOnTap(true)
@@ -81,9 +60,6 @@ struct SignUpView: View {
         }
     }
 
-    // MARK: - UI Components
-
-    /// Контейнер с содержимым регистрации
     private var registrationContentContainerView: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Регистрация")
@@ -96,21 +72,41 @@ struct SignUpView: View {
             .font(.regularCompact(size: 17))
             .frame(width: 296)
             authTextFields
+            requirementsContainerView
         }
     }
 
-    /// Текстовые поля для ввода данных регистрации
     private var authTextFields: some View {
         VStack(spacing: 8) {
-            EventifyTextField(
-                text: $viewModel.email, placeholder: "Email", isSecure: false
-            )
+            EventifyTextField(text: $viewModel.email, placeholder: "Email", hasError: false)
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
             .keyboardType(.emailAddress)
             .textContentType(.emailAddress)
-            
-            EventifyTextField(
-                text: $viewModel.password, placeholder: "Пароль", isSecure: true
+            .overlay(
+                HStack {
+                    Spacer()
+                    Image(
+                        systemName: viewModel.isEmailValid
+                            ? "checkmark.circle.fill" : "xmark.circle.fill"
+                    )
+                    .foregroundColor(viewModel.isEmailValid ? .brandCyan : .error)
+                    .opacity(viewModel.email.isEmpty ? 0 : 1)
+                }
+                .padding(.trailing, 20)
+            )
+
+            EventifySecureField(
+                text: $viewModel.password,
+                isSecure: true,
+                placeholder: "Пароль"
+            )
+            .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
+            .textContentType(.newPassword)
+
+            EventifySecureField(
+                text: $viewModel.confirmPassword,
+                isSecure: true,
+                placeholder: "Повторите пароль"
             )
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
             .textContentType(.newPassword)
@@ -118,13 +114,21 @@ struct SignUpView: View {
         .padding(.top, 40)
     }
 
-    /// Контейнер с кнопкой регистрации
+    private var requirementsContainerView: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            ForEach(viewModel.validationRules.indices, id: \.self) { index in
+                ValidationRow(rule: viewModel.validationRules[index])
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
     private var registrationButtonContainerView: some View {
         VStack(spacing: 20) {
             EventifyButton(
                 configuration: .signUp,
                 isLoading: viewModel.loadingState == .loading,
-                isDisabled: viewModel.loadingState == .loading
+                isDisabled: viewModel.isButtonDisabled
             ) {
                 viewModel.signUp()
             }
@@ -132,7 +136,6 @@ struct SignUpView: View {
         }
     }
 
-    /// Контейнер с кнопкой для перехода на экран Входа
     private var haveAccountContainerView: some View {
         HStack(spacing: 12) {
             Text("Уже есть аккаунт?")
@@ -147,6 +150,25 @@ struct SignUpView: View {
             }
         }
         .frame(maxWidth: .infinity)
+    }
+}
+
+struct ValidationRow: View {
+    var rule: ValidationRule
+
+    private var foregroundColor: Color {
+        rule.isValid ? Color.green : Color.gray
+    }
+
+    var body: some View {
+        HStack {
+            rule.correctIcon
+                .foregroundColor(foregroundColor)
+
+            Text(rule.description)
+                .foregroundStyle(Color.secondaryText)
+                .font(.regularCompact(size: 14))
+        }
     }
 }
 

@@ -20,8 +20,11 @@ enum RequestError: Error, LocalizedError {
 	/// Неизвестный статус код
 	case unexpectedStatusCode
     
-    // Ошибка авторизации
+    /// Ошибка авторизации
     case authentinticationFailed
+    
+    /// Ошибка обновления токена
+    case tokenRefreshFailed
 
 	/// Неизвестная ошибка
 	case unknown
@@ -38,6 +41,8 @@ enum RequestError: Error, LocalizedError {
 			return "Unexpected status code received from the server."
         case .authentinticationFailed:
             return "Authentication failed."
+        case .tokenRefreshFailed:
+            return "Token refresh failed."
 		case .unknown:
 			return "An unknown error occurred."
 		}

@@ -17,7 +17,7 @@ enum CategoriesEndpoint: Endpoint {
         case .getCategories:
             return API.Categories.getCategories
         case .getUserCategories(let id):
-            return API.Users.getUser + "/\(id)"
+            return API.Users.getUser + "/\(id)/categories"
         case .setUserCategories(let id, _):
             return API.Users.getUser + "/\(id)/categories"
         }

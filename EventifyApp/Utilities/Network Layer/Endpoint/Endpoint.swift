@@ -18,7 +18,7 @@ protocol Endpoint {
 	var method: RequestMethod { get }
 
 	/// заголовок запроса
-	var header: [String: String]? { get }
+    var header: [String: String]? { get }
 
 	/// параметры запроса
 	var parameters: [String: Any]? { get }

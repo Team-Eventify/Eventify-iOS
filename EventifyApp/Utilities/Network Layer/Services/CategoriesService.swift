@@ -28,8 +28,7 @@ final class CategoriesService: Request, CategoriesServiceProtocol {
 }
 
 struct CategoriesResponse: Decodable {
-    let id: String
-    let title: String
+    let id, title: String
 }
 
 typealias CategoriesResponseModel = [CategoriesResponse]

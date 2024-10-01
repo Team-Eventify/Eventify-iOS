@@ -12,14 +12,33 @@ struct EventifyTextField: View {
 	@Binding var text: String
 	let placeholder: String
 	let isSecure: Bool
-
-	private var focusedColor: Color {
-		if isFocused {
-			return Color.mainText
-		} else {
-			return  Color.gray
-		}
-	}
+    let hasError: Bool
+    
+    private var borderColor: Color {
+        if hasError {
+            return Color.error
+        } else if isFocused {
+            return Color.mainText
+        } else {
+            return Color.gray
+        }
+    }
+    
+    /// Инициализатор `EventifyTextField`.
+    ///
+    /// Используется для создания текстового поля с возможностью отображения ошибки и конфигурации безопасности.
+    ///
+    /// - Parameters:
+    ///   - text: Привязка (`Binding`) к строке, которая отображается и редактируется в текстовом поле.
+    ///   - placeholder: Текст-заполнитель, отображаемый, когда поле пустое.
+    ///   - isSecure: Логическое значение, определяющее, является ли поле безопасным (например, для ввода пароля).
+    ///   - hasError: Логическое значение, определяющее, отображается ли красная рамка в случае ошибки. По умолчанию `false`.
+    init(text: Binding<String>, placeholder: String, isSecure: Bool, hasError: Bool = false) {
+        self._text = text
+        self.placeholder = placeholder
+        self.isSecure = isSecure
+        self.hasError = hasError
+    }
 
 	var body: some View {
 		Group {
@@ -37,12 +56,12 @@ struct EventifyTextField: View {
 		.padding(.vertical, 11)
 		.setBorder(
 			width: 1,
-			color: focusedColor,
+			color: borderColor,
 			radius: 10
 		)
 		.overlay(placeholderTextContainerView)
 		.font(.regularCompact(size: 17))
-		.foregroundStyle(focusedColor)
+		.foregroundStyle(borderColor)
 	}
 
 	private var placeholderTextContainerView: some View {

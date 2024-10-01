@@ -27,7 +27,7 @@ final class SearchViewModel: ObservableObject {
     
     private func addSubscriber() {
         $searchText
-            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .debounce(for: 0.2, scheduler: DispatchQueue.main)
             .sink { [weak self] newValue in
                 self?.filterResults(by: newValue)
             }

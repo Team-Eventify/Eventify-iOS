@@ -68,11 +68,11 @@ struct AddEventView: View {
         VStack(alignment: .leading) {
             Text("Название*")
                 .font(.mediumCompact(size: 20))
-                .foregroundStyle(.mainText)
+                .foregroundStyle(viewModel.isError ? .error : .mainText)
 
             EventifyTextField(
                 text: $viewModel.name, placeholder: "Введите название",
-                isSecure: false)
+                isSecure: false, hasError: viewModel.isError)
         }
     }
 
@@ -117,9 +117,9 @@ struct AddEventView: View {
 
     private var descriptionSection: some View {
         VStack(alignment: .leading) {
-            Text("Описание")
+            Text("Описание*")
                 .font(.mediumCompact(size: 20))
-                .foregroundStyle(.mainText)
+                .foregroundStyle(viewModel.isError ? .error : .mainText)
             TextEditor(text: $viewModel.description)
                 .frame(height: 88)
                 .scrollContentBackground(.hidden)
@@ -131,9 +131,9 @@ struct AddEventView: View {
 
     private var photosSection: some View {
         VStack(alignment: .leading) {
-            Text("Фотографии")
+            Text("Фотографии*")
                 .font(.mediumCompact(size: 20))
-                .foregroundStyle(.mainText)
+                .foregroundStyle(viewModel.isError ? .error : .mainText)
             HStack {
                 AddPhotoButton(pickerItem: $viewModel.imageSelections)
 
@@ -173,7 +173,9 @@ struct AddEventView: View {
 
     private var publishButton: some View {
         EventifyButton(configuration: .addEvent, isLoading: false, isDisabled: false) {
-            viewModel.sendEvent()
+            Task {
+                await viewModel.sendEvent()
+            }
         }
         .onChange(of: viewModel.shouldDismiss) { newValue in
             if newValue {

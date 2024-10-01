@@ -15,7 +15,7 @@ enum CheepsStyle {
     var titleColor: Color {
         switch self {
         case .registation: return .black
-        case .upcoming: return .black
+        case .upcoming: return .cheeps
         case .common: return .mainText
         }
     }
@@ -23,7 +23,7 @@ enum CheepsStyle {
     var backgroundColor: Color {
         switch self {
         case .registation: return .brandCyan
-        case .upcoming: return .clear
+        case .upcoming: return .mainText
         case .common: return .clear
         }
     }

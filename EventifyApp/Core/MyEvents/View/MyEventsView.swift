@@ -41,7 +41,7 @@ private var upcomingEvents: some View {
                 NavigationLink {
                     EventsRegistationView(register: false)
                 } label: {
-                    EventifyUpcomingEvent(title: event.title, items: event.cheepTitles, color: event.color)
+                    EventifyUpcomingEvent(title: event.title, items: event.cheepTitles)
                 }
                 .buttonStyle(.plain)
 			}

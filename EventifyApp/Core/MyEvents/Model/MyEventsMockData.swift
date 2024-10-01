@@ -14,13 +14,13 @@ enum MyEventsMockData {
     static let upcomingEventsData: [UpcomingEventsModel] = [
         .init(
             title: "Фестиваль ИКН",
-            cheepTitles: ["11 сентября", "18:00", "офлайн"], color: .brandPink),
+            cheepTitles: ["11 сентября", "18:00", "офлайн"]),
         .init(
             title: "ITAM welcome MeetUp",
-            cheepTitles: ["14 сентября", "18:30", "онлайн"], color: .brandCyan),
+            cheepTitles: ["14 сентября", "18:30", "онлайн"]),
         .init(
             title: "Wake Up MeetUP",
-            cheepTitles: ["26 сентября", "18:00", "Т-корпус"], color: .brandPink
+            cheepTitles: ["26 сентября", "18:00", "Т-корпус"]
         ),
     ]
 

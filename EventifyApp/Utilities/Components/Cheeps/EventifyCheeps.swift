@@ -25,8 +25,8 @@ struct EventifyCheeps: View {
 				.frame(height: 20)
 				.padding(.vertical, 4)
 				.padding(.horizontal, 8)
-				.background(style == .registation ? style.backgroundColor : .clear)
-				.clipShape(style == .registation ? AnyShape(Capsule()) : AnyShape(Rectangle()))
+                .background(style != .common ? style.backgroundColor : .clear)
+                .clipShape(style != .common ? AnyShape(Capsule()) : AnyShape(Rectangle()))
 				.overlay {
 					if style == .common {
 						Capsule()
@@ -45,5 +45,5 @@ struct EventifyCheeps: View {
 }
 
 #Preview {
-	EventifyCheeps(items: ["MISOS", "фьючер", "ГОЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛ", "ЛЕГЕНДЫ"], style: .registation)
+    EventifyCheeps(items: ["MISOS", "фьючер", "ГОЛЛЛЛЛЛЛЛЛЛЛЛЛЛЛ", "ЛЕГЕНДЫ"], style: .upcoming)
 }

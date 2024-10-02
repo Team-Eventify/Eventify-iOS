@@ -15,7 +15,7 @@ struct MyEventsView: View {
 	var body: some View {
 			VStack(alignment: .leading, spacing: 56) {
 				ScrollView(showsIndicators: false) {
-					upcomingEvents
+                    contentForUpcomingEventsSection
 					recomendedEvents
 					Spacer()
 				}
@@ -29,6 +29,16 @@ struct MyEventsView: View {
 }
 
 // MARK: - UI Components
+
+/// Функция для отображения секции предстоящих мероприятий
+@ViewBuilder
+private var contentForUpcomingEventsSection: some View {
+    if MyEventsMockData.upcomingEventsData.isEmpty {
+        emptyUpcomingEvents
+    } else {
+        upcomingEvents
+    }
+}
 
 /// Карточки предстоящих мероприятий
 private var upcomingEvents: some View {
@@ -47,6 +57,21 @@ private var upcomingEvents: some View {
 			}
 		}
 	}
+}
+
+/// Вью, которое показывается в случае отсутствия
+/// предстоящих мероприятий
+private var emptyUpcomingEvents: some View {
+    VStack {
+        Image(systemName: "bookmark")
+            .font(.system(size: 60))
+        Text("Нет предстоящих\nмероприятий")
+            .font(.body)
+            .multilineTextAlignment(.center)
+            .padding(.top, 5)
+    }
+    .foregroundStyle(.secondary)
+    .padding(80)
 }
 
 /// Карточки рекомендуемых мероприятий

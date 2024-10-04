@@ -77,7 +77,7 @@ struct ProfileView: View {
 							Button(role: .cancel) {
 								Constants.isLogin = false
                                 UserDefaultsManager.shared.clearAllUserData()
-								print("🚪 Exit from account")
+                                Log.info("🚪 Exit from account")
 							} label: {
 								Text("Да")
 									.foregroundStyle(.error)
@@ -101,14 +101,14 @@ struct ProfileView: View {
 							Button(role: .cancel) {
 								Constants.isLogin = false
                                 UserDefaultsManager.shared.clearAllUserData()
-								print("🪓 delete account")
+                                Log.info("🪓 delete account")
 							} label: {
 								Text("Да")
 									.foregroundStyle(.error)
 							}
 
 							Button {
-								print("✏️ resume account")
+                                Log.info("✏️ resume account")
 							} label: {
 								Text("Нет")
 									.foregroundStyle(.mainText)

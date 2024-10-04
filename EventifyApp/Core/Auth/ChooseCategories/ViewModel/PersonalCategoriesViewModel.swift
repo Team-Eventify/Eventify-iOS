@@ -21,7 +21,7 @@ final class PersonalCategoriesViewModel: ObservableObject {
         Task { @MainActor in
             do {
                 let response = try await categoriesService.getCategories()
-                print(response)
+                Log.info("\(response)")
             }
         }
     }

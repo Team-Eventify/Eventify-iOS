@@ -13,7 +13,7 @@ class RequestEncoder {
 		do {
 			return try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
 		} catch {
-			print(error)
+            Log.error("", error: error)
 			return nil
 		}
 	}

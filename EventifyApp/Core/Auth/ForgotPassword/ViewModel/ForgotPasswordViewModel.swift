@@ -19,7 +19,7 @@ final class ForgotPasswordViewModel: ObservableObject {
 
 	func resetPassword() async throws {
 		guard !email.isEmpty else {
-			print("🙏 Please enter email!")
+            Log.warning("🙏 Please enter email!")
             loginAttempts += 1
 			return
 		}

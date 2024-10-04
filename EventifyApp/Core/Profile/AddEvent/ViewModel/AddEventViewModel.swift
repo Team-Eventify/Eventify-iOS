@@ -48,7 +48,7 @@ final class AddEventViewModel: ObservableObject {
 					}
 					images.append(uiImage)
 				} catch {
-					print(error)
+                    Log.error("", error: error)
 				}
 			}
 
@@ -94,11 +94,11 @@ final class AddEventViewModel: ObservableObject {
         Task { @MainActor in
             do {
                 let response = try await eventService.newEvent(json: json)
-                print(response)
+                Log.info("\(response)")
                 shouldDismiss = true
             } catch {
                 showPopUp = true
-                print("Error: \(error.localizedDescription)")
+                Log.error("", error: error)
             }
         }
     }

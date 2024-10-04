@@ -54,7 +54,7 @@ final class ProfileDetailViewModel: ObservableObject {
     /// Получение данных пользователя
     func getUser() {
         if areAllFieldsFilled() {
-            print("All fields are filled! ✏️")
+            Log.info("All fields are filled! ✏️")
             return
         }
         
@@ -83,12 +83,11 @@ final class ProfileDetailViewModel: ObservableObject {
         Task { @MainActor in
             do {
                 let _ = try await userService.patchUser(id: userID ?? "No key", json: json)
-                print(KeychainManager.shared.get(key: KeychainKeys.accessToken))
                 shouldDismiss = true
                 saveToUserDefaults()
             } catch {
                 isLoading = false
-                print("Error: \(error.localizedDescription)")
+                Log.error("", error: error)
             }
         }
     }

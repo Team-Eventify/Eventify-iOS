@@ -70,7 +70,7 @@ struct ForgotPasswordView: View {
                     do {
                         try await viewModel.resetPassword()
                     } catch {
-                        print(error.localizedDescription)
+                        Log.error(error.localizedDescription)
                     }
                 }
             }

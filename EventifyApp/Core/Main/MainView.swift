@@ -33,7 +33,7 @@ struct MainView: View {
         .onAppear {
             Task { @MainActor in
                 let response = try await categoriesService.getCategories()
-                print(response)
+                Log.info("\(response)")
             }
         }
     }

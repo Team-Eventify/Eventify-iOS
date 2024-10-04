@@ -74,7 +74,6 @@ struct PersonalCategoriesView: View {
             ) {
                 Constants.hasCategories = true
                 Constants.isLogin = true
-                print(Constants.isLogin)
             }
 
             Button {

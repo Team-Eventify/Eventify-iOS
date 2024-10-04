@@ -25,7 +25,7 @@ private extension TabBarView {
 	/// Содержимое таб-бара
 	var tabbarContent: some View {
 		VStack(spacing: 0) {
-			TabbarScreens(contentMode: selectedTab)
+            TabbarScreens(contentMode: $selectedTab)
 				.frame(maxWidth: .infinity, maxHeight: .infinity)
 			HStack {
 				buttons

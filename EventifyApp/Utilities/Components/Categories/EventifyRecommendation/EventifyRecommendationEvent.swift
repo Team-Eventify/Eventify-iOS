@@ -9,16 +9,22 @@ import SwiftUI
 
 /// Вью ячейки организаторов
 struct EventifyRecommendationEvent: View {
-	let image: String
-	let title: String
+    /// Изображение для события.
+    let image: String
+    /// Заголовок события.
+    let title: String
+    /// Описание события.
     let description: String?
-	let cheepsItems: [String]
-	let size: EventCellSize
+    /// Элементы для отображения (например, дата, время, формат).
+    let cheepsItems: [String]
+    /// Размер ячейки события.
+    let size: EventCellSize
     
     private var isFlexible: Bool {
         return size == .flexible
     }
     
+    /// Инициализирует `EventifyRecommendationEvent` с изображением, заголовком, описанием, элементами и размером.
     init(image: String, title: String, description: String? = nil, cheepsItems: [String], size: EventCellSize) {
         self.image = image
         self.title = title

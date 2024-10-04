@@ -7,8 +7,10 @@
 
 import Foundation
 
-
+/// Моковые данные для главного экрана
 struct MainMockData {
+    
+    /// Моковые данные популярных ивентов.
     static let popularEvents: [EventifyRecommendationModel] = [
         EventifyRecommendationModel(
             image: "recomm",
@@ -33,6 +35,7 @@ struct MainMockData {
         )
     ]
     
+    /// Моковые данные категорий на основе интересов.
     static let categoriesBasedOnInterests: [CategoriesModel] = [
             .init(title: "Спорт", image: "sport", color: .sport),
             .init(title: "Наука", image: "science", color: .science),

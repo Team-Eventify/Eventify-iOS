@@ -7,15 +7,17 @@
 
 import SwiftUI
 
+/// ViewModel для главного экрана, управляет получением данных
 @MainActor
 final class MainViewModel: ObservableObject {
     
-    
+    /// Возвращает данные популярных ивентов.
     func getPopularEventsData() -> [EventifyRecommendationModel] {
         return MainMockData.popularEvents
     }
     
-    func interestsCategories()  -> [CategoriesModel] {
+    /// Возвращает категории на основе интересов.
+    func interestsCategories() -> [CategoriesModel] {
         return MainMockData.categoriesBasedOnInterests
     }
 }

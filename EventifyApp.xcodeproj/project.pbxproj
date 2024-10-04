@@ -231,7 +231,6 @@
 		0331D2DC2C872D5700DA577C /* Cheeps */ = {
 			isa = PBXGroup;
 			children = (
-				85AA84632CAF0C96005AB337 /* EventifyRecommendation */,
 				0331D2DD2C872D6700DA577C /* CheepsStyle.swift */,
 				EC1056702C3B11BA00CEB625 /* EventifyCheeps.swift */,
 			);
@@ -781,6 +780,7 @@
 		ECEC36F12C4C0E9400C6BFD7 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				85AA84632CAF0C96005AB337 /* EventifyRecommendation */,
 				EC1056652C3AC43B00CEB625 /* CategoriesModel.swift */,
 				EC8116FA2C3897210083419D /* EventifyCategories.swift */,
 			);

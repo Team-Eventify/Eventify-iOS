@@ -12,13 +12,16 @@ struct MainView: View {
     // MARK: - Private Properties
 
     @StateObject private var viewModel = MainViewModel()
+    @Binding private var selectedTab: Tab
     
 	// MARK: - Body
     
     private let categoriesService: CategoriesServiceProtocol
     
-    init(categoriesService: CategoriesServiceProtocol) {
+    /// Инициализирует MainView с сервисом категорий и привязкой активной вкладки
+    init(categoriesService: CategoriesServiceProtocol, selectedTab: Binding<Tab>) {
         self.categoriesService = categoriesService
+        self._selectedTab = selectedTab
     }
 
     var body: some View {
@@ -65,8 +68,10 @@ struct MainView: View {
                 ForEach(viewModel.interestsCategories()) {
                     EventifyCategories(text: $0.title, image: $0.image, color: $0.color)
                 }
-                NavigationLink {
-                    
+                Button {
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                        selectedTab = .search
+                    }
                 } label: {
                     HStack(spacing: 4) {
                         Text("Посмотреть больше категорий")
@@ -84,5 +89,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView(categoriesService: CategoriesService())
+    MainView(categoriesService: CategoriesService(), selectedTab: .constant(.main))
 }

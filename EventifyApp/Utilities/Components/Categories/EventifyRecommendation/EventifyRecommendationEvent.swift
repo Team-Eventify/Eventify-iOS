@@ -79,7 +79,7 @@ struct EventifyRecommendationEvent: View {
         if description != nil {
             VStack(alignment: .leading) {
                 Text(description!)
-                    .font(.mediumCompact(size: 17))
+                    .font(.regularCompact(size: 17))
                     .foregroundStyle(.mainText)
             }
         }

@@ -14,4 +14,8 @@ final class MainViewModel: ObservableObject {
     func getPopularEventsData() -> [EventifyRecommendationModel] {
         return MainMockData.popularEvents
     }
+    
+    func interestsCategories()  -> [CategoriesModel] {
+        return MainMockData.categoriesBasedOnInterests
+    }
 }

@@ -32,4 +32,10 @@ struct MainMockData {
             size: .flexible
         )
     ]
+    
+    static let categoriesBasedOnInterests: [CategoriesModel] = [
+            .init(title: "Спорт", image: "sport", color: .sport),
+            .init(title: "Наука", image: "science", color: .science),
+            .init(title: "GameDev", image: "gameDev", color: .gameDev)
+        ]
 }

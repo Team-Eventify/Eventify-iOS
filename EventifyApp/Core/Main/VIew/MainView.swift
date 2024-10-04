@@ -9,6 +9,10 @@ import SwiftUI
 
 /// Вью главного экрана
 struct MainView: View {
+    // MARK: - Private Properties
+
+    @StateObject private var viewModel = MainViewModel()
+    
 	// MARK: - Body
     
     private let categoriesService: CategoriesServiceProtocol
@@ -18,14 +22,20 @@ struct MainView: View {
     }
 
     var body: some View {
-        VStack(spacing: 16) {
-            Text("📺 Main Screen 📺")
-                .font(.semiboldCompact(size: 24))
-                .foregroundStyle(.mainText)
-            Text("⚠️ Work in progress ⚠️")
-                .font(.semiboldCompact(size: 16))
-                .foregroundStyle(.foreground)
+        ScrollView {
+            Section {
+                Text("Популярные ивенты")
+                    .font(.mediumCompact(size: 24))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            LazyVStack(spacing: 30) {
+                ForEach(viewModel.getPopularEventsData()) {
+                    EventifyRecommendationEvent(image: $0.image, title: $0.title, description: $0.description, cheepsItems: $0.cheepsItems, size: $0.size)
+                }
+            }
         }
+        .scrollIndicators(.hidden)
+        .padding(.horizontal, 16)
         .navigationTitle("Главная")
         .navigationBarTitleDisplayMode(.large)
         .frame(maxWidth: .infinity, maxHeight: .infinity)

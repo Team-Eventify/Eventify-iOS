@@ -97,7 +97,11 @@ struct EventsRegistationView: View {
 
             EventifyButton(configuration: viewModel.register ? .registration : .cancel, isLoading: false, isDisabled: false) {
                 viewModel.isRegistered.toggle()
-                print("Register success ✅")
+                if viewModel.isRegistered {
+                        Log.info("Пользователь зарегистрировался на мероприятие")
+                    } else {
+                        Log.info("Пользователь отменил регистрацию на мероприятие")
+                }
             }
             .padding(.top, 24)
         }

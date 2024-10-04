@@ -28,19 +28,19 @@ class Request {
             throw RequestError.invalidURL
         }
 
-        print("Request URL: \(url)")
+        Log.info("Request URL: \(url)")
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.header
 
         if let accessToken = KeychainManager.shared.get(key: KeychainKeys.accessToken) {
             request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-            print("🔐 Access Token added to request: \(accessToken)")
+            Log.info("Access Token added to request: \(accessToken)")
         } else {
-            print("⚠️ No access token found in Keychain")
+            Log.warning("No access token found in Keychain")
         }
         
-        print("🛫 Request Headers: \(request.allHTTPHeaderFields ?? [:])")
+        Log.info("Request Headers: \(request.allHTTPHeaderFields ?? [:])")
 
         if let body = endpoint.parameters {
             switch endpoint.method {
@@ -63,8 +63,8 @@ class Request {
                 throw RequestError.noResponse
             }
 
-            print("📋 HTTP Status Code: \(httpResponse.statusCode)")
-            print("🛬 Response Headers: \(httpResponse.allHeaderFields)")
+            Log.info("📋 HTTP Status Code: \(httpResponse.statusCode)")
+            Log.info("🛬 Response Headers: \(httpResponse.allHeaderFields)")
 
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -75,27 +75,27 @@ class Request {
                     let decodedResponse = try decoder.decode(responseModel, from: data)
                     return decodedResponse
                 } catch {
-                    print("Decoding Error: \(error)")
+                    Log.error("Decoding Error", error: error)
                     throw RequestError.decode
                 }
             case 400:
                 let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
-                print("400 Error: \(errorMessage)")
+                Log.error("400 Error: \(errorMessage)")
                 throw RequestError.unexpectedStatusCode
             case 401:
-                print("🔄 Starting token refresh")
+                Log.info("🔄 Starting token refresh")
                 do {
                     let tokenResponse = try await TokenService.shared.refreshTokens()
-                    print("🔐 Token Response: \(tokenResponse)")
+                    Log.info("🔐 Token Response: \(tokenResponse)")
                     KeychainManager.shared.set(tokenResponse.accessToken, key: KeychainKeys.accessToken)
                     KeychainManager.shared.set(tokenResponse.refreshToken, key: KeychainKeys.refreshToken)
                     
-                    print("🔑 New Access Token: \(tokenResponse.accessToken)")
+                    Log.info("🔑 New Access Token: \(tokenResponse.accessToken)")
                     
                     // Создаем новый эндпоинт с обновленными заголовками
                     let newEndpoint = RefreshedEndpoint(original: endpoint, newToken: tokenResponse.accessToken)
                     
-                    print("🔁 Retrying request with new token")
+                    Log.info("🔁 Retrying request with new token")
                     // Отправляем запрос с обновленным эндпоинтом
                     return try await sendRequest(
                         endpoint: newEndpoint,
@@ -103,12 +103,12 @@ class Request {
                         urlEncoded: urlEncoded
                     )
                 } catch {
-                    print("❌ Error during token refresh: \(error)")
+                    Log.error("Error during token refresh", error: error)
                     throw RequestError.tokenRefreshFailed
                 }
             default:
                 let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
-                print("Unexpected Error: \(errorMessage)")
+                Log.error("Unexpected Error: \(errorMessage)")
                 throw RequestError.unknown
             }
                 

@@ -51,12 +51,12 @@ enum Tab: CaseIterable, Hashable {
 
 /// Экраны вкладок
 struct TabbarScreens: View {
-    var contentMode: Tab
+    @Binding var contentMode: Tab
 
     @ViewBuilder
     var body: some View {
         switch contentMode {
-        case .main: MainView(categoriesService: CategoriesService())
+        case .main: MainView(categoriesService: CategoriesService(), selectedTab: $contentMode)
         case .search: SearchView()
         case .myEvents: MyEventsView()
         case .profile: ProfileView()

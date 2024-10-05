@@ -382,8 +382,9 @@
 			isa = PBXGroup;
 			children = (
 				ECEC36F12C4C0E9400C6BFD7 /* Categories */,
-				EC74198A2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift */,
+				85AA84632CAF0C96005AB337 /* EventifyRecommendation */,
 				EC268B1F2C1CC52200F26DC5 /* EventifyTextField.swift */,
+				EC74198A2C56F9AE00E4892C /* PersonalCategoriesCheeps.swift */,
 				EC268B212C1CC59C00F26DC5 /* EventifyButton.swift */,
 				EC10566E2C3B0C3C00CEB625 /* EventifyUpcomingEvent.swift */,
 				0331D2DC2C872D5700DA577C /* Cheeps */,
@@ -780,7 +781,6 @@
 		ECEC36F12C4C0E9400C6BFD7 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				85AA84632CAF0C96005AB337 /* EventifyRecommendation */,
 				EC1056652C3AC43B00CEB625 /* CategoriesModel.swift */,
 				EC8116FA2C3897210083419D /* EventifyCategories.swift */,
 			);

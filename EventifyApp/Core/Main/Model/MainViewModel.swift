@@ -8,7 +8,6 @@
 import SwiftUI
 
 /// ViewModel для главного экрана, управляет получением данных
-@MainActor
 final class MainViewModel: ObservableObject {
     
     /// Возвращает данные популярных ивентов.

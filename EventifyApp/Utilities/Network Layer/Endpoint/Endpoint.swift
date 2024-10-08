@@ -19,6 +19,8 @@ protocol Endpoint {
 
 	/// заголовок запроса
     var header: [String: String]? { get }
+    
+    var addAuthorizationToken: Bool { get }
 
 	/// параметры запроса
 	var parameters: [String: Any]? { get }

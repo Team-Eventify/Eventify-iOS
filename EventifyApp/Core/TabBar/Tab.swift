@@ -56,7 +56,7 @@ struct TabbarScreens: View {
     @ViewBuilder
     var body: some View {
         switch contentMode {
-        case .main: MainView(categoriesService: CategoriesService(), selectedTab: $contentMode)
+        case .main: MainView(eventsService: EventsService(), selectedTab: $contentMode)
         case .search: SearchView()
         case .myEvents: MyEventsView()
         case .profile: ProfileView()

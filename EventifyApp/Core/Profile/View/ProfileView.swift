@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WishKit
 
 /// Вью экрана "Профиль"
 struct ProfileView: View {
@@ -24,6 +25,13 @@ struct ProfileView: View {
 		_viewModel = StateObject(
 			wrappedValue: viewModel ?? ProfileViewModel()
 		)
+        WishKit.configure(with: "C55735FB-7D7F-47AC-8562-C7486907DD08")
+        WishKit.theme.primaryColor = .brandCyan
+        WishKit.config.localization.implemented = "Выполнено"
+        WishKit.config.localization.approved = "Одобрено"
+        WishKit.config.localization.cancel = "Отмена"
+        WishKit.config.localization.createWish = "Создать желание"
+        WishKit.config.localization.detail = "Подробнее"
 	}
 
 	// MARK: - Body
@@ -48,7 +56,9 @@ struct ProfileView: View {
 							Text("Уведомления")
 						}
 
-						NavigationLink {} label: {
+						NavigationLink {
+                            WishKit.FeedbackListView().withNavigation()
+                        } label: {
 							Text("Помощь и поддержка")
 						}
 					}
@@ -77,6 +87,7 @@ struct ProfileView: View {
 							Button(role: .cancel) {
 								Constants.isLogin = false
                                 UserDefaultsManager.shared.clearAllUserData()
+                                KeychainManager.shared.clearAll()
                                 Log.info("🚪 Exit from account")
 							} label: {
 								Text("Да")

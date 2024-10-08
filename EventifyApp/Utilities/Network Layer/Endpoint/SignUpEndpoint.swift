@@ -26,6 +26,8 @@ enum SignUpEndpoint: Endpoint {
 	}
 
 	var header: [String: String]? { return nil }
+    
+    var addAuthorizationToken: Bool { return false }
 
 	var parameters: JSON? {
 		switch self {

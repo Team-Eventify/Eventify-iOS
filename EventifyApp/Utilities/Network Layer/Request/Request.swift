@@ -7,22 +7,14 @@
 
 import Foundation
 
-/// Основной класс запросов
 class Request {
-    /// Максимальное количество попыток обновления токена
     private let maxTokenRefreshAttempts = 3
     
-    /// Отправляет запросы в сеть
-    /// - Parameters:
-    ///   - endpoint: конечная точка запроса
-    ///   - responseModel: модель ответа
-    ///   - urlEncoded: флаг для URL-кодирования
-    ///   - tokenRefreshCount: счетчик попыток обновления токена
-    /// - Returns: данные из сети
     func sendRequest<T: Decodable>(
         endpoint: Endpoint,
         responseModel: T.Type,
-        urlEncoded: Bool = false
+        urlEncoded: Bool = false,
+        tokenRefreshCount: Int = 0
     ) async throws -> T {
         guard let url = URL(string: API.baseURL + endpoint.path) else {
             throw RequestError.invalidURL
@@ -33,27 +25,27 @@ class Request {
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.header
 
-        if let accessToken = KeychainManager.shared.get(key: KeychainKeys.accessToken) {
-            request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-            Log.info("Access Token added to request: \(accessToken)")
-        } else {
-            Log.warning("No access token found in Keychain")
+        if endpoint.addAuthorizationToken {
+            if let accessToken = KeychainManager.shared.get(key: KeychainKeys.accessToken) {
+                request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+                Log.info("Access Token added to request: \(accessToken)")
+            } else {
+                Log.warning("No access token found in Keychain")
+            }
         }
-        
+
         Log.info("Request Headers: \(request.allHTTPHeaderFields ?? [:])")
 
         if let body = endpoint.parameters {
             switch endpoint.method {
             case .get:
                 var urlComponents = URLComponents(string: API.baseURL + endpoint.path)
-                urlComponents?.queryItems = body.map {
-                    URLQueryItem(name: $0.key, value: "\($0.value)")
-                }
+                urlComponents?.queryItems = body.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
                 request.url = body.count > 0 ? urlComponents?.url : URL(string: API.baseURL + endpoint.path)
             case .post, .put, .patch:
                 request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
-                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.addValue("application/json", forHTTPHeaderField: "Accept")
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.setValue("application/json", forHTTPHeaderField: "Accept")
             }
         }
 
@@ -68,7 +60,7 @@ class Request {
 
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
+
             switch httpResponse.statusCode {
             case 200...299:
                 do {
@@ -78,29 +70,32 @@ class Request {
                     Log.error("Decoding Error", error: error)
                     throw RequestError.decode
                 }
-            case 400:
-                let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
-                Log.error("400 Error: \(errorMessage)")
-                throw RequestError.unexpectedStatusCode
             case 401:
-                Log.info("🔄 Starting token refresh")
+                if tokenRefreshCount >= maxTokenRefreshAttempts {
+                    throw RequestError.maxTokenRefreshAttemptsReached
+                }
+                Log.info("🔄 Starting token refresh. Attempt \(tokenRefreshCount + 1) of \(maxTokenRefreshAttempts)")
+                
                 do {
+                    try await Task.sleep(nanoseconds: 1_000_000_000) // Задержка в 1 секунду
                     let tokenResponse = try await TokenService.shared.refreshTokens()
                     Log.info("🔐 Token Response: \(tokenResponse)")
-                    KeychainManager.shared.set(tokenResponse.accessToken, key: KeychainKeys.accessToken)
-                    KeychainManager.shared.set(tokenResponse.refreshToken, key: KeychainKeys.refreshToken)
-                    
+
+                    guard KeychainManager.shared.set(tokenResponse.accessToken, key: KeychainKeys.accessToken),
+                          KeychainManager.shared.set(tokenResponse.refreshToken, key: KeychainKeys.refreshToken) else {
+                        throw RequestError.tokenSaveFailed
+                    }
+
                     Log.info("🔑 New Access Token: \(tokenResponse.accessToken)")
-                    
-                    // Создаем новый эндпоинт с обновленными заголовками
+
                     let newEndpoint = RefreshedEndpoint(original: endpoint, newToken: tokenResponse.accessToken)
-                    
+
                     Log.info("🔁 Retrying request with new token")
-                    // Отправляем запрос с обновленным эндпоинтом
                     return try await sendRequest(
                         endpoint: newEndpoint,
                         responseModel: responseModel,
-                        urlEncoded: urlEncoded
+                        urlEncoded: urlEncoded,
+                        tokenRefreshCount: tokenRefreshCount + 1
                     )
                 } catch {
                     Log.error("Error during token refresh", error: error)
@@ -111,32 +106,26 @@ class Request {
                 Log.error("Unexpected Error: \(errorMessage)")
                 throw RequestError.unknown
             }
-                
         } catch {
-            if let requestError = error as? RequestError,
-               case .unexpectedStatusCode = requestError {
-                throw RequestError.authentinticationFailed
-            }
             throw error
         }
     }
 }
 
-/// Обертка для обновленного эндпоинта
 struct RefreshedEndpoint: Endpoint {
     private let original: Endpoint
     private let newToken: String
-    
+
     var path: String { original.path }
     var method: RequestMethod { original.method }
     var parameters: [String: Any]? { original.parameters }
-    
+
     var header: [String: String]? {
-        var updatedHeader = original.header ?? [:]
-        updatedHeader["Authorization"] = "Bearer \(newToken)"
-        return updatedHeader
+        ["Authorization": "Bearer \(newToken)"]
     }
-    
+
+    var addAuthorizationToken: Bool { return true }
+
     init(original: Endpoint, newToken: String) {
         self.original = original
         self.newToken = newToken

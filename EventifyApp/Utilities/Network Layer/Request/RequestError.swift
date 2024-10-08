@@ -25,7 +25,13 @@ enum RequestError: Error, LocalizedError {
     
     /// Ошибка обновления токена
     case tokenRefreshFailed
-
+    
+    /// Ошибка сохранения токена
+    case tokenSaveFailed
+    
+    /// Достигнуто максимальное количество попыток обновления токена
+    case maxTokenRefreshAttemptsReached
+    
 	/// Неизвестная ошибка
 	case unknown
 
@@ -43,6 +49,10 @@ enum RequestError: Error, LocalizedError {
             return "Authentication failed."
         case .tokenRefreshFailed:
             return "Token refresh failed."
+        case .tokenSaveFailed:
+            return "Token save failed."
+        case .maxTokenRefreshAttemptsReached:
+            return "Max token refresh attempts reached."
 		case .unknown:
 			return "An unknown error occurred."
 		}

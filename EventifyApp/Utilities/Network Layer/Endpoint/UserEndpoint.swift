@@ -32,6 +32,8 @@ enum UserEndpoint: Endpoint {
     
     var header: [String : String]? { return nil }
     
+    var addAuthorizationToken: Bool { return true }
+    
     var parameters: JSON? {
         switch self {
         case .getInfo:

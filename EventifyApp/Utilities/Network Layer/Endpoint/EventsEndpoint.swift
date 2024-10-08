@@ -10,10 +10,13 @@ import Foundation
 /// Endpoint's для ивентов
 enum EventsEndpoint: Endpoint {
     case newEvent(json: JSON)
+    case listEvents
     
     var path: String {
         switch self {
         case .newEvent:
+            return API.Events.newEvent
+        case .listEvents:
             return API.Events.newEvent
         }
     }
@@ -22,15 +25,21 @@ enum EventsEndpoint: Endpoint {
         switch self {
         case .newEvent:
             return .post
+        case .listEvents:
+            return .get
         }
     }
     
     var header: [String : String]? { return nil }
     
+    var addAuthorizationToken: Bool { return true } 
+    
     var parameters: [String : Any]? {
         switch self {
         case .newEvent(let json):
             return json
+        case .listEvents:
+            return nil
         }
     }
 }

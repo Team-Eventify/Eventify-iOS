@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TelemetryDeck
 
 /// Вью главного экрана
 struct MainView: View {
@@ -16,11 +17,11 @@ struct MainView: View {
     
 	// MARK: - Body
     
-    private let categoriesService: CategoriesServiceProtocol
+    private let eventsServive: EventsServiceProtocol
     
     /// Инициализирует MainView с сервисом категорий и привязкой активной вкладки
-    init(categoriesService: CategoriesServiceProtocol, selectedTab: Binding<Tab>) {
-        self.categoriesService = categoriesService
+    init(eventsService: EventsServiceProtocol, selectedTab: Binding<Tab>) {
+        self.eventsServive = eventsService
         self._selectedTab = selectedTab
     }
 
@@ -37,9 +38,10 @@ struct MainView: View {
         .background(.bg, ignoresSafeAreaEdges: .all)
         .onAppear {
             Task { @MainActor in
-                let response = try await categoriesService.getCategories()
+                let response = try await eventsServive.listEvents()
                 Log.info("\(response)")
             }
+            TelemetryDeck.signal("Main Screen opened!")
         }
     }
     
@@ -89,5 +91,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView(categoriesService: CategoriesService(), selectedTab: .constant(.main))
+    MainView(eventsService: EventsService(), selectedTab: .constant(.main))
 }

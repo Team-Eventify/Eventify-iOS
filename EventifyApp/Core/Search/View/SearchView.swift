@@ -12,6 +12,7 @@ struct SearchView: View {
 	// MARK: - Private Properties
 
 	@StateObject private var viewModel = SearchViewModel()
+    private let categoriesService = CategoriesService()
 
 	// MARK: - Body
 
@@ -24,6 +25,12 @@ struct SearchView: View {
 					}
 				}
 			}
+            .onAppear {
+                Task { @MainActor in
+                    let response = try await categoriesService.getCategories()
+                    Log.info("\(response)")
+                }
+            }
 			.navigationTitle("Поиск")
 			.navigationBarTitleDisplayMode(.large)
 			.padding(.horizontal, 16)

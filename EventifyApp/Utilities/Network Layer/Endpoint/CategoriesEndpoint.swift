@@ -34,7 +34,11 @@ enum CategoriesEndpoint: Endpoint {
         }
     }
 
-    var header: [String: String]? { return nil }
+    var header: [String: String]? {
+        return ["Content-Type": "application/json"]
+    }
+
+    var addAuthorizationToken: Bool { return true }
 
     var parameters: JSON? {
         switch self {

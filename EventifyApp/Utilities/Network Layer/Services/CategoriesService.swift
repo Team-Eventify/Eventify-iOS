@@ -10,7 +10,7 @@ import Foundation
 protocol CategoriesServiceProtocol {
     func getCategories() async throws -> CategoriesResponseModel
     func getUserCategories(id: String) async throws -> CategoriesResponseModel
-    func setUserCategories(id: String, json: JSON) async throws -> CategoriesResponseModel
+    func setUserCategories(id: String, categoriesIds: [String]) async throws -> SetUserCategoriesModel
 }
 
 final class CategoriesService: Request, CategoriesServiceProtocol {
@@ -22,8 +22,8 @@ final class CategoriesService: Request, CategoriesServiceProtocol {
         return try await sendRequest(endpoint: CategoriesEndpoint.getUserCategories(id: id), responseModel: CategoriesResponseModel.self)
     }
     
-    func setUserCategories(id: String, json: JSON) async throws -> CategoriesResponseModel {
-        return try await sendRequest(endpoint: CategoriesEndpoint.setUserCategories(id: id, json: json), responseModel: CategoriesResponseModel.self)
+    func setUserCategories(id: String, categoriesIds: [String]) async throws -> SetUserCategoriesModel {
+        return try await sendRequest(endpoint: CategoriesEndpoint.setUserCategories(id: id, categoriesIds: categoriesIds ), responseModel: SetUserCategoriesModel.self)
     }
 }
 
@@ -32,3 +32,5 @@ struct CategoriesResponse: Decodable {
 }
 
 typealias CategoriesResponseModel = [CategoriesResponse]
+
+struct SetUserCategoriesModel: Decodable {}

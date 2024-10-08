@@ -46,6 +46,9 @@ struct AddEventView: View {
         }
         .navigationTitle("Создание мероприятия")
         .background(Color.bg.ignoresSafeArea())
+        .onAppear {
+            categoriesVM.getCategories()
+        }
         
         .popup(isPresented: $viewModel.showPopUp) {
             EventifySnackBar(config: .failureOfAddingEvent)
@@ -161,10 +164,8 @@ struct AddEventView: View {
                 .foregroundStyle(.mainText)
 
             HFlow {
-                ForEach(PersonalCategoriesMockData.categories, id: \.self) {
-                    index in
-                    PersonalCategoriesCheeps(
-                        viewModel: categoriesVM, category: index)
+                ForEach(categoriesVM.categories) { category in
+                    PersonalCategoriesCheeps(viewModel: categoriesVM, category: category)
                 }
             }
         }

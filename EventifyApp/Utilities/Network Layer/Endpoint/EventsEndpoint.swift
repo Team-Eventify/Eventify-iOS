@@ -34,7 +34,7 @@ enum EventsEndpoint: Endpoint {
     
     var addAuthorizationToken: Bool { return true } 
     
-    var parameters: [String : Any]? {
+    var parameters: JSON? {
         switch self {
         case .newEvent(let json):
             return json

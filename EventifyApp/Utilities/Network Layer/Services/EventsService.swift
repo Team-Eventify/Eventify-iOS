@@ -60,7 +60,7 @@ struct Price: Decodable {
     let currecny: String
 }
 
-struct Categories: Decodable {
+struct Categories: Decodable, Identifiable, Hashable {
     let id: String
     let title: String
 }

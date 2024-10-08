@@ -10,7 +10,7 @@ import Foundation
 enum CategoriesEndpoint: Endpoint {
     case getCategories
     case getUserCategories(id: String)
-    case setUserCategories(id: String, json: JSON)
+    case setUserCategories(id: String, categoriesIds: [String])
 
     var path: String {
         switch self {
@@ -34,10 +34,8 @@ enum CategoriesEndpoint: Endpoint {
         }
     }
 
-    var header: [String: String]? {
-        return ["Content-Type": "application/json"]
-    }
-
+    var header: [String: String]? { return nil }
+    
     var addAuthorizationToken: Bool { return true }
 
     var parameters: JSON? {
@@ -46,8 +44,8 @@ enum CategoriesEndpoint: Endpoint {
             return nil
         case .getUserCategories:
             return nil
-        case .setUserCategories(_, let json):
-            return json
+        case .setUserCategories(_, let categoriesIds):
+            return ["categories": categoriesIds]
         }
     }
 }

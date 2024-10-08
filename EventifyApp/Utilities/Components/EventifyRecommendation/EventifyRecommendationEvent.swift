@@ -40,7 +40,7 @@ struct EventifyRecommendationEvent: View {
 				.aspectRatio(contentMode: .fill)
 				.frame(
                     width: size.width,
-                    height: isFlexible ? nil : size.height! / 2
+                    height: isFlexible ? 200 : size.height! / 2
                 )
 				.clipped()
             contentWithPadding

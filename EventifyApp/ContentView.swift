@@ -9,7 +9,7 @@ import SUINavigation
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var profileViewModel = ProfileViewModel()
+    @StateObject private var profileViewModel = ProfileViewModel(userService: UserService())
 
     // Создаем экземпляры сервисов
     private let tokenService: TokenServiceProtocol = TokenService()

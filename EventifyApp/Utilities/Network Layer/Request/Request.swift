@@ -9,7 +9,7 @@ import Foundation
 
 class Request {
     private let maxTokenRefreshAttempts = 3
-    
+
     func sendRequest<T: Decodable>(
         endpoint: Endpoint,
         responseModel: T.Type,
@@ -26,8 +26,12 @@ class Request {
         request.allHTTPHeaderFields = endpoint.header
 
         if endpoint.addAuthorizationToken {
-            if let accessToken = KeychainManager.shared.get(key: KeychainKeys.accessToken) {
-                request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+            if let accessToken = KeychainManager.shared.get(
+                key: KeychainKeys.accessToken)
+            {
+                request.setValue(
+                    "Bearer \(accessToken)", forHTTPHeaderField: "Authorization"
+                )
                 Log.info("Access Token added to request: \(accessToken)")
             } else {
                 Log.warning("No access token found in Keychain")
@@ -39,18 +43,37 @@ class Request {
         if let body = endpoint.parameters {
             switch endpoint.method {
             case .get:
-                var urlComponents = URLComponents(string: API.baseURL + endpoint.path)
-                urlComponents?.queryItems = body.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
-                request.url = body.count > 0 ? urlComponents?.url : URL(string: API.baseURL + endpoint.path)
+                var urlComponents = URLComponents(
+                    string: API.baseURL + endpoint.path)
+                urlComponents?.queryItems = body.map {
+                    URLQueryItem(name: $0.key, value: "\($0.value)")
+                }
+                request.url =
+                    body.count > 0
+                    ? urlComponents?.url
+                    : URL(string: API.baseURL + endpoint.path)
             case .post, .put, .patch:
-                request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.setValue("application/json", forHTTPHeaderField: "Accept")
+                if let categoriesArray = body["categories"] as? [String],
+                    endpoint is CategoriesEndpoint
+                {
+                    // Особая обработка для массива категорий
+                    request.httpBody = try? JSONSerialization.data(
+                        withJSONObject: categoriesArray, options: [])
+                } else {
+                    // Стандартная обработка для остальных случаев
+                    request.httpBody = try? JSONSerialization.data(
+                        withJSONObject: body, options: [])
+                }
+                request.setValue(
+                    "application/json", forHTTPHeaderField: "Content-Type")
+                request.setValue(
+                    "application/json", forHTTPHeaderField: "Accept")
             }
         }
 
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await URLSession.shared.data(
+                for: request)
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw RequestError.noResponse
             }
@@ -64,7 +87,16 @@ class Request {
             switch httpResponse.statusCode {
             case 200...299:
                 do {
-                    let decodedResponse = try decoder.decode(responseModel, from: data)
+                    if data.isEmpty {
+                        if responseModel is SetUserCategoriesModel.Type {
+                            // Если ответ пустой и мы ожидаем SetUserCategoriesModel, возвращаем пустой экземпляр
+                            return SetUserCategoriesModel() as! T
+                        } else {
+                            throw RequestError.emptyResponse
+                        }
+                    }
+                    let decodedResponse = try decoder.decode(
+                        responseModel, from: data)
                     return decodedResponse
                 } catch {
                     Log.error("Decoding Error", error: error)
@@ -74,21 +106,31 @@ class Request {
                 if tokenRefreshCount >= maxTokenRefreshAttempts {
                     throw RequestError.maxTokenRefreshAttemptsReached
                 }
-                Log.info("🔄 Starting token refresh. Attempt \(tokenRefreshCount + 1) of \(maxTokenRefreshAttempts)")
-                
+                Log.info(
+                    "🔄 Starting token refresh. Attempt \(tokenRefreshCount + 1) of \(maxTokenRefreshAttempts)"
+                )
+
                 do {
-                    try await Task.sleep(nanoseconds: 1_000_000_000) // Задержка в 1 секунду
-                    let tokenResponse = try await TokenService.shared.refreshTokens()
+                    try await Task.sleep(nanoseconds: 1_000_000_000)  // Задержка в 1 секунду
+                    let tokenResponse = try await TokenService.shared
+                        .refreshTokens()
                     Log.info("🔐 Token Response: \(tokenResponse)")
 
-                    guard KeychainManager.shared.set(tokenResponse.accessToken, key: KeychainKeys.accessToken),
-                          KeychainManager.shared.set(tokenResponse.refreshToken, key: KeychainKeys.refreshToken) else {
+                    guard
+                        KeychainManager.shared.set(
+                            tokenResponse.accessToken,
+                            key: KeychainKeys.accessToken),
+                        KeychainManager.shared.set(
+                            tokenResponse.refreshToken,
+                            key: KeychainKeys.refreshToken)
+                    else {
                         throw RequestError.tokenSaveFailed
                     }
 
                     Log.info("🔑 New Access Token: \(tokenResponse.accessToken)")
 
-                    let newEndpoint = RefreshedEndpoint(original: endpoint, newToken: tokenResponse.accessToken)
+                    let newEndpoint = RefreshedEndpoint(
+                        original: endpoint, newToken: tokenResponse.accessToken)
 
                     Log.info("🔁 Retrying request with new token")
                     return try await sendRequest(
@@ -102,7 +144,8 @@ class Request {
                     throw RequestError.tokenRefreshFailed
                 }
             default:
-                let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
+                let errorMessage =
+                    String(data: data, encoding: .utf8) ?? "Unknown error"
                 Log.error("Unexpected Error: \(errorMessage)")
                 throw RequestError.unknown
             }

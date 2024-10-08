@@ -23,5 +23,5 @@ protocol Endpoint {
     var addAuthorizationToken: Bool { get }
 
 	/// параметры запроса
-	var parameters: [String: Any]? { get }
+	var parameters: JSON? { get }
 }

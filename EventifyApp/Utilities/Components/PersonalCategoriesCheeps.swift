@@ -9,26 +9,34 @@ import SwiftUI
 
 struct PersonalCategoriesCheeps: View {
 	@ObservedObject var viewModel: PersonalCategoriesViewModel
-	let category: PersonalCategories
+    let category: Categories
+    
+    private var selectionColor: Color {
+        let colors: [Color] = [.brandCyan, .science, .art, .art, .design, .frontend, .backend, .ML, .gameDev, .media, .hackatons, .studLife, .mentoring]
+        
+        let index = abs(category.id.hashValue) % colors.count
+        return colors[index]
+    }
 
 	var body: some View {
 		Button {
 			viewModel.toggleCategorySelection(category)
 
 		} label: {
-			Text(category.name)
+            Text(category.title)
 				.font(.mediumCompact(size: 18))
-                .foregroundStyle(viewModel.selectedCategories.contains(category) ? .black : .mainText)
+                .foregroundStyle(viewModel.selectedCategories.contains(category.id) ? .black : .mainText)
 		}
 		.padding(.vertical, 8)
 		.padding(.horizontal, 16)
 		.overlay(
 			RoundedRectangle(cornerRadius: 24)
 				.stroke(lineWidth: 2)
-				.foregroundStyle(viewModel.selectedCategories.contains(category) ? category.selectionColor : .mainText)
+                .foregroundStyle(viewModel.selectedCategories.contains(category.id) ? selectionColor : .mainText)
 		)
-		.background(viewModel.selectedCategories.contains(category) ? category.selectionColor : .clear)
+        .background(viewModel.selectedCategories.contains(category.id) ? selectionColor : .clear)
 		.clipShape(RoundedRectangle(cornerRadius: 24))
 		.foregroundStyle(.white)
+        .shimmer(isActive: viewModel.isLoading)
 	}
 }

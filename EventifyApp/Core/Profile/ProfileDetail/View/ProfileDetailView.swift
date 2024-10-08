@@ -20,22 +20,6 @@ struct ProfileDetailView: View {
     @Environment(\.dismiss)
     var dismiss
 
-    private let categories: [PersonalCategories] = [
-            .init(name: "Наука", selectionColor: .red),
-            .init(name: "Спорт", selectionColor: .blue),
-            .init(name: "Творчество", selectionColor: .green),
-            .init(name: "Дизайн", selectionColor: .yellow),
-            .init(name: "Frontend", selectionColor: .orange),
-            .init(name: "Mobile", selectionColor: .purple),
-            .init(name: "Backend", selectionColor: .pink),
-            .init(name: "ML", selectionColor: .gray),
-            .init(name: "GameDev", selectionColor: .brown),
-            .init(name: "Media", selectionColor: .cyan),
-            .init(name: "Хакатоны", selectionColor: .mint),
-            .init(name: "Театр", selectionColor: .teal),
-            .init(name: "Наставничество", selectionColor: .science),
-    ]
-
     private let textFieldSections: [ProfileTextFieldModel] = [
         .init(title: "Имя", placeholder: "Имя"),
         .init(title: "Фамилия", placeholder: "Фамилия"),
@@ -57,7 +41,9 @@ struct ProfileDetailView: View {
                 ?? ProfileDetailViewModel(userService: UserService())
         )
         _categoriesModel = StateObject(
-            wrappedValue: categoriesModel ?? PersonalCategoriesViewModel(categoriesService: CategoriesService())
+            wrappedValue: categoriesModel
+                ?? PersonalCategoriesViewModel(
+                    categoriesService: CategoriesService())
         )
     }
 
@@ -78,6 +64,8 @@ struct ProfileDetailView: View {
             }
             .onAppear {
                 viewModel.getUser()
+                categoriesModel.getCategories()
+                categoriesModel.getUserCategories()
             }
         }
         .padding(.horizontal, 16)
@@ -91,7 +79,9 @@ struct ProfileDetailView: View {
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
-            EventifyTextField(text: $viewModel.name, placeholder: "Введите имя", hasError: false)
+            EventifyTextField(
+                text: $viewModel.name, placeholder: "Введите имя",
+                hasError: false)
         }
     }
 
@@ -101,7 +91,9 @@ struct ProfileDetailView: View {
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
-            EventifyTextField(text: $viewModel.surname, placeholder: "Введите фамилию", hasError: false)
+            EventifyTextField(
+                text: $viewModel.surname, placeholder: "Введите фамилию",
+                hasError: false)
         }
     }
 
@@ -111,7 +103,9 @@ struct ProfileDetailView: View {
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
-            EventifyTextField(text: $viewModel.lastName, placeholder: "Введите отчество", hasError: false)
+            EventifyTextField(
+                text: $viewModel.lastName, placeholder: "Введите отчество",
+                hasError: false)
         }
     }
 
@@ -121,7 +115,10 @@ struct ProfileDetailView: View {
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
-            EventifyTextField(text: $viewModel.email, placeholder: "Введите Email", hasError: false)
+            EventifyTextField(
+                text: $viewModel.email, placeholder: "Введите Email",
+                hasError: false)
+            .disabled(true)
         }
     }
 
@@ -131,7 +128,9 @@ struct ProfileDetailView: View {
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
-            EventifyTextField(text: $viewModel.telegram, placeholder: "Введите telegram", hasError: false)
+            EventifyTextField(
+                text: $viewModel.telegram, placeholder: "Введите telegram",
+                hasError: false)
         }
     }
 
@@ -145,10 +144,22 @@ struct ProfileDetailView: View {
                 .foregroundStyle(.secondaryText)
                 .font(.regularCompact(size: 17))
 
-            HFlow {
-                ForEach(PersonalCategoriesMockData.categories, id: \.self) { index in
-                    PersonalCategoriesCheeps(
-                        viewModel: categoriesModel, category: index)
+            if categoriesModel.isLoading {
+                // Показываем заглушки при загрузке
+                HFlow {
+                    ForEach(0..<6) { _ in
+                        RoundedRectangle(cornerRadius: 24)
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(width: 120, height: 45)
+                            .shimmer(isActive: true)
+                    }
+                }
+            } else {
+                HFlow {
+                    ForEach(categoriesModel.categories) { category in
+                        PersonalCategoriesCheeps(
+                            viewModel: categoriesModel, category: category)
+                    }
                 }
             }
         }
@@ -162,6 +173,7 @@ struct ProfileDetailView: View {
                 isDisabled: false
             ) {
                 viewModel.patchUser()
+                categoriesModel.setUserCategories()
             }
             .onChange(of: viewModel.shouldDismiss) { newValue in
                 if newValue {
@@ -172,7 +184,12 @@ struct ProfileDetailView: View {
                 .glow,
                 value: viewModel.isLoading
             )
+            .changeEffect(
+                .feedback(hapticImpact: .heavy),
+                value: viewModel.shouldDismiss
+            )
             .animation(.default, value: animation)
+            
         }
     }
 }

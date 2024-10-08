@@ -29,7 +29,7 @@ enum SignUpEndpoint: Endpoint {
     
     var addAuthorizationToken: Bool { return false }
 
-	var parameters: JSON? {
+    var parameters: JSON? {
 		switch self {
 			case .signUp(let json):
 				return json

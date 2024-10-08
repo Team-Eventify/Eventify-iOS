@@ -6,13 +6,12 @@
 //
 
 import SwiftUI
-import WishKit
 
 /// Вью экрана "Профиль"
 struct ProfileView: View {
 	// MARK: - Private Properties
 
-	@StateObject private var viewModel = ProfileViewModel()
+    @StateObject private var viewModel: ProfileViewModel
 	@State var showingDeleteAlert: Bool = false
 	@State var showingExitAlert: Bool = false
 	@State var navigateToSignUp: Bool = false
@@ -21,17 +20,10 @@ struct ProfileView: View {
 
 	/// Инициализатор
 	/// - Parameter viewModel: модель экрана профиля
-	init(viewModel: ProfileViewModel? = nil) {
+    init(viewModel: ProfileViewModel? = nil) {
 		_viewModel = StateObject(
-			wrappedValue: viewModel ?? ProfileViewModel()
+            wrappedValue: viewModel ?? ProfileViewModel(userService: UserService())
 		)
-        WishKit.configure(with: "C55735FB-7D7F-47AC-8562-C7486907DD08")
-        WishKit.theme.primaryColor = .brandCyan
-        WishKit.config.localization.implemented = "Выполнено"
-        WishKit.config.localization.approved = "Одобрено"
-        WishKit.config.localization.cancel = "Отмена"
-        WishKit.config.localization.createWish = "Создать желание"
-        WishKit.config.localization.detail = "Подробнее"
 	}
 
 	// MARK: - Body
@@ -57,7 +49,7 @@ struct ProfileView: View {
 						}
 
 						NavigationLink {
-                            WishKit.FeedbackListView().withNavigation()
+                            TestView()
                         } label: {
 							Text("Помощь и поддержка")
 						}

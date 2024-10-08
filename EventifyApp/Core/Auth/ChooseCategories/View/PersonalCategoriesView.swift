@@ -35,6 +35,9 @@ struct PersonalCategoriesView: View {
         .padding(.horizontal, 16)
         .background(.bg, ignoresSafeAreaEdges: .all)
         .navigationBarBackButtonHidden()
+        .onAppear {
+            viewModel.getCategories()
+        }
     }
 
     private var headerContainer: some View {
@@ -50,10 +53,24 @@ struct PersonalCategoriesView: View {
     }
 
     private var cheepsSection: some View {
-        HFlow {
-            ForEach(PersonalCategoriesMockData.categories, id: \.self) {
-                index in
-                PersonalCategoriesCheeps(viewModel: viewModel, category: index)
+        VStack(alignment: .leading, spacing: 0) {
+            if viewModel.isLoading {
+                // Показываем заглушки при загрузке
+                HFlow {
+                    ForEach(0..<6) { _ in
+                        RoundedRectangle(cornerRadius: 24)
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(width: 120, height: 45)
+                            .shimmer(isActive: true)
+                    }
+                }
+            } else {
+                HFlow {
+                    ForEach(viewModel.categories) { category in
+                        PersonalCategoriesCheeps(
+                            viewModel: viewModel, category: category)
+                    }
+                }
             }
         }
     }
@@ -72,7 +89,7 @@ struct PersonalCategoriesView: View {
                 configuration: .commom, isLoading: false,
                 isDisabled: !viewModel.isAnyCategorySelected
             ) {
-                Constants.hasCategories = true
+                viewModel.setUserCategories()
                 Constants.isLogin = true
             }
 

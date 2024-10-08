@@ -104,7 +104,7 @@ struct ProfileDetailView: View {
                 .foregroundStyle(.mainText)
 
             EventifyTextField(
-                text: $viewModel.lastName, placeholder: "Введите отчество",
+                text: $viewModel.lastName.unwrapped(defaultValue: ""), placeholder: "Введите отчество",
                 hasError: false)
         }
     }

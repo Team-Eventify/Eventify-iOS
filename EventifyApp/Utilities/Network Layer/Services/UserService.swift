@@ -50,6 +50,6 @@ struct UserResponse: Decodable {
     let email: String
     let firstName: String
     let middleName: String
-    let lastName: String
+    let lastName: String?
     let telegramName: String
 }

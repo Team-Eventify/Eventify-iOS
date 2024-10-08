@@ -13,7 +13,7 @@ final class ProfileDetailViewModel: ObservableObject {
     
     @Published var name: String = ""
     @Published var surname: String = ""
-    @Published var lastName: String = ""
+    @Published var lastName: String? = ""
     @Published var email: String = ""
     @Published var telegram: String = ""
     @Published var isLoading: Bool = false
@@ -43,12 +43,12 @@ final class ProfileDetailViewModel: ObservableObject {
     private func saveToUserDefaults() {
         UserDefaultsManager.shared.setFirstName(name)
         UserDefaultsManager.shared.setMiddleName(surname)
-        UserDefaultsManager.shared.setLastName(lastName)
+        UserDefaultsManager.shared.setLastName(lastName ?? "")
         UserDefaultsManager.shared.setTelegram(telegram)
     }
     
     private func areAllFieldsFilled() -> Bool {
-        return !name.isEmpty && !surname.isEmpty && !lastName.isEmpty && !email.isEmpty && !telegram.isEmpty
+        return !name.isEmpty && !surname.isEmpty && !email.isEmpty && !telegram.isEmpty
     }
     
     /// Получение данных пользователя
@@ -74,11 +74,11 @@ final class ProfileDetailViewModel: ObservableObject {
     
     /// Обновление данных пользователя
     func patchUser() {
-        guard !name.isEmpty, !surname.isEmpty, !lastName.isEmpty, !telegram.isEmpty else {
+        guard !name.isEmpty, !surname.isEmpty, !telegram.isEmpty else {
             return
         }
         isLoading = true
-        let json: JSON = ["firstName": name, "middleName": surname, "lastName": lastName, "telegramName": telegram]
+        let json: JSON = ["firstName": name, "middleName": surname, "lastName": lastName ?? "", "telegramName": telegram]
         
         Task { @MainActor in
             do {

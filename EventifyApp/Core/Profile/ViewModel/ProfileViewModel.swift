@@ -12,7 +12,7 @@ final class ProfileViewModel: ObservableObject {
 
     @AppStorage("isLogin") var isLogin: Bool = false
     @Published var name: String = ""
-    @Published var surname: String = ""
+    @Published var middleName: String = ""
 
     private let userService: UserServiceProtocol
 
@@ -24,7 +24,7 @@ final class ProfileViewModel: ObservableObject {
         Task { @MainActor in
             if isFioNotEmpty() {
                 name = UserDefaultsManager.shared.getFirstName() ?? "Имя"
-                surname = UserDefaultsManager.shared.getLastName() ?? "Фамилия"
+                middleName = UserDefaultsManager.shared.getMiddleName() ?? "Фамилия"
                 Log.info("User fio is already set 🙋‍♂️")
             } else {
                 do {
@@ -32,16 +32,16 @@ final class ProfileViewModel: ObservableObject {
                     let userResponse = try await userService.getUser(id: userid)
                     
                     name = userResponse.firstName
-                    surname = userResponse.lastName
+                    middleName = userResponse.middleName
                     
-                    if !userResponse.firstName.isEmpty && !userResponse.lastName.isEmpty {
+                    if !userResponse.firstName.isEmpty && !userResponse.middleName.isEmpty {
                         UserDefaultsManager.shared.setFirstName(userResponse.firstName)
-                        UserDefaultsManager.shared.setLastName(userResponse.lastName)
+                        UserDefaultsManager.shared.setMiddleName(userResponse.middleName)
                     }
                 } catch {
                     Log.error("User info error:", error: error)
                     name = "Имя"
-                    surname = "Фамилия"
+                    middleName = "Фамилия"
                 }
             }
         }
@@ -49,9 +49,9 @@ final class ProfileViewModel: ObservableObject {
 
     private func isFioNotEmpty() -> Bool {
         guard let firstName = UserDefaultsManager.shared.getFirstName(),
-              let lastName = UserDefaultsManager.shared.getLastName() else {
+              let middleName = UserDefaultsManager.shared.getMiddleName() else {
             return false
         }
-        return !firstName.isEmpty && !lastName.isEmpty
+        return !firstName.isEmpty && !middleName.isEmpty
     }
 }

@@ -141,7 +141,7 @@ struct ProfileView: View {
         } label: {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(viewModel.name + " " + viewModel.surname)
+                    Text(viewModel.name + " " + viewModel.middleName)
                         .font(.mediumCompact(size: 24))
                         .foregroundStyle(.black)
                     Text("Редактировать профиль")

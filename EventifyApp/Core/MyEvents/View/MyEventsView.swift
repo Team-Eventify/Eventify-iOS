@@ -20,7 +20,7 @@ struct MyEventsView: View {
 					Spacer()
 				}
 			}
-			.navigationTitle("Мои ивенты")
+            .navigationTitle(NSLocalizedString("tab_my_events", comment: "Мои Ивенты"))
 			.navigationBarTitleDisplayMode(.large)
 			.padding(.horizontal, 16)
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -43,7 +43,7 @@ private var contentForUpcomingEventsSection: some View {
 /// Карточки предстоящих мероприятий
 private var upcomingEvents: some View {
 	VStack(alignment: .leading) {
-		Text("Предстоящие мероприятия")
+		Text("upcoming_events_title")
 			.font(.mediumCompact(size: 20))
 			.foregroundStyle(.mainText)
 		LazyVStack(spacing: 8) {
@@ -65,7 +65,7 @@ private var emptyUpcomingEvents: some View {
     VStack {
         Image(systemName: "bookmark")
             .font(.system(size: 60))
-        Text("Нет предстоящих\nмероприятий")
+        Text("no_upcoming_events_message")
             .font(.body)
             .multilineTextAlignment(.center)
             .padding(.top, 5)
@@ -77,7 +77,7 @@ private var emptyUpcomingEvents: some View {
 /// Карточки рекомендуемых мероприятий
 private var recomendedEvents: some View {
 	VStack(alignment: .leading) {
-		Text("Рекомедации")
+		Text("recommendation_title")
 			.font(.mediumCompact(size: 20))
 			.foregroundStyle(.mainText)
 		ScrollView(.horizontal, showsIndicators: false) {

@@ -133,6 +133,17 @@
         }
       }
     },
+    "no_upcoming_events_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет предстоящих мероприятий"
+          }
+        }
+      }
+    },
     "password_latin_only" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -206,6 +217,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Популярные ивенты"
+          }
+        }
+      }
+    },
+    "recommendation_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рекомендации"
           }
         }
       }
@@ -316,6 +338,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поиск"
+          }
+        }
+      }
+    },
+    "upcoming_events_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Предстоящие мероприятия"
           }
         }
       }

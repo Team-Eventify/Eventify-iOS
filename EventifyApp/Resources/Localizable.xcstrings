@@ -67,6 +67,28 @@
         }
       }
     },
+    "events_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ивенты"
+          }
+        }
+      }
+    },
+    "favorites_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Избранное"
+          }
+        }
+      }
+    },
     "forgot_password_button" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -140,6 +162,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нет предстоящих мероприятий"
+          }
+        }
+      }
+    },
+    "organizers_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Организаторы"
           }
         }
       }

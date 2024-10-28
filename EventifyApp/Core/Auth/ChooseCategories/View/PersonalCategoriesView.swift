@@ -42,11 +42,11 @@ struct PersonalCategoriesView: View {
 
     private var headerContainer: some View {
         VStack(alignment: .leading, spacing: 21) {
-            Text("Выбери интересные\nтебе категории!")
+            Text("choose_categories_title")
                 .font(.mediumCompact(size: 35))
                 .foregroundStyle(.mainText)
 
-            Text("Мы подберём рекомендации ивентов\nпод твои вкусы.")
+            Text("choose_categories_subtitle")
                 .font(.regularCompact(size: 17))
                 .foregroundStyle(.secondaryText)
         }
@@ -77,7 +77,7 @@ struct PersonalCategoriesView: View {
     
     private var descriptionSection: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("Ты всегда сможешь изменить свой выбор в настройках.")
+            Text("choose_categories_description")
                 .font(.regularCompact(size: 17))
                 .foregroundStyle(.secondaryText)
         }
@@ -96,7 +96,7 @@ struct PersonalCategoriesView: View {
             Button {
                 Constants.isLogin = true
             } label: {
-                Text("Пропустить")
+                Text("skip_title")
                     .foregroundStyle(.gray)
                     .font(.mediumCompact(size: 17))
                     .underline()

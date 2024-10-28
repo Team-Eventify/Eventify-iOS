@@ -1,6 +1,39 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
+    "choose_categories_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ты всегда сможешь изменить свой выбор в настройках."
+          }
+        }
+      }
+    },
+    "choose_categories_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мы подберём рекомендации ивентов под твои вкусы."
+          }
+        }
+      }
+    },
+    "choose_categories_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбери интересные тебе категории!"
+          }
+        }
+      }
+    },
     "confirm_password_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -195,6 +228,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вход"
+          }
+        }
+      }
+    },
+    "skip_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пропустить"
           }
         }
       }

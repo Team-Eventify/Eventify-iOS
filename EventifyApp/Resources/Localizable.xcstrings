@@ -155,6 +155,17 @@
         }
       }
     },
+    "description_select_categories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбирай категории ивентов под свои интересы!"
+          }
+        }
+      }
+    },
     "email_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -276,6 +287,50 @@
         }
       }
     },
+    "label_first_name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя"
+          }
+        }
+      }
+    },
+    "label_last_name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фамилия"
+          }
+        }
+      }
+    },
+    "label_middle_name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отчество"
+          }
+        }
+      }
+    },
+    "label_my_categories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мои категории"
+          }
+        }
+      }
+    },
     "label_photos" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -283,6 +338,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Фотографии*"
+          }
+        }
+      }
+    },
+    "label_telegram" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telegram"
           }
         }
       }
@@ -408,6 +474,17 @@
         }
       }
     },
+    "placeholder_enter_email" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите Email"
+          }
+        }
+      }
+    },
     "placeholder_enter_event_name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -415,6 +492,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Введите название"
+          }
+        }
+      }
+    },
+    "placeholder_enter_first_name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите имя"
+          }
+        }
+      }
+    },
+    "placeholder_enter_last_name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите фамилию"
+          }
+        }
+      }
+    },
+    "placeholder_enter_middle_name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите отчество"
+          }
+        }
+      }
+    },
+    "placeholder_enter_telegram" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите telegram"
           }
         }
       }

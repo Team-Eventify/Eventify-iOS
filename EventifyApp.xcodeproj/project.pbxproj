@@ -14,6 +14,7 @@
 		85AA845E2CAF0848005AB337 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AA845D2CAF0848005AB337 /* MainViewModel.swift */; };
 		85AA84622CAF0917005AB337 /* MainMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AA84612CAF0917005AB337 /* MainMockData.swift */; };
 		85AA84652CAF0CEA005AB337 /* EventifyRecommendationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AA84642CAF0CEA005AB337 /* EventifyRecommendationModel.swift */; };
+		85CDA99D2CCF555800129819 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 85CDA99C2CCF555800129819 /* Localizable.xcstrings */; };
 		EC05CC8A2C35C36B00F2FC8E /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC892C35C36B00F2FC8E /* Tab.swift */; };
 		EC05CC8C2C35C4B000F2FC8E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC8B2C35C4B000F2FC8E /* MainView.swift */; };
 		EC05CC8E2C35C4B800F2FC8E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05CC8D2C35C4B800F2FC8E /* SearchView.swift */; };
@@ -118,6 +119,7 @@
 		85AA845D2CAF0848005AB337 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		85AA84612CAF0917005AB337 /* MainMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMockData.swift; sourceTree = "<group>"; };
 		85AA84642CAF0CEA005AB337 /* EventifyRecommendationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventifyRecommendationModel.swift; sourceTree = "<group>"; };
+		85CDA99C2CCF555800129819 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		EC05CC892C35C36B00F2FC8E /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		EC05CC8B2C35C4B000F2FC8E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EC05CC8D2C35C4B800F2FC8E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				EC268B0C2C1CA0BE00F26DC5 /* Fonts */,
 				EC4981E62C1B78500072BD53 /* Assets.xcassets */,
 				EC268B102C1CA1B800F26DC5 /* Info.plist */,
+				85CDA99C2CCF555800129819 /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -907,6 +910,7 @@
 				EC4981E72C1B78500072BD53 /* Assets.xcassets in Resources */,
 				EC268B312C1CD48B00F26DC5 /* SF-Compact-Rounded-Semibold.otf in Resources */,
 				EC268B302C1CD48B00F26DC5 /* SF-Compact-Rounded-Medium.otf in Resources */,
+				85CDA99D2CCF555800129819 /* Localizable.xcstrings in Resources */,
 				EC268B2F2C1CD48B00F26DC5 /* SF-Compact-Rounded-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1072,6 +1076,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1128,6 +1133,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

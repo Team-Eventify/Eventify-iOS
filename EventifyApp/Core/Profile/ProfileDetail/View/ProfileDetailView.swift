@@ -24,7 +24,7 @@ struct ProfileDetailView: View {
         .init(title: NSLocalizedString("label_first_name", comment: "Имя"), placeholder: NSLocalizedString("label_first_name", comment: "Имя")),
         .init(title: NSLocalizedString("label_last_name", comment: "Фамилия"), placeholder: NSLocalizedString("label_last_name", comment: "Фамилия")),
         .init(title: NSLocalizedString("label_middle_name", comment: "Отчество"), placeholder: NSLocalizedString("label_middle_name", comment: "Отчество")),
-        .init(title: NSLocalizedString("label_email", comment: "Email"), placeholder: NSLocalizedString("label_email", comment: "Email")),
+        .init(title: NSLocalizedString("email_placeholder", comment: "Email"), placeholder: NSLocalizedString("email_placeholder", comment: "Email")),
         .init(title: NSLocalizedString("label_telegram", comment: "Telegram"), placeholder: NSLocalizedString("label_telegram", comment: "Telegram"))
     ]
 
@@ -111,7 +111,7 @@ struct ProfileDetailView: View {
 
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("label_email")
+            Text("email_placeholder")
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 

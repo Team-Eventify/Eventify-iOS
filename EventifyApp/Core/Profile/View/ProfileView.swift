@@ -75,7 +75,7 @@ struct ProfileView: View {
                             Text("action_logout")
 								.foregroundStyle(.mainText)
 						}
-						.alert("Вы действительно хотите выйти из приложения?", isPresented: $showingExitAlert) {
+                        .alert(NSLocalizedString("alert_logout_confirmation", comment: "Вы действительно хотите выйти из приложения?"), isPresented: $showingExitAlert) {
 							Button(role: .cancel) {
 								Constants.isLogin = false
                                 UserDefaultsManager.shared.clearAllUserData()

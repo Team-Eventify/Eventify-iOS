@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
+    "" : {
+
+    },
+    "-" : {
+
+    },
     "action_add_event" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -309,6 +315,17 @@
         }
       }
     },
+    "full_description_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Полное описание"
+          }
+        }
+      }
+    },
     "have_account_question" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -319,6 +336,9 @@
           }
         }
       }
+    },
+    "Hello, World!" : {
+
     },
     "label_categories" : {
       "extractionState" : "manual",
@@ -470,6 +490,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нет предстоящих мероприятий"
+          }
+        }
+      }
+    },
+    "organizer_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Организатор"
           }
         }
       }
@@ -847,6 +878,9 @@
           }
         }
       }
+    },
+    "МИСИС" : {
+
     }
   },
   "version" : "1.0"

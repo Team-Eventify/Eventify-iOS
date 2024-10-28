@@ -232,6 +232,72 @@
         }
       }
     },
+    "label_categories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Категории"
+          }
+        }
+      }
+    },
+    "label_date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата*"
+          }
+        }
+      }
+    },
+    "label_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Описание*"
+          }
+        }
+      }
+    },
+    "label_event_name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Название*"
+          }
+        }
+      }
+    },
+    "label_photos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фотографии*"
+          }
+        }
+      }
+    },
+    "label_time" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Время*"
+          }
+        }
+      }
+    },
     "login_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -338,6 +404,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Используй хотя бы 1 заглавную букву (A-Z)"
+          }
+        }
+      }
+    },
+    "placeholder_enter_event_name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите название"
           }
         }
       }
@@ -503,6 +580,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поиск"
+          }
+        }
+      }
+    },
+    "title_add_event" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создание мероприятия"
           }
         }
       }

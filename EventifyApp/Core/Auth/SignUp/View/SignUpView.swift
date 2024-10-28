@@ -62,15 +62,13 @@ struct SignUpView: View {
 
     private var registrationContentContainerView: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Регистрация")
+            Text(NSLocalizedString("registration_title", comment: "Регистрация"))
                 .font(.semiboldCompact(size: 40))
                 .foregroundStyle(Color.mainText)
 
-            Text(
-                "Пожалуйста, создайте новый аккаунт. Это займёт меньше минуты."
-            )
-            .font(.regularCompact(size: 17))
-            .frame(width: 296)
+            Text(NSLocalizedString("registration_description", comment: "Пожалуйста, создайте новый аккаунт. Это займёт меньше минуты."))
+                .font(.regularCompact(size: 17))
+                .frame(width: 296)
             authTextFields
             requirementsContainerView
         }
@@ -78,7 +76,7 @@ struct SignUpView: View {
 
     private var authTextFields: some View {
         VStack(spacing: 8) {
-            EventifyTextField(text: $viewModel.email, placeholder: "Email", hasError: false)
+            EventifyTextField(text: $viewModel.email, placeholder: NSLocalizedString("email_placeholder", comment: "Email"), hasError: false)
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
             .keyboardType(.emailAddress)
             .textContentType(.emailAddress)
@@ -98,7 +96,7 @@ struct SignUpView: View {
             EventifySecureField(
                 text: $viewModel.password,
                 isSecure: true,
-                placeholder: "Пароль"
+                placeholder: NSLocalizedString("password_placeholder", comment: "Пароль")
             )
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
             .textContentType(.newPassword)
@@ -106,7 +104,7 @@ struct SignUpView: View {
             EventifySecureField(
                 text: $viewModel.confirmPassword,
                 isSecure: true,
-                placeholder: "Повторите пароль"
+                placeholder: NSLocalizedString("confirm_password_placeholder", comment: "Повторите пароль")
             )
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
             .textContentType(.newPassword)
@@ -138,12 +136,12 @@ struct SignUpView: View {
 
     private var haveAccountContainerView: some View {
         HStack(spacing: 12) {
-            Text("Уже есть аккаунт?")
+            Text(NSLocalizedString("have_account_question", comment: "Уже есть аккаунт?"))
                 .font(.regularCompact(size: 16))
             Button {
                 viewModel.navigateToLoginView.toggle()
             } label: {
-                Text("Войти")
+                Text(NSLocalizedString("login_title", comment: "Войти"))
                     .underline()
                     .font(.mediumCompact(size: 16))
                     .foregroundStyle(.brandCyan)

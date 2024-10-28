@@ -30,27 +30,27 @@ final class SignUpViewModel: ObservableObject {
     private let rulesDescriptions:
         [(description: String, validator: (String) -> Bool, icon: Image)] = [
             (
-                "Длина пароля не менее 6 символов",
+                NSLocalizedString("password_min_length", comment: "Длина пароля не менее 6 символов"),
                 { $0.count >= 6 },
                 Image(systemName: "checkmark")
             ),
             (
-                "Используй хотя бы 1 заглавную букву (A-Z)",
+                NSLocalizedString("password_uppercase", comment: "Используй хотя бы 1 заглавную букву (A-Z)"),
                 { $0.rangeOfCharacter(from: .uppercaseLetters) != nil },
                 Image(systemName: "checkmark")
             ),
             (
-                "Используй цифры (0-9)",
+                NSLocalizedString("password_number", comment: "Используй цифры (0-9)"),
                 { $0.rangeOfCharacter(from: .decimalDigits) != nil },
                 Image(systemName: "checkmark")
             ),
             (
-                "Не используйте пробелов",
+                NSLocalizedString("password_no_whitespace", comment: "Не используйте пробелов"),
                 { $0.rangeOfCharacter(from: .whitespaces) == nil },
                 Image(systemName: "checkmark")
             ),
             (
-                "Используй только латинские символы",
+                NSLocalizedString("password_latin_only", comment: "Используй только латинские символы"),
                 {
                     $0.rangeOfCharacter(
                         from: CharacterSet(

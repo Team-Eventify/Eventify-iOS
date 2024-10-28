@@ -78,6 +78,83 @@
         }
       }
     },
+    "button_cancel_registration" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить запись на ивент"
+          }
+        }
+      }
+    },
+    "button_next" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далее"
+          }
+        }
+      }
+    },
+    "button_publish_event" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Опубликовать ивент"
+          }
+        }
+      }
+    },
+    "button_register_for_event" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Я пойду!"
+          }
+        }
+      }
+    },
+    "button_save_changes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить изменения"
+          }
+        }
+      }
+    },
+    "button_send" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отправить"
+          }
+        }
+      }
+    },
+    "button_sign_up" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зарегистрироваться"
+          }
+        }
+      }
+    },
     "categories_based_on_interests" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -657,6 +734,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пропустить"
+          }
+        }
+      }
+    },
+    "snackbar_auth_failure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка авторизации! Проверьте логин или пароль."
+          }
+        }
+      }
+    },
+    "snackbar_event_add_failure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка добавления мероприятия!"
+          }
+        }
+      }
+    },
+    "snackbar_password_recovery_success" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Письмо для сброса пароля успешно отправлено на почту."
+          }
+        }
+      }
+    },
+    "snackbar_registration_success" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы успешно записались на мероприятие!"
           }
         }
       }

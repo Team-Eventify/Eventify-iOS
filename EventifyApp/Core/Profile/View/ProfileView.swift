@@ -37,7 +37,7 @@ struct ProfileView: View {
 						NavigationLink {
 							AddEventView()
 						} label: {
-							Text("Добавить мероприятие")
+                            Text("action_add_event")
 						}
 					}
 
@@ -45,13 +45,13 @@ struct ProfileView: View {
 						NavigationLink {
 							TestView()
 						} label: {
-							Text("Уведомления")
+                            Text("section_notifications")
 						}
 
 						NavigationLink {
                             TestView()
                         } label: {
-							Text("Помощь и поддержка")
+                            Text("section_help_support")
 						}
 					}
 
@@ -59,12 +59,12 @@ struct ProfileView: View {
 						NavigationLink {
 							TestView()
 						} label: {
-							Text("О приложении")
+                            Text("section_about_app")
 						}
 						NavigationLink {
 							TestView()
 						} label: {
-							Text("Оценить")
+                            Text("action_rate_app")
 						}
 					}
 
@@ -72,48 +72,48 @@ struct ProfileView: View {
 						Button {
 							showingExitAlert.toggle()
 						} label: {
-							Text("Выйти")
+                            Text("action_logout")
 								.foregroundStyle(.mainText)
 						}
-						.alert("Вы действительно хотите выйти из приложения?", isPresented: $showingExitAlert) {
+                        .alert(NSLocalizedString("alert_logout_confirmation", comment: "Вы действительно хотите выйти из приложения?"), isPresented: $showingExitAlert) {
 							Button(role: .cancel) {
 								Constants.isLogin = false
                                 UserDefaultsManager.shared.clearAllUserData()
                                 KeychainManager.shared.clearAll()
                                 Log.info("🚪 Exit from account")
 							} label: {
-								Text("Да")
+                                Text("common_yes")
 									.foregroundStyle(.error)
 							}
 
 							Button {
 								print("Continue work in app")
 							} label: {
-								Text("Нет")
+                                Text("common_no")
 									.foregroundStyle(.mainText)
 							}
 						}
 						Button {
 							showingDeleteAlert.toggle()
 						} label: {
-							Text("Удалить аккаунт")
+                            Text("action_delete_account")
 								.foregroundStyle(.error)
 						}
-						.alert("Вы действительно хотите удалить аккаунт?", isPresented: $showingDeleteAlert) {
+                        .alert(NSLocalizedString("alert_delete_account_confirmation", comment: "Удалить информацию об аккаунте"), isPresented: $showingDeleteAlert) {
 
 							Button(role: .cancel) {
 								Constants.isLogin = false
                                 UserDefaultsManager.shared.clearAllUserData()
                                 Log.info("🪓 delete account")
 							} label: {
-								Text("Да")
+                                Text("common_yes")
 									.foregroundStyle(.error)
 							}
 
 							Button {
                                 Log.info("✏️ resume account")
 							} label: {
-								Text("Нет")
+                                Text("common_no")
 									.foregroundStyle(.mainText)
 							}
 						}
@@ -127,7 +127,7 @@ struct ProfileView: View {
                 viewModel.updateUserInfo()
             }
             
-			.navigationTitle("Профиль")
+            .navigationTitle(NSLocalizedString("tab_profile", comment: "Профиль"))
 			.navigationBarTitleDisplayMode(.large)
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
 			.background(.bg, ignoresSafeAreaEdges: .all)
@@ -144,7 +144,7 @@ struct ProfileView: View {
                     Text(viewModel.name + " " + viewModel.middleName)
                         .font(.mediumCompact(size: 24))
                         .foregroundStyle(.black)
-                    Text("Редактировать профиль")
+                    Text("action_edit_profile")
                         .font(.regularCompact(size: 17))
                         .foregroundStyle(.black)
                 }

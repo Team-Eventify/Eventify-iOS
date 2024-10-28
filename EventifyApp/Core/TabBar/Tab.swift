@@ -24,13 +24,13 @@ enum Tab: CaseIterable, Hashable {
     var title: String {
         switch self {
         case .main:
-            return "Главная"
+            return NSLocalizedString("tab_main", comment: "Главная")
         case .search:
-            return "Поиск"
+            return NSLocalizedString("tab_search", comment: "Поиск")
         case .myEvents:
-            return "Мои ивенты"
+            return NSLocalizedString("tab_my_events", comment: "Мои Ивенты")
         case .profile:
-            return "Профиль"
+            return NSLocalizedString("tab_profile", comment: "Профиль")
         }
     }
 

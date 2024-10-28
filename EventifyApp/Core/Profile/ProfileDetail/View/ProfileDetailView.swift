@@ -21,11 +21,11 @@ struct ProfileDetailView: View {
     var dismiss
 
     private let textFieldSections: [ProfileTextFieldModel] = [
-        .init(title: "Имя", placeholder: "Имя"),
-        .init(title: "Фамилия", placeholder: "Фамилия"),
-        .init(title: "Отчество", placeholder: "Отчество"),
-        .init(title: "Email", placeholder: "Email"),
-        .init(title: "Telegram", placeholder: "Telegram"),
+        .init(title: NSLocalizedString("label_first_name", comment: "Имя"), placeholder: NSLocalizedString("label_first_name", comment: "Имя")),
+        .init(title: NSLocalizedString("label_last_name", comment: "Фамилия"), placeholder: NSLocalizedString("label_last_name", comment: "Фамилия")),
+        .init(title: NSLocalizedString("label_middle_name", comment: "Отчество"), placeholder: NSLocalizedString("label_middle_name", comment: "Отчество")),
+        .init(title: NSLocalizedString("email_placeholder", comment: "Email"), placeholder: NSLocalizedString("email_placeholder", comment: "Email")),
+        .init(title: NSLocalizedString("label_telegram", comment: "Telegram"), placeholder: NSLocalizedString("label_telegram", comment: "Telegram"))
     ]
 
     // MARK: - Initialization
@@ -75,48 +75,48 @@ struct ProfileDetailView: View {
 
     private var nameField: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Имя")
+            Text("label_first_name")
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
             EventifyTextField(
-                text: $viewModel.name, placeholder: "Введите имя",
+                text: $viewModel.name, placeholder: NSLocalizedString("placeholder_enter_first_name", comment: "Введите имя"),
                 hasError: false)
         }
     }
 
     private var surnameField: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Фамилия")
+            Text("label_last_name")
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
             EventifyTextField(
-                text: $viewModel.surname, placeholder: "Введите фамилию",
+                text: $viewModel.surname, placeholder: NSLocalizedString("placeholder_enter_last_name", comment: "Введите фамилию"),
                 hasError: false)
         }
     }
 
     private var lastNameField: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Отчество")
+            Text("label_middle_name")
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
             EventifyTextField(
-                text: $viewModel.lastName.unwrapped(defaultValue: ""), placeholder: "Введите отчество",
+                text: $viewModel.lastName.unwrapped(defaultValue: ""), placeholder: NSLocalizedString("placeholder_enter_middle_name", comment: "Введите отчество"),
                 hasError: false)
         }
     }
 
     private var emailField: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Email")
+            Text("email_placeholder")
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
             EventifyTextField(
-                text: $viewModel.email, placeholder: "Введите Email",
+                text: $viewModel.email, placeholder: NSLocalizedString("placeholder_enter_email", comment: "Введите Email"),
                 hasError: false)
             .disabled(true)
         }
@@ -124,23 +124,23 @@ struct ProfileDetailView: View {
 
     private var telegramField: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Telegram")
+            Text("label_telegram")
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 
             EventifyTextField(
-                text: $viewModel.telegram, placeholder: "Введите telegram",
+                text: $viewModel.telegram, placeholder: NSLocalizedString("placeholder_enter_telegram", comment: "Введите telegram"),
                 hasError: false)
         }
     }
 
     private var categoriesSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Мои категории")
+            Text("label_my_categories")
                 .foregroundStyle(.mainText)
                 .font(.mediumCompact(size: 20))
 
-            Text("Выбирай категории ивентов под свои интересы!")
+            Text("description_select_categories")
                 .foregroundStyle(.secondaryText)
                 .font(.regularCompact(size: 17))
 

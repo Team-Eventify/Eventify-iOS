@@ -74,12 +74,12 @@ struct EventsRegistationView: View {
             NavigationLink {
                 TestView()
             } label: {
-                Text("Полное описание >")
+                Text(NSLocalizedString("full_description_title", comment: "Полное описание") + ">")
                     .font(.mediumCompact(size: 14))
                     .foregroundStyle(.linkButton)
             }
 
-            Text("Организатор")
+            Text("organizer_title")
                 .font(.semiboldCompact(size: 12))
                 .foregroundStyle(.secondaryText)
                 .padding(.top, 23)

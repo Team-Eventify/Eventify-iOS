@@ -32,7 +32,7 @@ struct MainView: View {
         }
         .scrollIndicators(.hidden)
         .padding(.horizontal, 16)
-        .navigationTitle("Главная")
+        .navigationTitle(NSLocalizedString("tab_main", comment: "Главная"))
         .navigationBarTitleDisplayMode(.large)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.bg, ignoresSafeAreaEdges: .all)
@@ -47,7 +47,7 @@ struct MainView: View {
     
     private var popularEventsSection: some View {
         VStack {
-            Text("Популярные ивенты")
+            Text("popular_events_title")
                 .font(.mediumCompact(size: 20))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 10)
@@ -63,7 +63,7 @@ struct MainView: View {
     
     private var categoriesSection: some View {
         VStack {
-            Text("Категории на основе твоих интересов")
+            Text("categories_based_on_interests")
                 .font(.mediumCompact(size: 20))
                 .frame(maxWidth: .infinity, alignment: .leading)
             LazyVStack(spacing: 10) {
@@ -76,7 +76,7 @@ struct MainView: View {
                     }
                 } label: {
                     HStack(spacing: 4) {
-                        Text("Посмотреть больше категорий")
+                        Text("see_more_categories_button")
                             .font(.mediumCompact(size: 14))
                             .bold()
                         Image(systemName: "chevron.right")
@@ -87,7 +87,6 @@ struct MainView: View {
         }
         .padding(.bottom, 20)
     }
-    
 }
 
 #Preview {

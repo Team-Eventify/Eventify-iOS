@@ -15,7 +15,6 @@ struct AddEventView: View {
 
     /// ViewModel для управления логикой вью
     @StateObject private var viewModel: AddEventViewModel
-
     @StateObject private var categoriesVM: PersonalCategoriesViewModel
 
     init(
@@ -44,7 +43,7 @@ struct AddEventView: View {
             }
             .padding(.horizontal, 16)
         }
-        .navigationTitle("Создание мероприятия")
+        .navigationTitle("title_add_event")
         .background(Color.bg.ignoresSafeArea())
         .onAppear {
             categoriesVM.getCategories()
@@ -69,19 +68,19 @@ struct AddEventView: View {
 
     private var eventNameSection: some View {
         VStack(alignment: .leading) {
-            Text("Название*")
+            Text("label_event_name")
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(viewModel.isError ? .error : .mainText)
 
             EventifyTextField(
-                text: $viewModel.name, placeholder: "Введите название", hasError: viewModel.isError)
+                text: $viewModel.name, placeholder: NSLocalizedString("placeholder_enter_event_name", comment: "Введите название"), hasError: viewModel.isError)
         }
     }
 
     private var dateTimeSection: some View {
         HStack(alignment: .top, spacing: 54) {
             VStack(alignment: .leading) {
-                Text("Дата*")
+                Text("label_date")
                     .font(.mediumCompact(size: 20))
                     .foregroundStyle(.mainText)
 
@@ -92,7 +91,7 @@ struct AddEventView: View {
             }
 
             VStack(alignment: .leading) {
-                Text("Время*")
+                Text("label_time")
                     .font(.mediumCompact(size: 20))
                     .foregroundStyle(.mainText)
 
@@ -119,7 +118,7 @@ struct AddEventView: View {
 
     private var descriptionSection: some View {
         VStack(alignment: .leading) {
-            Text("Описание*")
+            Text("label_description")
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(viewModel.isError ? .error : .mainText)
             TextEditor(text: $viewModel.description)
@@ -133,7 +132,7 @@ struct AddEventView: View {
 
     private var photosSection: some View {
         VStack(alignment: .leading) {
-            Text("Фотографии*")
+            Text("label_photos")
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(viewModel.isError ? .error : .mainText)
             HStack {
@@ -159,7 +158,7 @@ struct AddEventView: View {
 
     private var categoriesSection: some View {
         VStack(alignment: .leading) {
-            Text("Категории")
+            Text("label_categories")
                 .font(.mediumCompact(size: 20))
                 .foregroundStyle(.mainText)
 

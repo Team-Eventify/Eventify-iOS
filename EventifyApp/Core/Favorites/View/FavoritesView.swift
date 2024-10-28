@@ -18,8 +18,8 @@ struct FavoritesView: View {
 	var body: some View {
 			VStack(alignment: .leading, spacing: 28) {
 				Picker("", selection: $viewModel.selectedPicker) {
-					Text("Ивенты").tag(0)
-					Text("Организаторы").tag(1)
+					Text("events_title").tag(0)
+					Text("organizers_title").tag(1)
 				}
 				.pickerStyle(.segmented)
 				ScrollView(showsIndicators: false) {
@@ -46,7 +46,7 @@ struct FavoritesView: View {
 					Spacer()
 				}
 			}
-		.navigationTitle("Избранное")
+            .navigationTitle(NSLocalizedString("favorites_title", comment: "Избранное"))
 		.padding(.horizontal, 16)
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(.bg)
@@ -58,7 +58,7 @@ struct FavoritesView: View {
 /// Рекоммендуемые меропрятия
 private var recomendedEvents: some View {
 	VStack(alignment: .leading) {
-		Text("Рекомедации")
+		Text("recommendation_title")
 			.font(.mediumCompact(size: 20))
 			.foregroundStyle(.mainText)
 		ScrollView(.horizontal, showsIndicators: false) {

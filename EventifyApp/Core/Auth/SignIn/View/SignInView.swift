@@ -75,15 +75,13 @@ struct SignInView: View {
     /// Контейнер для содержимого экрана входа
     private var signInContentContainerView: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Вход")
+            Text(NSLocalizedString("sign_in_title", comment: "Вход"))
                 .font(.semiboldCompact(size: 40))
                 .foregroundStyle(Color.mainText)
 
-            Text(
-                "Пожалуйста, войдите в свой аккаунт. Это займёт меньше минуты."
-            )
-            .font(.regularCompact(size: 17))
-            .frame(width: 296)
+            Text(NSLocalizedString("sign_in_description", comment: "Пожалуйста, войдите в свой аккаунт. Это займёт меньше минуты."))
+                .font(.regularCompact(size: 17))
+                .frame(width: 296)
 
             authTextFields
         }
@@ -92,13 +90,13 @@ struct SignInView: View {
     /// Поля ввода для авторизации (email и пароль)
     private var authTextFields: some View {
         VStack(alignment: .trailing, spacing: 8) {
-            EventifyTextField(text: $viewModel.email, placeholder: "Email", hasError: false)
+            EventifyTextField(text: $viewModel.email, placeholder: NSLocalizedString("email_placeholder", comment: "Email"), hasError: false)
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
             .keyboardType(.emailAddress)
             .textContentType(.emailAddress)
             
             EventifySecureField(
-                text: $viewModel.password, isSecure: true, placeholder: "Пароль"
+                text: $viewModel.password, isSecure: true, placeholder: NSLocalizedString("password_placeholder", comment: "Пароль")
             )
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
             .textContentType(.password)
@@ -128,7 +126,7 @@ struct SignInView: View {
             Button {
                 viewModel.showForgotPassScreen = true
             } label: {
-                Text("Забыли пароль?")
+                Text(NSLocalizedString("forgot_password_button", comment: "Забыли пароль?"))
             }
         }
     }
@@ -136,12 +134,12 @@ struct SignInView: View {
     /// Контейнер для кнопки регистрации
     private var haveAccountContainerView: some View {
         HStack(spacing: 12) {
-            Text("Нет аккаунта?")
+            Text(NSLocalizedString("no_account_question", comment: "Нет аккаунта?"))
                 .font(.regularCompact(size: 16))
             Button {
                 dismiss()
             } label: {
-                Text("Регистрация")
+                Text(NSLocalizedString("registration_title", comment: "Регистрация"))
                     .underline()
                     .font(.mediumCompact(size: 16))
                     .foregroundStyle(.brandCyan)

@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
+    "categories_based_on_interests" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Категории на основе твоих интересов"
+          }
+        }
+      }
+    },
     "choose_categories_description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -188,6 +199,17 @@
         }
       }
     },
+    "popular_events_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Популярные ивенты"
+          }
+        }
+      }
+    },
     "registration_description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -206,6 +228,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Регистрация"
+          }
+        }
+      }
+    },
+    "see_more_categories_button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Посмотреть больше категорий"
           }
         }
       }

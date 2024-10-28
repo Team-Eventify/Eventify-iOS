@@ -44,13 +44,11 @@ struct ForgotPasswordView: View {
     /// Контейнер для содержимого экрана сброса пароля
     private var forgotPasswordContainerView: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Сброс пароля")
+            Text("forgot_password_title")
                 .font(.semiboldCompact(size: 40))
                 .foregroundStyle(Color.mainText)
 
-            Text(
-                "Укажите email, который вы использовали для создания аккаунта.Мы отправим письмо с ссылкой для сброса пароля."
-            )
+            Text("forgot_password_description")
             .font(.regularCompact(size: 17))
             .foregroundStyle(Color.secondaryText)
             .frame(width: 400)
@@ -60,7 +58,7 @@ struct ForgotPasswordView: View {
     /// Контейнер для поля ввода email и кнопки отправки
     private var restoreButtonContainerView: some View {
         VStack(spacing: 40) {
-            EventifyTextField(text: $viewModel.email, placeholder: "Email", hasError: false)
+            EventifyTextField(text: $viewModel.email, placeholder: NSLocalizedString("email_placeholder", comment: "Email"), hasError: false)
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
 
             EventifyButton(

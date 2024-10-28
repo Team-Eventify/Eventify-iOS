@@ -75,11 +75,11 @@ struct SignInView: View {
     /// Контейнер для содержимого экрана входа
     private var signInContentContainerView: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(NSLocalizedString("sign_in_title", comment: "Вход"))
+            Text("sign_in_title")
                 .font(.semiboldCompact(size: 40))
                 .foregroundStyle(Color.mainText)
 
-            Text(NSLocalizedString("sign_in_description", comment: "Пожалуйста, войдите в свой аккаунт. Это займёт меньше минуты."))
+            Text("sign_in_description")
                 .font(.regularCompact(size: 17))
                 .frame(width: 296)
 
@@ -134,12 +134,12 @@ struct SignInView: View {
     /// Контейнер для кнопки регистрации
     private var haveAccountContainerView: some View {
         HStack(spacing: 12) {
-            Text(NSLocalizedString("no_account_question", comment: "Нет аккаунта?"))
+            Text("no_account_question")
                 .font(.regularCompact(size: 16))
             Button {
                 dismiss()
             } label: {
-                Text(NSLocalizedString("registration_title", comment: "Регистрация"))
+                Text("registration_title")
                     .underline()
                     .font(.mediumCompact(size: 16))
                     .foregroundStyle(.brandCyan)

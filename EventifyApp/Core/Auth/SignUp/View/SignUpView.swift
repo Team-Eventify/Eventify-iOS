@@ -62,11 +62,11 @@ struct SignUpView: View {
 
     private var registrationContentContainerView: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(NSLocalizedString("registration_title", comment: "Регистрация"))
+            Text("registration_title")
                 .font(.semiboldCompact(size: 40))
                 .foregroundStyle(Color.mainText)
 
-            Text(NSLocalizedString("registration_description", comment: "Пожалуйста, создайте новый аккаунт. Это займёт меньше минуты."))
+            Text("registration_description")
                 .font(.regularCompact(size: 17))
                 .frame(width: 296)
             authTextFields
@@ -136,12 +136,12 @@ struct SignUpView: View {
 
     private var haveAccountContainerView: some View {
         HStack(spacing: 12) {
-            Text(NSLocalizedString("have_account_question", comment: "Уже есть аккаунт?"))
+            Text("have_account_question")
                 .font(.regularCompact(size: 16))
             Button {
                 viewModel.navigateToLoginView.toggle()
             } label: {
-                Text(NSLocalizedString("login_title", comment: "Войти"))
+                Text("login_title")
                     .underline()
                     .font(.mediumCompact(size: 16))
                     .foregroundStyle(.brandCyan)

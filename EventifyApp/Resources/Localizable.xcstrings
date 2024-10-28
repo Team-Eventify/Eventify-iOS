@@ -34,6 +34,28 @@
         }
       }
     },
+    "forgot_password_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Укажите email, который вы использовали для создания аккаунта. Мы отправим письмо с ссылкой для сброса пароля."
+          }
+        }
+      }
+    },
+    "forgot_password_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сброс пароля"
+          }
+        }
+      }
+    },
     "have_account_question" : {
       "extractionState" : "manual",
       "localizations" : {

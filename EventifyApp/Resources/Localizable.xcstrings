@@ -10,6 +10,12 @@
     "action_add_event" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add event"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21,6 +27,12 @@
     "action_delete_account" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete account"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32,6 +44,12 @@
     "action_edit_profile" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit profile"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -43,6 +61,12 @@
     "action_logout" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log out"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -54,6 +78,12 @@
     "action_rate_app" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rate it"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -65,6 +95,12 @@
     "alert_delete_account_confirmation" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete your account?"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -76,6 +112,12 @@
     "alert_logout_confirmation" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to log out?"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -87,6 +129,12 @@
     "button_cancel_registration" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel event registration"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -98,6 +146,12 @@
     "button_next" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -109,6 +163,12 @@
     "button_publish_event" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Post event"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -120,6 +180,12 @@
     "button_register_for_event" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I'm in!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -131,6 +197,12 @@
     "button_save_changes" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save changes"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -142,6 +214,12 @@
     "button_send" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -153,6 +231,12 @@
     "button_sign_up" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -164,6 +248,12 @@
     "categories_based_on_interests" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categories based on your interests"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -175,6 +265,12 @@
     "choose_categories_description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can always change this in settings."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -186,6 +282,12 @@
     "choose_categories_subtitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We’ll suggest events for your tastes."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,6 +299,12 @@
     "choose_categories_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick your favorite categories!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -208,6 +316,12 @@
     "common_no" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -219,6 +333,12 @@
     "common_yes" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -230,6 +350,12 @@
     "confirm_password_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repeat password"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -241,6 +367,12 @@
     "description_select_categories" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick categories that match your interests!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -252,6 +384,12 @@
     "email_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -263,6 +401,12 @@
     "events_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Events"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -274,6 +418,12 @@
     "favorites_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -285,6 +435,12 @@
     "forgot_password_button" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forgot password?"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -296,6 +452,12 @@
     "forgot_password_description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the email you used to create your account. We’ll send a reset link."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -307,6 +469,12 @@
     "forgot_password_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password reset"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -318,6 +486,12 @@
     "full_description_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full description"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -329,6 +503,12 @@
     "have_account_question" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Already have an account?"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -343,6 +523,12 @@
     "label_categories" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categories"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -354,6 +540,12 @@
     "label_date" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date*"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -365,6 +557,12 @@
     "label_description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description*"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -376,6 +574,12 @@
     "label_event_name" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Event name*"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -387,6 +591,12 @@
     "label_first_name" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First name"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -398,6 +608,12 @@
     "label_last_name" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last name"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -409,6 +625,12 @@
     "label_middle_name" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Middle name"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -420,6 +642,12 @@
     "label_my_categories" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My categories"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -431,6 +659,12 @@
     "label_photos" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photos*"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -442,6 +676,12 @@
     "label_telegram" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telegram"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -453,6 +693,12 @@
     "label_time" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time*"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -464,6 +710,12 @@
     "login_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -475,6 +727,12 @@
     "no_account_question" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't have an account?"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -486,6 +744,12 @@
     "no_upcoming_events_message" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No upcoming events"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -497,6 +761,12 @@
     "organizer_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organizer"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -508,6 +778,12 @@
     "organizers_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organizers"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -519,6 +795,12 @@
     "password_latin_only" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Latin characters only"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -530,6 +812,12 @@
     "password_min_length" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At least 6 characters"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -541,6 +829,12 @@
     "password_no_whitespace" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No spaces"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -552,6 +846,12 @@
     "password_number" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Include numbers (0-9)"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -563,6 +863,12 @@
     "password_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -574,6 +880,12 @@
     "password_uppercase" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Include at least 1 uppercase letter (A-Z)"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -585,6 +897,12 @@
     "placeholder_enter_email" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter email"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -596,6 +914,12 @@
     "placeholder_enter_event_name" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter event name"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -607,6 +931,12 @@
     "placeholder_enter_first_name" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter first name"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -618,6 +948,12 @@
     "placeholder_enter_last_name" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter last name"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -629,6 +965,12 @@
     "placeholder_enter_middle_name" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter middle name"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -640,6 +982,12 @@
     "placeholder_enter_telegram" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter Telegram"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -651,6 +999,12 @@
     "popular_events_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Popular events"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -665,6 +1019,12 @@
     "recommendation_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recommendations"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -676,6 +1036,12 @@
     "registration_description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create a new account. Takes less than a minute."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -687,6 +1053,12 @@
     "registration_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -698,6 +1070,12 @@
     "section_about_app" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About the app"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -709,6 +1087,12 @@
     "section_help_support" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help & support"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -720,6 +1104,12 @@
     "section_notifications" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -731,6 +1121,12 @@
     "see_more_categories_button" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See more categories"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -742,6 +1138,12 @@
     "sign_in_description" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in to your account. Takes less than a minute."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -753,6 +1155,12 @@
     "sign_in_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -764,6 +1172,12 @@
     "skip_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -775,6 +1189,12 @@
     "snackbar_auth_failure" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auth failed! Check your login or password."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -786,6 +1206,12 @@
     "snackbar_event_add_failure" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Event add failed!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -797,6 +1223,12 @@
     "snackbar_password_recovery_success" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password reset email sent."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -808,6 +1240,12 @@
     "snackbar_registration_success" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully registered for the event!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -819,6 +1257,12 @@
     "tab_main" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -830,6 +1274,12 @@
     "tab_my_events" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My events"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -841,6 +1291,12 @@
     "tab_profile" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -852,6 +1308,12 @@
     "tab_search" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -863,6 +1325,12 @@
     "title_add_event" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create event"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -874,6 +1342,12 @@
     "upcoming_events_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upcoming events"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",

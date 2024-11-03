@@ -31,7 +31,7 @@ struct SearchView: View {
                     Log.info("\(response)")
                 }
             }
-            .navigationTitle(NSLocalizedString("tab_search", comment: "Поиск"))
+            .navigationTitle(String(localized: "tab_search"))
 			.navigationBarTitleDisplayMode(.large)
 			.padding(.horizontal, 16)
             .searchable(

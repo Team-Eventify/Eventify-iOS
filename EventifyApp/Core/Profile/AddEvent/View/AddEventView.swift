@@ -73,7 +73,7 @@ struct AddEventView: View {
                 .foregroundStyle(viewModel.isError ? .error : .mainText)
 
             EventifyTextField(
-                text: $viewModel.name, placeholder: NSLocalizedString("placeholder_enter_event_name", comment: "Введите название"), hasError: viewModel.isError)
+                text: $viewModel.name, placeholder: String(localized: "placeholder_enter_event_name"), hasError: viewModel.isError)
         }
     }
 

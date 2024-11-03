@@ -46,7 +46,7 @@ struct FavoritesView: View {
 					Spacer()
 				}
 			}
-            .navigationTitle(NSLocalizedString("favorites_title", comment: "Избранное"))
+            .navigationTitle(String(localized: "favorites_title"))
 		.padding(.horizontal, 16)
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(.bg)

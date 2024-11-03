@@ -90,13 +90,13 @@ struct SignInView: View {
     /// Поля ввода для авторизации (email и пароль)
     private var authTextFields: some View {
         VStack(alignment: .trailing, spacing: 8) {
-            EventifyTextField(text: $viewModel.email, placeholder: NSLocalizedString("email_placeholder", comment: "Email"), hasError: false)
+            EventifyTextField(text: $viewModel.email, placeholder: String(localized: "email_placeholder"), hasError: false)
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
             .keyboardType(.emailAddress)
             .textContentType(.emailAddress)
             
             EventifySecureField(
-                text: $viewModel.password, isSecure: true, placeholder: NSLocalizedString("password_placeholder", comment: "Пароль")
+                text: $viewModel.password, isSecure: true, placeholder: String(localized: "password_placeholder")
             )
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
             .textContentType(.password)
@@ -126,7 +126,7 @@ struct SignInView: View {
             Button {
                 viewModel.showForgotPassScreen = true
             } label: {
-                Text(NSLocalizedString("forgot_password_button", comment: "Забыли пароль?"))
+                Text("forgot_password_button")
             }
         }
     }

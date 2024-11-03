@@ -20,7 +20,7 @@ struct MyEventsView: View {
 					Spacer()
 				}
 			}
-            .navigationTitle(NSLocalizedString("tab_my_events", comment: "Мои Ивенты"))
+            .navigationTitle(String(localized: "tab_my_events"))
 			.navigationBarTitleDisplayMode(.large)
 			.padding(.horizontal, 16)
 			.frame(maxWidth: .infinity, maxHeight: .infinity)

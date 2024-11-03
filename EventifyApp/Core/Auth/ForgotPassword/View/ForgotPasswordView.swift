@@ -58,7 +58,7 @@ struct ForgotPasswordView: View {
     /// Контейнер для поля ввода email и кнопки отправки
     private var restoreButtonContainerView: some View {
         VStack(spacing: 40) {
-            EventifyTextField(text: $viewModel.email, placeholder: NSLocalizedString("email_placeholder", comment: "Email"), hasError: false)
+            EventifyTextField(text: $viewModel.email, placeholder: String(localized: "email_placeholder"), hasError: false)
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
 
             EventifyButton(

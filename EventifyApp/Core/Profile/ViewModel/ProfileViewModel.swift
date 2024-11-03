@@ -23,7 +23,7 @@ final class ProfileViewModel: ObservableObject {
     func updateUserInfo() {
         Task { @MainActor in
             if isFioNotEmpty() {
-                name = UserDefaultsManager.shared.getFirstName() ?? NSLocalizedString("your_name_profile", comment: "Твое имя")
+                name = UserDefaultsManager.shared.getFirstName() ?? String(localized: "your_name_profile")
                 middleName = UserDefaultsManager.shared.getMiddleName() ?? ""
                 Log.info("User fio is already set 🙋‍♂️")
             } else {
@@ -40,7 +40,7 @@ final class ProfileViewModel: ObservableObject {
                     }
                 } catch {
                     Log.error("User info error:", error: error)
-                    name = NSLocalizedString("your_name_profile", comment: "Твое имя")
+                    name = String(localized: "your_name_profile")
                     middleName = ""
                 }
             }

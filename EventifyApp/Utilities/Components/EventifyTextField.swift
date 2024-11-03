@@ -29,9 +29,9 @@ struct EventifyTextField: View {
             .autocorrectionDisabled()
             .autocapitalization(.none)
             .focused($isFocused)
-            .frame(maxWidth: .infinity)
             .padding(.horizontal, 16)
             .padding(.vertical, 11)
+			.frame(maxWidth: .infinity)
             .setBorder(
                 width: 1,
                 color: borderColor,

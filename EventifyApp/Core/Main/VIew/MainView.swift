@@ -39,7 +39,7 @@ struct MainView: View {
         .onAppear {
             Task { @MainActor in
                 let response = try await eventsServive.listEvents()
-                Log.info("\(response)")
+				Log.network("\(response)")
             }
             TelemetryDeck.signal("Main Screen opened!")
         }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PulseUI
 
 /// Вью экрана "Профиль"
 struct ProfileView: View {
@@ -42,6 +43,10 @@ struct ProfileView: View {
 					}
 
 					Section {
+						NavigationLink(destination: ConsoleView()) {
+							Text("Pulse Консоль")
+						}
+						
 						NavigationLink {
 							TestView()
 						} label: {

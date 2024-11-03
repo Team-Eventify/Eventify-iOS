@@ -6,9 +6,13 @@
 //
 
 import Foundation
+import Pulse
 
 class Request {
+
     private let maxTokenRefreshAttempts = 3
+
+	let session: URLSessionProtocol = URLSessionProxy(configuration: .default)
 
     func sendRequest<T: Decodable>(
         endpoint: Endpoint,
@@ -20,7 +24,6 @@ class Request {
             throw RequestError.invalidURL
         }
 
-        Log.info("Request URL: \(url)")
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.header
@@ -32,13 +35,10 @@ class Request {
                 request.setValue(
                     "Bearer \(accessToken)", forHTTPHeaderField: "Authorization"
                 )
-                Log.info("Access Token added to request: \(accessToken)")
             } else {
                 Log.warning("No access token found in Keychain")
             }
         }
-
-        Log.info("Request Headers: \(request.allHTTPHeaderFields ?? [:])")
 
         if let body = endpoint.parameters {
             switch endpoint.method {
@@ -72,14 +72,14 @@ class Request {
         }
 
         do {
-            let (data, response) = try await URLSession.shared.data(
+			// TODO: - Сменить urlSession после тестов и убрать пункт с консолью pulse
+			let (data, response) = try await session.data(
                 for: request)
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw RequestError.noResponse
             }
 
-            Log.info("📋 HTTP Status Code: \(httpResponse.statusCode)")
-            Log.info("🛬 Response Headers: \(httpResponse.allHeaderFields)")
+			Log.network("📋 HTTP Status Code: \(httpResponse.statusCode)")
 
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -106,15 +106,10 @@ class Request {
                 if tokenRefreshCount >= maxTokenRefreshAttempts {
                     throw RequestError.maxTokenRefreshAttemptsReached
                 }
-                Log.info(
-                    "🔄 Starting token refresh. Attempt \(tokenRefreshCount + 1) of \(maxTokenRefreshAttempts)"
-                )
 
                 do {
-                    try await Task.sleep(nanoseconds: 1_000_000_000)  // Задержка в 1 секунду
-                    let tokenResponse = try await TokenService.shared
-                        .refreshTokens()
-                    Log.info("🔐 Token Response: \(tokenResponse)")
+                    try await Task.sleep(nanoseconds: 1_000_000_000)
+                    let tokenResponse = try await TokenService.shared.refreshTokens()
 
                     guard
                         KeychainManager.shared.set(
@@ -127,12 +122,10 @@ class Request {
                         throw RequestError.tokenSaveFailed
                     }
 
-                    Log.info("🔑 New Access Token: \(tokenResponse.accessToken)")
-
                     let newEndpoint = RefreshedEndpoint(
                         original: endpoint, newToken: tokenResponse.accessToken)
 
-                    Log.info("🔁 Retrying request with new token")
+					Log.network("🔁 Retrying request with new token")
                     return try await sendRequest(
                         endpoint: newEndpoint,
                         responseModel: responseModel,

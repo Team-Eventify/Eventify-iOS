@@ -20,14 +20,6 @@ struct ProfileDetailView: View {
     @Environment(\.dismiss)
     var dismiss
 
-    private let textFieldSections: [ProfileTextFieldModel] = [
-        .init(title: NSLocalizedString("label_first_name", comment: "Имя"), placeholder: NSLocalizedString("label_first_name", comment: "Имя")),
-        .init(title: NSLocalizedString("label_last_name", comment: "Фамилия"), placeholder: NSLocalizedString("label_last_name", comment: "Фамилия")),
-        .init(title: NSLocalizedString("label_middle_name", comment: "Отчество"), placeholder: NSLocalizedString("label_middle_name", comment: "Отчество")),
-        .init(title: NSLocalizedString("email_placeholder", comment: "Email"), placeholder: NSLocalizedString("email_placeholder", comment: "Email")),
-        .init(title: NSLocalizedString("label_telegram", comment: "Telegram"), placeholder: NSLocalizedString("label_telegram", comment: "Telegram"))
-    ]
-
     // MARK: - Initialization
 
     /// Инициализатор
@@ -62,14 +54,13 @@ struct ProfileDetailView: View {
                 Spacer()
                 Spacer()
             }
+			.padding(.horizontal, 16)
             .onAppear {
                 viewModel.getUser()
                 categoriesModel.getCategories()
                 categoriesModel.getUserCategories()
             }
         }
-        .padding(.horizontal, 16)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.bg, ignoresSafeAreaEdges: .all)
     }
 

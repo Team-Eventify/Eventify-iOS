@@ -6,130 +6,151 @@
 //
 
 import SUINavigation
+import PopupView
 import SwiftUI
 
 /// Вью экрана Входа
 struct SignInView: View {
-	// MARK: - Private Properties
+    // MARK: - Private Properties
 
-	@StateObject private var viewModel: SignInViewModel
+    @StateObject private var viewModel: SignInViewModel
 
-	@State private var isLogined: Bool = false
-	@State private var isForgotPassword: Bool = false
+    @Environment(\.dismiss)
+    var dismiss
 
-	@Environment(\.dismiss)
-	var dismiss
+    // MARK: - Initialization
 
-	// MARK: - Initialization
+    /// Инициализатор
+    /// - Parameter viewModel: модель экрана Вход
+    init(signInService: SignInServiceProtocol) {
+        _viewModel = StateObject(
+            wrappedValue: SignInViewModel(signInService: signInService)
+        )
+    }
 
-	/// Инициализатор
-	/// - Parameter viewModel: модель экрана Вход
-	init(viewModel: SignInViewModel? = nil) {
-		_viewModel = StateObject(
-			wrappedValue: viewModel ?? SignInViewModel()
-		)
-	}
+    // MARK: - Body
 
-	// MARK: - Body
+    var body: some View {
+        VStack(alignment: .leading, spacing: 60) {
+            Spacer()
+            signInContentContainerView
+            signInButtonContainerView
+            Spacer()
+            Spacer()
+        }
+        .foregroundStyle(Color.secondaryText)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, 16)
+        .background(.bg, ignoresSafeAreaEdges: .all)
+        .navigationBarBackButtonHidden(true)
+        .edgesIgnoringSafeArea(.bottom)
+        .onTapGesture {
+            hideKeyboard()
+        }
 
-	var body: some View {
-		VStack(alignment: .leading, spacing: 60) {
-			Spacer()
-			signInContentContainerView
-			signInButtonContainerView
+        .navigation(isActive: $viewModel.showForgotPassScreen) {
+            ForgotPasswordView()
+        }
 
-			if viewModel.isLogin == false {
-				Text(viewModel.signInStatusMessage)
-					.padding(.all, 16)
-					.foregroundStyle(.error)
-			}
-			Spacer()
-		}
-		.foregroundStyle(Color.secondaryText)
-		.frame(maxWidth: .infinity, maxHeight: .infinity)
-		.padding(.horizontal, 16)
-		.background(.bg, ignoresSafeAreaEdges: .all)
-		.navigationBarBackButtonHidden(true)
-		.navigation(isActive: $isLogined) {
-			TabBarView()
-		}
-		.navigation(isActive: $isForgotPassword) {
-			ForgotPasswordView()
-		}
-	}
+        .popup(
+            isPresented: Binding(
+                get: { viewModel.loadingState == .failure }, set: { _ in })
+        ) {
+            EventifySnackBar(config: .failure)
+        } customize: {
+            $0
+                .type(
+                    .floater(
+                        verticalPadding: 10,
+                        useSafeAreaInset: true
+                    )
+                )
+                .disappearTo(.bottomSlide)
+                .position(.bottom)
+                .closeOnTap(true)
+                .autohideIn(3)
+        }
+    }
 
-	/// Контейнер для содержимого экрана входа
-	private var signInContentContainerView: some View {
-		VStack(alignment: .leading, spacing: 12) {
-			Text("Вход")
-				.font(.semiboldCompact(size: 40))
-				.foregroundStyle(Color.mainText)
+    /// Контейнер для содержимого экрана входа
+    private var signInContentContainerView: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("sign_in_title")
+                .font(.semiboldCompact(size: 40))
+                .foregroundStyle(Color.mainText)
 
-			Text("Пожалуйста,  войдите в свой аккаунт. Это займёт меньше минуты.")
-				.font(.regularCompact(size: 17))
-				.frame(width: 296)
+            Text("sign_in_description")
+                .font(.regularCompact(size: 17))
+                .frame(width: 296)
 
-			authTextFields
-		}
-	}
+            authTextFields
+        }
+    }
 
-	/// Поля ввода для авторизации (email и пароль)
-	private var authTextFields: some View {
-		VStack(alignment: .trailing, spacing: 8) {
-			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true, isSecure: false)
-			EventifyTextField(text: $viewModel.password, placeholder: "Пароль", isSucceededValidation: true, isSecure: true)
+    /// Поля ввода для авторизации (email и пароль)
+    private var authTextFields: some View {
+        VStack(alignment: .trailing, spacing: 8) {
+            EventifyTextField(text: $viewModel.email, placeholder: NSLocalizedString("email_placeholder", comment: "Email"), hasError: false)
+            .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
+            .keyboardType(.emailAddress)
+            .textContentType(.emailAddress)
+            
+            EventifySecureField(
+                text: $viewModel.password, isSecure: true, placeholder: NSLocalizedString("password_placeholder", comment: "Пароль")
+            )
+            .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
+            .textContentType(.password)
 
-			forgotPasswordButtonContainerView
-		}
-		.padding(.top, 40)
-	}
+            forgotPasswordButtonContainerView
+        }
+        .padding(.top, 40)
+    }
 
-	/// Контейнер для кнопок входа и регистрации
-	private var signInButtonContainerView: some View {
-		VStack(spacing: 20) {
-			EventifyButton(title: "Войти", isLoading: viewModel.isLoading) {
-				Task {
-					await viewModel.signIn()
-					if viewModel.isLogin == true {
-						isLogined.toggle()
-					}
-				}
-			}
-			haveAccountContainerView
-		}
-	}
+    /// Контейнер для кнопок входа и регистрации
+    private var signInButtonContainerView: some View {
+        VStack(spacing: 20) {
+            EventifyButton(
+                configuration: .signIn,
+                isLoading: viewModel.loadingState == .loading,
+                isDisabled: viewModel.loadingState == .loading
+            ) {
+                viewModel.signIn()
+            }
+            haveAccountContainerView
+        }
+    }
 
-	/// Кнопка для перехода на экран восстановления пароля
-	private var forgotPasswordButtonContainerView: some View {
-		VStack(alignment: .trailing, spacing: .zero) {
-			Button {
-				isForgotPassword.toggle()
-			} label: {
-				Text("Забыли пароль?")
-			}
-		}
-	}
+    /// Кнопка для перехода на экран восстановления пароля
+    private var forgotPasswordButtonContainerView: some View {
+        VStack(alignment: .trailing, spacing: .zero) {
+            Button {
+                viewModel.showForgotPassScreen = true
+            } label: {
+                Text(NSLocalizedString("forgot_password_button", comment: "Забыли пароль?"))
+            }
+        }
+    }
 
-	/// Контейнер для кнопки регистрации
-	private var haveAccountContainerView: some View {
-		HStack(spacing: 12) {
-			Text("Нет аккаунта?")
-				.font(.regularCompact(size: 16))
-			Button {
-				dismiss()
-			} label: {
-				Text("Регистрация")
-					.underline()
-					.font(.mediumCompact(size: 16))
-					.foregroundStyle(Color.brandYellow)
-			}
-		}
-		.frame(maxWidth: .infinity)
-	}
+    /// Контейнер для кнопки регистрации
+    private var haveAccountContainerView: some View {
+        HStack(spacing: 12) {
+            Text("no_account_question")
+                .font(.regularCompact(size: 16))
+            Button {
+                dismiss()
+            } label: {
+                Text("registration_title")
+                    .underline()
+                    .font(.mediumCompact(size: 16))
+                    .foregroundStyle(.brandCyan)
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
 }
 
 #Preview {
-	NavigationViewStorage {
-		SignInView()
-	}
+    NavigationViewStorage {
+        SignInView(signInService: SignInService())
+    }
 }

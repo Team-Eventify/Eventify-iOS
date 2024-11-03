@@ -8,20 +8,23 @@
 import Foundation
 
 enum EventCellSize {
-	case slim
-	case large
+    case slim
+    case large
+    case flexible
 
-	var width: CGFloat {
-		switch self {
-			case .slim: return 150
-			case .large: return 235
-		}
-	}
+    var width: CGFloat? {
+        switch self {
+        case .slim: return 180
+        case .large: return 235
+        case .flexible: return nil
+        }
+    }
 
-	var height: CGFloat {
-		switch self {
-			case .slim: return 280
-			case .large: return 278
-		}
-	}
+    var height: CGFloat? {
+        switch self {
+        case .slim: return 280
+        case .large: return 278
+        case .flexible: return nil
+        }
+    }
 }

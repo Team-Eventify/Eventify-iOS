@@ -7,50 +7,58 @@
 
 import SwiftUI
 
-@MainActor
 final class SignInViewModel: ObservableObject {
-	// MARK: - Public Properties
+    // MARK: - Public Properties
 
-	@Published var email: String = ""
-	@Published var password: String = ""
-	@Published var signInStatusMessage: String = ""
-	@Published var isLoading: Bool = false
-	@AppStorage("isLoading") var isLogin: Bool = false
+    @Published var email: String = ""
+    @Published var password: String = ""
+    @Published var loadingState: LoadingState = .none
+    @Published var showForgotPassScreen: Bool = false
+    @Published var loginAttempts = 0
 
-	/// Приватное свойство для сервиса входа
-	private let signInService: SignInServiceProtocol
+    // MARK: - Private Properties
 
-	// MARK: - Initialization
+    /// Приватное свойство для сервиса входа
+    private let signInService: SignInServiceProtocol
 
-	/// Инициализатор
-	/// - Parameter signInService: сервис viewModel'и экрана Вход
-	init(signInService: SignInServiceProtocol = SignInService()) {
-		self.signInService = signInService
-	}
+    // MARK: - Initialization
 
-	// MARK: - Public Functions
+    /// Инициализатор
+    /// - Parameters:
+    ///   - signInService: сервис входа
+    init(signInService: SignInServiceProtocol) {
+        self.signInService = signInService
+    }
 
-	/// Отпарвляет запрос на вход
-	func signIn() async {
-		guard !email.isEmpty, !password.isEmpty else {
-			signInStatusMessage = "No email or password found."
-			isLogin = false
-			print(signInStatusMessage)
-			return
-		}
+    // MARK: - Public Functions
 
-		isLoading = true
-		let userData: JSON = ["email": email, "password": password]
+    /// Отправляет запрос на вход
+    func signIn() {
+        guard !email.isEmpty, !password.isEmpty else {
+            loginAttempts += 1
+            return
+        }
 
-		do {
-			let _ = try await signInService.signIn(json: userData)
-			print(signInStatusMessage)
-			isLogin = true
-		} catch {
-			signInStatusMessage = "Error: \(error.localizedDescription)"
-			print(signInStatusMessage)
-			isLogin = false
-		}
-		isLoading = false
-	}
+        loadingState = .loading
+        let userData: JSON = ["email": email, "password": password]
+
+        Task { @MainActor in
+            do {
+                let response = try await signInService.signIn(json: userData)
+                KeychainManager.shared.set(response.userID, key: KeychainKeys.userId)
+                KeychainManager.shared.set(response.accessToken, key: KeychainKeys.accessToken)
+                KeychainManager.shared.set(response.refreshToken, key: KeychainKeys.refreshToken)
+                KeychainManager.shared.set(email, key: KeychainKeys.userEmail)
+                KeychainManager.shared.set(password, key: KeychainKeys.userPassword)
+                loadingState = .loaded
+                Constants.isLogin = true
+            } catch {
+                loginAttempts += 1
+                loadingState = .failure
+                Constants.isLogin = false
+                try? await Task.sleep(nanoseconds: 2_000_000_000)
+                loadingState = .none
+            }
+        }
+    }
 }

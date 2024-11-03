@@ -10,19 +10,50 @@ import Foundation
 /// Мок-дынные для экрана "Избранное"
 enum FavoritesMockData {
 
-	/// Избранные мероприятия
-	static let eventsData: [RecommendedEventsModel] = [
-		.init(image: "recomm",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"]),
-		.init(image: "recomm",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"]),
-		.init(image: "recomm",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"]),
-		.init(image: "event2",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"])
-	]
+    /// Избранные мероприятия
+    static let eventsData: [CellsModel] = [
+        .init(
+            image: "recomm", title: "День открытых дверей университета МИСИС",
+            cheepsItems: ["12 декабря", "17:30", "онлайн"]),
+        .init(
+            image: "recomm", title: "День открытых дверей университета МИСИС",
+            cheepsItems: ["12 декабря", "17:30", "онлайн"]),
+        .init(
+            image: "recomm", title: "День открытых дверей университета МИСИС",
+            cheepsItems: ["12 декабря", "17:30", "онлайн"]),
+        .init(
+            image: "event2", title: "День открытых дверей университета МИСИС",
+            cheepsItems: ["12 декабря", "17:30", "онлайн"]),
+    ]
 
-	/// Рекомендуемые меропрития
-	static let recomendedEventsData: [RecommendedEventsModel] = [
-		.init(image: "recomm",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"]),
-		.init(image: "event2",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"]),
-		.init(image: "recomm",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"]),
-		.init(image: "recomm",title: "День открытых дверей университета МИСИС", cheepsItems: ["12 декабря", "17:30", "онлайн"])
-	]
+    /// Рекомендуемые меропрития
+    static let recomendedEventsData: [CellsModel] = [
+        .init(
+            image: "recomm", title: "День открытых дверей университета МИСИС",
+            cheepsItems: ["12 декабря", "17:30", "онлайн"]),
+        .init(
+            image: "event2", title: "День открытых дверей университета МИСИС",
+            cheepsItems: ["12 декабря", "17:30", "онлайн"]),
+        .init(
+            image: "recomm", title: "День открытых дверей университета МИСИС",
+            cheepsItems: ["12 декабря", "17:30", "онлайн"]),
+        .init(
+            image: "recomm", title: "День открытых дверей университета МИСИС",
+            cheepsItems: ["12 декабря", "17:30", "онлайн"]),
+    ]
+
+    static let organizatorsData: [CellsModel] = [
+        .init(
+            image: "itam", title: "ITAM",
+            cheepsItems: ["backend", "frontend", "design", "mobile"]),
+        .init(
+            image: "itam", title: "ITAM",
+            cheepsItems: ["backend", "frontend", "design", "mobile"]),
+        .init(
+            image: "itam", title: "ITAM",
+            cheepsItems: ["backend", "frontend", "design", "mobile"]),
+        .init(
+            image: "itam", title: "ITAM",
+            cheepsItems: ["backend", "frontend", "design", "mobile"]),
+    ]
 }

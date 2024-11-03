@@ -16,34 +16,40 @@ struct FavoritesView: View {
 	// MARK: - Body
 
 	var body: some View {
-		NavigationStack {
-			VStack(alignment: .leading, spacing: 56) {
+			VStack(alignment: .leading, spacing: 28) {
 				Picker("", selection: $viewModel.selectedPicker) {
-					Text("Ивенты").tag(0)
-					Text("Организаторы").tag(1)
+					Text("events_title").tag(0)
+					Text("organizers_title").tag(1)
 				}
 				.pickerStyle(.segmented)
 				ScrollView(showsIndicators: false) {
-					FlowLayout(horizontalSpacing: 16, verticalSpacing: 8) {
+					LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
 						ForEach(viewModel.favoritesData()) {
-							EventifyRecommendationEvent(
-								image: $0.image,
-								title: $0.title,
-								cheepsItems: $0.cheepsItems,
-								size: .slim
-							)
+							if viewModel.showOrganizators {
+								EventifyFavoriteOrganizators(
+									image: $0.image,
+									name: $0.title,
+									size: .slim,
+									items: $0.cheepsItems
+								)
+							} else {
+								EventifyRecommendationEvent(
+									image: $0.image,
+									title: $0.title,
+									cheepsItems: $0.cheepsItems,
+									size: .slim
+								)
+							}
 						}
 					}
 					recomendedEvents
 					Spacer()
 				}
 			}
-			.navigationTitle("Избранное")
-			.navigationBarTitleDisplayMode(.large)
-			.padding(.horizontal, 16)
-			.frame(maxWidth: .infinity, maxHeight: .infinity)
-			.background(.bg)
-		}
+            .navigationTitle(NSLocalizedString("favorites_title", comment: "Избранное"))
+		.padding(.horizontal, 16)
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.background(.bg)
 	}
 }
 
@@ -52,7 +58,7 @@ struct FavoritesView: View {
 /// Рекоммендуемые меропрятия
 private var recomendedEvents: some View {
 	VStack(alignment: .leading) {
-		Text("Рекомедации")
+		Text("recommendation_title")
 			.font(.mediumCompact(size: 20))
 			.foregroundStyle(.mainText)
 		ScrollView(.horizontal, showsIndicators: false) {
@@ -71,5 +77,7 @@ private var recomendedEvents: some View {
 }
 
 #Preview {
-	TabBarView()
+	NavigationStack {
+		TabBarView()
+	}
 }

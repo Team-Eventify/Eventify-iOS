@@ -17,7 +17,4 @@ struct UpcomingEventsModel: Identifiable {
 
 	/// Заголовки тэгов мероприятия
 	let cheepTitles: [String]
-
-	/// Цвет мероприятия
-	let color: Color
 }

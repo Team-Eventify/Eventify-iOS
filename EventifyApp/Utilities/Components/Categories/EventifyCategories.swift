@@ -15,7 +15,7 @@ struct EventifyCategories: View {
 	var body: some View {
 		ZStack {
 			HStack(spacing: .zero) {
-				Spacer()
+                Spacer()
 				Image(image)
 			}
 		}
@@ -26,13 +26,13 @@ struct EventifyCategories: View {
 		.overlay(alignment: .topLeading) {
 			Text(text)
 				.font(.mediumCompact(size: 24))
-				.foregroundColor(.white)
-				.padding([.leading, .top], 16)
+				.foregroundColor(.black)
+                .padding([.leading, .top], 16)
 		}
 	}
 }
 
 #Preview {
-	EventifyCategories(text: "Наука", image: "science", color: .science)
+    EventifyCategories(text: "Спорт", image: "sport", color: .sport)
 		.padding(.horizontal, 16)
 }

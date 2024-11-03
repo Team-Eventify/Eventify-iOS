@@ -6,21 +6,24 @@
 //
 
 import SwiftUI
+import PulseUI
 
 /// Вью экрана "Профиль"
 struct ProfileView: View {
 	// MARK: - Private Properties
 
-	@StateObject private var viewModel = ProfileViewModel()
+    @StateObject private var viewModel: ProfileViewModel
+	@State var showingDeleteAlert: Bool = false
+	@State var showingExitAlert: Bool = false
+	@State var navigateToSignUp: Bool = false
 
 	// MARK: - Initialization
 
-
 	/// Инициализатор
 	/// - Parameter viewModel: модель экрана профиля
-	init(viewModel: ProfileViewModel? = nil) {
+    init(viewModel: ProfileViewModel? = nil) {
 		_viewModel = StateObject(
-			wrappedValue: viewModel ?? ProfileViewModel()
+            wrappedValue: viewModel ?? ProfileViewModel(userService: UserService())
 		)
 	}
 
@@ -30,101 +33,137 @@ struct ProfileView: View {
 		NavigationStack {
 			VStack {
 				header
-				Picker("", selection: $viewModel.selectedPicker) {
-					Text("Тёмная тема").tag(0)
-					Text("Светлая тема").tag(1)
+				List {
+					Section {
+						NavigationLink {
+							AddEventView()
+						} label: {
+                            Text("action_add_event")
+						}
+					}
+
+					Section {
+						NavigationLink(destination: ConsoleView()) {
+							Text("Pulse Консоль")
+						}
+						
+						NavigationLink {
+							TestView()
+						} label: {
+                            Text("section_notifications")
+						}
+
+						NavigationLink {
+                            TestView()
+                        } label: {
+                            Text("section_help_support")
+						}
+					}
+
+					Section {
+						NavigationLink {
+							TestView()
+						} label: {
+                            Text("section_about_app")
+						}
+						NavigationLink {
+							TestView()
+						} label: {
+                            Text("action_rate_app")
+						}
+					}
+
+					Section {
+						Button {
+							showingExitAlert.toggle()
+						} label: {
+                            Text("action_logout")
+								.foregroundStyle(.mainText)
+						}
+                        .alert(NSLocalizedString("alert_logout_confirmation", comment: "Вы действительно хотите выйти из приложения?"), isPresented: $showingExitAlert) {
+							Button(role: .cancel) {
+								Constants.isLogin = false
+                                UserDefaultsManager.shared.clearAllUserData()
+                                KeychainManager.shared.clearAll()
+                                Log.info("🚪 Exit from account")
+							} label: {
+                                Text("common_yes")
+									.foregroundStyle(.error)
+							}
+
+							Button {
+								print("Continue work in app")
+							} label: {
+                                Text("common_no")
+									.foregroundStyle(.mainText)
+							}
+						}
+						Button {
+							showingDeleteAlert.toggle()
+						} label: {
+                            Text("action_delete_account")
+								.foregroundStyle(.error)
+						}
+                        .alert(NSLocalizedString("alert_delete_account_confirmation", comment: "Удалить информацию об аккаунте"), isPresented: $showingDeleteAlert) {
+
+							Button(role: .cancel) {
+								Constants.isLogin = false
+                                UserDefaultsManager.shared.clearAllUserData()
+                                Log.info("🪓 delete account")
+							} label: {
+                                Text("common_yes")
+									.foregroundStyle(.error)
+							}
+
+							Button {
+                                Log.info("✏️ resume account")
+							} label: {
+                                Text("common_no")
+									.foregroundStyle(.mainText)
+							}
+						}
+					}
 				}
-				.pickerStyle(.segmented)
-				.padding(.top, 18)
-				.padding(.horizontal, 16)
-				settingsList
+				.scrollDisabled(true)
+				.scrollContentBackground(.hidden)
+				.listStyle(.insetGrouped)
 			}
-			.navigationTitle("Профиль")
+            .onAppear {
+                viewModel.updateUserInfo()
+            }
+            
+            .navigationTitle(NSLocalizedString("tab_profile", comment: "Профиль"))
 			.navigationBarTitleDisplayMode(.large)
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
 			.background(.bg, ignoresSafeAreaEdges: .all)
 		}
 	}
-}
-
-// MARK: - UI Components
-
-/// Хедер карточка
-private var header: some View {
-	NavigationLink {
-		ProfileDetail()
-	} label: {
-		HStack {
-			VStack(alignment: .leading) {
-				Text("Иванов Иван")
-					.font(.mediumCompact(size: 24))
-					.foregroundStyle(.black)
-				Text("Редактировать профиль")
-					.font(.regularCompact(size: 17))
-					.foregroundStyle(.black)
-			}
-			Spacer()
-			Image(systemName: "chevron.right")
-				.foregroundColor(.black)
-				.padding(.trailing, 16)
-		}
-		.padding(.all)
-		.background(.brandYellow)
-		.cornerRadius(10)
-		.padding(.horizontal)
-	}
-}
-
-/// Список настроек приложения
-
-private var settingsList: some View {
-	List {
-		Section {
-			NavigationLink {
-				TestView()
-			} label: {
-				Text("Добавить мероприятие")
-			}
-		}
-
-		Section {
-			NavigationLink {
-				TestView()
-			} label: {
-				Text("Уведомления")
-			}
-
-			NavigationLink {} label: {
-				Text("Помощь и поддержка")
-			}
-		}
-
-		Section {
-			NavigationLink {
-				TestView()
-			} label: {
-				Text("О приложении")
-			}
-			NavigationLink {
-				TestView()
-			} label: {
-				Text("Оценить")
-			}
-		}
-
-		Section {
-			NavigationLink {
-				SignUpView()
-			}
-			label: {
-				Text("Выйти")
-					.foregroundStyle(.mainText)
-			}
-		}
-	}
-	.scrollDisabled(true)
-	.scrollContentBackground(.hidden)
-	.listStyle(.insetGrouped)
+    
+    /// Хедер карточка
+    private var header: some View {
+        NavigationLink {
+            ProfileDetailView()
+        } label: {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(viewModel.name + " " + viewModel.middleName)
+                        .font(.mediumCompact(size: 24))
+                        .foregroundStyle(.black)
+                    Text("action_edit_profile")
+                        .font(.regularCompact(size: 17))
+                        .foregroundStyle(.black)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .foregroundColor(.black)
+                    .padding(.trailing, 16)
+            }
+            .padding(.all)
+            .background(.brandCyan)
+            .cornerRadius(10)
+            .padding(.horizontal)
+        }
+    }
 }
 
 #Preview {

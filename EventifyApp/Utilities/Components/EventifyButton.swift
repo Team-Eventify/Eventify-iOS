@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct EventifyButton: View {
-	let title: String
-	var isLoading: Bool
+    var configuration: ButtonConfigurations
+    var isLoading: Bool
+	var isDisabled: Bool
 	var action: () -> Void
 
 	var body: some View {
@@ -22,28 +23,28 @@ struct EventifyButton: View {
 					.frame(maxWidth: .infinity)
 					.padding(.vertical, 13)
 					.tint(.black)
-					.background(Color.brandYellow)
+                    .background(configuration.color)
 					.foregroundStyle(.white)
 					.cornerRadius(10)
 			} else {
-				Text(title)
+                Text(configuration.title)
 					.font(.mediumCompact(size: 17))
 					.foregroundColor(.black)
 					.padding(.vertical, 13)
 					.frame(maxWidth: .infinity)
-					.background(Color.brandYellow)
+                    .background(isDisabled ? .gray : configuration.color)
 					.cornerRadius(10)
 			}
 		}
-		.disabled(isLoading) // Disable the button when loading
+		.disabled(isLoading || isDisabled) // Disable the button when loading
 	}
 }
 
 #Preview {
 	VStack {
-		EventifyButton(title: "Зарегистрироваться", isLoading: false, action: {})
-		EventifyButton(title: "Войти", isLoading: true, action: {})
-		EventifyButton(title: "Отправить", isLoading: false, action: {})
+        EventifyButton(configuration: .registration, isLoading: false, isDisabled: false, action: {})
+        EventifyButton(configuration: .cancel, isLoading: true, isDisabled: false, action: {})
+        EventifyButton(configuration: .commom, isLoading: false, isDisabled: false, action: {})
 	}
 	.frame(maxWidth: .infinity, maxHeight: .infinity)
 	.padding(.horizontal, 16)

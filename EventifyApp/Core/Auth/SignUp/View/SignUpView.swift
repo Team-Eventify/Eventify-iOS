@@ -5,122 +5,171 @@
 //  Created by Захар Литвинчук on 13.06.2024.
 //
 
+import PopupView
 import SUINavigation
 import SwiftUI
 
-
-/// Вью экрана регистрации
 struct SignUpView: View {
-	// MARK: - Private Properties
+    @StateObject private var viewModel: SignUpViewModel
 
-	/// ViewModel для управления логикой вью
-	@StateObject private var viewModel: SignUpViewModel
+    init(signUpService: SignUpServiceProtocol) {
+        _viewModel = StateObject(
+            wrappedValue: SignUpViewModel(signUpService: signUpService))
+    }
 
-	/// Состояние для навигации к экрану Входа
-	@State private var navigateToLoginView: Bool = false
+    var body: some View {
+        VStack(alignment: .leading, spacing: 60) {
+            Spacer()
+            registrationContentContainerView
+            registrationButtonContainerView
+            Spacer()
+            Spacer()
+        }
+        .foregroundStyle(Color.secondaryText)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, 16)
+        .navigationBarBackButtonHidden(true)
+        .background(.bg, ignoresSafeAreaEdges: .all)
+        .edgesIgnoringSafeArea(.bottom)
+        .onTapGesture {
+            hideKeyboard()
+        }
+        .navigation(isActive: $viewModel.navigateToLoginView) {
+            SignInView(signInService: SignInService())
+        }
+        .navigation(
+            isActive: Binding(
+                get: { viewModel.loadingState == .loaded },
+                set: { _ in }
+            )
+        ) {
+            PersonalCategoriesView()
+        }
+        .popup(
+            isPresented: Binding(
+                get: { viewModel.loadingState == .failure }, set: { _ in })
+        ) {
+            EventifySnackBar(config: .failure)
+        } customize: {
+            $0
+                .type(.floater(verticalPadding: 10, useSafeAreaInset: true))
+                .disappearTo(.bottomSlide)
+                .position(.bottom)
+                .closeOnTap(true)
+                .autohideIn(3)
+        }
+    }
 
-	// MARK: - Initialization
+    private var registrationContentContainerView: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("registration_title")
+                .font(.semiboldCompact(size: 40))
+                .foregroundStyle(Color.mainText)
 
-	/// Инициализация
-	/// - Parameter viewModel: вью модель экрана регистрации
-	init(viewModel: SignUpViewModel? = nil) {
-		_viewModel = StateObject(
-			wrappedValue: viewModel ?? SignUpViewModel()
-		)
-	}
+            Text("registration_description")
+                .font(.regularCompact(size: 17))
+                .frame(width: 296)
+            authTextFields
+            requirementsContainerView
+        }
+    }
 
-	// MARK: - Body
+    private var authTextFields: some View {
+        VStack(spacing: 8) {
+            EventifyTextField(text: $viewModel.email, placeholder: NSLocalizedString("email_placeholder", comment: "Email"), hasError: false)
+            .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
+            .keyboardType(.emailAddress)
+            .textContentType(.emailAddress)
+            .overlay(
+                HStack {
+                    Spacer()
+                    Image(
+                        systemName: viewModel.isEmailValid
+                            ? "checkmark.circle.fill" : "xmark.circle.fill"
+                    )
+                    .foregroundColor(viewModel.isEmailValid ? .brandCyan : .error)
+                    .opacity(viewModel.email.isEmpty ? 0 : 1)
+                }
+                .padding(.trailing, 20)
+            )
 
-	var body: some View {
-		VStack(alignment: .leading, spacing: 60) {
-			Spacer()
-			registrationContentContainerView
-			registrationButtonContainerView
+            EventifySecureField(
+                text: $viewModel.password,
+                isSecure: true,
+                placeholder: NSLocalizedString("password_placeholder", comment: "Пароль")
+            )
+            .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
+            .textContentType(.newPassword)
 
-			/// Отображение сообщения о статусе регистрации при ошибке
+            EventifySecureField(
+                text: $viewModel.confirmPassword,
+                isSecure: true,
+                placeholder: NSLocalizedString("confirm_password_placeholder", comment: "Повторите пароль")
+            )
+            .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
+            .textContentType(.newPassword)
+        }
+        .padding(.top, 40)
+    }
 
-			if viewModel.isLogin == false {
-				Text(viewModel.signUpStatusMessage)
-					.padding(.all, 16)
-					.foregroundStyle(.error)
-			}
-			Spacer()
-		}
-		.foregroundStyle(Color.secondaryText)
-		.frame(maxWidth: .infinity, maxHeight: .infinity)
-		.padding(.horizontal, 16)
-		.navigationBarBackButtonHidden(true)
-		.background(.bg, ignoresSafeAreaEdges: .all)
+    private var requirementsContainerView: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            ForEach(viewModel.validationRules.indices, id: \.self) { index in
+                ValidationRow(rule: viewModel.validationRules[index])
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
 
-		/// Навигация к экрану входа
-		.navigation(isActive: $navigateToLoginView) {
-			SignInView()
-		}
+    private var registrationButtonContainerView: some View {
+        VStack(spacing: 20) {
+            EventifyButton(
+                configuration: .signUp,
+                isLoading: viewModel.loadingState == .loading,
+                isDisabled: viewModel.isButtonDisabled
+            ) {
+                viewModel.signUp()
+            }
+            haveAccountContainerView
+        }
+    }
 
-		/// Навигация к основному экрану после успешной регистрации
-		.navigation(isActive: $viewModel.isLogin) {
-			TabBarView()
-		}
-	}
+    private var haveAccountContainerView: some View {
+        HStack(spacing: 12) {
+            Text("have_account_question")
+                .font(.regularCompact(size: 16))
+            Button {
+                viewModel.navigateToLoginView.toggle()
+            } label: {
+                Text("login_title")
+                    .underline()
+                    .font(.mediumCompact(size: 16))
+                    .foregroundStyle(.brandCyan)
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
 
-	// MARK: - UI Components
+struct ValidationRow: View {
+    var rule: ValidationRule
 
-	/// Контейнер с содержимым регистрации
-	private var registrationContentContainerView: some View {
-		VStack(alignment: .leading, spacing: 12) {
-			Text("Регистрация")
-				.font(.semiboldCompact(size: 40))
-				.foregroundStyle(Color.mainText)
+    private var foregroundColor: Color {
+        rule.isValid ? Color.green : Color.gray
+    }
 
-			Text("Пожалуйста, создайте новый аккаунт. Это займёт меньше минуты.")
-				.font(.regularCompact(size: 17))
-				.frame(width: 296)
+    var body: some View {
+        HStack {
+            rule.correctIcon
+                .foregroundColor(foregroundColor)
 
-			authTextFields
-		}
-	}
-
-	/// Текстовые поля для ввода данных регистрации
-	private var authTextFields: some View {
-		VStack(spacing: 8) {
-			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: viewModel.isError, isSecure: false)
-			EventifyTextField(text: $viewModel.password, placeholder: "Пароль", isSucceededValidation: viewModel.isError, isSecure: true)
-		}
-		.padding(.top, 40)
-	}
-
-	/// Контейнер с кнопкой регистрации
-	private var registrationButtonContainerView: some View {
-		VStack(spacing: 20) {
-			EventifyButton(title: "Зарегистрироваться", isLoading: viewModel.isLoading) {
-				Task {
-					await viewModel.signUp()
-				}
-			}
-			haveAccountContainerView
-		}
-	}
-
-	/// Контейнер с кнопкой для перехода на экран Входа
-	private var haveAccountContainerView: some View {
-		HStack(spacing: 12) {
-			Text("Уже есть аккаунт?")
-				.font(.regularCompact(size: 16))
-			Button {
-				navigateToLoginView.toggle()
-			} label: {
-				Text("Войти")
-					.underline()
-					.font(.mediumCompact(size: 16))
-					.foregroundStyle(Color.brandYellow)
-			}
-		}
-		.frame(maxWidth: .infinity)
-	}
+            Text(rule.description)
+                .foregroundStyle(Color.secondaryText)
+                .font(.regularCompact(size: 14))
+        }
+    }
 }
 
 #Preview {
-	NavigationViewStorage {
-		SignUpView()
-	}
+    SignUpView(signUpService: SignUpService())
 }

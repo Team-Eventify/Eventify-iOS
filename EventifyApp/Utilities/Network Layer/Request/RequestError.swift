@@ -19,7 +19,21 @@ enum RequestError: Error, LocalizedError {
 
 	/// Неизвестный статус код
 	case unexpectedStatusCode
-
+    
+    /// Ошибка авторизации
+    case authentinticationFailed
+    
+    /// Ошибка обновления токена
+    case tokenRefreshFailed
+    
+    /// Ошибка сохранения токена
+    case tokenSaveFailed
+    
+    /// Достигнуто максимальное количество попыток обновления токена
+    case maxTokenRefreshAttemptsReached
+    
+    case emptyResponse
+    
 	/// Неизвестная ошибка
 	case unknown
 
@@ -33,6 +47,16 @@ enum RequestError: Error, LocalizedError {
 			return "Failed to decode the response."
 		case .unexpectedStatusCode:
 			return "Unexpected status code received from the server."
+        case .authentinticationFailed:
+            return "Authentication failed."
+        case .tokenRefreshFailed:
+            return "Token refresh failed."
+        case .tokenSaveFailed:
+            return "Token save failed."
+        case .maxTokenRefreshAttemptsReached:
+            return "Max token refresh attempts reached."
+        case .emptyResponse:
+            return "Empty response."
 		case .unknown:
 			return "An unknown error occurred."
 		}

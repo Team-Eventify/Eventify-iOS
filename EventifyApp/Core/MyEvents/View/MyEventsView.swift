@@ -13,54 +13,87 @@ struct MyEventsView: View {
 	// MARK: - Body
 
 	var body: some View {
-		NavigationStack {
 			VStack(alignment: .leading, spacing: 56) {
 				ScrollView(showsIndicators: false) {
-					upcomingEvents
+                    contentForUpcomingEventsSection
 					recomendedEvents
 					Spacer()
 				}
 			}
-			.navigationTitle("Мои ивенты")
+            .navigationTitle(NSLocalizedString("tab_my_events", comment: "Мои Ивенты"))
 			.navigationBarTitleDisplayMode(.large)
 			.padding(.horizontal, 16)
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
 			.background(.bg, ignoresSafeAreaEdges: .all)
-		}
 	}
 }
 
 // MARK: - UI Components
 
+/// Функция для отображения секции предстоящих мероприятий
+@ViewBuilder
+private var contentForUpcomingEventsSection: some View {
+    if MyEventsMockData.upcomingEventsData.isEmpty {
+        emptyUpcomingEvents
+    } else {
+        upcomingEvents
+    }
+}
+
 /// Карточки предстоящих мероприятий
 private var upcomingEvents: some View {
 	VStack(alignment: .leading) {
-		Text("Предстоящие мероприятия")
+		Text("upcoming_events_title")
 			.font(.mediumCompact(size: 20))
 			.foregroundStyle(.mainText)
-		VStack(spacing: 8) {
-			ForEach(MyEventsMockData.upcomingEventsData) {
-				EventifyUpcomingEvent(title: $0.title, items: $0.cheepTitles, color: $0.color)
+		LazyVStack(spacing: 8) {
+			ForEach(MyEventsMockData.upcomingEventsData) { event in
+                NavigationLink {
+                    EventsRegistationView(register: false)
+                } label: {
+                    EventifyUpcomingEvent(title: event.title, items: event.cheepTitles)
+                }
+                .buttonStyle(.plain)
 			}
 		}
 	}
 }
 
+/// Вью, которое показывается в случае отсутствия
+/// предстоящих мероприятий
+private var emptyUpcomingEvents: some View {
+    VStack {
+        Image(systemName: "bookmark")
+            .font(.system(size: 60))
+        Text("no_upcoming_events_message")
+            .font(.body)
+            .multilineTextAlignment(.center)
+            .padding(.top, 5)
+    }
+    .foregroundStyle(.secondary)
+    .padding(80)
+}
+
 /// Карточки рекомендуемых мероприятий
 private var recomendedEvents: some View {
 	VStack(alignment: .leading) {
-		Text("Рекомедации")
+		Text("recommendation_title")
 			.font(.mediumCompact(size: 20))
 			.foregroundStyle(.mainText)
 		ScrollView(.horizontal, showsIndicators: false) {
-			HStack(spacing: 8) {
-				ForEach(MyEventsMockData.recommendedEventsData) {
-					EventifyRecommendationEvent(
-						image: $0.image,
-						title: $0.title,
-						cheepsItems: $0.cheepsItems,
-						size: .large
-					)
+			LazyHStack(spacing: 8) {
+				ForEach(MyEventsMockData.recommendedEventsData) { event in
+					NavigationLink {
+                        EventsRegistationView(register: true)
+					} label: {
+						EventifyRecommendationEvent(
+							image: event.image,
+							title: event.title,
+							cheepsItems: event.cheepsItems,
+							size: .large
+						)
+					}
+                    .buttonStyle(.plain)
 				}
 			}
 		}

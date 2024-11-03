@@ -9,6 +9,7 @@ import Foundation
 
 /// Конечная точка для запроса входа
 enum SignInEndpoint: Endpoint {
+	
 	case signIn(json: JSON)
 
 	var path: String {
@@ -26,8 +27,10 @@ enum SignInEndpoint: Endpoint {
 	}
 
 	var header: [String: String]? { return nil }
+    
+    var addAuthorizationToken: Bool { return false }
 
-	var parameters: JSON? {
+    var parameters: JSON? {
 		switch self {
 			case .signIn(let json):
 				return json

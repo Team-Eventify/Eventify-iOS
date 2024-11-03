@@ -10,76 +10,74 @@ import SwiftUI
 
 /// Вью экрана Сброса Пароля
 struct ForgotPasswordView: View {
-	// MARK: - Private Properties
-	@StateObject private var viewModel: ForgotPasswordViewModel
+    // MARK: - Private Properties
+    @StateObject private var viewModel: ForgotPasswordViewModel
 
-	@Environment(\.dismiss)
-	var dismiss
+    @Environment(\.dismiss)
+    var dismiss
 
-	// MARK: - Initialization
+    // MARK: - Initialization
 
+    /// Инициализатор
+    /// - Parameter viewModel: модель экрана сброса пароля
+    init(viewModel: ForgotPasswordViewModel? = nil) {
+        _viewModel = StateObject(
+            wrappedValue: viewModel ?? ForgotPasswordViewModel()
+        )
+    }
 
-	/// Инициализатор
-	/// - Parameter viewModel: модель экрана сброса пароля
-	init(viewModel: ForgotPasswordViewModel? = nil) {
-		_viewModel = StateObject(
-			wrappedValue: viewModel ?? ForgotPasswordViewModel()
-		)
-	}
+    // MARK: - Body
 
-	// MARK: - Body
+    var body: some View {
+        VStack(spacing: 40) {
+            Spacer()
+            forgotPasswordContainerView
+            restoreButtonContainerView
+            Spacer()
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, 16)
+        .background(.bg, ignoresSafeAreaEdges: .all)
+    }
 
-	var body: some View {
-		VStack(spacing: 40) {
-			Spacer()
-			forgotPasswordContainerView
-			restoreButtonContainerView
-			Spacer()
-			Spacer()
-		}
-		.frame(maxWidth: .infinity, maxHeight: .infinity)
-		.padding(.horizontal, 16)
-		.background(.bg, ignoresSafeAreaEdges: .all)
-		.navigationBarBackButtonHidden(true)
-	}
+    /// Контейнер для содержимого экрана сброса пароля
+    private var forgotPasswordContainerView: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("forgot_password_title")
+                .font(.semiboldCompact(size: 40))
+                .foregroundStyle(Color.mainText)
 
-	/// Контейнер для содержимого экрана сброса пароля
-	private var forgotPasswordContainerView: some View {
-		VStack(alignment: .leading, spacing: 12) {
-			Text("Сброс пароля")
-				.font(.semiboldCompact(size: 40))
-				.foregroundStyle(Color.mainText)
+            Text("forgot_password_description")
+            .font(.regularCompact(size: 17))
+            .foregroundStyle(Color.secondaryText)
+            .frame(width: 400)
+        }
+    }
 
-			Text("Укажите email, который вы использовали для создания аккаунта.Мы отправим письмо с ссылкой для сброса пароля.")
-				.font(.regularCompact(size: 17))
-				.foregroundStyle(Color.secondaryText)
-				.frame(width: 400)
-		}
-	}
+    /// Контейнер для поля ввода email и кнопки отправки
+    private var restoreButtonContainerView: some View {
+        VStack(spacing: 40) {
+            EventifyTextField(text: $viewModel.email, placeholder: NSLocalizedString("email_placeholder", comment: "Email"), hasError: false)
+            .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
 
-	/// Контейнер для поля ввода email и кнопки отправки
-	private var restoreButtonContainerView: some View {
-		VStack(spacing: 40) {
-			EventifyTextField(text: $viewModel.email, placeholder: "Email", isSucceededValidation: true, isSecure: false)
-
-			EventifyButton(title: "Отправить", isLoading: false) {
-				Task {
-					do {
-						try await viewModel.resetPassword()
-						if viewModel.isResetSuccessful {
-							dismiss()
-						}
-					} catch {
-						 print(error.localizedDescription)
-					}
-				}
-			}
-		}
-	}
+            EventifyButton(
+                configuration: .forgotPassword, isLoading: false, isDisabled: false
+            ) {
+                Task {
+                    do {
+                        try await viewModel.resetPassword()
+                    } catch {
+                        Log.error(error.localizedDescription)
+                    }
+                }
+            }
+        }
+    }
 }
 
 #Preview {
-	NavigationViewStorage {
-		ForgotPasswordView()
-	}
+    NavigationViewStorage {
+        ForgotPasswordView()
+    }
 }

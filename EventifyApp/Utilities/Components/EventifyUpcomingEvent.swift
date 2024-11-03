@@ -8,30 +8,41 @@
 import SwiftUI
 
 struct EventifyUpcomingEvent: View {
-	let title: String
-	let items: [String]
-	let color: Color
+    let title: String
+    let items: [String]
+    
     var body: some View {
-		HStack {
-			VStack(spacing: 16) {
-				Text(title)
-					.font(.mediumCompact(size: 17))
-					.foregroundStyle(.black)
-				EventifyCheeps(items: items)
-					.foregroundStyle(.black)
-			}
-			Spacer()
-			Image("qrSample")
-		}
-		.frame(maxWidth: .infinity)
-		.frame(height: 112)
-		.padding(.horizontal, 16)
-		.background(color)
-		.clipShape(.rect(cornerRadius: 10))
+        GeometryReader { geometry in
+            ZStack(alignment: .trailing) {
+                HStack(spacing: 0) {
+                    VStack(alignment: .leading, spacing: 16) {
+                        Text(title)
+                            .font(.mediumCompact(size: 17))
+                            .foregroundStyle(.mainText)
+                            .lineLimit(3)
+                            .frame(width: geometry.size.width - 60, alignment: .leading)
+                            .frame(height: 45, alignment: .leading)
+                        EventifyCheeps(items: items, style: .upcoming)
+                    }
+                    Spacer(minLength: 0)
+                }
+                .padding(.horizontal, 16)
+                
+                Image("brandLiteral")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+        }
+        .frame(height: 112)
+        .background(.cards)
+        .clipShape(.rect(cornerRadius: 10))
     }
 }
 
 #Preview {
-	EventifyUpcomingEvent(title: "День открытых дверей университета МИСИС", items: ["12 декабря", "17:30", "онлайн"], color: .brandYellow)
-		.padding(.horizontal, 16)
+    EventifyUpcomingEvent(
+        title: "День открытых дверей университета МИСИС",
+        items: ["12 декабря", "17:30", "онлайн"]
+    )
+        .padding(.horizontal, 16)
 }

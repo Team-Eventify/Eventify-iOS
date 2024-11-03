@@ -5,54 +5,147 @@
 //  Created by Захар Литвинчук on 15.06.2024.
 //
 
+import Combine
 import SwiftUI
 
-@MainActor
 final class SignUpViewModel: ObservableObject {
-	// MARK: - Public Properties
+    @Published var email: String = ""
+    @Published var password: String = ""
+    @Published var confirmPassword: String = ""
+    @Published var loadingState: LoadingState = .none
+    @Published var loginAttempts = 0
+    @Published var navigateToLoginView: Bool = false
+    @Published var validationRules: [ValidationRule] = []
+    @Published var showAlert = false
+    @Published var isEmailValid: Bool = false
 
-	@Published var email: String = ""
-	@Published var password: String = ""
-	@Published var signUpStatusMessage: String = ""
-	@Published var isLoading: Bool = false
-	@Published var isError: Bool = true
-	@AppStorage("isLoading") var isLogin: Bool = false
+    var isButtonDisabled: Bool {
+        !isEmailValid || validationRules.contains(where: { !$0.isValid })
+            || password != confirmPassword || email.isEmpty
+    }
 
-	/// Приватное свойство для сервиса регистрации
-	private let signUpService: SignUpServiceProtocol
+    private let signUpService: SignUpServiceProtocol
+    private var cancellables = Set<AnyCancellable>()
 
-	// MARK: - Initialization
+    private let rulesDescriptions:
+        [(description: String, validator: (String) -> Bool, icon: Image)] = [
+            (
+                NSLocalizedString("password_min_length", comment: "Длина пароля не менее 6 символов"),
+                { $0.count >= 6 },
+                Image(systemName: "checkmark")
+            ),
+            (
+                NSLocalizedString("password_uppercase", comment: "Используй хотя бы 1 заглавную букву (A-Z)"),
+                { $0.rangeOfCharacter(from: .uppercaseLetters) != nil },
+                Image(systemName: "checkmark")
+            ),
+            (
+                NSLocalizedString("password_number", comment: "Используй цифры (0-9)"),
+                { $0.rangeOfCharacter(from: .decimalDigits) != nil },
+                Image(systemName: "checkmark")
+            ),
+            (
+                NSLocalizedString("password_no_whitespace", comment: "Не используйте пробелов"),
+                { $0.rangeOfCharacter(from: .whitespaces) == nil },
+                Image(systemName: "checkmark")
+            ),
+            (
+                NSLocalizedString("password_latin_only", comment: "Используй только латинские символы"),
+                {
+                    $0.rangeOfCharacter(
+                        from: CharacterSet(
+                            charactersIn:
+                                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        )) != nil
+                        && $0.rangeOfCharacter(
+                            from: CharacterSet(
+                                charactersIn:
+                                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                            ).inverted) == nil
+                },
+                Image(systemName: "checkmark")
+            ),
+        ]
 
-	/// Инициализатор
-	/// - Parameter signUpService: сервис viewModel'и экрана Регистрации
-	init(signUpService: SignUpServiceProtocol = SignUpService()) {
-		self.signUpService = signUpService
-	}
+    init(signUpService: SignUpServiceProtocol) {
+        self.signUpService = signUpService
+        setupBindings()
+    }
 
-	// MARK: - Public Functions
+    func signUp() {
+        guard !email.isEmpty, !password.isEmpty, password == confirmPassword
+        else {
+            loginAttempts += 1
+            return
+        }
 
-	/// Отпарвляет запрос на регистрацию
-	func signUp() async {
-		guard !email.isEmpty, !password.isEmpty else {
-			signUpStatusMessage = "No email or password found."
-			print(signUpStatusMessage)
-			return
-		}
+        loadingState = .loading
+        let userData: JSON = ["password": password, "email": email]
 
-		isLoading = true
-		let userData: JSON = ["password": password, "email": email]
+        Task { @MainActor in
+            do {
+                let response = try await signUpService.signUp(json: userData)
+                KeychainManager.shared.set(
+                    response.userID, key: KeychainKeys.userId)
+                KeychainManager.shared.set(
+                    response.accessToken, key: KeychainKeys.accessToken)
+                KeychainManager.shared.set(
+                    response.refreshToken, key: KeychainKeys.refreshToken)
+                KeychainManager.shared.set(email, key: KeychainKeys.userEmail)
+                KeychainManager.shared.set(
+                    password, key: KeychainKeys.userPassword)
+                loadingState = .loaded
+            } catch {
+                loginAttempts += 1
+                loadingState = .failure
+                try? await Task.sleep(nanoseconds: 2_000_000_000)
+                loadingState = .none
+            }
+        }
+    }
 
-		do {
-			let _ = try await signUpService.signUp(json: userData)
-			signUpStatusMessage = "Success ✅"
-			print(signUpStatusMessage)
-			isLogin = true
-		} catch {
-			signUpStatusMessage = "Error: \(error.localizedDescription)"
-			print(signUpStatusMessage)
-			isLogin = false
-			isError = false
-		}
-		isLoading = false
-	}
+    private func setupBindings() {
+        $password
+            .receive(on: RunLoop.main)
+            .map { [weak self] password -> [ValidationRule] in
+                guard let self = self else { return [] }
+                return self.validate(password: password)
+            }
+            .assign(to: &$validationRules)
+
+        $email
+            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .map { [weak self] email -> Bool in
+                guard let self = self else { return false }
+                return isValidEmail(email)
+            }
+            .assign(to: &$isEmailValid)
+    }
+
+    private func validate(password: String) -> [ValidationRule] {
+        rulesDescriptions.map {
+            ValidationRule(
+                description: $0.description,
+                isValid: $0.validator(password),
+                correctIcon: $0.icon
+            )
+        }
+    }
+
+    private func isValidEmail(_ email: String) -> Bool {
+        guard
+            let detector = try? NSDataDetector(
+                types: NSTextCheckingResult.CheckingType.link.rawValue)
+        else {
+            return false
+        }
+        let range = NSRange(location: 0, length: email.utf16.count)
+        let matches = detector.matches(in: email, options: [], range: range)
+
+        guard let match = matches.first, matches.count == 1 else {
+            return false
+        }
+
+        return match.range == range && match.url?.scheme == "mailto"
+    }
 }

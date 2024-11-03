@@ -13,5 +13,11 @@
 		<string>SF-Compact-Rounded-Regular.otf</string>
 		<string>SF-Compact-Rounded-Semibold.otf</string>
 	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Network usage required only for development purposes</string>
+	<key>NSBonjourServices</key>
+	<array>
+  		<string>_pulse._tcp</string>
+	</array>
 </dict>
 </plist>

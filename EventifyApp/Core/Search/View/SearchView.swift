@@ -12,31 +12,34 @@ struct SearchView: View {
 	// MARK: - Private Properties
 
 	@StateObject private var viewModel = SearchViewModel()
+    private let categoriesService = CategoriesService()
 
 	// MARK: - Body
 
 	var body: some View {
-		NavigationStack {
 			VStack {
-				Picker("", selection: $viewModel.selectedPicker) {
-					Text("Для студентов").tag(0)
-					Text("Для поступающих").tag(1)
-				}
-				.pickerStyle(.segmented)
-
 				ScrollView(showsIndicators: false) {
-					ForEach(viewModel.searchData()) {
+                    let displayedResults = viewModel.isSearching ? viewModel.filteredResults : viewModel.searchData()
+                    ForEach(displayedResults) {
 						EventifyCategories(text: $0.title, image: $0.image, color: $0.color)
 					}
 				}
 			}
-			.navigationTitle("Поиск")
+            .onAppear {
+                Task { @MainActor in
+                    let response = try await categoriesService.getCategories()
+                    Log.info("\(response)")
+                }
+            }
+            .navigationTitle(NSLocalizedString("tab_search", comment: "Поиск"))
 			.navigationBarTitleDisplayMode(.large)
 			.padding(.horizontal, 16)
-			.searchable(text: $viewModel.searchText)
+            .searchable(
+                text: $viewModel.searchText,
+                placement: .navigationBarDrawer(displayMode: .always)
+            )
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
 			.background(.bg, ignoresSafeAreaEdges: .all)
-		}
 	}
 }
 

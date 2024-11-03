@@ -21,21 +21,21 @@ enum ButtonConfigurations {
     var title: String {
         switch self {
         case .commom:
-            return NSLocalizedString("button_next", comment: "Далее")
+            return String(localized: "button_next")
         case .signUp:
-            return NSLocalizedString("button_sign_up", comment: "Зарегистрироваться")
+            return String(localized: "button_sign_up")
         case .signIn:
-            return NSLocalizedString("login_title", comment: "Войти")
+            return String(localized: "login_title")
         case .forgotPassword:
-            return NSLocalizedString("button_send", comment: "Отправить")
+            return String(localized: "button_send")
         case .registration:
-            return NSLocalizedString("button_register_for_event", comment: "Записаться на ивент")
+            return String(localized: "button_register_for_event")
         case .addEvent:
-            return NSLocalizedString("button_publish_event", comment: "Опубликовать ивент")
+            return String(localized: "button_publish_event")
         case .saving:
-            return NSLocalizedString("button_save_changes", comment: "Сохранить изменения")
+            return String(localized: "button_save_changes")
         case .cancel:
-            return NSLocalizedString("button_cancel_registration", comment: "Отменить запись на ивент")
+            return String(localized: "button_cancel_registration")
         }
     }
     

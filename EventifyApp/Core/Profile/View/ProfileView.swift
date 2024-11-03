@@ -80,7 +80,7 @@ struct ProfileView: View {
                             Text("action_logout")
 								.foregroundStyle(.mainText)
 						}
-                        .alert(NSLocalizedString("alert_logout_confirmation", comment: "Вы действительно хотите выйти из приложения?"), isPresented: $showingExitAlert) {
+                        .alert(String(localized: "alert_logout_confirmation"), isPresented: $showingExitAlert) {
 							Button(role: .cancel) {
 								Constants.isLogin = false
                                 UserDefaultsManager.shared.clearAllUserData()
@@ -104,7 +104,7 @@ struct ProfileView: View {
                             Text("action_delete_account")
 								.foregroundStyle(.error)
 						}
-                        .alert(NSLocalizedString("alert_delete_account_confirmation", comment: "Удалить информацию об аккаунте"), isPresented: $showingDeleteAlert) {
+                        .alert(String(localized: "alert_delete_account_confirmation"), isPresented: $showingDeleteAlert) {
 
 							Button(role: .cancel) {
 								Constants.isLogin = false
@@ -132,7 +132,7 @@ struct ProfileView: View {
                 viewModel.updateUserInfo()
             }
             
-            .navigationTitle(NSLocalizedString("tab_profile", comment: "Профиль"))
+            .navigationTitle(String(localized: "tab_profile"))
 			.navigationBarTitleDisplayMode(.large)
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
 			.background(.bg, ignoresSafeAreaEdges: .all)

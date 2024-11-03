@@ -23,8 +23,8 @@ final class ProfileViewModel: ObservableObject {
     func updateUserInfo() {
         Task { @MainActor in
             if isFioNotEmpty() {
-                name = UserDefaultsManager.shared.getFirstName() ?? "Имя"
-                middleName = UserDefaultsManager.shared.getMiddleName() ?? "Фамилия"
+                name = UserDefaultsManager.shared.getFirstName() ?? String(localized: "your_name_profile")
+                middleName = UserDefaultsManager.shared.getMiddleName() ?? ""
                 Log.info("User fio is already set 🙋‍♂️")
             } else {
                 do {
@@ -40,8 +40,8 @@ final class ProfileViewModel: ObservableObject {
                     }
                 } catch {
                     Log.error("User info error:", error: error)
-                    name = "Имя"
-                    middleName = "Фамилия"
+                    name = String(localized: "your_name_profile")
+                    middleName = ""
                 }
             }
         }

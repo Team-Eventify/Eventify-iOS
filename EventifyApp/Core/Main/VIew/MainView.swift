@@ -32,7 +32,7 @@ struct MainView: View {
         }
         .scrollIndicators(.hidden)
         .padding(.horizontal, 16)
-        .navigationTitle(NSLocalizedString("tab_main", comment: "Главная"))
+        .navigationTitle(String(localized: "tab_main"))
         .navigationBarTitleDisplayMode(.large)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.bg, ignoresSafeAreaEdges: .all)

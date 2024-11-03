@@ -71,7 +71,7 @@ struct ProfileDetailView: View {
                 .foregroundStyle(.mainText)
 
             EventifyTextField(
-                text: $viewModel.name, placeholder: NSLocalizedString("placeholder_enter_first_name", comment: "Введите имя"),
+                text: $viewModel.name, placeholder: String(localized: "placeholder_enter_first_name"),
                 hasError: false)
         }
     }
@@ -83,7 +83,7 @@ struct ProfileDetailView: View {
                 .foregroundStyle(.mainText)
 
             EventifyTextField(
-                text: $viewModel.surname, placeholder: NSLocalizedString("placeholder_enter_last_name", comment: "Введите фамилию"),
+                text: $viewModel.surname, placeholder: String(localized: "placeholder_enter_last_name"),
                 hasError: false)
         }
     }
@@ -95,7 +95,7 @@ struct ProfileDetailView: View {
                 .foregroundStyle(.mainText)
 
             EventifyTextField(
-                text: $viewModel.lastName.unwrapped(defaultValue: ""), placeholder: NSLocalizedString("placeholder_enter_middle_name", comment: "Введите отчество"),
+                text: $viewModel.lastName.unwrapped(defaultValue: ""), placeholder: String(localized: "placeholder_enter_middle_name"),
                 hasError: false)
         }
     }
@@ -107,7 +107,7 @@ struct ProfileDetailView: View {
                 .foregroundStyle(.mainText)
 
             EventifyTextField(
-                text: $viewModel.email, placeholder: NSLocalizedString("placeholder_enter_email", comment: "Введите Email"),
+                text: $viewModel.email, placeholder: String(localized: "placeholder_enter_email"),
                 hasError: false)
             .disabled(true)
         }
@@ -120,7 +120,7 @@ struct ProfileDetailView: View {
                 .foregroundStyle(.mainText)
 
             EventifyTextField(
-                text: $viewModel.telegram, placeholder: NSLocalizedString("placeholder_enter_telegram", comment: "Введите telegram"),
+                text: $viewModel.telegram, placeholder: String(localized: "placeholder_enter_telegram"),
                 hasError: false)
         }
     }

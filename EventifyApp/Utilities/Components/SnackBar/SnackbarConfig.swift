@@ -16,13 +16,13 @@ enum SnackbarConfig {
     var text: String {
         switch self {
             case .registration:
-                return NSLocalizedString("snackbar_registration_success", comment: "Вы успешно записались на мероприятие!")
+            return String(localized: "snackbar_registration_success")
             case .failure:
-                return NSLocalizedString("snackbar_auth_failure", comment: "Ошибка авторизации! Проверьте логин или пароль.")
+            return String(localized: "snackbar_auth_failure")
             case .recovery:
-                return NSLocalizedString("snackbar_password_recovery_success", comment: "Письмо для сброса пароля успешно отправлено на почту.")
+            return String(localized: "snackbar_password_recovery_success")
             case .failureOfAddingEvent:
-                return NSLocalizedString("snackbar_event_add_failure", comment: "Ошибка добавления мероприятия!")
+            return String(localized: "snackbar_event_add_failure")
         }
     }
 

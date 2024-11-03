@@ -2,10 +2,24 @@
   "sourceLanguage" : "ru",
   "strings" : {
     "" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "-" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-"
+          }
+        }
+      }
     },
     "action_add_event" : {
       "extractionState" : "manual",
@@ -122,6 +136,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вы действительно хотите выйти из приложения?"
+          }
+        }
+      }
+    },
+    "ArtCategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Творчество"
+          }
+        }
+      }
+    },
+    "BackendCategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backend"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backend"
           }
         }
       }
@@ -381,6 +429,23 @@
         }
       }
     },
+    "DesignCategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Design"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дизайн"
+          }
+        }
+      }
+    },
     "email_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -483,6 +548,23 @@
         }
       }
     },
+    "FrontendCategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frontend"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frontend"
+          }
+        }
+      }
+    },
     "full_description_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -496,6 +578,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Полное описание"
+          }
+        }
+      }
+    },
+    "GameDevCategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GameDev"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GameDev"
           }
         }
       }
@@ -518,7 +617,20 @@
       }
     },
     "Hello, World!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello, World!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello, World!"
+          }
+        }
+      }
     },
     "label_categories" : {
       "extractionState" : "manual",
@@ -1014,7 +1126,14 @@
       }
     },
     "Pulse Консоль" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulse Console"
+          }
+        }
+      }
     },
     "recommendation_title" : {
       "extractionState" : "manual",
@@ -1063,6 +1182,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Регистрация"
+          }
+        }
+      }
+    },
+    "ScienceCategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Science"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наука"
           }
         }
       }
@@ -1254,6 +1390,23 @@
         }
       }
     },
+    "SportCategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sport"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спорт"
+          }
+        }
+      }
+    },
     "tab_main" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1361,7 +1514,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Your Name"
           }
         },
@@ -1374,7 +1527,14 @@
       }
     },
     "МИСИС" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MISIS"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

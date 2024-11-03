@@ -80,8 +80,8 @@ struct SignUpView: View {
 		VStack(spacing: 8) {
 			EventifyTextField(
 				text: $viewModel.email,
-				placeholder: NSLocalizedString(
-					"email_placeholder", comment: "Email"), hasError: false
+				placeholder: String(localized:"email_placeholder"),
+				hasError: false
 			)
 			.changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
 			.keyboardType(.emailAddress)
@@ -104,8 +104,7 @@ struct SignUpView: View {
 			EventifySecureField(
 				text: $viewModel.password,
 				isSecure: true,
-				placeholder: NSLocalizedString(
-					"password_placeholder", comment: "Пароль")
+				placeholder: String(localized: "password_placeholder")
 			)
 			.changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
 			.textContentType(.newPassword)
@@ -113,8 +112,7 @@ struct SignUpView: View {
 			EventifySecureField(
 				text: $viewModel.confirmPassword,
 				isSecure: true,
-				placeholder: NSLocalizedString(
-					"confirm_password_placeholder", comment: "Повторите пароль")
+				placeholder: String(localized: "confirm_password_placeholder")
 			)
 			.changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
 			.textContentType(.newPassword)

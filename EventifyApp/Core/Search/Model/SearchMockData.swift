@@ -12,17 +12,12 @@ struct SearchMockData {
 
     /// Данные категорий для студентов
     static let studentsData: [CategoriesModel] = [
-        .init(title: "Спорт", image: "sport", color: .sport),
-        .init(title: "Наука", image: "science", color: .science),
-        .init(title: "GameDev", image: "gameDev", color: .gameDev),
-        .init(title: "Дизайн", image: "design", color: .design),
-        .init(title: "Творчество", image: "art", color: .art),
-        .init(title: "Frontend", image: "frontend", color: .frontend),
-        .init(title: "Backend", image: "backend", color: .backend),
-        .init(title: "Machine\nLearning", image: "ML", color: .ML),
-        .init(title: "Медиа", image: "media", color: .media),
-        .init(title: "Хакатоны", image: "hackathons", color: .hackatons),
-        .init(title: "Студенческая\nжизнь", image: "studLife", color: .studLife),
-        .init(title: "Наставничество", image: "mentoring", color: .mentoring)
+		.init(title: String(localized: "SportCategory"), image: "sport", color: .sport),
+		.init(title: String(localized: "ScienceCategory"), image: "science", color: .science),
+		.init(title: String(localized: "GameDevCategory"), image: "gameDev", color: .gameDev),
+		.init(title: String(localized: "DesignCategory"), image: "design", color: .design),
+		.init(title: String(localized: "ArtCategory"), image: "art", color: .art),
+		.init(title: String(localized: "FrontendCategory"), image: "frontend", color: .frontend),
+		.init(title: String(localized: "BackendCategory"), image: "backend", color: .backend)
     ]
 }

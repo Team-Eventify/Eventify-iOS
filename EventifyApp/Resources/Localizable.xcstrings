@@ -1356,6 +1356,23 @@
         }
       }
     },
+    "your_name_profile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Your Name"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Твое Имя"
+          }
+        }
+      }
+    },
     "МИСИС" : {
 
     }

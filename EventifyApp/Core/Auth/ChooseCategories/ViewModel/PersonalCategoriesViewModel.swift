@@ -44,7 +44,6 @@ final class PersonalCategoriesViewModel: ObservableObject {
                 Log.info("User categories: \(response)")
             } catch {
                 isLoading = false
-				print(error.localizedDescription)
                 Log.error("Error while getting user categories", error: error)
             }
         }

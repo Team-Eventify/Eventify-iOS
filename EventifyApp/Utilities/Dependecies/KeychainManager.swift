@@ -65,9 +65,7 @@ final class KeychainManager {
             let status = SecItemDelete(query as CFDictionary)
 
             if status != errSecSuccess && status != errSecItemNotFound {
-                print(
-                    "Ошибка при очистке Keychain для класса \(secItemClass): \(status)"
-                )
+                print("Ошибка при очистке Keychain для класса \(secItemClass): \(status)")
                 success = false
             }
         }

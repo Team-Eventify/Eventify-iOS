@@ -5,9 +5,8 @@
 //  Created by Захар Литвинчук on 15.06.2024.
 //
 
-import SUINavigation
-import PopupView
 import SwiftUI
+import PopupView
 
 /// Вью экрана Входа
 struct SignInView: View {
@@ -47,11 +46,9 @@ struct SignInView: View {
         .onTapGesture {
             hideKeyboard()
         }
-
-        .navigation(isActive: $viewModel.showForgotPassScreen) {
-            ForgotPasswordView()
-        }
-
+		.navigationDestination(isPresented: $viewModel.showForgotPassScreen, destination: {
+			ForgotPasswordView()
+		})
         .popup(
             isPresented: Binding(
                 get: { viewModel.loadingState == .failure }, set: { _ in })
@@ -90,13 +87,19 @@ struct SignInView: View {
     /// Поля ввода для авторизации (email и пароль)
     private var authTextFields: some View {
         VStack(alignment: .trailing, spacing: 8) {
-            EventifyTextField(text: $viewModel.email, placeholder: String(localized: "email_placeholder"), hasError: false)
+			EventifyTextField(
+				text: $viewModel.email,
+				placeholder: String(localized: "email_placeholder", comment: "Email"),
+				hasError: false
+			)
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
             .keyboardType(.emailAddress)
             .textContentType(.emailAddress)
             
-            EventifySecureField(
-                text: $viewModel.password, isSecure: true, placeholder: String(localized: "password_placeholder")
+			EventifySecureField(
+				text: $viewModel.password,
+				isSecure: true,
+				placeholder: String(localized: "password_placeholder", comment: "Пароль")
             )
             .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
             .textContentType(.password)
@@ -150,7 +153,5 @@ struct SignInView: View {
 }
 
 #Preview {
-    NavigationViewStorage {
-        SignInView(signInService: SignInService())
-    }
+	SignInView(signInService: SignInService())
 }

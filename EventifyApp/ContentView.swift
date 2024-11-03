@@ -5,7 +5,6 @@
 //  Created by Захар Литвинчук on 31.08.2024.
 //
 
-import SUINavigation
 import SwiftUI
 
 struct ContentView: View {
@@ -16,12 +15,12 @@ struct ContentView: View {
 
     var body: some View {
         if profileViewModel.isLogin {
-            NavigationViewStorage {
+			NavigationStack {
                 TabBarView()
                     .environmentObject(profileViewModel)
             }
         } else {
-            NavigationViewStorage {
+			NavigationStack {
                 SignUpView(
                     signUpService: SignUpService()
                 )

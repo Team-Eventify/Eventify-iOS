@@ -5,7 +5,6 @@
 //  Created by Захар Литвинчук on 16.06.2024.
 //
 
-import SUINavigation
 import SwiftUI
 
 /// Вью экрана Сброса Пароля
@@ -77,7 +76,5 @@ struct ForgotPasswordView: View {
 }
 
 #Preview {
-    NavigationViewStorage {
-        ForgotPasswordView()
-    }
+	ForgotPasswordView()
 }

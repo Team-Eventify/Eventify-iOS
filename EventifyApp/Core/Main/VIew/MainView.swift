@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import TelemetryDeck
 
 /// Вью главного экрана
 struct MainView: View {
@@ -41,7 +40,6 @@ struct MainView: View {
                 let response = try await eventsServive.listEvents()
 				Log.network("\(response)")
             }
-            TelemetryDeck.signal("Main Screen opened!")
         }
     }
     

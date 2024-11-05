@@ -150,7 +150,8 @@ struct AddEventView: View {
                                         .frame(width: 100, height: 100)
                                         .cornerRadius(10)
                                     Button {
-                                        
+                                        viewModel.selectedImages.remove(at: index)
+                                        viewModel.imageSelections.remove(at: index)
                                     } label: {
                                         Image(systemName: "xmark.circle.fill")
                                             .foregroundStyle(.white)

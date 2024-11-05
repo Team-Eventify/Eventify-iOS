@@ -141,9 +141,9 @@ struct AddEventView: View {
                 if !viewModel.selectedImages.isEmpty {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            ForEach(viewModel.selectedImages, id: \.self) {
-                                image in
-                                Image(uiImage: image)
+                            ForEach(viewModel.selectedImages.indices, id: \.self) {
+                                index in
+                                Image(uiImage: viewModel.selectedImages[index])
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 100, height: 100)

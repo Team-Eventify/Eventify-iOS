@@ -143,11 +143,21 @@ struct AddEventView: View {
                         HStack {
                             ForEach(viewModel.selectedImages.indices, id: \.self) {
                                 index in
-                                Image(uiImage: viewModel.selectedImages[index])
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 100, height: 100)
-                                    .cornerRadius(10)
+                                ZStack(alignment: .topTrailing) {
+                                    Image(uiImage: viewModel.selectedImages[index])
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 100, height: 100)
+                                        .cornerRadius(10)
+                                    Button {
+                                        
+                                    } label: {
+                                        Image(systemName: "xmark.circle.fill")
+                                            .foregroundStyle(.white)
+                                            .font(.body)
+                                    }
+                                    .padding(8)
+                                }
                             }
                         }
                     }

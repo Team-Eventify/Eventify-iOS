@@ -5,13 +5,14 @@
 //  Created by Захар Литвинчук on 14.09.2024.
 //
 
-import Flow
-import PhotosUI
 import SwiftUI
+import PhotosUI
+import PopupView
+import Flow
 
 struct AddEventView: View {
-    @Environment(\.dismiss)
-    var dismiss
+	@EnvironmentObject private var networkManager: NetworkManager
+    @Environment(\.dismiss) var dismiss
 
     /// ViewModel для управления логикой вью
     @StateObject private var viewModel: AddEventViewModel
@@ -64,6 +65,14 @@ struct AddEventView: View {
                 .closeOnTap(true)
                 .autohideIn(3)
         }
+		.popup(isPresented: $networkManager.isDisconnected) {
+			InternetErrorToast()
+		} customize: {
+			$0.type(.toast)
+				.disappearTo(.topSlide)
+				.position(.top)
+				.isOpaque(true)
+		}
     }
 
     private var eventNameSection: some View {
@@ -186,4 +195,5 @@ struct AddEventView: View {
 
 #Preview {
     AddEventView()
+		.environmentObject(NetworkManager())
 }

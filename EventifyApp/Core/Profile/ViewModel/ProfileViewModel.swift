@@ -13,6 +13,9 @@ final class ProfileViewModel: ObservableObject {
     @AppStorage("isLogin") var isLogin: Bool = false
     @Published var name: String = ""
     @Published var middleName: String = ""
+	@Published var showingDeleteAlert: Bool = false
+	@Published var showingExitAlert: Bool = false
+	@Published var navigateToSignUp: Bool = false
 
     private let userService: UserServiceProtocol
 

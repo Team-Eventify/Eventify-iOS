@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PopupView
 
 /// Вью экрана Поиска
 struct SearchView: View {
@@ -44,4 +45,5 @@ struct SearchView: View {
 
 #Preview {
 	TabBarView()
+		.environmentObject(NetworkManager())
 }

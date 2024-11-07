@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PopupView
 
 /// Вью главного экрана
 struct MainView: View {
@@ -36,6 +37,13 @@ struct MainView: View {
         .navigationBarTitleDisplayMode(.large)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.bg, ignoresSafeAreaEdges: .all)
+		.popup(isPresented: $networkManager.isDisconnected) {
+			InternetErrorToast()
+		} customize: {
+			$0.type(.toast)
+				.disappearTo(.topSlide)
+				.position(.top)
+		}
         .onAppear {
             viewModel.fetchEventsList()
         }
@@ -87,4 +95,5 @@ struct MainView: View {
 
 #Preview {
     MainView(eventsService: EventsService(), selectedTab: .constant(.main))
+		.environmentObject(NetworkManager())
 }

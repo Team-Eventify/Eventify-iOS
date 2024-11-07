@@ -5,76 +5,92 @@
 //  Created by Захар Литвинчук on 16.06.2024.
 //
 
+import PopupView
 import SwiftUI
 
 /// Вью экрана Сброса Пароля
 struct ForgotPasswordView: View {
-    // MARK: - Private Properties
-    @StateObject private var viewModel: ForgotPasswordViewModel
+	// MARK: - Private Properties
+	@EnvironmentObject private var networkManager: NetworkManager
 
-    @Environment(\.dismiss)
-    var dismiss
+	@StateObject private var viewModel: ForgotPasswordViewModel
 
-    // MARK: - Initialization
+	@Environment(\.dismiss)
+	var dismiss
 
-    /// Инициализатор
-    /// - Parameter viewModel: модель экрана сброса пароля
-    init(viewModel: ForgotPasswordViewModel? = nil) {
-        _viewModel = StateObject(
-            wrappedValue: viewModel ?? ForgotPasswordViewModel()
-        )
-    }
+	// MARK: - Initialization
 
-    // MARK: - Body
+	/// Инициализатор
+	/// - Parameter viewModel: модель экрана сброса пароля
+	init(viewModel: ForgotPasswordViewModel? = nil) {
+		_viewModel = StateObject(
+			wrappedValue: viewModel ?? ForgotPasswordViewModel()
+		)
+	}
 
-    var body: some View {
-        VStack(spacing: 40) {
-            Spacer()
-            forgotPasswordContainerView
-            restoreButtonContainerView
-            Spacer()
-            Spacer()
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.horizontal, 16)
-        .background(.bg, ignoresSafeAreaEdges: .all)
-    }
+	// MARK: - Body
 
-    /// Контейнер для содержимого экрана сброса пароля
-    private var forgotPasswordContainerView: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("forgot_password_title")
-                .font(.semiboldCompact(size: 40))
-                .foregroundStyle(Color.mainText)
+	var body: some View {
+		VStack(spacing: 40) {
+			Spacer()
+			forgotPasswordContainerView
+			restoreButtonContainerView
+			Spacer()
+			Spacer()
+		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.padding(.horizontal, 16)
+		.background(.bg, ignoresSafeAreaEdges: .all)
+		.popup(isPresented: $networkManager.isDisconnected) {
+			InternetErrorToast()
+		} customize: {
+			$0.type(.toast)
+				.disappearTo(.topSlide)
+				.position(.top)
+		}
+	}
 
-            Text("forgot_password_description")
-            .font(.regularCompact(size: 17))
-            .foregroundStyle(Color.secondaryText)
-            .frame(width: 400)
-        }
-    }
+	/// Контейнер для содержимого экрана сброса пароля
+	private var forgotPasswordContainerView: some View {
+		VStack(alignment: .leading, spacing: 12) {
+			Text("forgot_password_title")
+				.font(.semiboldCompact(size: 40))
+				.foregroundStyle(Color.mainText)
 
-    /// Контейнер для поля ввода email и кнопки отправки
-    private var restoreButtonContainerView: some View {
-        VStack(spacing: 40) {
-            EventifyTextField(text: $viewModel.email, placeholder: String(localized: "email_placeholder"), hasError: false)
-            .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
+			Text("forgot_password_description")
+				.font(.regularCompact(size: 17))
+				.foregroundStyle(Color.secondaryText)
+				.frame(width: 400)
+		}
+	}
 
-            EventifyButton(
-                configuration: .forgotPassword, isLoading: false, isDisabled: false
-            ) {
-                Task {
-                    do {
-                        try await viewModel.resetPassword()
-                    } catch {
-                        Log.error(error.localizedDescription)
-                    }
-                }
-            }
-        }
-    }
+	/// Контейнер для поля ввода email и кнопки отправки
+	private var restoreButtonContainerView: some View {
+		VStack(spacing: 40) {
+			EventifyTextField(
+				text: $viewModel.email,
+				placeholder: String(localized: "email_placeholder"),
+				hasError: false
+			)
+			.changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
+
+			EventifyButton(
+				configuration: .forgotPassword, isLoading: false,
+				isDisabled: false
+			) {
+				Task {
+					do {
+						try await viewModel.resetPassword()
+					} catch {
+						Log.error(error.localizedDescription)
+					}
+				}
+			}
+		}
+	}
 }
 
 #Preview {
 	ForgotPasswordView()
+		.environmentObject(NetworkManager())
 }

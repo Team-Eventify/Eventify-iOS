@@ -10,6 +10,7 @@ import PopupView
 
 struct SignUpView: View {
 	@StateObject private var viewModel: SignUpViewModel
+	@EnvironmentObject private var networkManager: NetworkManager
 
 	init(signUpService: SignUpServiceProtocol) {
 		_viewModel = StateObject(
@@ -59,6 +60,13 @@ struct SignUpView: View {
 				.position(.bottom)
 				.closeOnTap(true)
 				.autohideIn(3)
+		}
+		.popup(isPresented: $networkManager.isDisconnected) {
+					InternetErrorToast()
+				} customize: {
+					$0.type(.toast)
+						.disappearTo(.topSlide)
+						.position(.top)
 		}
 	}
 
@@ -159,25 +167,7 @@ struct SignUpView: View {
 	}
 }
 
-struct ValidationRow: View {
-	var rule: ValidationRule
-
-	private var foregroundColor: Color {
-		rule.isValid ? Color.green : Color.gray
-	}
-
-	var body: some View {
-		HStack {
-			rule.correctIcon
-				.foregroundColor(foregroundColor)
-
-			Text(rule.description)
-				.foregroundStyle(Color.secondaryText)
-				.font(.regularCompact(size: 14))
-		}
-	}
-}
-
 #Preview {
 	SignUpView(signUpService: SignUpService())
+		.environmentObject(NetworkManager())
 }

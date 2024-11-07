@@ -7,15 +7,14 @@
 
 import SwiftUI
 import PulseUI
+import PopupView
 
 /// Вью экрана "Профиль"
 struct ProfileView: View {
 	// MARK: - Private Properties
 
     @StateObject private var viewModel: ProfileViewModel
-	@State var showingDeleteAlert: Bool = false
-	@State var showingExitAlert: Bool = false
-	@State var navigateToSignUp: Bool = false
+	@EnvironmentObject private var networkManager: NetworkManager
 
 	// MARK: - Initialization
 
@@ -75,12 +74,12 @@ struct ProfileView: View {
 
 					Section {
 						Button {
-							showingExitAlert.toggle()
+							viewModel.showingExitAlert = true
 						} label: {
                             Text("action_logout")
 								.foregroundStyle(.mainText)
 						}
-                        .alert(String(localized: "alert_logout_confirmation"), isPresented: $showingExitAlert) {
+						.alert(String(localized: "alert_logout_confirmation"), isPresented: $viewModel.showingExitAlert) {
 							Button(role: .cancel) {
 								Constants.isLogin = false
                                 UserDefaultsManager.shared.clearAllUserData()
@@ -99,12 +98,12 @@ struct ProfileView: View {
 							}
 						}
 						Button {
-							showingDeleteAlert.toggle()
+							viewModel.showingDeleteAlert = true
 						} label: {
                             Text("action_delete_account")
 								.foregroundStyle(.error)
 						}
-                        .alert(String(localized: "alert_delete_account_confirmation"), isPresented: $showingDeleteAlert) {
+						.alert(String(localized: "alert_delete_account_confirmation"), isPresented: $viewModel.showingDeleteAlert) {
 
 							Button(role: .cancel) {
 								Constants.isLogin = false
@@ -136,6 +135,14 @@ struct ProfileView: View {
 			.navigationBarTitleDisplayMode(.large)
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
 			.background(.bg, ignoresSafeAreaEdges: .all)
+			.popup(isPresented: $networkManager.isDisconnected) {
+				InternetErrorToast()
+			} customize: {
+				$0.type(.toast)
+					.disappearTo(.topSlide)
+					.position(.top)
+					.isOpaque(true)
+			}
 		}
 	}
     
@@ -168,4 +175,5 @@ struct ProfileView: View {
 
 #Preview {
 	ProfileView()
+		.environmentObject(NetworkManager())
 }

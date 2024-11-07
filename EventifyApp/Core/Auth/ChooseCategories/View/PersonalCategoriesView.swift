@@ -5,11 +5,13 @@
 //  Created by Захар Литвинчук on 15.07.2024.
 //
 
-import Flow
 import SwiftUI
+import Flow
+import PopupView
 
 struct PersonalCategoriesView: View {
     // MARK: - Private Properties
+	@EnvironmentObject private var networkManager: NetworkManager
     
     /// ViewModel для управления логикой вью
     @StateObject private var viewModel: PersonalCategoriesViewModel
@@ -35,6 +37,13 @@ struct PersonalCategoriesView: View {
         .padding(.horizontal, 16)
         .background(.bg, ignoresSafeAreaEdges: .all)
         .navigationBarBackButtonHidden()
+		.popup(isPresented: $networkManager.isDisconnected) {
+					InternetErrorToast()
+				} customize: {
+					$0.type(.toast)
+						.disappearTo(.topSlide)
+						.position(.top)
+		}
         .onAppear {
             viewModel.getCategories()
         }
@@ -107,4 +116,5 @@ struct PersonalCategoriesView: View {
 
 #Preview {
     PersonalCategoriesView()
+		.environmentObject(NetworkManager())
 }

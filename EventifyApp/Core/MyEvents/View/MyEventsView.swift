@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import PopupView
 
 /// Вью экрана "Мои Ивенты"
 struct MyEventsView: View {
+	@EnvironmentObject private var networkManager: NetworkManager
 
 	// MARK: - Body
 
@@ -23,8 +25,15 @@ struct MyEventsView: View {
             .navigationTitle(String(localized: "tab_my_events"))
 			.navigationBarTitleDisplayMode(.large)
 			.padding(.horizontal, 16)
-			.frame(maxWidth: .infinity, maxHeight: .infinity)
 			.background(.bg, ignoresSafeAreaEdges: .all)
+			.popup(isPresented: $networkManager.isDisconnected) {
+				InternetErrorToast()
+			} customize: {
+				$0.type(.toast)
+					.disappearTo(.topSlide)
+					.position(.top)
+					.isOpaque(true)
+			}
 	}
 }
 
@@ -102,4 +111,5 @@ private var recomendedEvents: some View {
 
 #Preview {
 	TabBarView()
+		.environmentObject(NetworkManager())
 }

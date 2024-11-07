@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import PopupView
 
 /// Вью главного экрана
 struct MainView: View {
     // MARK: - Private Properties
 
     @StateObject private var viewModel = MainViewModel()
+	@EnvironmentObject private var networkManager: NetworkManager
     @Binding private var selectedTab: Tab
     
 	// MARK: - Body
@@ -35,6 +37,13 @@ struct MainView: View {
         .navigationBarTitleDisplayMode(.large)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.bg, ignoresSafeAreaEdges: .all)
+		.popup(isPresented: $networkManager.isDisconnected) {
+			InternetErrorToast()
+		} customize: {
+			$0.type(.toast)
+				.disappearTo(.topSlide)
+				.position(.top)
+		}
         .onAppear {
             Task { @MainActor in
                 let response = try await eventsServive.listEvents()
@@ -89,4 +98,5 @@ struct MainView: View {
 
 #Preview {
     MainView(eventsService: EventsService(), selectedTab: .constant(.main))
+		.environmentObject(NetworkManager())
 }

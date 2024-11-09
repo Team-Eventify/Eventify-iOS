@@ -5,8 +5,8 @@
 //  Created by Захар Литвинчук on 03.07.2024.
 //
 
-import SwiftUI
 import PopupView
+import SwiftUI
 
 /// Вью экрана "Мои Ивенты"
 struct MyEventsView: View {
@@ -15,25 +15,24 @@ struct MyEventsView: View {
 	// MARK: - Body
 
 	var body: some View {
-			VStack(alignment: .leading, spacing: 56) {
-				ScrollView(showsIndicators: false) {
-                    contentForUpcomingEventsSection
-					recomendedEvents
-					Spacer()
-				}
+		VStack(alignment: .leading, spacing: 56) {
+			ScrollView(showsIndicators: false) {
+				contentForUpcomingEventsSection
+				recomendedEvents
+				Spacer()
 			}
-            .navigationTitle(String(localized: "tab_my_events"))
-			.navigationBarTitleDisplayMode(.large)
-			.padding(.horizontal, 16)
-			.background(.bg, ignoresSafeAreaEdges: .all)
-			.popup(isPresented: $networkManager.isDisconnected) {
-				InternetErrorToast()
-			} customize: {
-				$0.type(.toast)
-					.disappearTo(.topSlide)
-					.position(.top)
-					.isOpaque(true)
-			}
+		}
+		.navigationTitle(String(localized: "tab_my_events"))
+		.navigationBarTitleDisplayMode(.large)
+		.padding(.horizontal, 16)
+		.background(.bg, ignoresSafeAreaEdges: .all)
+		.popup(isPresented: $networkManager.isDisconnected) {
+			InternetErrorToast()
+		} customize: {
+			$0.type(.toast)
+				.disappearTo(.topSlide)
+				.position(.top)
+		}
 	}
 }
 
@@ -42,11 +41,26 @@ struct MyEventsView: View {
 /// Функция для отображения секции предстоящих мероприятий
 @ViewBuilder
 private var contentForUpcomingEventsSection: some View {
-    if MyEventsMockData.upcomingEventsData.isEmpty {
-        emptyUpcomingEvents
-    } else {
-        upcomingEvents
-    }
+	if MyEventsMockData.upcomingEventsData.isEmpty {
+		emptyUpcomingEvents
+	} else {
+		upcomingEvents
+	}
+}
+
+/// Вью, которое показывается в случае отсутствия
+/// предстоящих мероприятий
+private var emptyUpcomingEvents: some View {
+	VStack {
+		Image(systemName: "bookmark")
+			.font(.system(size: 60))
+		Text("no_upcoming_events_message")
+			.font(.body)
+			.multilineTextAlignment(.center)
+			.padding(.top, 5)
+	}
+	.foregroundStyle(.secondary)
+	.padding(80)
 }
 
 /// Карточки предстоящих мероприятий
@@ -57,30 +71,24 @@ private var upcomingEvents: some View {
 			.foregroundStyle(.mainText)
 		LazyVStack(spacing: 8) {
 			ForEach(MyEventsMockData.upcomingEventsData) { event in
-                NavigationLink {
-                    EventsRegistationView(register: false)
-                } label: {
-                    EventifyUpcomingEvent(title: event.title, items: event.cheepTitles)
-                }
-                .buttonStyle(.plain)
+				NavigationLink {
+					EventsRegistationView(
+						title: event.title,
+						cheepsTitles: event.cheepTitles,
+						eventImages: event.eventImages,
+						description: event.description,
+						isRegistered: false
+					)
+				} label: {
+					EventifyUpcomingEvent(
+						title: event.title,
+						items: event.cheepTitles
+					)
+				}
+				.buttonStyle(.plain)
 			}
 		}
 	}
-}
-
-/// Вью, которое показывается в случае отсутствия
-/// предстоящих мероприятий
-private var emptyUpcomingEvents: some View {
-    VStack {
-        Image(systemName: "bookmark")
-            .font(.system(size: 60))
-        Text("no_upcoming_events_message")
-            .font(.body)
-            .multilineTextAlignment(.center)
-            .padding(.top, 5)
-    }
-    .foregroundStyle(.secondary)
-    .padding(80)
 }
 
 /// Карточки рекомендуемых мероприятий
@@ -93,11 +101,13 @@ private var recomendedEvents: some View {
 			LazyHStack(spacing: 8) {
 				ForEach(MyEventsMockData.recommendedEventsData) { event in
 					NavigationLink {
-                        EventsRegistationView(register: true)
+						// TODO: Адаптировать модели для передачи в RegistrationView
+						EmptyView()
 					} label: {
-						EventifyRecommendationEvent(configuration: event.asDomain())
+						EventifyRecommendationEvent(
+							configuration: event.asDomain())
 					}
-                    .buttonStyle(.plain)
+					.buttonStyle(.plain)
 				}
 			}
 		}

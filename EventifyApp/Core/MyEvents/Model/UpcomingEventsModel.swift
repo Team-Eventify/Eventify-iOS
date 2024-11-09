@@ -7,14 +7,20 @@
 
 import SwiftUI
 
-/// Модель предстоящих мероприятий
 struct UpcomingEventsModel: Identifiable {
+	
 	/// Индификатор мероприятия
 	let id = UUID()
-
+	
 	/// Название мероприятия
 	let title: String
-
+	
 	/// Заголовки тэгов мероприятия
 	let cheepTitles: [String]
+	
+	/// Изображения мероприятия
+	let eventImages: [String]
+	
+	/// Описание мероприятия
+	let description: String
 }

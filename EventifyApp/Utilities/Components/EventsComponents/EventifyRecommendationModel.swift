@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-// MARK: - TODO: перенести сущность в отдельный файл
-protocol DomainConvertable {
-    associatedtype ConvertableType
-
-    func asDomain() -> ConvertableType
-}
-
 /// Модель рекомендационных ячеек главного экрана
 struct EventifyRecommendationModel: Identifiable {
     /// Уникальный идентификатор для соответствия протоколу Identifiable

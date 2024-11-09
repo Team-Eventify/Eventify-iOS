@@ -29,7 +29,7 @@ final class MainViewModel: ObservableObject {
     func fetchEventsList() {
         Task { @MainActor in
             let response = try await eventsService.listEvents()
-            Log.network("\(response)")
+			Logger.log(level: .network, "\(response)")
         }
     }
 }

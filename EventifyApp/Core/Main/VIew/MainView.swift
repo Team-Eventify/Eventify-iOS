@@ -13,6 +13,7 @@ struct MainView: View {
     // MARK: - Private Properties
 
     @StateObject private var viewModel: MainViewModel
+	@EnvironmentObject private var networkManager: NetworkManager
     @Binding private var selectedTab: Tab
     
 	// MARK: - Body

@@ -819,6 +819,23 @@
         }
       }
     },
+    "less_description_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Small description"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Короткое описание"
+          }
+        }
+      }
+    },
     "login_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1125,12 +1142,19 @@
         }
       }
     },
-    "Pulse Консоль" : {
+    "Pulse_console" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Pulse Console"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulse консоль"
           }
         }
       }

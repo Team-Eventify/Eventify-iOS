@@ -32,7 +32,6 @@ struct MyEventsView: View {
 				$0.type(.toast)
 					.disappearTo(.topSlide)
 					.position(.top)
-					.isOpaque(true)
 			}
 	}
 }

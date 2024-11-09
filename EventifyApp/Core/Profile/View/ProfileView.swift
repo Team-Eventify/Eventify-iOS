@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PulseUI
 
 enum ProfileSectionItem: Identifiable {
     case addEvent
@@ -46,7 +47,8 @@ enum ProfileSectionItem: Identifiable {
         case .addEvent:
             AddEventView()
         case .pulseConsole:
-            EmptyView()
+			ConsoleView()
+				.closeButtonHidden()
         case .notifications, .helpAndSupport, .aboutApp, .rateApp:
             TestView()
         default: EmptyView()
@@ -132,7 +134,6 @@ struct ProfileView: View {
             }
             .navigationTitle(String(localized: "tab_profile"))
             .navigationBarTitleDisplayMode(.large)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.bg, ignoresSafeAreaEdges: .all)
         }
     }
@@ -185,7 +186,7 @@ struct ProfileView: View {
         if case .deleteAccount = item {
             return .red
         }
-        return .black
+		return .mainText
     }
 
     private func makeActionForAccountSection(_ item: ProfileSectionItem) {
@@ -221,9 +222,9 @@ struct ProfileView: View {
     private func alert(for item: ProfileSectionItem) -> Alert {
         Alert(
             title: Text(LocalizedStringKey(item.alertTitleKey ?? "")),
-            primaryButton: .cancel(Text(String(localized: "common_yes"))) ,
+            primaryButton: .cancel(Text(String(localized: "common_no"))) ,
             secondaryButton: .destructive(
-                Text(String(localized: "common_no")),
+                Text(String(localized: "common_yes")),
                 action: {
                     makeActionForAccountSection(item)
                 }

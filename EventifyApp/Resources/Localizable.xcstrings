@@ -1126,6 +1126,7 @@
       }
     },
     "Pulse Консоль" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

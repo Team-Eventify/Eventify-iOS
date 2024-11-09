@@ -38,7 +38,6 @@ struct ForgotPasswordView: View {
 			Spacer()
 			Spacer()
 		}
-		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.padding(.horizontal, 16)
 		.background(.bg, ignoresSafeAreaEdges: .all)
 		.popup(isPresented: $networkManager.isDisconnected) {
@@ -60,7 +59,6 @@ struct ForgotPasswordView: View {
 			Text("forgot_password_description")
 				.font(.regularCompact(size: 17))
 				.foregroundStyle(Color.secondaryText)
-				.frame(width: 400)
 		}
 	}
 

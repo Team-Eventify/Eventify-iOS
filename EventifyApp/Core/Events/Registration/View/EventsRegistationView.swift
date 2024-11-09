@@ -23,8 +23,8 @@ struct EventsRegistationView: View {
 		}
         .navigationTitle(viewModel.name)
 		.padding(.horizontal, 16)
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(.bg, ignoresSafeAreaEdges: .all)
-        
         .popup(
             isPresented: $viewModel.isRegistered) {
             EventifySnackBar(config: .registration)

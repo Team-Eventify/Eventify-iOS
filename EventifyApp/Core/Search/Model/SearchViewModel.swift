@@ -15,9 +15,12 @@ final class SearchViewModel: ObservableObject {
     @Published private(set) var filteredResults: [CategoriesModel] = []
 	@Published var searchText: String = ""
 	@Published var selectedPicker: Int = 0
+
+    private let categoriesService: CategoriesService
     private var cancellables: Set<AnyCancellable> = []
-    
-    init() {
+
+    init(categoriesService: CategoriesService) {
+        self.categoriesService = categoriesService
         addSubscriber()
     }
     
@@ -52,4 +55,11 @@ final class SearchViewModel: ObservableObject {
 	func searchData() -> [CategoriesModel] {
 			return SearchMockData.studentsData
 	}
+
+    func fetchCategories() {
+        Task { @MainActor in
+            let response = try await categoriesService.getCategories()
+            Log.info("\(response)")
+        }
+    }
 }

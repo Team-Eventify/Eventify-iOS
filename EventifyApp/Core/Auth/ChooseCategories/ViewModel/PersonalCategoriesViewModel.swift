@@ -26,10 +26,10 @@ final class PersonalCategoriesViewModel: ObservableObject {
                 let response = try await categoriesService.getCategories()
                 self.categories = convertResponseToCategories(response)
                 isLoading = false
-                Log.info("\(response)")
+                Log.log(level: .info, "\(response)")
             } catch {
                 isLoading = false
-                Log.error("Error while getting categories", error: error)
+                Log.log(level: .error(error), "Error while getting categories")
             }
         }
     }
@@ -44,7 +44,7 @@ final class PersonalCategoriesViewModel: ObservableObject {
                 Log.info("User categories: \(response)")
             } catch {
                 isLoading = false
-                Log.error("Error while getting user categories", error: error)
+                Log.log(level: .error(error), "Error while getting user categories")
             }
         }
     }
@@ -74,7 +74,7 @@ final class PersonalCategoriesViewModel: ObservableObject {
 }
 
 extension PersonalCategoriesViewModel {
-    func convertResponseToCategories(_ response: CategoriesResponseModel) -> [Categories] {
+    private func convertResponseToCategories(_ response: CategoriesResponseModel) -> [Categories] {
         return response.map { Categories(id: $0.id, title: $0.title) }
     }
 }

@@ -49,6 +49,7 @@ final class KeychainManager {
         return nil
     }
 
+    @discardableResult
     func clearAll() -> Bool {
         let secItemClasses = [
             kSecClassGenericPassword,

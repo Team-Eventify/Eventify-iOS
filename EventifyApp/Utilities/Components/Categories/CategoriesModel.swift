@@ -21,3 +21,13 @@ struct CategoriesModel: Identifiable {
 	/// Цвет категории
 	let color: Color
 }
+
+extension CategoriesModel: DomainConvertable {
+    func asDomain() -> CategoriesConfiguration {
+        CategoriesConfiguration(
+            text: title,
+            image: image,
+            color: color
+        )
+    }
+}

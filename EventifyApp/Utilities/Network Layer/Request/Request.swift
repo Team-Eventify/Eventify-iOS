@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import Pulse
 
 class Request {
 
     private let maxTokenRefreshAttempts = 3
 
-	let session: URLSessionProtocol = URLSessionProxy(configuration: .default)
+    let session = URLSession.shared
 
     func sendRequest<T: Decodable>(
         endpoint: Endpoint,

@@ -11,17 +11,18 @@ import SwiftUI
 struct MainView: View {
     // MARK: - Private Properties
 
-    @StateObject private var viewModel = MainViewModel()
+    @StateObject private var viewModel: MainViewModel
     @Binding private var selectedTab: Tab
     
 	// MARK: - Body
     
-    private let eventsServive: EventsServiceProtocol
-    
+    private let eventsService: EventsServiceProtocol
+
     /// Инициализирует MainView с сервисом категорий и привязкой активной вкладки
     init(eventsService: EventsServiceProtocol, selectedTab: Binding<Tab>) {
-        self.eventsServive = eventsService
+        self.eventsService = eventsService
         self._selectedTab = selectedTab
+        self._viewModel = StateObject(wrappedValue: MainViewModel(eventsService: eventsService))
     }
 
     var body: some View {
@@ -36,10 +37,7 @@ struct MainView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.bg, ignoresSafeAreaEdges: .all)
         .onAppear {
-            Task { @MainActor in
-                let response = try await eventsServive.listEvents()
-				Log.network("\(response)")
-            }
+            viewModel.fetchEventsList()
         }
     }
     
@@ -51,7 +49,7 @@ struct MainView: View {
                 .padding(.bottom, 10)
             LazyVStack(spacing: 30) {
                 ForEach(viewModel.getPopularEventsData()) {
-                    EventifyRecommendationEvent(image: $0.image, title: $0.title, description: $0.description, cheepsItems: $0.cheepsItems, size: $0.size)
+                    EventifyRecommendationEvent(configuration: $0.asDomain())
                 }
             }
         }
@@ -66,7 +64,7 @@ struct MainView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             LazyVStack(spacing: 10) {
                 ForEach(viewModel.interestsCategories()) {
-                    EventifyCategories(text: $0.title, image: $0.image, color: $0.color)
+                    EventifyCategories(configuration: $0.asDomain())
                 }
                 Button {
                     withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {

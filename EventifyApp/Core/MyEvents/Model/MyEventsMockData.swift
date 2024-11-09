@@ -25,12 +25,19 @@ enum MyEventsMockData {
     ]
 
     /// Рекоммендации мероприятия
-    static let recommendedEventsData: [CellsModel] = [
+    static let recommendedEventsData: [EventifyRecommendationModel] = [
         .init(
-            image: "poster", title: "Фестиваль ИКН",
-            cheepsItems: ["11 сентября", "18:00", "офлайн"]),
+            image: "poster",
+            title: "Фестиваль ИКН",
+            cheepsItems: ["11 сентября", "18:00", "офлайн"],
+            size: .large
+        ),
         .init(
-            image: "itam", title: "ITAM courses",
-            cheepsItems: ["27 сентября", "18:00", "Б-3"]),
+            image: "itam",
+            title: "ITAM courses",
+            cheepsItems: ["27 сентября", "18:00", "Б-3"],
+            size: .large
+        ),
     ]
 }
+

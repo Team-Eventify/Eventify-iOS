@@ -9,7 +9,13 @@ import SwiftUI
 
 /// ViewModel для главного экрана, управляет получением данных
 final class MainViewModel: ObservableObject {
-    
+    /// Сервис управляющий евентами
+    private let eventsService: EventsServiceProtocol
+
+    init(eventsService: EventsServiceProtocol) {
+        self.eventsService = eventsService
+    }
+
     /// Возвращает данные популярных ивентов.
     func getPopularEventsData() -> [EventifyRecommendationModel] {
         return MainMockData.popularEvents
@@ -18,5 +24,12 @@ final class MainViewModel: ObservableObject {
     /// Возвращает категории на основе интересов.
     func interestsCategories() -> [CategoriesModel] {
         return MainMockData.categoriesBasedOnInterests
+    }
+
+    func fetchEventsList() {
+        Task { @MainActor in
+            let response = try await eventsService.listEvents()
+            Log.network("\(response)")
+        }
     }
 }

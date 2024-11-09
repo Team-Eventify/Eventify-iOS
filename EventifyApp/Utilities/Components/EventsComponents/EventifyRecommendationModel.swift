@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+// MARK: - TODO: перенести сущность в отдельный файл
+protocol DomainConvertable {
+    associatedtype ConvertableType
+
+    func asDomain() -> ConvertableType
+}
+
 /// Модель рекомендационных ячеек главного экрана
 struct EventifyRecommendationModel: Identifiable {
     /// Уникальный идентификатор для соответствия протоколу Identifiable
@@ -26,5 +33,33 @@ struct EventifyRecommendationModel: Identifiable {
     
     /// Размер элемента, определённый через EventCellSize
     let size: EventCellSize
+
+    init(
+        image: String,
+        title: String,
+        description: String? = nil,
+        cheepsItems: [String],
+        size: EventCellSize
+    ) {
+        self.image = image
+        self.title = title
+        self.description = description
+        self.cheepsItems = cheepsItems
+        self.size = size
+    }
+}
+
+extension EventifyRecommendationModel: DomainConvertable {
+    typealias ConvertableType = RecommendationEventConfiguration
+
+    func asDomain() -> ConvertableType {
+        return RecommendationEventConfiguration(
+            image: image,
+            title: title,
+            description: description,
+            cheepsItems: cheepsItems,
+            size: size
+        )
+    }
 }
 

@@ -11,8 +11,11 @@ import SwiftUI
 struct SearchView: View {
 	// MARK: - Private Properties
 
-	@StateObject private var viewModel = SearchViewModel()
-    private let categoriesService = CategoriesService()
+    @StateObject private var viewModel: SearchViewModel
+
+    init(categoriesService: CategoriesService) {
+        self._viewModel = StateObject(wrappedValue: SearchViewModel(categoriesService: categoriesService))
+    }
 
 	// MARK: - Body
 
@@ -21,15 +24,12 @@ struct SearchView: View {
 				ScrollView(showsIndicators: false) {
                     let displayedResults = viewModel.isSearching ? viewModel.filteredResults : viewModel.searchData()
                     ForEach(displayedResults) {
-						EventifyCategories(text: $0.title, image: $0.image, color: $0.color)
+                        EventifyCategories(configuration: $0.asDomain())
 					}
 				}
 			}
             .onAppear {
-                Task { @MainActor in
-                    let response = try await categoriesService.getCategories()
-                    Log.info("\(response)")
-                }
+                viewModel.fetchCategories()
             }
             .navigationTitle(String(localized: "tab_search"))
 			.navigationBarTitleDisplayMode(.large)
@@ -38,7 +38,6 @@ struct SearchView: View {
                 text: $viewModel.searchText,
                 placement: .navigationBarDrawer(displayMode: .always)
             )
-			.frame(maxWidth: .infinity, maxHeight: .infinity)
 			.background(.bg, ignoresSafeAreaEdges: .all)
 	}
 }

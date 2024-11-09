@@ -26,9 +26,8 @@ struct SignUpView: View {
 			Spacer()
 		}
 		.foregroundStyle(Color.secondaryText)
-		.frame(maxWidth: .infinity, maxHeight: .infinity)
-		.padding(.horizontal, 16)
 		.navigationBarBackButtonHidden(true)
+		.padding(.horizontal, 16)
 		.background(.bg, ignoresSafeAreaEdges: .all)
 		.edgesIgnoringSafeArea(.bottom)
 		.onTapGesture {
@@ -134,7 +133,6 @@ struct SignUpView: View {
 				ValidationRow(rule: viewModel.validationRules[index])
 			}
 		}
-		.frame(maxWidth: .infinity, alignment: .leading)
 	}
 
 	private var registrationButtonContainerView: some View {

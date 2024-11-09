@@ -46,7 +46,6 @@ struct EventifyButton: View {
         EventifyButton(configuration: .cancel, isLoading: true, isDisabled: false, action: {})
         EventifyButton(configuration: .commom, isLoading: false, isDisabled: false, action: {})
 	}
-	.frame(maxWidth: .infinity, maxHeight: .infinity)
 	.padding(.horizontal, 16)
 	.background(.bg, ignoresSafeAreaEdges: .all)
 }

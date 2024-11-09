@@ -67,7 +67,6 @@ struct EventifyView: View {
                 isValid.toggle()
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal)
         .background(.bg, ignoresSafeAreaEdges: .all)
     }

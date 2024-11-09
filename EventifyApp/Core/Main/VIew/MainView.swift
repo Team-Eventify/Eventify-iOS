@@ -35,7 +35,6 @@ struct MainView: View {
         .padding(.horizontal, 16)
         .navigationTitle(String(localized: "tab_main"))
         .navigationBarTitleDisplayMode(.large)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.bg, ignoresSafeAreaEdges: .all)
 		.popup(isPresented: $networkManager.isDisconnected) {
 			InternetErrorToast()
@@ -50,10 +49,9 @@ struct MainView: View {
     }
     
     private var popularEventsSection: some View {
-        VStack {
+		VStack(alignment: .leading) {
             Text("popular_events_title")
                 .font(.mediumCompact(size: 20))
-                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 10)
             LazyVStack(spacing: 30) {
                 ForEach(viewModel.getPopularEventsData()) {
@@ -66,10 +64,9 @@ struct MainView: View {
     }
     
     private var categoriesSection: some View {
-        VStack {
+		VStack(alignment: .leading) {
             Text("categories_based_on_interests")
                 .font(.mediumCompact(size: 20))
-                .frame(maxWidth: .infinity, alignment: .leading)
             LazyVStack(spacing: 10) {
                 ForEach(viewModel.interestsCategories()) {
                     EventifyCategories(configuration: $0.asDomain())

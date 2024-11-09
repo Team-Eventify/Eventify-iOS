@@ -33,7 +33,6 @@ struct PersonalCategoriesView: View {
             footerContainer
             Spacer()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal, 16)
         .background(.bg, ignoresSafeAreaEdges: .all)
         .navigationBarBackButtonHidden()

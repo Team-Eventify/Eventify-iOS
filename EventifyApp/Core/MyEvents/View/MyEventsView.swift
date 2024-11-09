@@ -86,12 +86,7 @@ private var recomendedEvents: some View {
 					NavigationLink {
                         EventsRegistationView(register: true)
 					} label: {
-						EventifyRecommendationEvent(
-							image: event.image,
-							title: event.title,
-							cheepsItems: event.cheepsItems,
-							size: .large
-						)
+						EventifyRecommendationEvent(configuration: event.asDomain())
 					}
                     .buttonStyle(.plain)
 				}

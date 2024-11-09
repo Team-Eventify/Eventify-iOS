@@ -100,8 +100,6 @@
 		EC7175B82CDFAD4100B613DF /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7175572CDFAD4100B613DF /* API.swift */; };
 		EC7175B92CDFAD4100B613DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC71755A2CDFAD4100B613DF /* ContentView.swift */; };
 		EC7175BA2CDFAD4100B613DF /* EventifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC71755C2CDFAD4100B613DF /* EventifyApp.swift */; };
-		EC82D01C2CD6DCB000E8EF73 /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = EC82D01B2CD6DCB000E8EF73 /* Pulse */; };
-		EC82D01E2CD6DCB000E8EF73 /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = EC82D01D2CD6DCB000E8EF73 /* PulseUI */; };
 		ECDE590F2CA16CB6000B7EFF /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = ECDE590E2CA16CB6000B7EFF /* Flow */; };
 		ECE1F7582C9C183400A851C7 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = ECE1F7572C9C183400A851C7 /* Pow */; };
 /* End PBXBuildFile section */
@@ -211,9 +209,7 @@
 			files = (
 				ECE1F7582C9C183400A851C7 /* Pow in Frameworks */,
 				ECDE590F2CA16CB6000B7EFF /* Flow in Frameworks */,
-				EC82D01C2CD6DCB000E8EF73 /* Pulse in Frameworks */,
 				EC1B2B492C8A2F8A004A1FD4 /* PopupView in Frameworks */,
-				EC82D01E2CD6DCB000E8EF73 /* PulseUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,8 +817,6 @@
 				EC1B2B482C8A2F8A004A1FD4 /* PopupView */,
 				ECE1F7572C9C183400A851C7 /* Pow */,
 				ECDE590E2CA16CB6000B7EFF /* Flow */,
-				EC82D01B2CD6DCB000E8EF73 /* Pulse */,
-				EC82D01D2CD6DCB000E8EF73 /* PulseUI */,
 			);
 			productName = EventifyApp;
 			productReference = EC4981DF2C1B784F0072BD53 /* EventifyApp.app */;
@@ -857,7 +851,6 @@
 				EC1B2B472C8A2F8A004A1FD4 /* XCRemoteSwiftPackageReference "popupview" */,
 				ECE1F7562C9C183400A851C7 /* XCRemoteSwiftPackageReference "Pow" */,
 				ECDE590D2CA16CB6000B7EFF /* XCRemoteSwiftPackageReference "SwiftUI-Flow" */,
-				EC82D01A2CD6DCB000E8EF73 /* XCRemoteSwiftPackageReference "Pulse" */,
 			);
 			productRefGroup = EC4981E02C1B784F0072BD53 /* Products */;
 			projectDirPath = "";
@@ -1214,14 +1207,6 @@
 				minimumVersion = 3.0.7;
 			};
 		};
-		EC82D01A2CD6DCB000E8EF73 /* XCRemoteSwiftPackageReference "Pulse" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kean/Pulse.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.2;
-			};
-		};
 		ECDE590D2CA16CB6000B7EFF /* XCRemoteSwiftPackageReference "SwiftUI-Flow" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tevelee/SwiftUI-Flow.git";
@@ -1245,16 +1230,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EC1B2B472C8A2F8A004A1FD4 /* XCRemoteSwiftPackageReference "popupview" */;
 			productName = PopupView;
-		};
-		EC82D01B2CD6DCB000E8EF73 /* Pulse */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EC82D01A2CD6DCB000E8EF73 /* XCRemoteSwiftPackageReference "Pulse" */;
-			productName = Pulse;
-		};
-		EC82D01D2CD6DCB000E8EF73 /* PulseUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EC82D01A2CD6DCB000E8EF73 /* XCRemoteSwiftPackageReference "Pulse" */;
-			productName = PulseUI;
 		};
 		ECDE590E2CA16CB6000B7EFF /* Flow */ = {
 			isa = XCSwiftPackageProductDependency;

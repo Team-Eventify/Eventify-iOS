@@ -5,12 +5,10 @@
 //  Created by Захар Литвинчук on 03.07.2024.
 //
 
-import PulseUI
 import SwiftUI
 
 enum ProfileSectionItem: Identifiable {
 	case addEvent
-	case pulseConsole
 	case notifications
 	case helpAndSupport
 	case aboutApp
@@ -24,8 +22,6 @@ enum ProfileSectionItem: Identifiable {
 		switch self {
 		case .addEvent:
 			"action_add_event"
-		case .pulseConsole:
-			"Pulse_console"
 		case .notifications:
 			"section_notifications"
 		case .helpAndSupport:
@@ -46,9 +42,6 @@ enum ProfileSectionItem: Identifiable {
 		switch self {
 		case .addEvent:
 			AddEventView()
-		case .pulseConsole:
-			ConsoleView()
-				.closeButtonHidden()
 		case .notifications, .helpAndSupport, .aboutApp, .rateApp:
 			TestView()
 		default: EmptyView()
@@ -82,7 +75,7 @@ enum ProfileMenuSection: Int, Identifiable, CaseIterable {
 		case .main:
 			return [.addEvent]
 		case .options:
-			return [.pulseConsole, .notifications, .helpAndSupport]
+			return [.notifications, .helpAndSupport]
 		case .about:
 			return [.aboutApp, .rateApp]
 		case .account:

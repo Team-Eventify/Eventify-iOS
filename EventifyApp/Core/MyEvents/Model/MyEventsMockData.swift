@@ -14,7 +14,7 @@ enum MyEventsMockData {
 		.init(
 			title: "Фестиваль Сбера",
 			cheepTitles: ["12 ноября", "10:00", "Б-корпус"],
-			eventImages: ["sber"],
+			eventImages: ["example"],
 			description:
 """
 Погрузись во Вселенную Сбера! 
@@ -33,7 +33,7 @@ enum MyEventsMockData {
 		.init(
 			title: "Wake Up MeetUP",
 			cheepTitles: ["26 сентября", "16:20", "Б-1"],
-			eventImages: ["wakeup"],
+			eventImages: ["example"],
 			description:
 """
 WakeUP Meetup уже через пару часов!
@@ -49,7 +49,7 @@ WakeUP Meetup уже через пару часов!
 		.init(
 			title: "Фестиваль Сбера",
 			cheepTitles: ["12 ноября", "10:00", "Б-корпус"],
-			eventImages: ["sber"],
+			eventImages: ["example"],
 			description:
 """
 Погрузись во Вселенную Сбера! 
@@ -70,14 +70,14 @@ WakeUP Meetup уже через пару часов!
 	static let recommendedEventsData: [EventifyRecommendationModel] = [
 		.init(
 			id: "327eryf7823bedwnj",
-			image: "poster",
+			image: "example",
 			title: "Фестиваль ИКН",
 			cheepsItems: ["11 сентября", "18:00", "офлайн"],
 			size: .large
 		),
 		.init(
 			id: "23ye7wrdfy32hrejwd",
-			image: "itam",
+			image: "example",
 			title: "ITAM courses",
 			cheepsItems: ["27 сентября", "18:00", "Б-3"],
 			size: .large

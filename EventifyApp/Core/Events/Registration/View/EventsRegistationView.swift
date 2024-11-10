@@ -105,8 +105,8 @@ struct EventsRegistationView: View {
 #Preview {
 	EventsRegistationView(
 		title: "ИКН",
-		cheepsTitles: ["", "", ""],
-		eventImages: ["poster"],
+		cheepsTitles: ["12 октября", "18:00", "Онлайн"],
+		eventImages: ["example"],
 		description: "",
 		isRegistered: false
 	)

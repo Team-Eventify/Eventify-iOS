@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-
 /// ViewModel для главного экрана, управляет получением данных
 final class MainViewModel: ObservableObject {
-	
-	var events: [EventifyRecommendationModel] = []
+	@Published var events: [EventifyRecommendationModel] = []
 	var isLoading: Bool = false
 
 	/// Сервис управляющий евентами
@@ -19,11 +17,6 @@ final class MainViewModel: ObservableObject {
 
 	init(eventsService: EventsServiceProtocol) {
 		self.eventsService = eventsService
-	}
-
-	/// Возвращает данные популярных ивентов.
-	func getPopularEventsData() -> [EventifyRecommendationModel] {
-		return MainMockData.popularEvents
 	}
 
 	/// Возвращает категории на основе интересов.
@@ -39,7 +32,7 @@ final class MainViewModel: ObservableObject {
 				self.events = response.map { eventsResponse in
 					EventifyRecommendationModel(
 						id: eventsResponse.id,
-						image: "wakeup",
+						image: "example",
 						title: eventsResponse.title,
 						description: eventsResponse.description,
 						cheepsItems: ["10 ноября", "15:00", "Онлайн"],

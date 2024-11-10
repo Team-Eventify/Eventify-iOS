@@ -6,11 +6,8 @@
 //
 
 import Foundation
-import Pulse
 
 class Request {
-	let session: URLSessionProtocol = URLSessionProxy(configuration: .default)
-
 	private let maxTokenRefreshAttempts = 3
 
 	func sendRequest<T: Decodable>(
@@ -72,8 +69,7 @@ class Request {
 		}
 
 		do {
-			// TODO: - Сменить urlSession после тестов и убрать пункт с консолью pulse
-			let (data, response) = try await session.data(
+			let (data, response) = try await URLSession.shared.data(
 				for: request)
 			guard let httpResponse = response as? HTTPURLResponse else {
 				throw RequestError.noResponse

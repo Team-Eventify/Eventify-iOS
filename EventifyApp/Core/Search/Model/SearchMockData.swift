@@ -14,7 +14,7 @@ struct SearchMockData {
     static let studentsData: [CategoriesModel] = [
 		.init(title: String(localized: "SportCategory"), image: "sport", color: .sport),
 		.init(title: String(localized: "ScienceCategory"), image: "science", color: .science),
-		.init(title: String(localized: "GameDevCategory"), image: "gameDev", color: .gameDev),
+		.init(title: String(localized: "GameDevCategory"), image: "gamedev", color: .gameDev),
 		.init(title: String(localized: "DesignCategory"), image: "design", color: .design),
 		.init(title: String(localized: "ArtCategory"), image: "art", color: .art),
 		.init(title: String(localized: "FrontendCategory"), image: "frontend", color: .frontend),

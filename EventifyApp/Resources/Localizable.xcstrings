@@ -1142,23 +1142,6 @@
         }
       }
     },
-    "Pulse_console" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Pulse Console"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pulse консоль"
-          }
-        }
-      }
-    },
     "recommendation_title" : {
       "extractionState" : "manual",
       "localizations" : {

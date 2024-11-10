@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Flow
 
 struct EventifyCheeps: View {
 	let items: [String]
@@ -20,6 +21,7 @@ struct EventifyCheeps: View {
 	}
 
 	var body: some View {
+		// TODO: Переделать на Flow (Таски номер тут будет и вырезать FlowLayout)
 		FlowLayout(mode: .vstack, items: items, viewMapping: { items in
 			Text(items)
 				.font(.mediumCompact(size: fontSize))

@@ -141,6 +141,7 @@ class Request {
 				}
 			default:
 				let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
+				Logger.log(level: .error(), errorMessage)
 				throw RequestError.unknown
 			}
 		} catch {

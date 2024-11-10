@@ -8,7 +8,6 @@
 import PhotosUI
 import SwiftUI
 
-@MainActor
 final class AddEventViewModel: ObservableObject {
 	@Published var name: String = ""
 	@Published var date: Date = .init()
@@ -36,7 +35,7 @@ final class AddEventViewModel: ObservableObject {
 	}
 
 	private func setImages(from selections: [PhotosPickerItem]) {
-		Task {
+		Task { @MainActor in
 			var images: [UIImage] = []
 
 			for selection in selections {

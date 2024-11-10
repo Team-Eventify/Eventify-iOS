@@ -69,12 +69,14 @@ WakeUP Meetup уже через пару часов!
 	/// Рекоммендации мероприятия
 	static let recommendedEventsData: [EventifyRecommendationModel] = [
 		.init(
+			id: "327eryf7823bedwnj",
 			image: "poster",
 			title: "Фестиваль ИКН",
 			cheepsItems: ["11 сентября", "18:00", "офлайн"],
 			size: .large
 		),
 		.init(
+			id: "23ye7wrdfy32hrejwd",
 			image: "itam",
 			title: "ITAM courses",
 			cheepsItems: ["27 сентября", "18:00", "Б-3"],

@@ -12,6 +12,7 @@ final class KeychainManager {
 
     private init() {}
 
+	@discardableResult
     func set(_ value: String, key: String) -> Bool {
         let data = value.data(using: .utf8)
 

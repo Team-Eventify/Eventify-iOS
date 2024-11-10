@@ -7,29 +7,51 @@
 
 import SwiftUI
 
+
 /// ViewModel для главного экрана, управляет получением данных
 final class MainViewModel: ObservableObject {
-    /// Сервис управляющий евентами
-    private let eventsService: EventsServiceProtocol
+	
+	var events: [EventifyRecommendationModel] = []
+	var isLoading: Bool = false
 
-    init(eventsService: EventsServiceProtocol) {
-        self.eventsService = eventsService
-    }
+	/// Сервис управляющий евентами
+	private let eventsService: EventsServiceProtocol
 
-    /// Возвращает данные популярных ивентов.
-    func getPopularEventsData() -> [EventifyRecommendationModel] {
-        return MainMockData.popularEvents
-    }
-    
-    /// Возвращает категории на основе интересов.
-    func interestsCategories() -> [CategoriesModel] {
-        return MainMockData.categoriesBasedOnInterests
-    }
+	init(eventsService: EventsServiceProtocol) {
+		self.eventsService = eventsService
+	}
 
-    func fetchEventsList() {
-        Task { @MainActor in
-            let response = try await eventsService.listEvents()
-			Logger.log(level: .network, "\(response)")
-        }
-    }
+	/// Возвращает данные популярных ивентов.
+	func getPopularEventsData() -> [EventifyRecommendationModel] {
+		return MainMockData.popularEvents
+	}
+
+	/// Возвращает категории на основе интересов.
+	func interestsCategories() -> [CategoriesModel] {
+		return MainMockData.categoriesBasedOnInterests
+	}
+
+	func fetchEventsList() {
+		Task { @MainActor in
+			do {
+				isLoading = true
+				let response = try await eventsService.listEvents()
+				self.events = response.map { eventsResponse in
+					EventifyRecommendationModel(
+						id: eventsResponse.id,
+						image: "wakeup",
+						title: eventsResponse.title,
+						description: eventsResponse.description,
+						cheepsItems: ["10 ноября", "15:00", "Онлайн"],
+						size: .flexible
+					)
+				}
+				isLoading = false
+				Logger.log(level: .network, "\(response)")
+			} catch {
+				isLoading = true
+				Logger.log(level: .error(error), "")
+			}
+		}
+	}
 }

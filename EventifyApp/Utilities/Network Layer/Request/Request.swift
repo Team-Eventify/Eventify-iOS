@@ -34,6 +34,7 @@ class Request {
 				request.setValue(
 					"Bearer \(accessToken)", forHTTPHeaderField: "Authorization"
 				)
+				Logger.log(level: .network, "Auth Token: \(accessToken)")
 			} else {
 				Logger.log(level: .warning, "No access token found in Keychain")
 			}
@@ -88,6 +89,7 @@ class Request {
 			case 200...299:
 				do {
 					if data.isEmpty {
+						// TODO: - Сделать норм обработку 201 ошибки
 						if responseModel is SetUserCategoriesModel.Type {
 							// Если ответ пустой и мы ожидаем SetUserCategoriesModel, возвращаем пустой экземпляр
 							return SetUserCategoriesModel() as! T

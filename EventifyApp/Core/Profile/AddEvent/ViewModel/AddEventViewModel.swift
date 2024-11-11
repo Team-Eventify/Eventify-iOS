@@ -67,17 +67,12 @@ final class AddEventViewModel: ObservableObject {
 	/// - Throws: Функция может выбросить ошибку, если что-то пойдет не так при отправке запроса на сервер.
 	func sendEvent() async {
 
-		guard !name.isEmpty, !description.isEmpty, !imageSelections.isEmpty
-		else {
-			withAnimation {
-				isError = true
-			}
+		guard !name.isEmpty, !description.isEmpty, !imageSelections.isEmpty else {
+			isError = true
 
 			try? await Task.sleep(nanoseconds: 1_500_000_000)
 
-			withAnimation {
-				isError = false
-			}
+			isError = false
 
 			return
 		}

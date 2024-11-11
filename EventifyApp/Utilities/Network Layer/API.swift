@@ -10,7 +10,7 @@ import Foundation
 /// Enum `API` c enpoint's
 enum API {
 	/// Базовый URL для API
-	static let baseURL: String = "http://188.225.82.113:8090/api/v1/"
+	static let baseURL: String = "https://eventify.website/api/v1/"
 
 	/// endpoint'ы для авторизации
 	enum Authorization {

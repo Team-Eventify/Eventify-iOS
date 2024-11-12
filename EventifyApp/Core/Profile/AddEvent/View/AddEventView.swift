@@ -153,12 +153,25 @@ struct AddEventView: View {
 				if !viewModel.selectedImages.isEmpty {
 					ScrollView(.horizontal, showsIndicators: false) {
 						HStack {
-							ForEach(viewModel.selectedImages, id: \.self) { image in
-								Image(uiImage: image)
-									.resizable()
-									.scaledToFill()
-									.frame(width: 100, height: 100)
-									.cornerRadius(10)
+                            ForEach(viewModel.selectedImages.indices, id: \.self) { index in
+                                ZStack(alignment: .topTrailing) {
+                                    Image(uiImage: viewModel.selectedImages[index])
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 100, height: 100)
+                                        .cornerRadius(10)
+                                    Button {
+                                        viewModel.selectedImages.remove(at: index)
+                                        if index < viewModel.imageSelections.count {
+                                            viewModel.imageSelections.remove(at: index)
+                                        }
+                                    } label: {
+                                        Image(systemName: "xmark.circle.fill")
+                                            .foregroundStyle(.white)
+                                            .font(.body)
+                                    }
+                                    .padding(8)
+                                }
 							}
 						}
 					}

@@ -14,7 +14,7 @@ final class AddEventViewModel: ObservableObject {
 	@Published var startTime: Date = .init()
 	@Published var endTime: Date = .init()
 	@Published var description: String = ""
-	@Published private(set) var selectedImages: [UIImage] = []
+	@Published var selectedImages: [UIImage] = []
 	@Published var shouldDismiss: Bool = false
 	@Published var showPopUp: Bool = false
 	@Published var isError: Bool = false

@@ -30,13 +30,4 @@ enum CheepsStyle {
         case .past: return .cheepsGray
         }
     }
-
-    var shape: any Shape {
-        switch self {
-        case .registation: return Capsule()
-        case .upcoming: return Rectangle()
-        case .common: return Rectangle()
-        case .past: return Rectangle()
-        }
-    }
 }

@@ -11,12 +11,14 @@ enum CheepsStyle {
     case registation
     case upcoming
     case common
+    case past
 
     var titleColor: Color {
         switch self {
         case .registation: return .black
         case .upcoming: return .cheeps
         case .common: return .mainText
+        case .past: return .cheeps
         }
     }
 
@@ -25,6 +27,7 @@ enum CheepsStyle {
         case .registation: return .brandCyan
         case .upcoming: return .mainText
         case .common: return .clear
+        case .past: return .cheepsGray
         }
     }
 
@@ -33,6 +36,7 @@ enum CheepsStyle {
         case .registation: return Capsule()
         case .upcoming: return Rectangle()
         case .common: return Rectangle()
+        case .past: return Rectangle()
         }
     }
 }

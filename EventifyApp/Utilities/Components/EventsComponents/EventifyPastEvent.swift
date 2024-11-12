@@ -28,13 +28,13 @@ struct EventifyPastEvent: View {
                 }
                 .padding(.horizontal, 16)
                 
-                Image("brandLiteral")
+                Image("brandLiteralGray")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
         }
         .frame(height: 112)
-        .background(.cards)
+        .background(.cardsGray)
         .clipShape(.rect(cornerRadius: 10))
     }
 }

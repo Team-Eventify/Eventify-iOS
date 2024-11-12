@@ -80,7 +80,7 @@ private var upcomingEvents: some View {
 						isRegistered: false
 					)
 				} label: {
-					EventifyUpcomingEvent(
+					EventifyRegisteredCard(
 						title: event.title,
 						items: event.cheepTitles
 					)

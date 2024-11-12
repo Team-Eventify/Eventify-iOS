@@ -42,7 +42,9 @@ enum ProfileSectionItem: Identifiable {
 		switch self {
 		case .addEvent:
 			AddEventView()
-		case .notifications, .helpAndSupport, .aboutApp, .rateApp:
+		case .notifications:
+			NotificationUtilityView()
+		case .helpAndSupport, .aboutApp, .rateApp:
 			TestView()
 		default: EmptyView()
 		}

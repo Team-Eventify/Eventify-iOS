@@ -497,6 +497,9 @@
         }
       }
     },
+    "Fcm token: %@" : {
+
+    },
     "forgot_password_button" : {
       "extractionState" : "manual",
       "localizations" : {

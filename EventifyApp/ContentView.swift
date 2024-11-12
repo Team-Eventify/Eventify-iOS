@@ -9,7 +9,8 @@ import PopupView
 import SwiftUI
 
 struct ContentView: View {
-	@StateObject private var profileViewModel = ProfileViewModel(userService: UserService())
+	@StateObject private var profileViewModel = ProfileViewModel(
+		userService: UserService())
 	@StateObject var networkManager = NetworkManager()
 
 	// Создаем экземпляры сервисов
@@ -36,5 +37,4 @@ struct ContentView: View {
 
 #Preview {
 	ContentView()
-
 }

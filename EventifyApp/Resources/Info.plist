@@ -2,13 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<true/>
+	<key>FirebaseMessagingAutoInitEnabled</key>
+	<true/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>Для получения актуальной информации о мероприятиях и напоминаниях о начале их</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Compact-Rounded-Medium.otf</string>
 		<string>SF-Compact-Rounded-Regular.otf</string>
 		<string>SF-Compact-Rounded-Semibold.otf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
 	</array>
 </dict>
 </plist>

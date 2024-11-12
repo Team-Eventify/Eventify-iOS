@@ -9,13 +9,13 @@ import SwiftUI
 
 @main
 struct EventifyApp: App {
+	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 	@StateObject private var networkManager = NetworkManager()
-	
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
+
+	var body: some Scene {
+		WindowGroup {
+			ContentView()
 				.environmentObject(networkManager)
-        }
-    }
+		}
+	}
 }
-//

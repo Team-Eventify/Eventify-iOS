@@ -12,4 +12,5 @@ enum UserDefaultsKeys: String, CaseIterable {
     case middleName
     case lastName
     case telegramName
+	case fcmToken
 }

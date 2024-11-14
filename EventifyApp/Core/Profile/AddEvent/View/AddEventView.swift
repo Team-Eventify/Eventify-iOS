@@ -48,7 +48,7 @@ struct AddEventView: View {
 		.navigationTitle("title_add_event")
 		.background(Color.bg.ignoresSafeArea())
         .onTapGesture {
-            UIApplication.shared.endEditing()
+            self.hideKeyboard()
         }
 		.onAppear {
 			categoriesVM.getCategories()

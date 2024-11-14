@@ -33,6 +33,10 @@ final class AddEventViewModel: ObservableObject {
 	init(eventService: EventsServiceProtocol) {
 		self.eventService = eventService
 	}
+    
+    func pairedArrays() -> [(UIImage, PhotosPickerItem)] {
+        return Array(zip(selectedImages, imageSelections))
+    }
 
 	private func setImages(from selections: [PhotosPickerItem]) {
 		Task { @MainActor in

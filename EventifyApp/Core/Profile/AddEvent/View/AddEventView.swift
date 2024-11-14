@@ -153,17 +153,18 @@ struct AddEventView: View {
 				if !viewModel.selectedImages.isEmpty {
 					ScrollView(.horizontal, showsIndicators: false) {
 						HStack {
-                            ForEach(viewModel.selectedImages.indices, id: \.self) { index in
+                            ForEach(viewModel.pairedArrays(), id: \.0) { image, pickerItem in
                                 ZStack(alignment: .topTrailing) {
-                                    Image(uiImage: viewModel.selectedImages[index])
+                                    Image(uiImage: image)
                                         .resizable()
                                         .scaledToFill()
                                         .frame(width: 100, height: 100)
                                         .cornerRadius(10)
                                     Button {
-                                        viewModel.selectedImages.remove(at: index)
-                                        if index < viewModel.imageSelections.count {
-                                            viewModel.imageSelections.remove(at: index)
+                                        if let indexUIImage = viewModel.selectedImages.firstIndex(of: image),
+                                           let indexPicker = viewModel.imageSelections.firstIndex(of: pickerItem) {
+                                            viewModel.selectedImages.remove(at: indexUIImage)
+                                            viewModel.imageSelections.remove(at: indexPicker)
                                         }
                                     } label: {
                                         Image(systemName: "xmark.circle.fill")

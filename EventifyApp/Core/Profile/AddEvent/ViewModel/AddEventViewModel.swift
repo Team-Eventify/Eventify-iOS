@@ -33,6 +33,12 @@ final class AddEventViewModel: ObservableObject {
 	init(eventService: EventsServiceProtocol) {
 		self.eventService = eventService
 	}
+    
+    /// Объединяет два массива `selectedImages` и `imageSelections` в массив кортежей, где каждый кортеж
+    /// содержит соответствующие элементы из обоих массивов.
+    func pairedArrays() -> [(UIImage, PhotosPickerItem)] {
+        return Array(zip(selectedImages, imageSelections))
+    }
 
 	private func setImages(from selections: [PhotosPickerItem]) {
 		Task { @MainActor in

@@ -47,6 +47,9 @@ struct AddEventView: View {
 		}
 		.navigationTitle("title_add_event")
 		.background(Color.bg.ignoresSafeArea())
+        .onTapGesture {
+            self.hideKeyboard()
+        }
 		.onAppear {
 			categoriesVM.getCategories()
 		}

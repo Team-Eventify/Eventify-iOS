@@ -970,13 +970,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Check your internet\\nconnection and try again."
+            "value" : "Check your internet\nconnection and try again."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Проверьте подключение к\\nинтернету и попробуйте еще"
+            "value" : "Проверьте подключение к\nинтернету и попробуйте еще"
           }
         }
       }

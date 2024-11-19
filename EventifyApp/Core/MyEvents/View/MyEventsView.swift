@@ -16,8 +16,8 @@ struct MyEventsView: View {
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 56) {
-            if networkManager.isDisconnected {
-                noInternetView(networkConnection: networkManager)
+            if !networkManager.isDisconnected {
+				NoInternetView()
             } else {
                 ScrollView(showsIndicators: false) {
                     contentForUpcomingEventsSection
@@ -30,6 +30,8 @@ struct MyEventsView: View {
 		.navigationBarTitleDisplayMode(.large)
 		.padding(.horizontal, 16)
 		.background(.bg, ignoresSafeAreaEdges: .all)
+
+		// TODO: Вырезать везде popup с аргументом networkManager
 		.popup(isPresented: $networkManager.isDisconnected) {
 			InternetErrorToast()
 		} customize: {
@@ -65,43 +67,6 @@ private var emptyUpcomingEvents: some View {
 	}
 	.foregroundStyle(.secondary)
 	.padding(80)
-}
-
-/// Вью, которое показывается в случае отсутствия
-/// соединения с интернетом
-private struct noInternetView: View {
-    @ObservedObject var networkConnection: NetworkManager
-    var body: some View {
-        VStack {
-            Spacer()
-            Image(systemName: "wifi.slash")
-                .font(.system(size: 120))
-                .foregroundStyle(.secondaryText)
-                .padding(.bottom, 16)
-            Text("no_internet_title")
-                .font(.title3)
-                .fontWeight(.semibold)
-                .padding(.bottom, 16)
-            Text("no_internet_description")
-                .multilineTextAlignment(.center)
-                .font(.body)
-                .fontWeight(.semibold)
-                .foregroundStyle(.secondaryText)
-                .padding(.bottom, 16)
-            Button {
-                networkConnection.checkConnection()
-            } label: {
-                Text("retry_button_title")
-                    .fontWeight(.medium)
-                    .padding(10)
-                    .padding(.horizontal, 5)
-                    .foregroundStyle(.mainText)
-                    .background(Capsule())
-            }
-            Spacer()
-        }
-        .frame(maxWidth: .infinity)
-    }
 }
 
 /// Карточки предстоящих мероприятий

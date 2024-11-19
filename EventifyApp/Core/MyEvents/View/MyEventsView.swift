@@ -63,6 +63,40 @@ private var emptyUpcomingEvents: some View {
 	.padding(80)
 }
 
+/// Вью, которое показывается в случае отсутствия
+/// соединения с интернетом
+private var noInternetView: some View {
+    VStack {
+        Spacer()
+        Image(systemName: "wifi.slash")
+            .font(.system(size: 120))
+            .foregroundStyle(.secondaryText)
+            .padding(.bottom, 16)
+        Text("no_internet_title")
+            .font(.title3)
+            .fontWeight(.semibold)
+            .padding(.bottom, 16)
+        Text("no_internet_description")
+            .multilineTextAlignment(.center)
+            .font(.body)
+            .fontWeight(.semibold)
+            .foregroundStyle(.secondaryText)
+            .padding(.bottom, 16)
+        Button {
+            
+        } label: {
+            Text("retry_button_title")
+                .fontWeight(.medium)
+                .padding(10)
+                .padding(.horizontal, 5)
+                .foregroundStyle(.mainText)
+                .background(Capsule())
+        }
+        Spacer()
+    }
+    .frame(maxWidth: .infinity)
+}
+
 /// Карточки предстоящих мероприятий
 private var upcomingEvents: some View {
 	VStack(alignment: .leading) {

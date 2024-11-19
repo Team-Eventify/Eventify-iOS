@@ -16,11 +16,15 @@ struct MyEventsView: View {
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 56) {
-			ScrollView(showsIndicators: false) {
-				contentForUpcomingEventsSection
-				recomendedEvents
-				Spacer()
-			}
+            if networkManager.isDisconnected {
+                noInternetView
+            } else {
+                ScrollView(showsIndicators: false) {
+                    contentForUpcomingEventsSection
+                    recomendedEvents
+                    Spacer()
+                }
+            }
 		}
 		.navigationTitle(String(localized: "tab_my_events"))
 		.navigationBarTitleDisplayMode(.large)

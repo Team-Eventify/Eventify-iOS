@@ -19,13 +19,8 @@ struct SignInView: View {
 	var dismiss
 
 	// MARK: - Initialization
-
-	/// Инициализатор
-	/// - Parameter viewModel: модель экрана Вход
 	init(signInService: SignInServiceProtocol) {
-		_viewModel = StateObject(
-			wrappedValue: SignInViewModel(signInService: signInService)
-		)
+		_viewModel = .init(wrappedValue: SignInViewModel(signInService: signInService))
 	}
 
 	// MARK: - Body

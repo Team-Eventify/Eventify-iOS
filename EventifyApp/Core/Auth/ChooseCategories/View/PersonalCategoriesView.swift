@@ -5,115 +5,115 @@
 //  Created by Захар Литвинчук on 15.07.2024.
 //
 
-import SwiftUI
 import Flow
 import PopupView
+import SwiftUI
 
 struct PersonalCategoriesView: View {
-    // MARK: - Private Properties
+	// MARK: - Private Properties
 	@EnvironmentObject private var networkManager: NetworkManager
-    
-    /// ViewModel для управления логикой вью
-    @StateObject private var viewModel: PersonalCategoriesViewModel
 
-    init(viewModel: PersonalCategoriesViewModel? = nil) {
-        _viewModel = StateObject(
-            wrappedValue: viewModel ?? PersonalCategoriesViewModel(categoriesService: CategoriesService())
-        )
-    }
+	/// ViewModel для управления логикой вью
+	@StateObject private var viewModel: PersonalCategoriesViewModel
 
-    // MARK: - Body
+	init(categoriesService: CategoriesServiceProtocol) {
+		_viewModel = .init(
+			wrappedValue: PersonalCategoriesViewModel(
+				categoriesService: categoriesService))
+	}
 
-    var body: some View {
-        VStack(alignment: .leading, spacing: 40) {
-            Spacer()
-            headerContainer
-            cheepsSection
-            descriptionSection
-            footerContainer
-            Spacer()
-        }
-        .padding(.horizontal, 16)
-        .background(.bg, ignoresSafeAreaEdges: .all)
-        .navigationBarBackButtonHidden()
-		.popup(isPresented: $networkManager.isDisconnected) {
-					InternetErrorToast()
-				} customize: {
-					$0.type(.toast)
-						.disappearTo(.topSlide)
-						.position(.top)
+	// MARK: - Body
+
+	var body: some View {
+		VStack(alignment: .leading, spacing: 40) {
+			Spacer()
+			headerContainer
+			cheepsSection
+			descriptionSection
+			footerContainer
+			Spacer()
 		}
-        .onAppear {
-            viewModel.getCategories()
-        }
-    }
+		.padding(.horizontal, 16)
+		.background(.bg, ignoresSafeAreaEdges: .all)
+		.navigationBarBackButtonHidden()
+		.popup(isPresented: $networkManager.isDisconnected) {
+			InternetErrorToast()
+		} customize: {
+			$0.type(.toast)
+				.disappearTo(.topSlide)
+				.position(.top)
+		}
+		.onAppear {
+			viewModel.getCategories()
+		}
+	}
 
-    private var headerContainer: some View {
-        VStack(alignment: .leading, spacing: 21) {
-            Text("choose_categories_title")
-                .font(.mediumCompact(size: 35))
-                .foregroundStyle(.mainText)
+	private var headerContainer: some View {
+		VStack(alignment: .leading, spacing: 21) {
+			Text("choose_categories_title")
+				.font(.mediumCompact(size: 35))
+				.foregroundStyle(.mainText)
 
-            Text("choose_categories_subtitle")
-                .font(.regularCompact(size: 17))
-                .foregroundStyle(.secondaryText)
-        }
-    }
+			Text("choose_categories_subtitle")
+				.font(.regularCompact(size: 17))
+				.foregroundStyle(.secondaryText)
+		}
+	}
 
-    private var cheepsSection: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            if viewModel.isLoading {
-                // Показываем заглушки при загрузке
-                HFlow {
-                    ForEach(0..<6) { _ in
-                        RoundedRectangle(cornerRadius: 24)
-                            .fill(Color.gray.opacity(0.3))
-                            .frame(width: 120, height: 45)
-                            .shimmer(isActive: true)
-                    }
-                }
-            } else {
-                HFlow {
-                    ForEach(viewModel.categories) { category in
-                        PersonalCategoriesCheeps(
-                            viewModel: viewModel, category: category)
-                    }
-                }
-            }
-        }
-    }
-    
-    private var descriptionSection: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text("choose_categories_description")
-                .font(.regularCompact(size: 17))
-                .foregroundStyle(.secondaryText)
-        }
-    }
+	private var cheepsSection: some View {
+		VStack(alignment: .leading, spacing: 0) {
+			if viewModel.isLoading {
+				// Показываем заглушки при загрузке
+				HFlow {
+					ForEach(0..<6) { _ in
+						RoundedRectangle(cornerRadius: 24)
+							.fill(Color.gray.opacity(0.3))
+							.frame(width: 120, height: 45)
+							.shimmer(isActive: true)
+					}
+				}
+			} else {
+				HFlow {
+					ForEach(viewModel.categories) { category in
+						PersonalCategoriesCheeps(
+							viewModel: viewModel, category: category)
+					}
+				}
+			}
+		}
+	}
 
-    private var footerContainer: some View {
-        VStack(spacing: 24) {
-            EventifyButton(
-                configuration: .commom, isLoading: false,
-                isDisabled: !viewModel.isAnyCategorySelected
-            ) {
-                viewModel.setUserCategories()
-                Constants.isLogin = true
-            }
+	private var descriptionSection: some View {
+		VStack(alignment: .leading, spacing: 0) {
+			Text("choose_categories_description")
+				.font(.regularCompact(size: 17))
+				.foregroundStyle(.secondaryText)
+		}
+	}
 
-            Button {
-                Constants.isLogin = true
-            } label: {
-                Text("skip_title")
-                    .foregroundStyle(.gray)
-                    .font(.mediumCompact(size: 17))
-                    .underline()
-            }
-        }
-    }
+	private var footerContainer: some View {
+		VStack(spacing: 24) {
+			EventifyButton(
+				configuration: .commom, isLoading: false,
+				isDisabled: !viewModel.isAnyCategorySelected
+			) {
+				viewModel.setUserCategories()
+				Constants.isLogin = true
+			}
+
+			Button {
+				Constants.isLogin = true
+			} label: {
+				Text("skip_title")
+					.foregroundStyle(.gray)
+					.font(.mediumCompact(size: 17))
+					.underline()
+			}
+		}
+	}
 }
 
 #Preview {
-    PersonalCategoriesView()
+	PersonalCategoriesView(categoriesService: CategoriesService())
 		.environmentObject(NetworkManager())
 }

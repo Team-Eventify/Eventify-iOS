@@ -59,7 +59,7 @@ struct TabbarScreens: View {
         case .main: MainView(eventsService: EventsService(), selectedTab: $contentMode)
         case .search: SearchView(categoriesService: CategoriesService())
         case .myEvents: MyEventsView()
-        case .profile: ProfileView()
+		case .profile: ProfileView(userService: UserService())
         }
     }
 }

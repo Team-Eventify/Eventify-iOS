@@ -45,7 +45,7 @@ struct SignUpView: View {
 				set: { _ in }
 			)
 		) {
-			PersonalCategoriesView()
+			PersonalCategoriesView(categoriesService: CategoriesService())
 		}
 		.popup(
 			isPresented: Binding(

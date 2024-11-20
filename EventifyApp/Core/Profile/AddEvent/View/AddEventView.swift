@@ -19,17 +19,15 @@ struct AddEventView: View {
 	@StateObject private var categoriesVM: PersonalCategoriesViewModel
 
 	init(
-		viewModel: AddEventViewModel? = nil,
-		categoriesVM: PersonalCategoriesViewModel? = nil
+		eventService: EventsServiceProtocol,
+		categoriesService: CategoriesServiceProtocol
 	) {
 		_viewModel = StateObject(
-			wrappedValue: viewModel
-				?? AddEventViewModel(eventService: EventsService())
+			wrappedValue: AddEventViewModel(eventService: eventService)
 		)
 		_categoriesVM = StateObject(
-			wrappedValue: categoriesVM
-				?? PersonalCategoriesViewModel(
-					categoriesService: CategoriesService())
+			wrappedValue: PersonalCategoriesViewModel(
+				categoriesService: categoriesService)
 		)
 	}
 
@@ -47,9 +45,9 @@ struct AddEventView: View {
 		}
 		.navigationTitle("title_add_event")
 		.background(Color.bg.ignoresSafeArea())
-        .onTapGesture {
-            self.hideKeyboard()
-        }
+		.onTapGesture {
+			self.hideKeyboard()
+		}
 		.onAppear {
 			categoriesVM.getCategories()
 		}
@@ -156,26 +154,34 @@ struct AddEventView: View {
 				if !viewModel.selectedImages.isEmpty {
 					ScrollView(.horizontal, showsIndicators: false) {
 						HStack {
-                            ForEach(viewModel.pairedArrays(), id: \.0) { image, pickerItem in
-                                ZStack(alignment: .topTrailing) {
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 100, height: 100)
-                                        .cornerRadius(10)
-                                    Button {
-                                        if let indexUIImage = viewModel.selectedImages.firstIndex(of: image),
-                                           let indexPicker = viewModel.imageSelections.firstIndex(of: pickerItem) {
-                                            viewModel.selectedImages.remove(at: indexUIImage)
-                                            viewModel.imageSelections.remove(at: indexPicker)
-                                        }
-                                    } label: {
-                                        Image(systemName: "xmark.circle.fill")
-                                            .foregroundStyle(.white)
-                                            .font(.body)
-                                    }
-                                    .padding(8)
-                                }
+							ForEach(viewModel.pairedArrays(), id: \.0) {
+								image, pickerItem in
+								ZStack(alignment: .topTrailing) {
+									Image(uiImage: image)
+										.resizable()
+										.scaledToFill()
+										.frame(width: 100, height: 100)
+										.cornerRadius(10)
+									Button {
+										if let indexUIImage = viewModel
+											.selectedImages.firstIndex(
+												of: image),
+											let indexPicker = viewModel
+												.imageSelections.firstIndex(
+													of: pickerItem)
+										{
+											viewModel.selectedImages.remove(
+												at: indexUIImage)
+											viewModel.imageSelections.remove(
+												at: indexPicker)
+										}
+									} label: {
+										Image(systemName: "xmark.circle.fill")
+											.foregroundStyle(.white)
+											.font(.body)
+									}
+									.padding(8)
+								}
 							}
 						}
 					}
@@ -216,6 +222,6 @@ struct AddEventView: View {
 }
 
 #Preview {
-	AddEventView()
+	AddEventView(eventService: EventsService(), categoriesService: CategoriesService())
 		.environmentObject(NetworkManager())
 }

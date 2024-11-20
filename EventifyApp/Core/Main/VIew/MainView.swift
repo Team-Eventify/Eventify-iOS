@@ -18,13 +18,10 @@ struct MainView: View {
 
 	// MARK: - Body
 
-	private let eventsService: EventsServiceProtocol
-
 	/// Инициализирует MainView с сервисом категорий и привязкой активной вкладки
 	init(eventsService: EventsServiceProtocol, selectedTab: Binding<Tab>) {
-		self.eventsService = eventsService
-		self._selectedTab = selectedTab
-		self._viewModel = StateObject(
+		_selectedTab = selectedTab
+		_viewModel = StateObject(
 			wrappedValue: MainViewModel(eventsService: eventsService))
 	}
 

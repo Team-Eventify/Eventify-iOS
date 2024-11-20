@@ -41,11 +41,13 @@ enum ProfileSectionItem: Identifiable {
 	var destination: some View {
 		switch self {
 		case .addEvent:
-			AddEventView()
+			AddEventView(eventService: EventsService(), categoriesService: CategoriesService())
 		case .notifications:
 			NotificationUtilityView()
-		case .helpAndSupport, .aboutApp, .rateApp:
+		case .helpAndSupport, .aboutApp:
 			TestView()
+		case .rateApp:
+			FeedbackView()
 		default: EmptyView()
 		}
 	}
@@ -96,13 +98,9 @@ struct ProfileView: View {
 	@State var navigateToSignUp: Bool = false
 
 	// MARK: - Initialization
-
-	/// Инициализатор
-	/// - Parameter viewModel: модель экрана профиля
-	init(viewModel: ProfileViewModel? = nil) {
+	init(userService: UserServiceProtocol) {
 		_viewModel = StateObject(
-			wrappedValue: viewModel
-				?? ProfileViewModel(userService: UserService())
+			wrappedValue: ProfileViewModel(userService: userService)
 		)
 	}
 
@@ -137,7 +135,7 @@ struct ProfileView: View {
 	/// Хедер карточка
 	private var header: some View {
 		NavigationLink {
-			ProfileDetailView()
+			ProfileDetailView(userService: UserService(), categoriesService: CategoriesService())
 		} label: {
 			HStack {
 				VStack(alignment: .leading) {
@@ -230,5 +228,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-	ProfileView()
+	ProfileView(userService: UserService())
 }

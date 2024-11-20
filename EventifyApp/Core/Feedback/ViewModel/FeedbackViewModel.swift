@@ -17,12 +17,15 @@ final class FeedbackViewModel: ObservableObject {
 	@Published var isError: Bool = false
 	@Published var shouldDismiss: Bool = false
 
+	@MainActor
 	func submitFeedback() async {
 		guard selectedRating != nil else {
 			submitAttempts += 1
 			isError = true
-			try? await Task.sleep(nanoseconds: 1_500_000_000)
-			isError = false
+			Task { @MainActor in
+				try? await Task.sleep(for: .seconds(1.5))
+				isError = false
+			}
 
 			return
 		}

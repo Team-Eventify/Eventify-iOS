@@ -5,10 +5,10 @@
 //  Created by Захар Литвинчук on 07.07.2024.
 //
 
-import SwiftUI
 import Flow
-import Pow
 import PopupView
+import Pow
+import SwiftUI
 
 /// Вью детального экрана профиля
 struct ProfileDetailView: View {
@@ -24,21 +24,16 @@ struct ProfileDetailView: View {
 	var dismiss
 
 	// MARK: - Initialization
-
-	/// Инициализатор
-	/// - Parameter viewModel: модель детального экрана профиля
 	init(
-		viewModel: ProfileDetailViewModel? = nil,
-		categoriesModel: PersonalCategoriesViewModel? = nil
+		userService: UserServiceProtocol,
+		categoriesService: CategoriesServiceProtocol
 	) {
 		_viewModel = StateObject(
-			wrappedValue: viewModel
-				?? ProfileDetailViewModel(userService: UserService())
+			wrappedValue: ProfileDetailViewModel(userService: userService)
 		)
 		_categoriesModel = StateObject(
-			wrappedValue: categoriesModel
-				?? PersonalCategoriesViewModel(
-					categoriesService: CategoriesService())
+			wrappedValue: PersonalCategoriesViewModel(
+				categoriesService: categoriesService)
 		)
 	}
 
@@ -203,6 +198,6 @@ struct ProfileDetailView: View {
 }
 
 #Preview {
-	ProfileDetailView()
+	ProfileDetailView(userService: UserService(), categoriesService: CategoriesService())
 		.environmentObject(NetworkManager())
 }

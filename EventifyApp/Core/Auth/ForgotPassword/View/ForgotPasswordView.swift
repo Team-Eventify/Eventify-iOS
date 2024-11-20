@@ -20,12 +20,8 @@ struct ForgotPasswordView: View {
 
 	// MARK: - Initialization
 
-	/// Инициализатор
-	/// - Parameter viewModel: модель экрана сброса пароля
-	init(viewModel: ForgotPasswordViewModel? = nil) {
-		_viewModel = StateObject(
-			wrappedValue: viewModel ?? ForgotPasswordViewModel()
-		)
+	init() {
+		_viewModel = .init(wrappedValue: ForgotPasswordViewModel())
 	}
 
 	// MARK: - Body

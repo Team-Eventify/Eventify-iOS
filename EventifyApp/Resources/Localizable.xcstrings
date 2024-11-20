@@ -9,7 +9,8 @@
             "value" : ""
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "-" : {
       "localizations" : {
@@ -19,7 +20,14 @@
             "value" : "-"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
+    },
+    "*" : {
+      "shouldTranslate" : false
+    },
+    "%lld" : {
+      "shouldTranslate" : false
     },
     "action_add_event" : {
       "extractionState" : "manual",
@@ -293,6 +301,23 @@
         }
       }
     },
+    "buttonSendRate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отправить"
+          }
+        }
+      }
+    },
     "categories_based_on_interests" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -498,7 +523,74 @@
       }
     },
     "Fcm token: %@" : {
-
+      "shouldTranslate" : false
+    },
+    "feedbackDislikeTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What didn't you like?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "А что не понравилось?"
+          }
+        }
+      }
+    },
+    "feedbackFinalTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What did we forget to ask, but you wanted to tell us?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Что мы забыли спросить, но ты хотел(а) нам рассказать?"
+          }
+        }
+      }
+    },
+    "feedbackLikeTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What did you like?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Что тебе понравилось?"
+          }
+        }
+      }
+    },
+    "FeedbackNavigationTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Feedback"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обратная связь"
+          }
+        }
+      }
     },
     "forgot_password_button" : {
       "extractionState" : "manual",
@@ -1141,6 +1233,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Популярные ивенты"
+          }
+        }
+      }
+    },
+    "rateEventTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rate an event"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оцени мероприятие"
           }
         }
       }

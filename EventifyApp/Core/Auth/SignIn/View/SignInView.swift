@@ -27,11 +27,15 @@ struct SignInView: View {
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 60) {
-			Spacer()
-			signInContentContainerView
-			signInButtonContainerView
-			Spacer()
-			Spacer()
+            if networkManager.isDisconnected {
+                NoInternetView()
+            } else {
+                Spacer()
+                signInContentContainerView
+                signInButtonContainerView
+                Spacer()
+                Spacer()
+            }
 		}
 		.foregroundStyle(Color.secondaryText)
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -65,13 +69,6 @@ struct SignInView: View {
 				.position(.bottom)
 				.closeOnTap(true)
 				.autohideIn(3)
-		}
-		.popup(isPresented: $networkManager.isDisconnected) {
-			InternetErrorToast()
-		} customize: {
-			$0.type(.toast)
-				.disappearTo(.topSlide)
-				.position(.top)
 		}
 	}
 

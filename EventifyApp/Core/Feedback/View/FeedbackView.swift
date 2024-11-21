@@ -48,9 +48,7 @@ struct FeedbackView: View {
 
 			HStack(spacing: 8) {
 				ForEach(1...5, id: \.self) { number in
-					Button(action: {
-						viewModel.selectedRating = number
-					}) {
+					Button(action: { viewModel.selectedRating = number }) { 
 						Text("\(number)")
 							.frame(width: 60, height: 60)
 							.background(

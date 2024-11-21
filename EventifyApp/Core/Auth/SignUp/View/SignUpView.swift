@@ -87,7 +87,7 @@ struct SignUpView: View {
 		VStack(spacing: 8) {
 			EventifyTextField(
 				text: $viewModel.email,
-				placeholder: String(localized:"email_placeholder"),
+				placeholder: String(localized: "email_placeholder"),
 				hasError: false
 			)
 			.changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)

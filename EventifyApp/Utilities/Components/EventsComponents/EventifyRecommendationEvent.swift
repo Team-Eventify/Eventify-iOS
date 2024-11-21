@@ -38,8 +38,7 @@ struct EventifyRecommendationEvent: View {
 	}
 
 	private var contentWithPadding: some View {
-		VStack(alignment: .leading, spacing: configuration.isFlexible ? 8 : 16)
-		{
+		VStack(alignment: .leading, spacing: configuration.isFlexible ? 8 : 16) {
 			Text(configuration.title)
 				.font(.mediumCompact(size: configuration.isFlexible ? 20 : 14))
 				.foregroundStyle(.mainText)

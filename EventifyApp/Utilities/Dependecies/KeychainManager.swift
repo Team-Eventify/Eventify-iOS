@@ -41,8 +41,7 @@ final class KeychainManager {
 
         if status == errSecSuccess {
             if let data = dataTypeRef as? Data,
-                let result = String(data: data, encoding: .utf8)
-            {
+                let result = String(data: data, encoding: .utf8) {
                 return result
             }
         }

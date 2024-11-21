@@ -41,8 +41,7 @@ final class ProfileViewModel: ObservableObject {
 					middleName = userResponse.middleName
 
 					if !userResponse.firstName.isEmpty
-						&& !userResponse.middleName.isEmpty
-					{
+						&& !userResponse.middleName.isEmpty {
 						UserDefaultsManager.shared.setFirstName(
 							userResponse.firstName)
 						UserDefaultsManager.shared.setMiddleName(

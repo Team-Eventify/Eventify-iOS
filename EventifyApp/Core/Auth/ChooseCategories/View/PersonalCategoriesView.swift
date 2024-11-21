@@ -26,23 +26,20 @@ struct PersonalCategoriesView: View {
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 40) {
-			Spacer()
-			headerContainer
-			cheepsSection
-			descriptionSection
-			footerContainer
-			Spacer()
+            if networkManager.isDisconnected {
+                NoInternetView()
+            } else {
+                Spacer()
+                headerContainer
+                cheepsSection
+                descriptionSection
+                footerContainer
+                Spacer()
+            }
 		}
 		.padding(.horizontal, 16)
 		.background(.bg, ignoresSafeAreaEdges: .all)
 		.navigationBarBackButtonHidden()
-		.popup(isPresented: $networkManager.isDisconnected) {
-			InternetErrorToast()
-		} customize: {
-			$0.type(.toast)
-				.disappearTo(.topSlide)
-				.position(.top)
-		}
 		.onAppear {
 			viewModel.getCategories()
 		}

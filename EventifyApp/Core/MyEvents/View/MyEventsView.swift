@@ -16,7 +16,7 @@ struct MyEventsView: View {
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 56) {
-            if !networkManager.isDisconnected {
+            if networkManager.isDisconnected {
 				NoInternetView()
             } else {
                 ScrollView(showsIndicators: false) {
@@ -30,15 +30,6 @@ struct MyEventsView: View {
 		.navigationBarTitleDisplayMode(.large)
 		.padding(.horizontal, 16)
 		.background(.bg, ignoresSafeAreaEdges: .all)
-
-		// TODO: Вырезать везде popup с аргументом networkManager
-		.popup(isPresented: $networkManager.isDisconnected) {
-			InternetErrorToast()
-		} customize: {
-			$0.type(.toast)
-				.disappearTo(.topSlide)
-				.position(.top)
-		}
 	}
 }
 

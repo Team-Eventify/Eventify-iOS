@@ -26,25 +26,22 @@ struct MainView: View {
 	}
 
 	var body: some View {
-		ScrollView {
-			popularEventsSection
-			categoriesSection
-		}
-		.scrollIndicators(.hidden)
-		.padding(.horizontal, 16)
-		.navigationTitle(String(localized: "tab_main"))
-		.navigationBarTitleDisplayMode(.large)
-		.background(.bg, ignoresSafeAreaEdges: .all)
-		.popup(isPresented: $networkManager.isDisconnected) {
-			InternetErrorToast()
-		} customize: {
-			$0.type(.toast)
-				.disappearTo(.topSlide)
-				.position(.top)
-		}
-		.onAppear {
-			viewModel.fetchEventsList()
-		}
+        if networkManager.isDisconnected {
+            NoInternetView()
+        } else {
+            ScrollView {
+                popularEventsSection
+                categoriesSection
+            }
+            .scrollIndicators(.hidden)
+            .padding(.horizontal, 16)
+            .navigationTitle(String(localized: "tab_main"))
+            .navigationBarTitleDisplayMode(.large)
+            .background(.bg, ignoresSafeAreaEdges: .all)
+            .onAppear {
+                viewModel.fetchEventsList()
+            }
+        }
 	}
 
 	private var popularEventsSection: some View {

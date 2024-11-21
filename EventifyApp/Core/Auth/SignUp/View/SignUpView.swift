@@ -18,52 +18,52 @@ struct SignUpView: View {
 	}
 
 	var body: some View {
-		VStack(alignment: .leading, spacing: 60) {
-            if networkManager.isDisconnected {
-                NoInternetView()
-            } else {
+        if networkManager.isDisconnected {
+            NoInternetView()
+        } else {
+            VStack(alignment: .leading, spacing: 60) {
                 Spacer()
                 registrationContentContainerView
                 registrationButtonContainerView
                 Spacer()
                 Spacer()
             }
-		}
-		.foregroundStyle(Color.secondaryText)
-		.navigationBarBackButtonHidden(true)
-		.padding(.horizontal, 16)
-		.background(.bg, ignoresSafeAreaEdges: .all)
-		.edgesIgnoringSafeArea(.bottom)
-		.onTapGesture {
-			hideKeyboard()
-		}
-		.navigationDestination(
-			isPresented: $viewModel.navigateToLoginView,
-			destination: {
-				SignInView(signInService: SignInService())
-			}
-		)
-		.navigationDestination(
-			isPresented: Binding(
-				get: { viewModel.loadingState == .loaded },
-				set: { _ in }
-			)
-		) {
-			PersonalCategoriesView(categoriesService: CategoriesService())
-		}
-		.popup(
-			isPresented: Binding(
-				get: { viewModel.loadingState == .failure }, set: { _ in })
-		) {
-			EventifySnackBar(config: .failure)
-		} customize: {
-			$0
-				.type(.floater(verticalPadding: 10, useSafeAreaInset: true))
-				.disappearTo(.bottomSlide)
-				.position(.bottom)
-				.closeOnTap(true)
-				.autohideIn(3)
-		}
+            .foregroundStyle(Color.secondaryText)
+            .navigationBarBackButtonHidden(true)
+            .padding(.horizontal, 16)
+            .background(.bg, ignoresSafeAreaEdges: .all)
+            .edgesIgnoringSafeArea(.bottom)
+            .onTapGesture {
+                hideKeyboard()
+            }
+            .navigationDestination(
+                isPresented: $viewModel.navigateToLoginView,
+                destination: {
+                    SignInView(signInService: SignInService())
+                }
+            )
+            .navigationDestination(
+                isPresented: Binding(
+                    get: { viewModel.loadingState == .loaded },
+                    set: { _ in }
+                )
+            ) {
+                PersonalCategoriesView(categoriesService: CategoriesService())
+            }
+            .popup(
+                isPresented: Binding(
+                    get: { viewModel.loadingState == .failure }, set: { _ in })
+            ) {
+                EventifySnackBar(config: .failure)
+            } customize: {
+                $0
+                    .type(.floater(verticalPadding: 10, useSafeAreaInset: true))
+                    .disappearTo(.bottomSlide)
+                    .position(.bottom)
+                    .closeOnTap(true)
+                    .autohideIn(3)
+            }
+        }
 	}
 
 	private var registrationContentContainerView: some View {

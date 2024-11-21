@@ -25,10 +25,10 @@ struct PersonalCategoriesView: View {
 	// MARK: - Body
 
 	var body: some View {
-		VStack(alignment: .leading, spacing: 40) {
-            if networkManager.isDisconnected {
-                NoInternetView()
-            } else {
+        if networkManager.isDisconnected {
+            NoInternetView()
+        } else {
+            VStack(alignment: .leading, spacing: 40) {
                 Spacer()
                 headerContainer
                 cheepsSection
@@ -36,13 +36,13 @@ struct PersonalCategoriesView: View {
                 footerContainer
                 Spacer()
             }
-		}
-		.padding(.horizontal, 16)
-		.background(.bg, ignoresSafeAreaEdges: .all)
-		.navigationBarBackButtonHidden()
-		.onAppear {
-			viewModel.getCategories()
-		}
+            .padding(.horizontal, 16)
+            .background(.bg, ignoresSafeAreaEdges: .all)
+            .navigationBarBackButtonHidden()
+            .onAppear {
+                viewModel.getCategories()
+            }
+        }
 	}
 
 	private var headerContainer: some View {

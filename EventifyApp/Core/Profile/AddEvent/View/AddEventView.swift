@@ -32,49 +32,45 @@ struct AddEventView: View {
 	}
 
 	var body: some View {
-		ScrollView(showsIndicators: false) {
-			VStack(alignment: .leading, spacing: 20) {
-				eventNameSection
-				dateTimeSection
-				descriptionSection
-				photosSection
-				categoriesSection
-				publishButton
-			}
-			.padding(.horizontal, 16)
-		}
-		.navigationTitle("title_add_event")
-		.background(Color.bg.ignoresSafeArea())
-		.onTapGesture {
-			self.hideKeyboard()
-		}
-		.onAppear {
-			categoriesVM.getCategories()
-		}
+        if networkManager.isDisconnected {
+            NoInternetView()
+        } else {
+            ScrollView(showsIndicators: false) {
+                VStack(alignment: .leading, spacing: 20) {
+                    eventNameSection
+                    dateTimeSection
+                    descriptionSection
+                    photosSection
+                    categoriesSection
+                    publishButton
+                }
+                .padding(.horizontal, 16)
+            }
+            .navigationTitle("title_add_event")
+            .background(Color.bg.ignoresSafeArea())
+            .onTapGesture {
+                self.hideKeyboard()
+            }
+            .onAppear {
+                categoriesVM.getCategories()
+            }
 
-		.popup(isPresented: $viewModel.showPopUp) {
-			EventifySnackBar(config: .failureOfAddingEvent)
-				.padding(.vertical, 50)
-		} customize: {
-			$0
-				.type(
-					.floater(
-						useSafeAreaInset: true
-					)
-				)
-				.disappearTo(.bottomSlide)
-				.position(.bottom)
-				.closeOnTap(true)
-				.autohideIn(3)
-		}
-		.popup(isPresented: $networkManager.isDisconnected) {
-			InternetErrorToast()
-		} customize: {
-			$0.type(.toast)
-				.disappearTo(.topSlide)
-				.position(.top)
-				.isOpaque(true)
-		}
+            .popup(isPresented: $viewModel.showPopUp) {
+                EventifySnackBar(config: .failureOfAddingEvent)
+                    .padding(.vertical, 50)
+            } customize: {
+                $0
+                    .type(
+                        .floater(
+                            useSafeAreaInset: true
+                        )
+                    )
+                    .disappearTo(.bottomSlide)
+                    .position(.bottom)
+                    .closeOnTap(true)
+                    .autohideIn(3)
+            }
+        }
 	}
 
 	private var eventNameSection: some View {

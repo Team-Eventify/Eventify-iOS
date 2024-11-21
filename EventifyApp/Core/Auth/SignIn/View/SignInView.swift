@@ -26,53 +26,50 @@ struct SignInView: View {
 	// MARK: - Body
 
 	var body: some View {
-		VStack(alignment: .leading, spacing: 60) {
-			Spacer()
-			signInContentContainerView
-			signInButtonContainerView
-			Spacer()
-			Spacer()
-		}
-		.foregroundStyle(Color.secondaryText)
-		.frame(maxWidth: .infinity, maxHeight: .infinity)
-		.padding(.horizontal, 16)
-		.background(.bg, ignoresSafeAreaEdges: .all)
-		.navigationBarBackButtonHidden(true)
-		.edgesIgnoringSafeArea(.bottom)
-		.onTapGesture {
-			hideKeyboard()
-		}
-		.navigationDestination(
-			isPresented: $viewModel.showForgotPassScreen,
-			destination: {
-				ForgotPasswordView()
-			}
-		)
-		.popup(
-			isPresented: Binding(
-				get: { viewModel.loadingState == .failure }, set: { _ in })
-		) {
-			EventifySnackBar(config: .failure)
-		} customize: {
-			$0
-				.type(
-					.floater(
-						verticalPadding: 10,
-						useSafeAreaInset: true
-					)
-				)
-				.disappearTo(.bottomSlide)
-				.position(.bottom)
-				.closeOnTap(true)
-				.autohideIn(3)
-		}
-		.popup(isPresented: $networkManager.isDisconnected) {
-			InternetErrorToast()
-		} customize: {
-			$0.type(.toast)
-				.disappearTo(.topSlide)
-				.position(.top)
-		}
+        if networkManager.isDisconnected {
+            NoInternetView()
+        } else {
+            VStack(alignment: .leading, spacing: 60) {
+                Spacer()
+                signInContentContainerView
+                signInButtonContainerView
+                Spacer()
+                Spacer()
+            }
+            .foregroundStyle(Color.secondaryText)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.horizontal, 16)
+            .background(.bg, ignoresSafeAreaEdges: .all)
+            .navigationBarBackButtonHidden(true)
+            .edgesIgnoringSafeArea(.bottom)
+            .onTapGesture {
+                hideKeyboard()
+            }
+            .navigationDestination(
+                isPresented: $viewModel.showForgotPassScreen,
+                destination: {
+                    ForgotPasswordView()
+                }
+            )
+            .popup(
+                isPresented: Binding(
+                    get: { viewModel.loadingState == .failure }, set: { _ in })
+            ) {
+                EventifySnackBar(config: .failure)
+            } customize: {
+                $0
+                    .type(
+                        .floater(
+                            verticalPadding: 10,
+                            useSafeAreaInset: true
+                        )
+                    )
+                    .disappearTo(.bottomSlide)
+                    .position(.bottom)
+                    .closeOnTap(true)
+                    .autohideIn(3)
+            }
+        }
 	}
 
 	/// Контейнер для содержимого экрана входа

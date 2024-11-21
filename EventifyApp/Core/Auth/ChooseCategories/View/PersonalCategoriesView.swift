@@ -25,27 +25,24 @@ struct PersonalCategoriesView: View {
 	// MARK: - Body
 
 	var body: some View {
-		VStack(alignment: .leading, spacing: 40) {
-			Spacer()
-			headerContainer
-			cheepsSection
-			descriptionSection
-			footerContainer
-			Spacer()
-		}
-		.padding(.horizontal, 16)
-		.background(.bg, ignoresSafeAreaEdges: .all)
-		.navigationBarBackButtonHidden()
-		.popup(isPresented: $networkManager.isDisconnected) {
-			InternetErrorToast()
-		} customize: {
-			$0.type(.toast)
-				.disappearTo(.topSlide)
-				.position(.top)
-		}
-		.onAppear {
-			viewModel.getCategories()
-		}
+        if networkManager.isDisconnected {
+            NoInternetView()
+        } else {
+            VStack(alignment: .leading, spacing: 40) {
+                Spacer()
+                headerContainer
+                cheepsSection
+                descriptionSection
+                footerContainer
+                Spacer()
+            }
+            .padding(.horizontal, 16)
+            .background(.bg, ignoresSafeAreaEdges: .all)
+            .navigationBarBackButtonHidden()
+            .onAppear {
+                viewModel.getCategories()
+            }
+        }
 	}
 
 	private var headerContainer: some View {

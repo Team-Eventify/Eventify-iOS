@@ -26,4 +26,14 @@ class NetworkManager: ObservableObject {
 		}
 		monitor.start(queue: queue)
 	}
+    
+    /// Функция "насильного" обновления `isDisconnected`
+    func checkConnection() {
+        DispatchQueue.global().async {
+            let status = self.monitor.currentPath.status
+            DispatchQueue.main.async {
+                self.isDisconnected = status != .satisfied
+            }
+        }
+    }
 }

@@ -16,23 +16,20 @@ struct MyEventsView: View {
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 56) {
-			ScrollView(showsIndicators: false) {
-				contentForUpcomingEventsSection
-				recomendedEvents
-				Spacer()
-			}
+            if networkManager.isDisconnected {
+				NoInternetView()
+            } else {
+                ScrollView(showsIndicators: false) {
+                    contentForUpcomingEventsSection
+                    recomendedEvents
+                    Spacer()
+                }
+            }
 		}
 		.navigationTitle(String(localized: "tab_my_events"))
 		.navigationBarTitleDisplayMode(.large)
 		.padding(.horizontal, 16)
 		.background(.bg, ignoresSafeAreaEdges: .all)
-		.popup(isPresented: $networkManager.isDisconnected) {
-			InternetErrorToast()
-		} customize: {
-			$0.type(.toast)
-				.disappearTo(.topSlide)
-				.position(.top)
-		}
 	}
 }
 

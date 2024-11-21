@@ -40,34 +40,30 @@ struct ProfileDetailView: View {
 	// MARK: - Body
 
 	var body: some View {
-		ScrollView(showsIndicators: false) {
-			VStack(alignment: .leading, spacing: 20) {
-				nameField
-				surnameField
-				lastNameField
-				emailField
-				telegramField
-				categoriesSection
-				saveButton
-				Spacer()
-				Spacer()
-			}
-			.padding(.horizontal, 16)
-			.onAppear {
-				viewModel.getUser()
-				categoriesModel.getCategories()
-				categoriesModel.getUserCategories()
-			}
-			.popup(isPresented: $networkManager.isDisconnected) {
-				InternetErrorToast()
-			} customize: {
-				$0.type(.toast)
-					.disappearTo(.topSlide)
-					.position(.top)
-					.isOpaque(true)
-			}
-		}
-		.background(.bg, ignoresSafeAreaEdges: .all)
+        if networkManager.isDisconnected {
+            NoInternetView()
+        } else {
+            ScrollView(showsIndicators: false) {
+                VStack(alignment: .leading, spacing: 20) {
+                    nameField
+                    surnameField
+                    lastNameField
+                    emailField
+                    telegramField
+                    categoriesSection
+                    saveButton
+                    Spacer()
+                    Spacer()
+                }
+                .padding(.horizontal, 16)
+                .onAppear {
+                    viewModel.getUser()
+                    categoriesModel.getCategories()
+                    categoriesModel.getUserCategories()
+                }
+            }
+            .background(.bg, ignoresSafeAreaEdges: .all)
+        }
 	}
 
 	private var nameField: some View {

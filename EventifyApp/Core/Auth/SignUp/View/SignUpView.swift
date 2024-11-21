@@ -19,11 +19,15 @@ struct SignUpView: View {
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 60) {
-			Spacer()
-			registrationContentContainerView
-			registrationButtonContainerView
-			Spacer()
-			Spacer()
+            if networkManager.isDisconnected {
+                NoInternetView()
+            } else {
+                Spacer()
+                registrationContentContainerView
+                registrationButtonContainerView
+                Spacer()
+                Spacer()
+            }
 		}
 		.foregroundStyle(Color.secondaryText)
 		.navigationBarBackButtonHidden(true)
@@ -59,13 +63,6 @@ struct SignUpView: View {
 				.position(.bottom)
 				.closeOnTap(true)
 				.autohideIn(3)
-		}
-		.popup(isPresented: $networkManager.isDisconnected) {
-					InternetErrorToast()
-				} customize: {
-					$0.type(.toast)
-						.disappearTo(.topSlide)
-						.position(.top)
 		}
 	}
 

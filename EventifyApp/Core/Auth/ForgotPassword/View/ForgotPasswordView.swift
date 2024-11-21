@@ -28,21 +28,18 @@ struct ForgotPasswordView: View {
 
 	var body: some View {
 		VStack(spacing: 40) {
-			Spacer()
-			forgotPasswordContainerView
-			restoreButtonContainerView
-			Spacer()
-			Spacer()
+            if !networkManager.isDisconnected {
+                NoInternetView()
+            } else {
+                Spacer()
+                forgotPasswordContainerView
+                restoreButtonContainerView
+                Spacer()
+                Spacer()
+            }
 		}
 		.padding(.horizontal, 16)
 		.background(.bg, ignoresSafeAreaEdges: .all)
-		.popup(isPresented: $networkManager.isDisconnected) {
-			InternetErrorToast()
-		} customize: {
-			$0.type(.toast)
-				.disappearTo(.topSlide)
-				.position(.top)
-		}
 	}
 
 	/// Контейнер для содержимого экрана сброса пароля

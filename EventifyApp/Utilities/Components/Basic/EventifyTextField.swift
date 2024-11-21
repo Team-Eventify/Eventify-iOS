@@ -22,7 +22,6 @@ struct EventifyTextField: View {
             return Color.gray
         }
     }
-        
 
     var body: some View {
         TextField("", text: $text)

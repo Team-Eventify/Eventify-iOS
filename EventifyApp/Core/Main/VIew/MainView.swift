@@ -87,8 +87,7 @@ struct MainView: View {
 					EventifyCategories(configuration: $0.asDomain())
 				}
 				Button {
-					withAnimation(.spring(response: 0.3, dampingFraction: 0.7))
-					{
+					withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
 						selectedTab = .search
 					}
 				} label: {

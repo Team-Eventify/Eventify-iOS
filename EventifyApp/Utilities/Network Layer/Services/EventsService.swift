@@ -81,7 +81,6 @@ typealias Subscribers = [Subscriber]
 
 typealias CategoriesArray = [Categories]
 
-
 // MARK: - EventsListResponseElement
 struct EventsListResponseElement: Codable {
     let id, state, title, description: String

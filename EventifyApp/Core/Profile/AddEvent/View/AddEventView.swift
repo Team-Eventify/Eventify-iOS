@@ -168,8 +168,7 @@ struct AddEventView: View {
 												of: image),
 											let indexPicker = viewModel
 												.imageSelections.firstIndex(
-													of: pickerItem)
-										{
+													of: pickerItem) {
 											viewModel.selectedImages.remove(
 												at: indexUIImage)
 											viewModel.imageSelections.remove(

@@ -23,4 +23,10 @@ struct UpcomingEventsModel: Identifiable {
 	
 	/// Описание мероприятия
 	let description: String
+	
+	/// Прошло ли мероприятие
+	let isPassed: Bool
+	
+	/// С кнопкой оценки или без
+	let withRateButton: Bool
 }

@@ -28,7 +28,9 @@ enum MyEventsMockData {
 — знакомство с возможностями нейросети Kandinsky
 — встреча с HR-экспертами
 — шоу-игра «Где логика?»
-"""
+""",
+			isPassed: false,
+			withRateButton: false
 		),
 		.init(
 			title: "Wake Up MeetUP",
@@ -45,7 +47,9 @@ WakeUP Meetup уже через пару часов!
 🔘Марина Бычкова — frontend
 🔘Маргарита Болгар — design
 🔘Руслан Хайруллин — backend
-"""
+""",
+			isPassed: true,
+			withRateButton: false
 		),
 		.init(
 			title: "Фестиваль Сбера",
@@ -64,24 +68,9 @@ WakeUP Meetup уже через пару часов!
 — знакомство с возможностями нейросети Kandinsky
 — встреча с HR-экспертами
 — шоу-игра «Где логика?»
-"""
-		),
-	]
-	/// Рекоммендации мероприятия
-	static let recommendedEventsData: [EventifyRecommendationModel] = [
-		.init(
-			id: "327eryf7823bedwnj",
-			image: "example",
-			title: "Фестиваль ИКН",
-			cheepsItems: ["11 сентября", "18:00", "офлайн"],
-			size: .large
-		),
-		.init(
-			id: "23ye7wrdfy32hrejwd",
-			image: "example",
-			title: "ITAM courses",
-			cheepsItems: ["27 сентября", "18:00", "Б-3"],
-			size: .large
+""",
+			isPassed: true,
+			withRateButton: true
 		),
 	]
 }

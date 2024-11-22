@@ -18,7 +18,7 @@ enum CheepsStyle {
         case .registation: return .black
         case .upcoming: return .cheeps
         case .common: return .mainText
-        case .past: return .cheeps
+        case .past: return .white
         }
     }
 

@@ -17,6 +17,8 @@ final class MainViewModel: ObservableObject {
 
 	init(eventsService: EventsServiceProtocol) {
 		self.eventsService = eventsService
+		
+		fetchEventsList()
 	}
 
 	/// Возвращает категории на основе интересов.

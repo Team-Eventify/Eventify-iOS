@@ -13,6 +13,7 @@ struct ContentView: View {
 		userService: UserService())
 	@StateObject var networkManager = NetworkManager()
 
+	@StateObject var coreDataViewModel = CoreDataViewModel()
 	// Создаем экземпляры сервисов
 	private let tokenService: TokenServiceProtocol = TokenService()
 

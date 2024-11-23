@@ -437,6 +437,12 @@
         }
       }
     },
+    "Core Data" : {
+
+    },
+    "Debug Menu" : {
+
+    },
     "description_select_categories" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1702,12 +1708,6 @@
           }
         }
       }
-    },
-    "Нет соединения с интернетом." : {
-
-    },
-    "Проверьте подключение." : {
-
     }
   },
   "version" : "1.0"

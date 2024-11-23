@@ -38,9 +38,9 @@ struct MainView: View {
             .navigationTitle(String(localized: "tab_main"))
             .navigationBarTitleDisplayMode(.large)
             .background(.bg, ignoresSafeAreaEdges: .all)
-            .onAppear {
-                viewModel.fetchEventsList()
-            }
+			.refreshable {
+				viewModel.fetchEventsList()
+			}
         }
 	}
 

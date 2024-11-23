@@ -10,8 +10,11 @@ import SwiftUI
 /// Вью Таб-бара
 struct TabBarView: View {
 	// MARK: - Private Properties
-
-	@State private var selectedTab: Tab = .main
+    @StateObject private var vm: MainViewModel
+    
+    init(eventsService: EventsServiceProtocol) {
+        _vm = StateObject(wrappedValue: MainViewModel(eventsService: eventsService))
+    }
 
 	// MARK: - Body
 
@@ -25,8 +28,10 @@ private extension TabBarView {
 	/// Содержимое таб-бара
 	var tabbarContent: some View {
 		VStack(spacing: 0) {
-            TabbarScreens(contentMode: $selectedTab)
+            TabbarScreens(contentMode: $vm.selectedTab)
 				.frame(maxWidth: .infinity, maxHeight: .infinity)
+                .environmentObject(vm)
+            
             buttons
                 .padding(.horizontal, 20)
                 .padding(.top, 7)
@@ -42,12 +47,12 @@ private extension TabBarView {
 	var buttons: some View {
         HStack {
             ForEach(Tab.allCases, id: \.self) { item in
-                TabButton(item: item, selectedTab: $selectedTab)
+                TabButton(item: item, selectedTab: $vm.selectedTab)
             }
         }
 	}
 }
 
 #Preview {
-	TabBarView()
+	TabBarView(eventsService: EventsService())
 }

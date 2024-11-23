@@ -12,6 +12,7 @@ import SwiftUI
 struct SearchView: View {
 	// MARK: - Private Properties
 
+    // TODO: сделать EnvironmentObject 
 	@StateObject private var viewModel: SearchViewModel
 
 	init(categoriesService: CategoriesService) {
@@ -46,7 +47,3 @@ struct SearchView: View {
 	}
 }
 
-#Preview {
-	TabBarView()
-		.environmentObject(NetworkManager())
-}

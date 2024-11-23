@@ -10,7 +10,6 @@ import SwiftUI
 
 final class AddEventViewModel: ObservableObject {
 	@Published var name: String = ""
-	@Published var date: Date = .init()
 	@Published var startTime: Date = .init()
 	@Published var endTime: Date = .init()
 	@Published var description: String = ""
@@ -74,17 +73,23 @@ final class AddEventViewModel: ObservableObject {
 	func sendEvent() async {
 
 		guard !name.isEmpty, !description.isEmpty, !imageSelections.isEmpty else {
-			isError = true
+            await MainActor.run {
+                isError = true
+            }
 
 			try? await Task.sleep(nanoseconds: 1_500_000_000)
 
-			isError = false
+            await MainActor.run {
+                isError = false
+            }
 
 			return
 		}
 
 		let ownerID = KeychainManager.shared.get(key: KeychainKeys.userId)
 
+        // TODO: добавь валидацию на время (нельзя чтоб endTime был меньше чем startTime)
+        
 		let json: JSON = [
 			"title": name,
 			"description": description,

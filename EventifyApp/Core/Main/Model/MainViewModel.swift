@@ -9,44 +9,71 @@ import SwiftUI
 
 /// ViewModel для главного экрана, управляет получением данных
 final class MainViewModel: ObservableObject {
-	@Published var events: [EventifyRecommendationModel] = []
-	var isLoading: Bool = false
+    @Published var selectedTab: Tab = .main
+    @Published var events: [EventifyRecommendationModel] = []
+    var isLoading: Bool = false
 
-	/// Сервис управляющий евентами
-	private let eventsService: EventsServiceProtocol
+    /// Сервис управляющий евентами
+    private let eventsService: EventsServiceProtocol
 
-	init(eventsService: EventsServiceProtocol) {
-		self.eventsService = eventsService
-		
-		fetchEventsList()
-	}
+    init(eventsService: EventsServiceProtocol) {
+        self.eventsService = eventsService
+        
+        fetchEventsList()
+    }
 
-	/// Возвращает категории на основе интересов.
-	func interestsCategories() -> [CategoriesModel] {
-		return MainMockData.categoriesBasedOnInterests
-	}
+    /// Возвращает категории на основе интересов.
+    func interestsCategories() -> [CategoriesModel] {
+        return MainMockData.categoriesBasedOnInterests
+    }
 
-	func fetchEventsList() {
-		Task { @MainActor in
-			do {
-				isLoading = true
-				let response = try await eventsService.listEvents()
-				self.events = response.map { eventsResponse in
-					EventifyRecommendationModel(
-						id: eventsResponse.id,
-						image: "example",
-						title: eventsResponse.title,
-						description: eventsResponse.description,
-						cheepsItems: ["10 ноября", "15:00", "Онлайн"],
-						size: .flexible
-					)
-				}
-				isLoading = false
-				Logger.log(level: .network, "\(response)")
-			} catch {
-				isLoading = true
-				Logger.log(level: .error(error), "")
-			}
-		}
-	}
+    func fetchEventsList() {
+        Task { @MainActor in
+            do {
+                isLoading = true
+                let response = try await eventsService.listEvents()
+                self.events = response.map { eventsResponse in
+                    let startDate = Date(timeIntervalSince1970: TimeInterval(eventsResponse.start))
+                    let endDate = Date(timeIntervalSince1970: TimeInterval(eventsResponse.end))
+                    let (formattedDate, formattedTime) = startDate.formatForEvent(endDate: endDate)
+                    
+                    return EventifyRecommendationModel(
+                        id: eventsResponse.id,
+                        image: "example",
+                        title: eventsResponse.title,
+                        description: eventsResponse.description,
+                        cheepsItems: [
+                            formattedDate,
+                            formattedTime,
+                            "Онлайн"
+                        ],
+                        size: .flexible
+                    )
+                }
+
+                isLoading = false
+                Logger.log(level: .network, "\(response)")
+            } catch {
+                isLoading = true
+                Logger.log(level: .error(error), "")
+            }
+        }
+    }
+}
+
+extension Date {
+    func formatForEvent(endDate: Date) -> (date: String, time: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMMM"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        
+        let formattedDate = dateFormatter.string(from: self)
+        let formattedStartTime = timeFormatter.string(from: self)
+        let formattedEndTime = timeFormatter.string(from: endDate)
+        
+        return (formattedDate, "\(formattedStartTime) - \(formattedEndTime)")
+    }
 }

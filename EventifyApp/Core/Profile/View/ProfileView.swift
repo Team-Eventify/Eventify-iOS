@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: Вынести в компоненты
 enum ProfileSectionItem: Identifiable {
 	case addEvent
 	case notifications
@@ -67,6 +68,7 @@ enum ProfileSectionItem: Identifiable {
 	}
 }
 
+// TODO: Вынести в компоненты
 enum ProfileMenuSection: Int, Identifiable, CaseIterable {
 	case main
 	case options
@@ -92,6 +94,7 @@ enum ProfileMenuSection: Int, Identifiable, CaseIterable {
 struct ProfileView: View {
 	// MARK: - Private Properties
 
+    // TODO: сделать EnvironmentObject
 	@StateObject private var viewModel: ProfileViewModel
 	@State var showingDeleteAlert: Bool = false
 	@State var showingExitAlert: Bool = false

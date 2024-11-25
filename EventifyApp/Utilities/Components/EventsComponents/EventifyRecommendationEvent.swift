@@ -50,7 +50,7 @@ struct EventifyRecommendationEvent: View {
 			)
 			.padding(.bottom, 16)
 		}
-		.padding(.horizontal, configuration.isFlexible ? 0 : 16)
+		.padding(.horizontal, configuration.isFlexible ? 2 : 16)
 	}
 
 	@ViewBuilder

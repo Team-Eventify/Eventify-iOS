@@ -12,18 +12,10 @@ import SwiftUI
 struct MainView: View {
 	// MARK: - Private Properties
 
-	@StateObject private var viewModel: MainViewModel
+    @EnvironmentObject private var viewModel: MainViewModel
 	@EnvironmentObject private var networkManager: NetworkManager
-	@Binding private var selectedTab: Tab
 
 	// MARK: - Body
-
-	/// Инициализирует MainView с сервисом категорий и привязкой активной вкладки
-	init(eventsService: EventsServiceProtocol, selectedTab: Binding<Tab>) {
-		_selectedTab = selectedTab
-		_viewModel = StateObject(
-			wrappedValue: MainViewModel(eventsService: eventsService))
-	}
 
 	var body: some View {
         if networkManager.isDisconnected {
@@ -38,9 +30,9 @@ struct MainView: View {
             .navigationTitle(String(localized: "tab_main"))
             .navigationBarTitleDisplayMode(.large)
             .background(.bg, ignoresSafeAreaEdges: .all)
-            .onAppear {
-                viewModel.fetchEventsList()
-            }
+			.refreshable {
+				viewModel.fetchEventsList()
+			}
         }
 	}
 
@@ -85,7 +77,7 @@ struct MainView: View {
 				}
 				Button {
 					withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-						selectedTab = .search
+                        viewModel.selectedTab = .search
 					}
 				} label: {
 					HStack(spacing: 4) {
@@ -100,9 +92,4 @@ struct MainView: View {
 		}
 		.padding(.bottom, 20)
 	}
-}
-
-#Preview {
-	TabBarView()
-		.environmentObject(NetworkManager())
 }

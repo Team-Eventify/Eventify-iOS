@@ -94,7 +94,7 @@ struct AddEventView: View {
 					.foregroundStyle(.mainText)
 
 				DatePicker(
-					"", selection: $viewModel.date, displayedComponents: .date
+                    "", selection: $viewModel.startTime, displayedComponents: .date
 				)
 				.labelsHidden()
 			}

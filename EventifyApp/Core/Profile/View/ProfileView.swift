@@ -7,102 +7,11 @@
 
 import SwiftUI
 
-enum ProfileSectionItem: Identifiable {
-	case addEvent
-	case notifications
-	case helpAndSupport
-	case aboutApp
-	case rateApp
-	case logout
-	case deleteAccount
-
-	var id: String { titleKey }
-
-	var titleKey: String {
-		switch self {
-		case .addEvent:
-			"action_add_event"
-		case .notifications:
-			"section_notifications"
-		case .helpAndSupport:
-			"section_help_support"
-		case .aboutApp:
-			"section_about_app"
-		case .rateApp:
-			"action_rate_app"
-		case .logout:
-			"action_logout"
-		case .deleteAccount:
-			"action_delete_account"
-		}
-	}
-
-	@ViewBuilder
-	var destination: some View {
-		switch self {
-		case .addEvent:
-			AddEventView(eventService: EventsService(), categoriesService: CategoriesService())
-		case .notifications:
-			NotificationUtilityView()
-		case .helpAndSupport, .aboutApp:
-			TestView()
-		case .rateApp:
-			FeedbackView()
-		default: EmptyView()
-		}
-	}
-
-	var isDestructive: Bool {
-		self == .logout || self == .deleteAccount
-	}
-
-	var alertTitleKey: String? {
-		switch self {
-		case .logout:
-			"alert_logout_confirmation"
-		case .deleteAccount:
-			"alert_delete_account_confirmation"
-		default: nil
-		}
-	}
-}
-
-enum ProfileMenuSection: Int, Identifiable, CaseIterable {
-	case main
-	case options
-	case about
-	case account
-
-	var id: Int { rawValue }
-	var items: [ProfileSectionItem] {
-		switch self {
-		case .main:
-			return [.addEvent]
-		case .options:
-			return [.notifications, .helpAndSupport]
-		case .about:
-			return [.aboutApp, .rateApp]
-		case .account:
-			return [.logout, .deleteAccount]
-		}
-	}
-}
-
 /// Вью экрана "Профиль"
 struct ProfileView: View {
 	// MARK: - Private Properties
 
-	@StateObject private var viewModel: ProfileViewModel
-	@State var showingDeleteAlert: Bool = false
-	@State var showingExitAlert: Bool = false
-	@State var navigateToSignUp: Bool = false
-
-	// MARK: - Initialization
-	init(userService: UserServiceProtocol) {
-		_viewModel = StateObject(
-			wrappedValue: ProfileViewModel(userService: userService)
-		)
-	}
+	@EnvironmentObject private var viewModel: ProfileViewModel
 
 	// MARK: - Body
 
@@ -198,21 +107,20 @@ struct ProfileView: View {
 
 	private func alertBinding(for item: ProfileSectionItem) -> Binding<Bool> {
 		if case .deleteAccount = item {
-			return $showingDeleteAlert
+			return $viewModel.showingDeleteAlert
 		} else {
-			return $showingExitAlert
+			return $viewModel.showingExitAlert
 		}
 	}
 
 	private func handleButtonTap(for item: ProfileSectionItem) {
 		if case .deleteAccount = item {
-			showingDeleteAlert = true
+			viewModel.showingDeleteAlert = true
 		} else {
-			showingExitAlert = true
+			viewModel.showingExitAlert = true
 		}
 	}
 
-	// TODO: сделать кастом алерт
 	private func alert(for item: ProfileSectionItem) -> Alert {
 		Alert(
 			title: Text(LocalizedStringKey(item.alertTitleKey ?? "")),
@@ -228,5 +136,6 @@ struct ProfileView: View {
 }
 
 #Preview {
-	ProfileView(userService: UserService())
+	ProfileView()
+		.environmentObject(ProfileViewModel(userService: UserService()))
 }

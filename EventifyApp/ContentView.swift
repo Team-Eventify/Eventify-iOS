@@ -19,7 +19,7 @@ struct ContentView: View {
 	var body: some View {
 		if profileViewModel.isLogin {
 			NavigationStack {
-				TabBarView()
+				TabBarView(eventsService: EventsService())
 					.environmentObject(profileViewModel)
 					.environmentObject(networkManager)
 			}

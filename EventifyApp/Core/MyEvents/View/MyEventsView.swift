@@ -21,7 +21,6 @@ struct MyEventsView: View {
             } else {
                 ScrollView(showsIndicators: false) {
                     contentForUpcomingEventsSection
-                    recomendedEvents
                     Spacer()
                 }
             }
@@ -79,33 +78,12 @@ private var upcomingEvents: some View {
 				} label: {
 					EventifyRegisteredCard(
 						title: event.title,
-						items: event.cheepTitles
+						items: event.cheepTitles,
+						isPassed: event.isPassed,
+						withRateButton: event.withRateButton
 					)
 				}
 				.buttonStyle(.plain)
-			}
-		}
-	}
-}
-
-/// Карточки рекомендуемых мероприятий
-private var recomendedEvents: some View {
-	VStack(alignment: .leading) {
-		Text("recommendation_title")
-			.font(.mediumCompact(size: 20))
-			.foregroundStyle(.mainText)
-		ScrollView(.horizontal, showsIndicators: false) {
-			LazyHStack(spacing: 8) {
-				ForEach(MyEventsMockData.recommendedEventsData) { event in
-					NavigationLink {
-						// TODO: Адаптировать модели для передачи в RegistrationView
-						EmptyView()
-					} label: {
-						EventifyRecommendationEvent(
-							configuration: event.asDomain())
-					}
-					.buttonStyle(.plain)
-				}
 			}
 		}
 	}

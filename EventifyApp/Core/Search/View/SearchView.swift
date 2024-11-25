@@ -12,13 +12,7 @@ import SwiftUI
 struct SearchView: View {
 	// MARK: - Private Properties
 
-    // TODO: сделать EnvironmentObject 
-	@StateObject private var viewModel: SearchViewModel
-
-	init(categoriesService: CategoriesService) {
-		_viewModel = StateObject(
-			wrappedValue: SearchViewModel(categoriesService: categoriesService))
-	}
+	@EnvironmentObject private var viewModel: SearchViewModel
 
 	// MARK: - Body
 
@@ -33,9 +27,6 @@ struct SearchView: View {
 				}
 			}
 		}
-		.onAppear {
-			viewModel.fetchCategories()
-		}
 		.navigationTitle(String(localized: "tab_search"))
 		.navigationBarTitleDisplayMode(.large)
 		.padding(.horizontal, 16)
@@ -47,3 +38,7 @@ struct SearchView: View {
 	}
 }
 
+#Preview {
+	SearchView()
+		.environmentObject(SearchViewModel())
+}

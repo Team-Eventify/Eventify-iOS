@@ -32,12 +32,12 @@ final class AddEventViewModel: ObservableObject {
 	init(eventService: EventsServiceProtocol) {
 		self.eventService = eventService
 	}
-    
-    /// Объединяет два массива `selectedImages` и `imageSelections` в массив кортежей, где каждый кортеж
-    /// содержит соответствующие элементы из обоих массивов.
-    func pairedArrays() -> [(UIImage, PhotosPickerItem)] {
-        return Array(zip(selectedImages, imageSelections))
-    }
+	
+	/// Объединяет два массива `selectedImages` и `imageSelections` в массив кортежей, где каждый кортеж
+	/// содержит соответствующие элементы из обоих массивов.
+	func pairedArrays() -> [(UIImage, PhotosPickerItem)] {
+		return Array(zip(selectedImages, imageSelections))
+	}
 
 	private func setImages(from selections: [PhotosPickerItem]) {
 		Task { @MainActor in
@@ -73,23 +73,38 @@ final class AddEventViewModel: ObservableObject {
 	func sendEvent() async {
 
 		guard !name.isEmpty, !description.isEmpty, !imageSelections.isEmpty else {
-            await MainActor.run {
-                isError = true
-            }
+			await MainActor.run {
+				isError = true
+			}
 
 			try? await Task.sleep(nanoseconds: 1_500_000_000)
 
-            await MainActor.run {
-                isError = false
-            }
+			await MainActor.run {
+				isError = false
+			}
+
+			return
+		}
+
+		// Time validation
+		guard endTime > startTime else {
+			await MainActor.run {
+				isError = true
+				// You might want to set a specific error message here
+				// For example: errorMessage = "End time must be after start time"
+			}
+
+			try? await Task.sleep(nanoseconds: 1_500_000_000)
+
+			await MainActor.run {
+				isError = false
+			}
 
 			return
 		}
 
 		let ownerID = KeychainManager.shared.get(key: KeychainKeys.userId)
-
-        // TODO: добавь валидацию на время (нельзя чтоб endTime был меньше чем startTime)
-        
+		
 		let json: JSON = [
 			"title": name,
 			"description": description,

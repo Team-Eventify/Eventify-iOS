@@ -9,7 +9,6 @@ import SwiftUI
 import Pow
 
 struct FeedbackView: View {
-    // TODO: сделать EnvironmentObject
 	@StateObject private var viewModel: FeedbackViewModel
 	@Environment(\.dismiss) var dismiss
 

@@ -93,4 +93,3 @@ struct MainView: View {
 		.padding(.bottom, 20)
 	}
 }
-

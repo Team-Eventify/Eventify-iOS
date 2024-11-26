@@ -16,10 +16,8 @@ struct PersonalCategoriesView: View {
 	/// ViewModel для управления логикой вью
 	@StateObject private var viewModel: PersonalCategoriesViewModel
 
-	init(categoriesService: CategoriesServiceProtocol) {
-		_viewModel = .init(
-			wrappedValue: PersonalCategoriesViewModel(
-				categoriesService: categoriesService))
+	init(viewModel: PersonalCategoriesViewModel) {
+		_viewModel = .init(wrappedValue: viewModel)
 	}
 
 	// MARK: - Body
@@ -108,9 +106,4 @@ struct PersonalCategoriesView: View {
 			}
 		}
 	}
-}
-
-#Preview {
-	PersonalCategoriesView(categoriesService: CategoriesService())
-		.environmentObject(NetworkManager())
 }

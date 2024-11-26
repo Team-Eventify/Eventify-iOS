@@ -9,8 +9,6 @@ import SwiftUI
 
 final class ProfileViewModel: ObservableObject {
 	// MARK: - Public Properties
-
-	@AppStorage("isLogin") var isLogin: Bool = false
 	@Published var name: String = ""
 	@Published var middleName: String = ""
 	@Published var showingDeleteAlert: Bool = false

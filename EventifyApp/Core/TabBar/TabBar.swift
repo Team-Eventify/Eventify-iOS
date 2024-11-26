@@ -12,8 +12,10 @@ struct TabBarView: View {
 	// MARK: - Private Properties
 	@StateObject private var vm: MainViewModel
 	@StateObject private var searchVM: SearchViewModel
+	@ObservedObject var coordinator: MainTabCoordinator
 	
-	init(eventsService: EventsServiceProtocol) {
+	init(eventsService: EventsServiceProtocol, coordinator: MainTabCoordinator) {
+		_coordinator = ObservedObject(wrappedValue: coordinator)
 		_vm = StateObject(wrappedValue: MainViewModel(eventsService: eventsService))
 		_searchVM = StateObject(wrappedValue: SearchViewModel())
 	}
@@ -30,11 +32,11 @@ private extension TabBarView {
 	/// Содержимое таб-бара
 	var tabbarContent: some View {
 		VStack(spacing: 0) {
-			TabbarScreens(contentMode: $vm.selectedTab)
+			TabbarScreens(contentMode: $coordinator.selectedTab, mainTabCoordinator: coordinator)
 				.frame(maxWidth: .infinity, maxHeight: .infinity)
 				.environmentObject(vm)
 				.environmentObject(searchVM)
-			
+
 			buttons
 				.padding(.horizontal, 20)
 				.padding(.top, 7)
@@ -45,17 +47,13 @@ private extension TabBarView {
 		.ignoresSafeArea(edges: .bottom)
 		.background(Color.tabbarBg)
 	}
-	
+
 	/// Кнопки для всех вкладок
 	var buttons: some View {
 		HStack {
 			ForEach(Tab.allCases, id: \.self) { item in
-				TabButton(item: item, selectedTab: $vm.selectedTab)
+				TabButton(item: item, selectedTab: $coordinator.selectedTab)
 			}
 		}
 	}
-}
-
-#Preview {
-	TabBarView(eventsService: EventsService())
 }

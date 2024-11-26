@@ -20,8 +20,8 @@ struct ForgotPasswordView: View {
 
 	// MARK: - Initialization
 
-	init() {
-		_viewModel = .init(wrappedValue: ForgotPasswordViewModel())
+	init(viewModel: ForgotPasswordViewModel) {
+		_viewModel = .init(wrappedValue: viewModel)
 	}
 
 	// MARK: - Body
@@ -79,9 +79,4 @@ struct ForgotPasswordView: View {
 			}
 		}
 	}
-}
-
-#Preview {
-	ForgotPasswordView()
-		.environmentObject(NetworkManager())
 }

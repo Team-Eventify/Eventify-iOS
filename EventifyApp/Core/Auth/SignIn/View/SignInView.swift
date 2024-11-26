@@ -15,12 +15,9 @@ struct SignInView: View {
 
 	@StateObject private var viewModel: SignInViewModel
 
-	@Environment(\.dismiss)
-	var dismiss
-
 	// MARK: - Initialization
-	init(signInService: SignInServiceProtocol) {
-		_viewModel = .init(wrappedValue: SignInViewModel(signInService: signInService))
+	init(viewModel: SignInViewModel) {
+		_viewModel = .init(wrappedValue: viewModel)
 	}
 
 	// MARK: - Body
@@ -45,12 +42,6 @@ struct SignInView: View {
             .onTapGesture {
                 hideKeyboard()
             }
-            .navigationDestination(
-                isPresented: $viewModel.showForgotPassScreen,
-                destination: {
-                    ForgotPasswordView()
-                }
-            )
             .popup(
                 isPresented: Binding(
                     get: { viewModel.loadingState == .failure }, set: { _ in })
@@ -145,7 +136,7 @@ struct SignInView: View {
 			Text("no_account_question")
 				.font(.regularCompact(size: 16))
 			Button {
-				dismiss()
+//				path.removeLast()
 			} label: {
 				Text("registration_title")
 					.underline()
@@ -155,9 +146,4 @@ struct SignInView: View {
 		}
 		.frame(maxWidth: .infinity)
 	}
-}
-
-#Preview {
-	SignInView(signInService: SignInService())
-		.environmentObject(NetworkManager())
 }

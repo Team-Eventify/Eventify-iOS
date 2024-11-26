@@ -11,58 +11,52 @@ import PopupView
 struct SignUpView: View {
 	@StateObject private var viewModel: SignUpViewModel
 	@EnvironmentObject private var networkManager: NetworkManager
+	@ObservedObject private var coordinator: AuthCoordinator
 
-	init(signUpService: SignUpServiceProtocol) {
-		_viewModel = StateObject(
-			wrappedValue: SignUpViewModel(signUpService: signUpService))
+	@State var path: NavigationPath = .init()
+
+	init(viewModel: SignUpViewModel, coordinator: AuthCoordinator) {
+		_viewModel = StateObject(wrappedValue: viewModel)
+		_coordinator = ObservedObject(wrappedValue: coordinator)
 	}
 
 	var body: some View {
         if networkManager.isDisconnected {
             NoInternetView()
         } else {
-            VStack(alignment: .leading, spacing: 60) {
-                Spacer()
-                registrationContentContainerView
-                registrationButtonContainerView
-                Spacer()
-                Spacer()
-            }
-            .foregroundStyle(Color.secondaryText)
-            .navigationBarBackButtonHidden(true)
-            .padding(.horizontal, 16)
-            .background(.bg, ignoresSafeAreaEdges: .all)
-            .edgesIgnoringSafeArea(.bottom)
-            .onTapGesture {
-                hideKeyboard()
-            }
-            .navigationDestination(
-                isPresented: $viewModel.navigateToLoginView,
-                destination: {
-                    SignInView(signInService: SignInService())
-                }
-            )
-            .navigationDestination(
-                isPresented: Binding(
-                    get: { viewModel.loadingState == .loaded },
-                    set: { _ in }
-                )
-            ) {
-                PersonalCategoriesView(categoriesService: CategoriesService())
-            }
-            .popup(
-                isPresented: Binding(
-                    get: { viewModel.loadingState == .failure }, set: { _ in })
-            ) {
-                EventifySnackBar(config: .failure)
-            } customize: {
-                $0
-                    .type(.floater(verticalPadding: 10, useSafeAreaInset: true))
-                    .disappearTo(.bottomSlide)
-                    .position(.bottom)
-                    .closeOnTap(true)
-                    .autohideIn(3)
-            }
+			NavigationStack(path: $path) {
+				VStack(alignment: .leading, spacing: 60) {
+					Spacer()
+					registrationContentContainerView
+					registrationButtonContainerView
+					Spacer()
+					Spacer()
+				}
+				.foregroundStyle(Color.secondaryText)
+				.navigationBarBackButtonHidden(true)
+				.padding(.horizontal, 16)
+				.background(.bg, ignoresSafeAreaEdges: .all)
+				.edgesIgnoringSafeArea(.bottom)
+				.navigationDestination(for: AuthCoordinator.AuthScreens.self, destination: { screen in
+					coordinator.destination(for: screen)
+				})
+				.onTapGesture {
+					hideKeyboard()
+				}
+				.popup(
+					isPresented: Binding(
+						get: { viewModel.loadingState == .failure }, set: { _ in })
+				) {
+					EventifySnackBar(config: .failure)
+				} customize: {
+					$0
+						.type(.floater(verticalPadding: 10, useSafeAreaInset: true))
+						.disappearTo(.bottomSlide)
+						.position(.bottom)
+						.closeOnTap(true)
+						.autohideIn(3)
+				}
+			}
         }
 	}
 
@@ -150,7 +144,7 @@ struct SignUpView: View {
 			Text("have_account_question")
 				.font(.regularCompact(size: 16))
 			Button {
-				viewModel.navigateToLoginView.toggle()
+				path.append(AuthCoordinator.AuthScreens.signIn)
 			} label: {
 				Text("login_title")
 					.underline()
@@ -160,9 +154,4 @@ struct SignUpView: View {
 		}
 		.frame(maxWidth: .infinity)
 	}
-}
-
-#Preview {
-	SignUpView(signUpService: SignUpService())
-		.environmentObject(NetworkManager())
 }

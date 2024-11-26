@@ -10,14 +10,11 @@ import SwiftUI
 struct TabbarScreens: View {
 	@Binding var contentMode: Tab
 	
+	@ObservedObject var mainTabCoordinator: MainTabCoordinator
+	
 	@ViewBuilder
 	var body: some View {
-		switch contentMode {
-		case .main: MainView()
-		case .search: SearchView()
-		case .myEvents: MyEventsView()
-		case .profile: ProfileView()
-		}
+		mainTabCoordinator.build(for: contentMode)
 	}
 }
 

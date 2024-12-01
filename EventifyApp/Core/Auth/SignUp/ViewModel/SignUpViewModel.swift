@@ -101,7 +101,8 @@ final class SignUpViewModel: ObservableObject {
 				isLogin = true
 				let categoriesService = CategoriesService()
 				let authProvider = AuthenticationProvider()
-				let viewModel = CategoriesViewModel(categoriesService: categoriesService, authProvider: authProvider)
+				let viewModel = CategoriesViewModel(categoriesService: categoriesService)
+				viewModel.initAuthProvider(authProvider: authProvider)
 				coordinator.push(.setCategories(viewModel))
 			} catch {
 				loginAttempts += 1

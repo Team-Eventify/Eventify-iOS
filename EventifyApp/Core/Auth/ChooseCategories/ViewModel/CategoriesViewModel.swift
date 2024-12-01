@@ -12,17 +12,20 @@ final class CategoriesViewModel: ObservableObject {
 	@Published var categories: [Categories] = []
 	@Published var isLoading: Bool = false
 
-	private let authProvider: AuthenticationProviderProtocol
+	private var authProvider: AuthenticationProviderProtocol?
 	private let categoriesService: CategoriesServiceProtocol
 	private let userId = KeychainManager.shared.get(key: KeychainKeys.userId)
 
-	init(categoriesService: CategoriesServiceProtocol, authProvider: AuthenticationProviderProtocol) {
+	init(categoriesService: CategoriesServiceProtocol) {
 		self.categoriesService = categoriesService
+	}
+	
+	func initAuthProvider(authProvider: AuthenticationProviderProtocol) {
 		self.authProvider = authProvider
 	}
 	
 	func authenticate(coordinator: AppCoordinator) {
-		authProvider.authenticate()
+		authProvider?.authenticate()
 		coordinator.flow = .main
 	}
 

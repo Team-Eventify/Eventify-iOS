@@ -13,29 +13,24 @@ import SwiftUI
 /// Вью детального экрана профиля
 struct ProfileDetailView: View {
 	// MARK: - Private Properties
-
-	@StateObject private var viewModel: ProfileDetailViewModel
-	@StateObject private var categoriesModel: CategoriesViewModel
+	@StateObject private var viewModel = ProfileDetailViewModel(userService: UserService())
+	@StateObject private var categoriesModel = CategoriesViewModel(categoriesService: CategoriesService())
+	
+	@EnvironmentObject private var coordinator: AppCoordinator
 	@EnvironmentObject private var networkManager: NetworkManager
 
 	@State private var animation: Bool = true
 
-	@Environment(\.dismiss)
-	var dismiss
 
 	// MARK: - Initialization
-	init(
-		userService: UserServiceProtocol,
-		categoriesService: CategoriesServiceProtocol
-	) {
-		_viewModel = StateObject(
-			wrappedValue: ProfileDetailViewModel(userService: userService)
-		)
-		_categoriesModel = StateObject(
-			wrappedValue: CategoriesViewModel(
-				categoriesService: categoriesService, authProvider: AuthenticationProvider())
-		)
-	}
+//	init() {
+//		_viewModel = StateObject(
+//			wrappedValue: ProfileDetailViewModel(userService: UserService())
+//		)
+//		_categoriesModel = StateObject(
+//			wrappedValue: CategoriesViewModel(categoriesService: CategoriesService())
+//		)
+//	}
 
 	// MARK: - Body
 
@@ -176,7 +171,7 @@ struct ProfileDetailView: View {
 			}
 			.onChange(of: viewModel.shouldDismiss) { newValue in
 				if newValue {
-					dismiss()
+					coordinator.pop()
 				}
 			}
 			.changeEffect(
@@ -188,7 +183,6 @@ struct ProfileDetailView: View {
 				value: viewModel.shouldDismiss
 			)
 			.animation(.default, value: animation)
-
 		}
 	}
 }

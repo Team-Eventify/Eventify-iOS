@@ -13,6 +13,7 @@ struct HomeView: View {
 	// MARK: - Private Properties
 
 	@EnvironmentObject private var viewModel: HomeViewModel
+	@EnvironmentObject private var coordinator: AppCoordinator
 	@EnvironmentObject private var networkManager: NetworkManager
 
 	// MARK: - Body
@@ -55,9 +56,14 @@ struct HomeView: View {
 					.shimmer(isActive: viewModel.isLoading)
 			} else {
 				LazyVStack(spacing: 30) {
-					ForEach(viewModel.events) {
-						EventifyRecommendationEvent(
-							configuration: $0.asDomain())
+					ForEach(viewModel.events) { event in
+						Button {
+							coordinator.push(.eventsDetail(event))
+						} label: {
+							EventifyRecommendationEvent(
+								configuration: event.asDomain())
+						}
+						.foregroundStyle(.clear)
 					}
 				}
 			}

@@ -10,46 +10,44 @@ import SwiftUI
 /// Вью экрана "Профиль"
 struct ProfileView: View {
 	// MARK: - Private Properties
-
+	
 	@StateObject private var viewModel: ProfileViewModel
 	@EnvironmentObject private var coordinator: AppCoordinator
 	
 	init(viewModel: ProfileViewModel) {
 		_viewModel = StateObject(wrappedValue: viewModel)
 	}
-
+	
 	// MARK: - Body
-
+	
 	var body: some View {
-		NavigationStack {
-			VStack {
-				header
-				List {
-					ForEach(ProfileMenuSection.allCases) { section in
-						Section {
-							ForEach(section.items) { item in
-								makeItemView(for: item)
-							}
+		VStack {
+			header
+			List {
+				ForEach(ProfileMenuSection.allCases) { section in
+					Section {
+						ForEach(section.items) { item in
+							makeItemView(for: item)
 						}
 					}
 				}
-				.scrollDisabled(true)
-				.scrollContentBackground(.hidden)
-				.listStyle(.insetGrouped)
 			}
-			.onAppear {
-				viewModel.updateUserInfo()
-			}
-			.navigationTitle(String(localized: "tab_profile"))
-			.navigationBarTitleDisplayMode(.large)
-			.background(.bg, ignoresSafeAreaEdges: .all)
+			.scrollDisabled(true)
+			.scrollContentBackground(.hidden)
+			.listStyle(.insetGrouped)
 		}
+		.onAppear {
+			viewModel.updateUserInfo()
+		}
+		.navigationTitle(String(localized: "tab_profile"))
+		.navigationBarTitleDisplayMode(.large)
+		.background(.bg, ignoresSafeAreaEdges: .all)
 	}
-
+	
 	/// Хедер карточка
 	private var header: some View {
-		NavigationLink {
-			ProfileDetailView(userService: UserService(), categoriesService: CategoriesService())
+		Button {
+			coordinator.push(.profileDetail)
 		} label: {
 			HStack {
 				VStack(alignment: .leading) {
@@ -71,7 +69,7 @@ struct ProfileView: View {
 			.padding(.horizontal)
 		}
 	}
-
+	
 	@ViewBuilder
 	private func makeItemView(for item: ProfileSectionItem) -> some View {
 		switch item {
@@ -84,23 +82,32 @@ struct ProfileView: View {
 				alert(for: item)
 			}
 		default:
-			NavigationLink(destination: item.destination) {
-				Text(LocalizedStringKey(item.titleKey))
+			Button {
+				coordinator.push(item.destination)
+			} label: {
+				HStack {
+					Text(LocalizedStringKey(item.titleKey))
+						.foregroundStyle(.mainText)
+					Spacer()
+					Image(systemName: "chevron.right")
+						.foregroundStyle(.mainText)
+				}
 			}
 		}
 	}
-
+	
 	private func getButtonColor(_ item: ProfileSectionItem) -> Color {
 		if case .deleteAccount = item {
 			return .red
 		}
 		return .mainText
 	}
-
+	
 	private func makeActionForAccountSection(_ item: ProfileSectionItem) {
 		if case .logout = item {
 			UserDefaultsManager.shared.clearAllUserData()
 			coordinator.flow = .auth
+			coordinator.authProvider.isLogin = false
 			coordinator.selectedTab = .main
 			Logger.log(level: .info, "🚪 Exit from account")
 		} else {
@@ -109,7 +116,7 @@ struct ProfileView: View {
 			Logger.log(level: .info, "🪓 delete account")
 		}
 	}
-
+	
 	private func alertBinding(for item: ProfileSectionItem) -> Binding<Bool> {
 		if case .deleteAccount = item {
 			return $viewModel.showingDeleteAlert
@@ -117,7 +124,7 @@ struct ProfileView: View {
 			return $viewModel.showingExitAlert
 		}
 	}
-
+	
 	private func handleButtonTap(for item: ProfileSectionItem) {
 		if case .deleteAccount = item {
 			viewModel.showingDeleteAlert = true
@@ -125,7 +132,7 @@ struct ProfileView: View {
 			viewModel.showingExitAlert = true
 		}
 	}
-
+	
 	private func alert(for item: ProfileSectionItem) -> Alert {
 		Alert(
 			title: Text(LocalizedStringKey(item.alertTitleKey ?? "")),

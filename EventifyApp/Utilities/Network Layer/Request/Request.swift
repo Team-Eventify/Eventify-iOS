@@ -9,6 +9,7 @@ import Foundation
 
 class Request {
 	private let maxTokenRefreshAttempts = 3
+	private var unauthorizedAttempts = 0
 
 	func sendRequest<T: Decodable>(
 		endpoint: Endpoint,
@@ -95,8 +96,14 @@ class Request {
 
 		switch httpResponse.statusCode {
 		case 200...299:
+			unauthorizedAttempts = 0 // Reset the counter on successful requests
 			return try decodeResponse(data: data, responseModel: responseModel)
 		case 401:
+			unauthorizedAttempts += 1
+			if unauthorizedAttempts >= 3 {
+				NotificationCenter.default.post(name: .logoutUser, object: nil)
+				throw RequestError.maxUnauthorizedAttemptsReached
+			}
 			return try await handleTokenRefresh(endpoint: endpoint, responseModel: responseModel, urlEncoded: urlEncoded, tokenRefreshCount: tokenRefreshCount)
 		default:
 			let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
@@ -176,4 +183,8 @@ struct RefreshedEndpoint: Endpoint {
 		self.original = original
 		self.newToken = newToken
 	}
+}
+
+extension Notification.Name {
+	static let logoutUser = Notification.Name("LogoutUser")
 }

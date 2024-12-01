@@ -8,8 +8,7 @@
 import SwiftUI
 
 /// ViewModel для главного экрана, управляет получением данных
-final class MainViewModel: ObservableObject {
-    @Published var selectedTab: Tab = .main
+final class HomeViewModel: ObservableObject {
     @Published var events: [EventifyRecommendationModel] = []
     var isLoading: Bool = false
 
@@ -24,7 +23,7 @@ final class MainViewModel: ObservableObject {
 
     /// Возвращает категории на основе интересов.
     func interestsCategories() -> [CategoriesModel] {
-        return MainMockData.categoriesBasedOnInterests
+        return HomeMockData.categoriesBasedOnInterests
     }
 
     func fetchEventsList() {

@@ -5,8 +5,7 @@
 //  Created by Захар Литвинчук on 18.06.2024.
 //
 
-import Foundation
-
+import SwiftUI
 
 final class ForgotPasswordViewModel: ObservableObject {
 	// MARK: - Public Properties

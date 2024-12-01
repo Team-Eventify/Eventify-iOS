@@ -8,14 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-	@StateObject private var profileViewModel = ProfileViewModel(
-		userService: UserService())
-	@StateObject var networkManager = NetworkManager()
+	@EnvironmentObject var appCoordinator: AppCoordinator
 	
-	@StateObject private var appCoordinator = AppCoordinator(path: .init())
-
-	private let tokenService: TokenServiceProtocol = TokenService()
-
 	var body: some View {
 		appCoordinator.build()
 	}

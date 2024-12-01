@@ -12,11 +12,12 @@ import SwiftUI
 struct PersonalCategoriesView: View {
 	// MARK: - Private Properties
 	@EnvironmentObject private var networkManager: NetworkManager
+	@EnvironmentObject private var coordinator: AppCoordinator
 
 	/// ViewModel для управления логикой вью
-	@StateObject private var viewModel: PersonalCategoriesViewModel
+	@StateObject private var viewModel: CategoriesViewModel
 
-	init(viewModel: PersonalCategoriesViewModel) {
+	init(viewModel: CategoriesViewModel) {
 		_viewModel = .init(wrappedValue: viewModel)
 	}
 
@@ -93,11 +94,10 @@ struct PersonalCategoriesView: View {
 				isDisabled: !viewModel.isAnyCategorySelected
 			) {
 				viewModel.setUserCategories()
-				Constants.isLogin = true
+				viewModel.authenticate(coordinator: coordinator)
 			}
-
 			Button {
-				Constants.isLogin = true
+				viewModel.authenticate(coordinator: coordinator)
 			} label: {
 				Text("skip_title")
 					.foregroundStyle(.gray)

@@ -2,7 +2,7 @@
 //  AuthenticationProvider.swift
 //  EventifyApp
 //
-//  Created by Захар Литвинчук on 27.11.2024.
+//  Created by Захар Литвинчук on 01.12.2024.
 //
 
 import SwiftUI

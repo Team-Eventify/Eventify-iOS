@@ -9,10 +9,10 @@ import PopupView
 import SwiftUI
 
 /// Вью главного экрана
-struct MainView: View {
+struct HomeView: View {
 	// MARK: - Private Properties
 
-    @EnvironmentObject private var viewModel: MainViewModel
+	@EnvironmentObject private var viewModel: HomeViewModel
 	@EnvironmentObject private var networkManager: NetworkManager
 
 	// MARK: - Body
@@ -23,7 +23,6 @@ struct MainView: View {
         } else {
             ScrollView {
                 popularEventsSection
-                categoriesSection
             }
             .scrollIndicators(.hidden)
             .padding(.horizontal, 16)
@@ -64,32 +63,6 @@ struct MainView: View {
 			}
 		}
 		.padding(.top, 10)
-		.padding(.bottom, 20)
-	}
-
-	private var categoriesSection: some View {
-		VStack(alignment: .leading) {
-			Text("categories_based_on_interests")
-				.font(.mediumCompact(size: 20))
-			LazyVStack(spacing: 10) {
-				ForEach(viewModel.interestsCategories()) {
-					EventifyCategories(configuration: $0.asDomain())
-				}
-				Button {
-					withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                        viewModel.selectedTab = .search
-					}
-				} label: {
-					HStack(spacing: 4) {
-						Text("see_more_categories_button")
-							.font(.mediumCompact(size: 14))
-							.bold()
-						Image(systemName: "chevron.right")
-					}
-					.foregroundStyle(.accent)
-				}
-			}
-		}
 		.padding(.bottom, 20)
 	}
 }

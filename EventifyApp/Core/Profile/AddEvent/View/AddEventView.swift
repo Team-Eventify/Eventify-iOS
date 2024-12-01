@@ -16,7 +16,7 @@ struct AddEventView: View {
 
 	/// ViewModel для управления логикой вью
 	@StateObject private var viewModel: AddEventViewModel
-	@StateObject private var categoriesVM: PersonalCategoriesViewModel
+	@StateObject private var categoriesVM: CategoriesViewModel
 
 	init(
 		eventService: EventsServiceProtocol,
@@ -26,8 +26,9 @@ struct AddEventView: View {
 			wrappedValue: AddEventViewModel(eventService: eventService)
 		)
 		_categoriesVM = StateObject(
-			wrappedValue: PersonalCategoriesViewModel(
-				categoriesService: categoriesService)
+			wrappedValue: CategoriesViewModel(
+				categoriesService: categoriesService,
+				authProvider: AuthenticationProvider())
 		)
 	}
 

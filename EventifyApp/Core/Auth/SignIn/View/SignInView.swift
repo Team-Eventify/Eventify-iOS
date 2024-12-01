@@ -12,7 +12,7 @@ import SwiftUI
 struct SignInView: View {
 	// MARK: - Private Properties
 	@EnvironmentObject private var networkManager: NetworkManager
-
+	@EnvironmentObject private var coordinator: AppCoordinator
 	@StateObject private var viewModel: SignInViewModel
 
 	// MARK: - Initialization
@@ -25,42 +25,42 @@ struct SignInView: View {
 	var body: some View {
         if networkManager.isDisconnected {
             NoInternetView()
-        } else {
-            VStack(alignment: .leading, spacing: 60) {
-                Spacer()
-                signInContentContainerView
-                signInButtonContainerView
-                Spacer()
-                Spacer()
-            }
-            .foregroundStyle(Color.secondaryText)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(.horizontal, 16)
-            .background(.bg, ignoresSafeAreaEdges: .all)
-            .navigationBarBackButtonHidden(true)
-            .edgesIgnoringSafeArea(.bottom)
-            .onTapGesture {
-                hideKeyboard()
-            }
-            .popup(
-                isPresented: Binding(
-                    get: { viewModel.loadingState == .failure }, set: { _ in })
-            ) {
-                EventifySnackBar(config: .failure)
-            } customize: {
-                $0
-                    .type(
-                        .floater(
-                            verticalPadding: 10,
-                            useSafeAreaInset: true
-                        )
-                    )
-                    .disappearTo(.bottomSlide)
-                    .position(.bottom)
-                    .closeOnTap(true)
-                    .autohideIn(3)
-            }
-        }
+		} else {
+				VStack(alignment: .leading, spacing: 60) {
+					Spacer()
+					signInContentContainerView
+					signInButtonContainerView
+					Spacer()
+					Spacer()
+				}
+				.foregroundStyle(Color.secondaryText)
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
+				.padding(.horizontal, 16)
+				.background(.bg, ignoresSafeAreaEdges: .all)
+				.navigationBarBackButtonHidden(true)
+				.edgesIgnoringSafeArea(.bottom)
+				.onTapGesture {
+					hideKeyboard()
+				}
+				.popup(
+					isPresented: Binding(
+						get: { viewModel.loadingState == .failure }, set: { _ in })
+				) {
+					EventifySnackBar(config: .failure)
+				} customize: {
+					$0
+						.type(
+							.floater(
+								verticalPadding: 10,
+								useSafeAreaInset: true
+							)
+						)
+						.disappearTo(.bottomSlide)
+						.position(.bottom)
+						.closeOnTap(true)
+						.autohideIn(3)
+				}
+		}
 	}
 
 	/// Контейнер для содержимого экрана входа
@@ -113,7 +113,7 @@ struct SignInView: View {
 				isLoading: viewModel.loadingState == .loading,
 				isDisabled: viewModel.loadingState == .loading
 			) {
-				viewModel.signIn()
+				viewModel.signIn(coordinator: coordinator)
 			}
 			haveAccountContainerView
 		}
@@ -123,7 +123,8 @@ struct SignInView: View {
 	private var forgotPasswordButtonContainerView: some View {
 		VStack(alignment: .trailing, spacing: .zero) {
 			Button {
-				viewModel.showForgotPassScreen = true
+				let viewModel = ForgotPasswordViewModel()
+				coordinator.push(.forgotPassword(viewModel))
 			} label: {
 				Text("forgot_password_button")
 			}
@@ -136,7 +137,7 @@ struct SignInView: View {
 			Text("no_account_question")
 				.font(.regularCompact(size: 16))
 			Button {
-//				path.removeLast()
+				coordinator.pop()
 			} label: {
 				Text("registration_title")
 					.underline()

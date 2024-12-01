@@ -15,7 +15,7 @@ struct ProfileDetailView: View {
 	// MARK: - Private Properties
 
 	@StateObject private var viewModel: ProfileDetailViewModel
-	@StateObject private var categoriesModel: PersonalCategoriesViewModel
+	@StateObject private var categoriesModel: CategoriesViewModel
 	@EnvironmentObject private var networkManager: NetworkManager
 
 	@State private var animation: Bool = true
@@ -32,38 +32,38 @@ struct ProfileDetailView: View {
 			wrappedValue: ProfileDetailViewModel(userService: userService)
 		)
 		_categoriesModel = StateObject(
-			wrappedValue: PersonalCategoriesViewModel(
-				categoriesService: categoriesService)
+			wrappedValue: CategoriesViewModel(
+				categoriesService: categoriesService, authProvider: AuthenticationProvider())
 		)
 	}
 
 	// MARK: - Body
 
 	var body: some View {
-        if networkManager.isDisconnected {
-            NoInternetView()
-        } else {
-            ScrollView(showsIndicators: false) {
-                VStack(alignment: .leading, spacing: 20) {
-                    nameField
-                    surnameField
-                    lastNameField
-                    emailField
-                    telegramField
-                    categoriesSection
-                    saveButton
-                    Spacer()
-                    Spacer()
-                }
-                .padding(.horizontal, 16)
-                .onAppear {
-                    viewModel.getUser()
-                    categoriesModel.getCategories()
-                    categoriesModel.getUserCategories()
-                }
-            }
-            .background(.bg, ignoresSafeAreaEdges: .all)
-        }
+		if networkManager.isDisconnected {
+			NoInternetView()
+		} else {
+			ScrollView(showsIndicators: false) {
+				VStack(alignment: .leading, spacing: 20) {
+					nameField
+					surnameField
+					lastNameField
+					emailField
+					telegramField
+					categoriesSection
+					saveButton
+					Spacer()
+					Spacer()
+				}
+				.padding(.horizontal, 16)
+				.onAppear {
+					viewModel.getUser()
+					categoriesModel.getCategories()
+					categoriesModel.getUserCategories()
+				}
+			}
+			.background(.bg, ignoresSafeAreaEdges: .all)
+		}
 	}
 
 	private var nameField: some View {
@@ -191,9 +191,4 @@ struct ProfileDetailView: View {
 
 		}
 	}
-}
-
-#Preview {
-	ProfileDetailView(userService: UserService(), categoriesService: CategoriesService())
-		.environmentObject(NetworkManager())
 }

@@ -27,15 +27,18 @@ final class SignInViewModel: ObservableObject {
 	/// Инициализатор
 	/// - Parameters:
 	///   - signInService: сервис входа
-	init(signInService: SignInServiceProtocol, authProvider: AuthenticationProviderProtocol) {
+	init(
+		signInService: SignInServiceProtocol,
+		authProvider: AuthenticationProviderProtocol
+	) {
 		self.signInService = signInService
 		self.authProvider = authProvider
 	}
 	
 	// MARK: - Public Functions
-	
+
 	/// Отправляет запрос на вход
-	func signIn() {
+	func signIn(coordinator: AppCoordinator) {
 		guard !email.isEmpty, !password.isEmpty else {
 			loginAttempts += 1
 			return
@@ -54,6 +57,7 @@ final class SignInViewModel: ObservableObject {
 				KeychainManager.shared.set(password, key: KeychainKeys.userPassword)
 				loadingState = .loaded
 				authProvider.authenticate()
+				coordinator.flow = .main
 			} catch {
 				loginAttempts += 1
 				loadingState = .failure

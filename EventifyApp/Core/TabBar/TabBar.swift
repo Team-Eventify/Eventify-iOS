@@ -9,21 +9,20 @@ import SwiftUI
 
 /// Вью Таб-бара
 struct TabBarView: View {
-	// MARK: - Private Properties
-	@StateObject private var vm: MainViewModel
-	@StateObject private var searchVM: SearchViewModel
-	@ObservedObject var coordinator: MainTabCoordinator
+	@StateObject private var homeVM: HomeViewModel
+	@EnvironmentObject private var coordinator: AppCoordinator
 	
-	init(eventsService: EventsServiceProtocol, coordinator: MainTabCoordinator) {
-		_coordinator = ObservedObject(wrappedValue: coordinator)
-		_vm = StateObject(wrappedValue: MainViewModel(eventsService: eventsService))
-		_searchVM = StateObject(wrappedValue: SearchViewModel())
+	// MARK: - Initialization
+	
+	init(eventsService: EventsServiceProtocol) {
+		_homeVM = StateObject(wrappedValue: HomeViewModel(eventsService: eventsService))
 	}
-	
+
 	// MARK: - Body
 	
 	var body: some View {
 		tabbarContent
+			.environmentObject(homeVM)
 			.navigationBarBackButtonHidden()
 	}
 }
@@ -32,10 +31,8 @@ private extension TabBarView {
 	/// Содержимое таб-бара
 	var tabbarContent: some View {
 		VStack(spacing: 0) {
-			TabbarScreens(contentMode: $coordinator.selectedTab, mainTabCoordinator: coordinator)
+			coordinator.viewForSelectedTab()
 				.frame(maxWidth: .infinity, maxHeight: .infinity)
-				.environmentObject(vm)
-				.environmentObject(searchVM)
 
 			buttons
 				.padding(.horizontal, 20)
@@ -52,7 +49,7 @@ private extension TabBarView {
 	var buttons: some View {
 		HStack {
 			ForEach(Tab.allCases, id: \.self) { item in
-				TabButton(item: item, selectedTab: $coordinator.selectedTab)
+				TabButton(item: item)
 			}
 		}
 	}

@@ -11,7 +11,12 @@ import SwiftUI
 struct ProfileView: View {
 	// MARK: - Private Properties
 
-	@EnvironmentObject private var viewModel: ProfileViewModel
+	@StateObject private var viewModel: ProfileViewModel
+	@EnvironmentObject private var coordinator: AppCoordinator
+	
+	init(viewModel: ProfileViewModel) {
+		_viewModel = StateObject(wrappedValue: viewModel)
+	}
 
 	// MARK: - Body
 
@@ -94,13 +99,13 @@ struct ProfileView: View {
 
 	private func makeActionForAccountSection(_ item: ProfileSectionItem) {
 		if case .logout = item {
-			Constants.isLogin = false
 			UserDefaultsManager.shared.clearAllUserData()
-			KeychainManager.shared.clearAll()
+			coordinator.flow = .auth
+			coordinator.selectedTab = .main
 			Logger.log(level: .info, "🚪 Exit from account")
 		} else {
-			Constants.isLogin = false
 			UserDefaultsManager.shared.clearAllUserData()
+			KeychainManager.shared.clearAll()
 			Logger.log(level: .info, "🪓 delete account")
 		}
 	}
@@ -133,9 +138,4 @@ struct ProfileView: View {
 			)
 		)
 	}
-}
-
-#Preview {
-	ProfileView()
-		.environmentObject(ProfileViewModel(userService: UserService()))
 }

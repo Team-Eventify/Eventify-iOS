@@ -17,7 +17,9 @@ final class SignUpViewModel: ObservableObject {
 	@Published var validationRules: [ValidationRule] = []
 	@Published var showAlert = false
 	@Published var isEmailValid: Bool = false
-	
+
+	private var isLogin: Bool = false
+
 	var isButtonDisabled: Bool {
 		!isEmailValid || validationRules.contains(where: { !$0.isValid })
 		|| password != confirmPassword || email.isEmpty
@@ -73,7 +75,7 @@ final class SignUpViewModel: ObservableObject {
 		setupBindings()
 	}
 
-	func signUp() {
+	func signUp(coordinator: AppCoordinator) {
 		guard !email.isEmpty, !password.isEmpty, password == confirmPassword
 		else {
 			loginAttempts += 1
@@ -96,8 +98,11 @@ final class SignUpViewModel: ObservableObject {
 				KeychainManager.shared.set(
 					password, key: KeychainKeys.userPassword)
 				loadingState = .loaded
-
-				authProvider.authenticate()
+				isLogin = true
+				let categoriesService = CategoriesService()
+				let authProvider = AuthenticationProvider()
+				let viewModel = CategoriesViewModel(categoriesService: categoriesService, authProvider: authProvider)
+				coordinator.push(.setCategories(viewModel))
 			} catch {
 				loginAttempts += 1
 				loadingState = .failure

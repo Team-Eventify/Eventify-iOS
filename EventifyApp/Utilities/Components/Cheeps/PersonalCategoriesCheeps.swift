@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PersonalCategoriesCheeps: View {
-	@ObservedObject var viewModel: PersonalCategoriesViewModel
+	@ObservedObject var viewModel: CategoriesViewModel
     let category: Categories
     
     private var selectionColor: Color {

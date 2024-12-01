@@ -23,7 +23,10 @@ final class CategoriesService: Request, CategoriesServiceProtocol {
     }
     
     func setUserCategories(id: String, categoriesIds: [String]) async throws -> SetUserCategoriesModel {
-        return try await sendRequest(endpoint: CategoriesEndpoint.setUserCategories(id: id, categoriesIds: categoriesIds ), responseModel: SetUserCategoriesModel.self)
+		return try await sendRequest(
+			endpoint: CategoriesEndpoint.setUserCategories(id: id, categoriesIds: categoriesIds),
+			responseModel: SetUserCategoriesModel.self
+		)
     }
 }
 

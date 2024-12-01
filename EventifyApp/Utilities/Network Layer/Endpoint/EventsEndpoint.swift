@@ -30,7 +30,7 @@ enum EventsEndpoint: Endpoint {
         }
     }
     
-    var header: [String : String]? { return nil }
+    var header: [String: String]? { return nil }
     
     var addAuthorizationToken: Bool { return true } 
     

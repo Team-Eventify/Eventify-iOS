@@ -5,79 +5,78 @@
 //  Created by Захар Литвинчук on 16.06.2024.
 //
 
-import SUINavigation
+import PopupView
 import SwiftUI
 
 /// Вью экрана Сброса Пароля
 struct ForgotPasswordView: View {
-    // MARK: - Private Properties
-    @StateObject private var viewModel: ForgotPasswordViewModel
+	// MARK: - Private Properties
+	@EnvironmentObject private var networkManager: NetworkManager
 
-    @Environment(\.dismiss)
-    var dismiss
+	@StateObject private var viewModel: ForgotPasswordViewModel
 
-    // MARK: - Initialization
+	@Environment(\.dismiss)
+	var dismiss
 
-    /// Инициализатор
-    /// - Parameter viewModel: модель экрана сброса пароля
-    init(viewModel: ForgotPasswordViewModel? = nil) {
-        _viewModel = StateObject(
-            wrappedValue: viewModel ?? ForgotPasswordViewModel()
-        )
-    }
+	// MARK: - Initialization
 
-    // MARK: - Body
+	init(viewModel: ForgotPasswordViewModel) {
+		_viewModel = .init(wrappedValue: viewModel)
+	}
 
-    var body: some View {
-        VStack(spacing: 40) {
-            Spacer()
-            forgotPasswordContainerView
-            restoreButtonContainerView
-            Spacer()
-            Spacer()
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.horizontal, 16)
-        .background(.bg, ignoresSafeAreaEdges: .all)
-    }
+	// MARK: - Body
 
-    /// Контейнер для содержимого экрана сброса пароля
-    private var forgotPasswordContainerView: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("forgot_password_title")
-                .font(.semiboldCompact(size: 40))
-                .foregroundStyle(Color.mainText)
-
-            Text("forgot_password_description")
-            .font(.regularCompact(size: 17))
-            .foregroundStyle(Color.secondaryText)
-            .frame(width: 400)
-        }
-    }
-
-    /// Контейнер для поля ввода email и кнопки отправки
-    private var restoreButtonContainerView: some View {
-        VStack(spacing: 40) {
-            EventifyTextField(text: $viewModel.email, placeholder: NSLocalizedString("email_placeholder", comment: "Email"), hasError: false)
-            .changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
-
-            EventifyButton(
-                configuration: .forgotPassword, isLoading: false, isDisabled: false
-            ) {
-                Task {
-                    do {
-                        try await viewModel.resetPassword()
-                    } catch {
-                        Log.error(error.localizedDescription)
-                    }
-                }
+	var body: some View {
+        if networkManager.isDisconnected {
+            NoInternetView()
+        } else {
+            VStack(spacing: 40) {
+                Spacer()
+                forgotPasswordContainerView
+                restoreButtonContainerView
+                Spacer()
+                Spacer()
             }
+            .padding(.horizontal, 16)
+            .background(.bg, ignoresSafeAreaEdges: .all)
         }
-    }
-}
+	}
 
-#Preview {
-    NavigationViewStorage {
-        ForgotPasswordView()
-    }
+	/// Контейнер для содержимого экрана сброса пароля
+	private var forgotPasswordContainerView: some View {
+		VStack(alignment: .leading, spacing: 12) {
+			Text("forgot_password_title")
+				.font(.semiboldCompact(size: 40))
+				.foregroundStyle(Color.mainText)
+
+			Text("forgot_password_description")
+				.font(.regularCompact(size: 17))
+				.foregroundStyle(Color.secondaryText)
+		}
+	}
+
+	/// Контейнер для поля ввода email и кнопки отправки
+	private var restoreButtonContainerView: some View {
+		VStack(spacing: 40) {
+			EventifyTextField(
+				text: $viewModel.email,
+				placeholder: String(localized: "email_placeholder"),
+				hasError: false
+			)
+			.changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
+
+			EventifyButton(
+				configuration: .forgotPassword, isLoading: false,
+				isDisabled: false
+			) {
+				Task {
+					do {
+						try await viewModel.resetPassword()
+					} catch {
+						Logger.log(level: .error(error), "")
+					}
+				}
+			}
+		}
+	}
 }

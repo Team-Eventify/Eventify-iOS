@@ -7,7 +7,6 @@ opt_in_rules:
   - operator_usage_whitespace
   - force_unwrapping
   - array_init
-  - attributes
   - closure_end_indentation
   - closure_spacing
   - collection_alignment
@@ -41,12 +40,17 @@ opt_in_rules:
   - xct_specific_matcher
   - yoda_condition
 disabled_rules:
+  - identifier_name
+  - redundant_optional_initialization
+  - multiple_closures_with_trailing_closure
+  - switch_case_alignment
+  - attributes
+  - large_tuple
   - empty_count
   - redundant_discardable_let
   - nesting
   - block_based_kvo
   - trailing_whitespace
-  - identifier_name
   - function_parameter_count
   - closure_parameter_position
   - empty_enum_arguments
@@ -60,16 +64,6 @@ disabled_rules:
   - trailing_comma
 cyclomatic_complexity:
   ignores_case_statements: true
-identifier_name:
-  min_length: 3
-  max_length:
-    warning: 50
-    error: 70
-  excluded:
-    - id
-    - min
-    - max
-    - key
 number_separator:
   minimum_length: 5
 function_body_length:

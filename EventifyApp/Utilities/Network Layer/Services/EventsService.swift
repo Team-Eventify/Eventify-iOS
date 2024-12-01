@@ -12,7 +12,7 @@ protocol EventsServiceProtocol {
     /// Создание мероприятия
     /// - Parameter json: json-данные нового мероприятия
     /// - Returns: модель ответа мероприятия
-    func newEvent(json: JSON) async throws -> EventsResponse
+    func newEvent(json: JSON) async throws -> NewEventResponse
     
     /// Получение списка мероприятий
     /// - Returns: Массив ивентов
@@ -20,8 +20,8 @@ protocol EventsServiceProtocol {
 }
 
 final class EventsService: Request, EventsServiceProtocol {
-    func newEvent(json: JSON) async throws -> EventsResponse {
-        return try await sendRequest(endpoint: EventsEndpoint.newEvent(json: json), responseModel: EventsResponse.self)
+    func newEvent(json: JSON) async throws -> NewEventResponse {
+        return try await sendRequest(endpoint: EventsEndpoint.newEvent(json: json), responseModel: NewEventResponse.self)
     }
     
     func listEvents() async throws -> EventsListResponse {
@@ -29,6 +29,14 @@ final class EventsService: Request, EventsServiceProtocol {
     }
 }
 
+struct NewEventResponse: Decodable {
+	let id, state, title, description: String
+	let start, end: Int
+	let capacity: Int
+	let ownerID: String
+	let moderated: Bool
+	let CreatedAt, ModifiedAt: Int
+}
 
 struct EventsResponse: Decodable {
     let id, state, title, description: String
@@ -72,7 +80,6 @@ struct Subscriber: Decodable {
 typealias Subscribers = [Subscriber]
 
 typealias CategoriesArray = [Categories]
-
 
 // MARK: - EventsListResponseElement
 struct EventsListResponseElement: Codable {

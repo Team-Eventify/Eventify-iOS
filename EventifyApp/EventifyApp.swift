@@ -6,19 +6,18 @@
 //
 
 import SwiftUI
-import TelemetryDeck
 
 @main
 struct EventifyApp: App {
-    init() {
-        let config = TelemetryDeck.Config(appID: "0A2CAECB-DB4D-4493-849B-CC097DF06552")
-        TelemetryDeck.initialize(config: config)
-        TelemetryDeck.signal("App.launched")
-    }
+	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+	@StateObject private var networkManager = NetworkManager()
+	@StateObject private var appCoordinator = AppCoordinator()
 
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+	var body: some Scene {
+		WindowGroup {
+			ContentView()
+				.environmentObject(networkManager)
+				.environmentObject(appCoordinator)
+		}
+	}
 }

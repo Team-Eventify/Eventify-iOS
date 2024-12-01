@@ -5,44 +5,39 @@
 //  Created by Захар Литвинчук on 03.07.2024.
 //
 
+import PopupView
 import SwiftUI
 
 /// Вью экрана Поиска
 struct SearchView: View {
 	// MARK: - Private Properties
 
-	@StateObject private var viewModel = SearchViewModel()
-    private let categoriesService = CategoriesService()
+	@StateObject private var viewModel: SearchViewModel
+
+	init(viewModel: SearchViewModel) {
+		_viewModel = StateObject(wrappedValue: viewModel)
+	}
 
 	// MARK: - Body
 
 	var body: some View {
-			VStack {
-				ScrollView(showsIndicators: false) {
-                    let displayedResults = viewModel.isSearching ? viewModel.filteredResults : viewModel.searchData()
-                    ForEach(displayedResults) {
-						EventifyCategories(text: $0.title, image: $0.image, color: $0.color)
-					}
+		VStack {
+			ScrollView(showsIndicators: false) {
+				let displayedResults =
+					viewModel.isSearching
+					? viewModel.filteredResults : viewModel.searchData()
+				ForEach(displayedResults) {
+					EventifyCategories(configuration: $0.asDomain())
 				}
 			}
-            .onAppear {
-                Task { @MainActor in
-                    let response = try await categoriesService.getCategories()
-                    Log.info("\(response)")
-                }
-            }
-            .navigationTitle(NSLocalizedString("tab_search", comment: "Поиск"))
-			.navigationBarTitleDisplayMode(.large)
-			.padding(.horizontal, 16)
-            .searchable(
-                text: $viewModel.searchText,
-                placement: .navigationBarDrawer(displayMode: .always)
-            )
-			.frame(maxWidth: .infinity, maxHeight: .infinity)
-			.background(.bg, ignoresSafeAreaEdges: .all)
+		}
+		.navigationTitle(String(localized: "tab_search"))
+		.navigationBarTitleDisplayMode(.large)
+		.padding(.horizontal, 16)
+		.searchable(
+			text: $viewModel.searchText,
+			placement: .navigationBarDrawer(displayMode: .always)
+		)
+		.background(.bg, ignoresSafeAreaEdges: .all)
 	}
-}
-
-#Preview {
-	TabBarView()
 }

@@ -9,14 +9,20 @@ import SwiftUI
 
 /// Вью Таб-бара
 struct TabBarView: View {
-	// MARK: - Private Properties
-
-	@State private var selectedTab: Tab = .main
+	@StateObject private var homeVM: HomeViewModel
+	@EnvironmentObject private var coordinator: AppCoordinator
+	
+	// MARK: - Initialization
+	
+	init(eventsService: EventsServiceProtocol) {
+		_homeVM = StateObject(wrappedValue: HomeViewModel(eventsService: eventsService))
+	}
 
 	// MARK: - Body
-
+	
 	var body: some View {
 		tabbarContent
+			.environmentObject(homeVM)
 			.navigationBarBackButtonHidden()
 	}
 }
@@ -25,16 +31,15 @@ private extension TabBarView {
 	/// Содержимое таб-бара
 	var tabbarContent: some View {
 		VStack(spacing: 0) {
-            TabbarScreens(contentMode: $selectedTab)
+			coordinator.viewForSelectedTab()
 				.frame(maxWidth: .infinity, maxHeight: .infinity)
-			HStack {
-				buttons
-			}
-			.padding(.horizontal, 20)
-			.padding(.top, 7)
-			.frame(height: 83, alignment: .top)
-			.cornerRadius(10, corners: [.topLeft, .topRight])
-			.shadow(color: .white.opacity(0.15), radius: 1, x: 0, y: -0.33)
+
+			buttons
+				.padding(.horizontal, 20)
+				.padding(.top, 7)
+				.frame(height: 83, alignment: .top)
+				.cornerRadius(10, corners: [.topLeft, .topRight])
+				.shadow(color: .white.opacity(0.15), radius: 1, x: 0, y: -0.33)
 		}
 		.ignoresSafeArea(edges: .bottom)
 		.background(Color.tabbarBg)
@@ -42,12 +47,10 @@ private extension TabBarView {
 
 	/// Кнопки для всех вкладок
 	var buttons: some View {
-		ForEach(Tab.allCases, id: \.self) { item in
-			TabButton(item: item, selectedTab: $selectedTab)
+		HStack {
+			ForEach(Tab.allCases, id: \.self) { item in
+				TabButton(item: item)
+			}
 		}
-	} 
-}
-
-#Preview {
-	TabBarView()
+	}
 }

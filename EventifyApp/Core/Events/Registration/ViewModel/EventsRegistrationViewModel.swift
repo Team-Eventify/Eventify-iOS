@@ -8,21 +8,32 @@
 import SwiftUI
 
 final class EventsRegistrationViewModel: ObservableObject {
-    @Published var register: Bool
-    @Published var isRegistered: Bool = false
-    @Published var currentPage: Int = 0
-    @Published var name: String = "День ИКН"
-    @Published var eventImages: [String] = ["poster"]
-    @Published var cheepsTitles: [String] = [
-        "12 Cентября", "18:00", "Т-корпус",
-    ]
-    
-    @Published var description: String =
-    // swiftlint:disable line_length
-        "Дни открытых дверей — это уникальная возможность для старшеклассников больше узнать о специальностях, которым обучают в одном из лучших технических университетов России, научной деятельности под руководством учёных с мировым именем, образовательных проектах и карьерных возможностях, которые предлагает вуз, яркой студенческой жизни в Москве."
-    // swiftlint:enable line_length
-    
-    init(register: Bool) {
-        self.register = register
-    }
+	@Published var register: Bool
+	@Published var isRegistered: Bool = false
+	@Published var currentPage: Int = 0
+	@Published var name: String
+	@Published var eventImages: [String]
+	@Published var cheepsTitles: [String]
+	@Published var description: String
+	@Published var eventId: String?
+	
+	init(
+		register: Bool,
+		isRegistered: Bool,
+		currentPage: Int,
+		name: String,
+		eventImages: [String],
+		cheepsTitles: [String],
+		description: String,
+		eventId: String? = nil
+	) {
+		self.register = register
+		self.isRegistered = isRegistered
+		self.currentPage = currentPage
+		self.name = name
+		self.eventImages = eventImages
+		self.cheepsTitles = cheepsTitles
+		self.description = description
+		self.eventId = eventId
+	}
 }

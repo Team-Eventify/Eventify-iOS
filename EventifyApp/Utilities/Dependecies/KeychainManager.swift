@@ -8,10 +8,11 @@
 import SwiftUI
 
 final class KeychainManager {
-    static let shared = KeychainManager()
+	static let shared = KeychainManager()
 
     private init() {}
 
+	@discardableResult
     func set(_ value: String, key: String) -> Bool {
         let data = value.data(using: .utf8)
 
@@ -40,8 +41,7 @@ final class KeychainManager {
 
         if status == errSecSuccess {
             if let data = dataTypeRef as? Data,
-                let result = String(data: data, encoding: .utf8)
-            {
+                let result = String(data: data, encoding: .utf8) {
                 return result
             }
         }
@@ -49,6 +49,7 @@ final class KeychainManager {
         return nil
     }
 
+    @discardableResult
     func clearAll() -> Bool {
         let secItemClasses = [
             kSecClassGenericPassword,
@@ -65,9 +66,7 @@ final class KeychainManager {
             let status = SecItemDelete(query as CFDictionary)
 
             if status != errSecSuccess && status != errSecItemNotFound {
-                print(
-                    "Ошибка при очистке Keychain для класса \(secItemClass): \(status)"
-                )
+                print("Ошибка при очистке Keychain для класса \(secItemClass): \(status)")
                 success = false
             }
         }

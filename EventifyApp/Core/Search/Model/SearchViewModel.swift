@@ -8,7 +8,6 @@
 import Combine
 import SwiftUI
 
-@MainActor
 final class SearchViewModel: ObservableObject {
 	// MARK: - Public Properties
 
@@ -22,6 +21,7 @@ final class SearchViewModel: ObservableObject {
 		!searchText.isEmpty
 	}
 
+	@MainActor
 	private func addSubscriber() {
 		$searchText
 			.debounce(for: 0.2, scheduler: DispatchQueue.main)

@@ -7,16 +7,23 @@
 
 import SwiftUI
 
-final class PersonalCategoriesViewModel: ObservableObject {
+final class CategoriesViewModel: ObservableObject {
 	@Published var selectedCategories: Set<String> = []
 	@Published var categories: [Categories] = []
 	@Published var isLoading: Bool = false
 
+	private let authProvider: AuthenticationProviderProtocol
 	private let categoriesService: CategoriesServiceProtocol
 	private let userId = KeychainManager.shared.get(key: KeychainKeys.userId)
 
-	init(categoriesService: CategoriesServiceProtocol) {
+	init(categoriesService: CategoriesServiceProtocol, authProvider: AuthenticationProviderProtocol) {
 		self.categoriesService = categoriesService
+		self.authProvider = authProvider
+	}
+	
+	func authenticate(coordinator: AppCoordinator) {
+		authProvider.authenticate()
+		coordinator.flow = .main
 	}
 
 	func getCategories() {
@@ -75,7 +82,7 @@ final class PersonalCategoriesViewModel: ObservableObject {
 	}
 }
 
-extension PersonalCategoriesViewModel {
+extension CategoriesViewModel {
 	private func convertResponseToCategories(
 		_ response: CategoriesResponseModel
 	) -> [Categories] {

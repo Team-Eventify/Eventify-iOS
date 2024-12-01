@@ -6,25 +6,10 @@
 //
 import SwiftUI
 
-/// Экраны вкладок
-struct TabbarScreens: View {
-	@Binding var contentMode: Tab
-	
-	@ViewBuilder
-	var body: some View {
-		switch contentMode {
-		case .main: MainView()
-		case .search: SearchView()
-		case .myEvents: MyEventsView()
-		case .profile: ProfileView()
-		}
-	}
-}
-
 /// Кнопка для переключения вкладок
 struct TabButton: View {
 	let item: Tab
-	@Binding var selectedTab: Tab
+	@EnvironmentObject private var coordinator: AppCoordinator
 	
 	var body: some View {
 		Button {
@@ -41,12 +26,12 @@ struct TabButton: View {
 			}
 			.frame(maxWidth: .infinity)
 		}
-		.foregroundColor(selectedTab == item ? Color.tabbatTint : Color.gray)
+		.foregroundColor(coordinator.selectedTab == item ? Color.tabbatTint : Color.gray)
 	}
 	
 	private func handleTabSelection() {
 		withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-			selectedTab = item
+			coordinator.selectTab(item)
 		}
 	}
 }

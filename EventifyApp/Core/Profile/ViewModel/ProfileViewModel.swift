@@ -9,8 +9,6 @@ import SwiftUI
 
 final class ProfileViewModel: ObservableObject {
 	// MARK: - Public Properties
-
-	@AppStorage("isLogin") var isLogin: Bool = false
 	@Published var name: String = ""
 	@Published var middleName: String = ""
 	@Published var showingDeleteAlert: Bool = false
@@ -56,6 +54,7 @@ final class ProfileViewModel: ObservableObject {
 		}
 	}
 
+	@MainActor
 	private func isFioNotEmpty() -> Bool {
 		guard let firstName = UserDefaultsManager.shared.getFirstName(),
 			let middleName = UserDefaultsManager.shared.getMiddleName()

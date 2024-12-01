@@ -11,67 +11,53 @@ import PopupView
 struct SignUpView: View {
 	@StateObject private var viewModel: SignUpViewModel
 	@EnvironmentObject private var networkManager: NetworkManager
-
-	init(signUpService: SignUpServiceProtocol) {
-		_viewModel = StateObject(
-			wrappedValue: SignUpViewModel(signUpService: signUpService))
+	@EnvironmentObject private var coordinator: AppCoordinator
+	
+	init(viewModel: SignUpViewModel) {
+		_viewModel = StateObject(wrappedValue: viewModel)
 	}
-
+	
 	var body: some View {
-        if networkManager.isDisconnected {
-            NoInternetView()
-        } else {
-            VStack(alignment: .leading, spacing: 60) {
-                Spacer()
-                registrationContentContainerView
-                registrationButtonContainerView
-                Spacer()
-                Spacer()
-            }
-            .foregroundStyle(Color.secondaryText)
-            .navigationBarBackButtonHidden(true)
-            .padding(.horizontal, 16)
-            .background(.bg, ignoresSafeAreaEdges: .all)
-            .edgesIgnoringSafeArea(.bottom)
-            .onTapGesture {
-                hideKeyboard()
-            }
-            .navigationDestination(
-                isPresented: $viewModel.navigateToLoginView,
-                destination: {
-                    SignInView(signInService: SignInService())
-                }
-            )
-            .navigationDestination(
-                isPresented: Binding(
-                    get: { viewModel.loadingState == .loaded },
-                    set: { _ in }
-                )
-            ) {
-                PersonalCategoriesView(categoriesService: CategoriesService())
-            }
-            .popup(
-                isPresented: Binding(
-                    get: { viewModel.loadingState == .failure }, set: { _ in })
-            ) {
-                EventifySnackBar(config: .failure)
-            } customize: {
-                $0
-                    .type(.floater(verticalPadding: 10, useSafeAreaInset: true))
-                    .disappearTo(.bottomSlide)
-                    .position(.bottom)
-                    .closeOnTap(true)
-                    .autohideIn(3)
-            }
-        }
+		if networkManager.isDisconnected {
+			NoInternetView()
+		} else {
+			VStack(alignment: .leading, spacing: 60) {
+				Spacer()
+				registrationContentContainerView
+				registrationButtonContainerView
+				Spacer()
+				Spacer()
+			}
+			.foregroundStyle(Color.secondaryText)
+			.navigationBarBackButtonHidden(true)
+			.padding(.horizontal, 16)
+			.background(.bg, ignoresSafeAreaEdges: .all)
+			.edgesIgnoringSafeArea(.bottom)
+			.onTapGesture {
+				hideKeyboard()
+			}
+			.popup(
+				isPresented: Binding(
+					get: { viewModel.loadingState == .failure }, set: { _ in })
+			) {
+				EventifySnackBar(config: .failure)
+			} customize: {
+				$0
+					.type(.floater(verticalPadding: 10, useSafeAreaInset: true))
+					.disappearTo(.bottomSlide)
+					.position(.bottom)
+					.closeOnTap(true)
+					.autohideIn(3)
+			}
+		}
 	}
-
+	
 	private var registrationContentContainerView: some View {
 		VStack(alignment: .leading, spacing: 12) {
 			Text("registration_title")
 				.font(.semiboldCompact(size: 40))
 				.foregroundStyle(Color.mainText)
-
+			
 			Text("registration_description")
 				.font(.regularCompact(size: 17))
 				.frame(width: 296)
@@ -79,7 +65,7 @@ struct SignUpView: View {
 			requirementsContainerView
 		}
 	}
-
+	
 	private var authTextFields: some View {
 		VStack(spacing: 8) {
 			EventifyTextField(
@@ -95,16 +81,16 @@ struct SignUpView: View {
 					Spacer()
 					Image(
 						systemName: viewModel.isEmailValid
-							? "checkmark.circle.fill" : "xmark.circle.fill"
+						? "checkmark.circle.fill" : "xmark.circle.fill"
 					)
 					.foregroundColor(
 						viewModel.isEmailValid ? .brandCyan : .error
 					)
 					.opacity(viewModel.email.isEmpty ? 0 : 1)
 				}
-				.padding(.trailing, 20)
+					.padding(.trailing, 20)
 			)
-
+			
 			EventifySecureField(
 				text: $viewModel.password,
 				isSecure: true,
@@ -112,7 +98,7 @@ struct SignUpView: View {
 			)
 			.changeEffect(.shake(rate: .fast), value: viewModel.loginAttempts)
 			.textContentType(.newPassword)
-
+			
 			EventifySecureField(
 				text: $viewModel.confirmPassword,
 				isSecure: true,
@@ -123,7 +109,7 @@ struct SignUpView: View {
 		}
 		.padding(.top, 40)
 	}
-
+	
 	private var requirementsContainerView: some View {
 		VStack(alignment: .leading, spacing: 4) {
 			ForEach(viewModel.validationRules.indices, id: \.self) { index in
@@ -131,7 +117,7 @@ struct SignUpView: View {
 			}
 		}
 	}
-
+	
 	private var registrationButtonContainerView: some View {
 		VStack(spacing: 20) {
 			EventifyButton(
@@ -139,18 +125,21 @@ struct SignUpView: View {
 				isLoading: viewModel.loadingState == .loading,
 				isDisabled: viewModel.isButtonDisabled
 			) {
-				viewModel.signUp()
+				viewModel.signUp(coordinator: coordinator)
 			}
 			haveAccountContainerView
 		}
 	}
-
+	
 	private var haveAccountContainerView: some View {
 		HStack(spacing: 12) {
 			Text("have_account_question")
 				.font(.regularCompact(size: 16))
 			Button {
-				viewModel.navigateToLoginView.toggle()
+				let signInService = SignInService()
+				let authProvider = AuthenticationProvider()
+				let viewModel = SignInViewModel(signInService: signInService, authProvider: authProvider)
+				coordinator.push(.login(viewModel))
 			} label: {
 				Text("login_title")
 					.underline()
@@ -160,9 +149,4 @@ struct SignUpView: View {
 		}
 		.frame(maxWidth: .infinity)
 	}
-}
-
-#Preview {
-	SignUpView(signUpService: SignUpService())
-		.environmentObject(NetworkManager())
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 /// Вью модель детального экрана профиля
+@MainActor
 final class ProfileDetailViewModel: ObservableObject {
 	// MARK: - Public Properties
 

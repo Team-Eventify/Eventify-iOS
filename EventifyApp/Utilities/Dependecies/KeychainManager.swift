@@ -8,7 +8,7 @@
 import SwiftUI
 
 final class KeychainManager {
-    static let shared = KeychainManager()
+	static let shared = KeychainManager()
 
     private init() {}
 

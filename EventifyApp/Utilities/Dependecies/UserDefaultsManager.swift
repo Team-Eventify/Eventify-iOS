@@ -9,7 +9,7 @@ import Foundation
 
 final class UserDefaultsManager {
 	/// Синглтон менеджера
-	static let shared = UserDefaultsManager()
+	@MainActor static let shared = UserDefaultsManager()
 
 	private let defaults = UserDefaults.standard
 

@@ -12,7 +12,11 @@ import SwiftUI
 struct SearchView: View {
 	// MARK: - Private Properties
 
-	@EnvironmentObject private var viewModel: SearchViewModel
+	@StateObject private var viewModel: SearchViewModel
+
+	init(viewModel: SearchViewModel) {
+		_viewModel = StateObject(wrappedValue: viewModel)
+	}
 
 	// MARK: - Body
 
@@ -36,9 +40,4 @@ struct SearchView: View {
 		)
 		.background(.bg, ignoresSafeAreaEdges: .all)
 	}
-}
-
-#Preview {
-	SearchView()
-		.environmentObject(SearchViewModel())
 }

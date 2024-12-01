@@ -8,7 +8,7 @@
 import Foundation
 
 /// Моковые данные для главного экрана
-struct MainMockData {
+struct HomeMockData {
 
 	/// Моковые данные категорий на основе интересов.
 	static let categoriesBasedOnInterests: [CategoriesModel] = [

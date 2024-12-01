@@ -14,7 +14,7 @@ struct EventifyRecommendationModel: Identifiable {
 	let id: String
 
 	/// Изображение ячейки
-	let image: String
+	let image: [String]
 
 	/// Заголовок события
 	let title: String
@@ -30,7 +30,7 @@ struct EventifyRecommendationModel: Identifiable {
 
 	init(
 		id: String,
-		image: String,
+		image: [String],
 		title: String,
 		description: String? = nil,
 		cheepsItems: [String],

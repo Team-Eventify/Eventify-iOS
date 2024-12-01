@@ -12,7 +12,7 @@ struct RecommendationEventConfiguration {
 	let id: String
 
 	/// Изображение для события.
-	let image: String
+	let image: [String]
 	/// Заголовок события.
 	let title: String
 	/// Описание события.
@@ -24,7 +24,7 @@ struct RecommendationEventConfiguration {
 
 	init(
 		id: String,
-		image: String,
+		image: [String],
 		title: String,
 		description: String? = nil,
 		cheepsItems: [String],

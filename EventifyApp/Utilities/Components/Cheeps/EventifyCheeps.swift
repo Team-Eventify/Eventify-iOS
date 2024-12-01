@@ -35,6 +35,7 @@ struct EventifyCheeps: View {
 						if style == .common {
 							Capsule()
 								.stroke(
+									style.titleColor,
 									style: .init(lineWidth: 1)
 								)
 						} else if style == .upcoming {

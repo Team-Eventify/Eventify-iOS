@@ -8,24 +8,21 @@
 import SwiftUI
 
 struct EventsRegistationView: View {
-	let title: String
-	let cheepsTitles: [String]
-	let eventImages: [String]
-	let description: String
-	var isRegistered: Bool
+	
+	let model: EventifyRecommendationModel
 
 	@State private var currentPage = 0
 	@State private var isDescriptionExpanded = false
 
 	var body: some View {
 		ScrollView(showsIndicators: false) {
-			VStack(alignment: .center, spacing: 16) {
+			VStack(alignment: .leading, spacing: 16) {
 				photoCarousel
 				detailsView
 				footerView
 			}
 		}
-		.navigationTitle(title)
+		.navigationTitle(model.title)
 		.padding(.horizontal, 16)
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(.bg, ignoresSafeAreaEdges: .all)
@@ -34,8 +31,8 @@ struct EventsRegistationView: View {
 	private var photoCarousel: some View {
 		VStack(spacing: 16) {
 			TabView(selection: $currentPage) {
-				ForEach(0..<eventImages.count, id: \.self) { index in
-					Image(eventImages[index])
+				ForEach(0..<model.image.count, id: \.self) { index in
+					Image(model.image[index])
 						.resizable()
 						.scaledToFill()
 						.tag(index)
@@ -45,14 +42,14 @@ struct EventsRegistationView: View {
 			.frame(height: 250)
 			.clipShape(RoundedRectangle(cornerRadius: 10))
 
-			PageControl(numberOfPages: eventImages.count, currentPage: $currentPage)
+			PageControl(numberOfPages: model.image.count, currentPage: $currentPage)
 		}
 	}
 
 	private var detailsView: some View {
 		VStack(alignment: .leading, spacing: 32) {
-			EventifyCheeps(items: cheepsTitles, style: .registation)
-			Text(description)
+			EventifyCheeps(items: model.cheepsItems, style: .registation)
+			Text(model.description ?? "")
 				.font(.regularCompact(size: 17))
 				.lineLimit(isDescriptionExpanded ? nil : 10)
 				.animation(.easeInOut, value: isDescriptionExpanded)
@@ -92,7 +89,7 @@ struct EventsRegistationView: View {
 			}
 
 			EventifyButton(
-				configuration: isRegistered ? .registration : .cancel,
+				configuration: /*model.isRegistered ? */.registration,
 				isLoading: false, isDisabled: false
 			) {
 				print("tapнул хомяка")
@@ -100,14 +97,4 @@ struct EventsRegistationView: View {
 			.padding(.top, 24)
 		}
 	}
-}
-
-#Preview {
-	EventsRegistationView(
-		title: "ИКН",
-		cheepsTitles: ["12 октября", "18:00", "Онлайн"],
-		eventImages: ["example"],
-		description: "",
-		isRegistered: false
-	)
 }

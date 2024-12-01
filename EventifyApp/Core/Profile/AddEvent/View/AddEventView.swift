@@ -15,23 +15,9 @@ struct AddEventView: View {
 	@Environment(\.dismiss) var dismiss
 
 	/// ViewModel для управления логикой вью
-	@StateObject private var viewModel: AddEventViewModel
-	@StateObject private var categoriesVM: CategoriesViewModel
-
-	init(
-		eventService: EventsServiceProtocol,
-		categoriesService: CategoriesServiceProtocol
-	) {
-		_viewModel = StateObject(
-			wrappedValue: AddEventViewModel(eventService: eventService)
-		)
-		_categoriesVM = StateObject(
-			wrappedValue: CategoriesViewModel(
-				categoriesService: categoriesService,
-				authProvider: AuthenticationProvider())
-		)
-	}
-
+	@StateObject private var viewModel = AddEventViewModel(eventService: EventsService())
+	@StateObject private var categoriesVM = CategoriesViewModel(categoriesService: CategoriesService())
+	
 	var body: some View {
         if networkManager.isDisconnected {
             NoInternetView()
@@ -218,6 +204,6 @@ struct AddEventView: View {
 }
 
 #Preview {
-	AddEventView(eventService: EventsService(), categoriesService: CategoriesService())
+	AddEventView()
 		.environmentObject(NetworkManager())
 }

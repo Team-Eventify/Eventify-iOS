@@ -37,18 +37,18 @@ enum ProfileSectionItem: Identifiable {
 		}
 	}
 
-	@ViewBuilder
-	var destination: some View {
+	var destination: AppCoordinator.Destination {
 		switch self {
 		case .addEvent:
-			AddEventView(eventService: EventsService(), categoriesService: CategoriesService())
+			return .addEvent
 		case .notifications:
-			NotificationUtilityView()
+			return .notifications
 		case .helpAndSupport, .aboutApp:
-			TestView()
+			return .empty
 		case .rateApp:
-			FeedbackView()
-		default: EmptyView()
+			return .feedback
+		default:
+			return .empty
 		}
 	}
 

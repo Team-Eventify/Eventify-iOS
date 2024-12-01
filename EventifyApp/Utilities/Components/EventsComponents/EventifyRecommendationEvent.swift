@@ -18,7 +18,7 @@ struct EventifyRecommendationEvent: View {
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: configuration.isFlexible ? 8 : 16) {
-			Image(configuration.image)
+			Image(configuration.image[0])
 				.resizable()
 				.aspectRatio(contentMode: .fill)
 				.frame(
@@ -74,17 +74,4 @@ struct EventifyRecommendationEvent: View {
 			}
 		}
 	}
-}
-
-#Preview {
-	EventifyRecommendationEvent(
-		configuration: RecommendationEventConfiguration(
-			id: "237eyfwuhj32ujedjk",
-			image: "recomm",
-			title: "День открытых дверей университета МИСИС",
-			cheepsItems: [],
-			size: .slim
-		)
-	)
-	.padding(.horizontal, 16)
 }

@@ -23,4 +23,7 @@ struct UpcomingEventsModel: Identifiable {
 	
 	/// Описание мероприятия
 	let description: String
+	
+	/// Зарегистрован на ивент
+	let isRegistered: Bool
 }

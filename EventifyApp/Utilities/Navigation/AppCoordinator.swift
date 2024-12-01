@@ -45,6 +45,7 @@ final class AppCoordinator: ObservableObject {
 	
 	init() {
 		observeAuth()
+		observeLogout()
 	}
 	
 	@ViewBuilder
@@ -60,7 +61,7 @@ final class AppCoordinator: ObservableObject {
 		case .main:
 			NavigationStack(path: mainPathBinding) {
 				let eventsService = EventsService()
-				TabBarView(eventsService: eventsService)
+				TabBarView(eventsService: eventsService).coordinatorDestination()
 			}
 		}
 	}
@@ -107,169 +108,15 @@ final class AppCoordinator: ObservableObject {
 		case auth
 		case main
 	}
-}
-
-extension AppCoordinator {
 	
-	/// A list of possible navigation destinations in alphabetical order.
-	enum Destination: Hashable {
-		case empty
-		case setCategories(CategoriesViewModel)
-		case login(SignInViewModel)
-		case forgotPassword(ForgotPasswordViewModel)
-		case home
-		case search(SearchViewModel)
-		case myEvents
-		case profile(ProfileViewModel)
-		
-		var id: String {
-			`case`.id
-		}
-		
-		static func == (lhs: Destination, rhs: Destination) -> Bool {
-			lhs.id == rhs.id
-		}
-
-		/// The method MUST have the same implementation as its counterpart in Coordinator.Case
-		func hash(into hasher: inout Hasher) {
-			hasher.combine(id)
-		}
-	}
-}
-
-extension View {
-	
-	func coordinatorDestination() -> some View {
-		navigationDestination(for: AppCoordinator.Destination.self) { screen in
-			switch screen {
-			case .empty:
-				EmptyView()
-			case .setCategories(let viewModel):
-				PersonalCategoriesView(viewModel: viewModel)
-			case .login(let viewModel):
-				SignInView(viewModel: viewModel)
-			case .forgotPassword(let viewModel):
-				ForgotPasswordView(viewModel: viewModel)
-			case .home:
-				HomeView()
-			case .search(let viewModel):
-				SearchView(viewModel: viewModel)
-			case .myEvents:
-				MyEventsView()
-			case .profile(let viewModel):
-				ProfileView(viewModel: viewModel)
-			}
-		}
-	}
-}
-
-extension AppCoordinator.Destination {
-	
-	var `case`: Case {
-		switch self {
-		case .empty:
-			return .empty
-		case .setCategories:
-			return .setCategories
-		case .login:
-			return .login
-		case .forgotPassword:
-			return .forgotPassword
-		case .home:
-			return .home
-		case .search:
-			return .search
-		case .myEvents:
-			return .myEvents
-		case .profile:
-			return .profile
-		}
-	}
-	
-	enum Case: Hashable {
-		case empty
-		case setCategories
-		case login
-		case forgotPassword
-		case home
-		case search
-		case myEvents
-		case profile
-
-		var id: String {
-			String(describing: self)
-		}
-		
-		static func == (lhs: Case, rhs: Case) -> Bool {
-			lhs.id == rhs.id
-		}
-		
-		/// The method MUST have the same implementation as its counterpart in Coordinator.Destination
-		func hash(into hasher: inout Hasher) {
-			hasher.combine(id)
-		}
-	}
-}
-
-extension AppCoordinator {
-
-	private var path: NavigationPath {
-		get {
-			switch flow {
-			case .auth:
-				return authPath
-			case .main:
-				return mainPath
-			}
-		}
-		set {
-			switch flow {
-			case .auth:
-				setAuthPath(newValue)
-			case .main:
-				setMainPath(newValue)
-			}
-		}
+	private func observeLogout() {
+		NotificationCenter.default.addObserver(self, selector: #selector(handleLogout), name: .logoutUser, object: nil)
 	}
 
-	/// Sets new screens onto the navigation stack inside the current story.
-	nonisolated func setDestinations(_ destinations: [AppCoordinator.Destination]) {
+	@objc private func handleLogout() {
 		DispatchQueue.main.async {
-			self.path = NavigationPath(destinations)
-		}
-	}
-
-	/// Pushes one screen onto the navigation stack inside the current story.
-	nonisolated func push(_ destination: AppCoordinator.Destination) {
-		DispatchQueue.main.async {
-			self.path.append(destination)
-		}
-	}
-
-	/// Removes all screens from the navigation stack inside the current story.
-	nonisolated func popToRoot() {
-		DispatchQueue.main.async {
-			self.path = NavigationPath()
-		}
-	}
-
-	/// Removes one screen from navigation stack inside the current story.
-	nonisolated func pop(_ count: Int = 1) {
-		DispatchQueue.main.async {
-			self.path.removeLast(count)
-		}
-	}
-
-	/// Pops screens until the specified screen is at the top of the navigation stack inside the current story.
-	/// Heavily relies on the fact that Coordinator.Case and Coordinator.Destination have the same hashable value.
-	nonisolated func pop(to destination: AppCoordinator.Destination.Case) {
-		DispatchQueue.main.async {
-			while !self.path.isEmpty {
-				self.path.removeLast()
-				if self.path.count == destination.hashValue {
-					break
-				}
-			}
+			self.flow = .auth
+			self.authProvider.logout()
 		}
 	}
 }

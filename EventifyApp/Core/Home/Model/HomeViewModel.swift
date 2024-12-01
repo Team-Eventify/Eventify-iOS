@@ -38,7 +38,7 @@ final class HomeViewModel: ObservableObject {
                     
                     return EventifyRecommendationModel(
                         id: eventsResponse.id,
-                        image: "example",
+                        image: ["example"],
                         title: eventsResponse.title,
                         description: eventsResponse.description,
                         cheepsItems: [

@@ -8,7 +8,7 @@
 import Foundation
 
 class Request {
-	private let maxTokenRefreshAttempts = 3
+	private let maxTokenRefreshAttempts = 5
 	private var unauthorizedAttempts = 0
 
 	func sendRequest<T: Decodable>(
@@ -100,7 +100,7 @@ class Request {
 			return try decodeResponse(data: data, responseModel: responseModel)
 		case 401:
 			unauthorizedAttempts += 1
-			if unauthorizedAttempts >= 3 {
+			if unauthorizedAttempts >= 5 {
 				NotificationCenter.default.post(name: .logoutUser, object: nil)
 				throw RequestError.maxUnauthorizedAttemptsReached
 			}

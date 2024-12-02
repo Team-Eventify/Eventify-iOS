@@ -13,12 +13,12 @@ protocol TokenServiceProtocol {
 
 final class TokenService: Request, TokenServiceProtocol {
     /// Синглтон
-    static let shared = TokenService()
+	static let shared = TokenService()
     
     func refreshTokens() async throws -> TokenResponse {
         let refreshToken =
             KeychainManager.shared.get(key: KeychainKeys.refreshToken) ?? ""
-        return try await sendRequest(
+		return try await sendRequest(
             endpoint: TokenEndpoint.refresh(
                 refreshToken: refreshToken
             ),

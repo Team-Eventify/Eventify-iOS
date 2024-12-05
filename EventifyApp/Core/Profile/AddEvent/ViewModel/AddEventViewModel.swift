@@ -17,19 +17,20 @@ final class AddEventViewModel: ObservableObject {
 	@Published var shouldDismiss: Bool = false
 	@Published var showPopUp: Bool = false
 	@Published var isError: Bool = false
+	@Published var isLoading: Bool = false
 	@Published var imageSelections: [PhotosPickerItem] = [] {
 		didSet {
 			setImages(from: imageSelections)
 		}
 	}
 
-	private let eventService: EventsServiceProtocol
+	private let eventService: EventServiceProtocol
 
 	// MARK: - Initialization
 
 	/// Инициализатор
 	/// - Parameter eventService: сервис для отправки ивентов на бэк
-	init(eventService: EventsServiceProtocol) {
+	init(eventService: EventServiceProtocol) {
 		self.eventService = eventService
 	}
 	
@@ -86,41 +87,30 @@ final class AddEventViewModel: ObservableObject {
 			return
 		}
 
-		// Time validation
-		guard endTime > startTime else {
-			await MainActor.run {
-				isError = true
-				// You might want to set a specific error message here
-				// For example: errorMessage = "End time must be after start time"
-			}
-
-			try? await Task.sleep(nanoseconds: 1_500_000_000)
-
-			await MainActor.run {
-				isError = false
-			}
-
-			return
-		}
-
 		let ownerID = KeychainManager.shared.get(key: KeychainKeys.userId)
 		
-		let json: JSON = [
-			"title": name,
-			"description": description,
-			"start": Int(startTime.timeIntervalSince1970),
-			"end": Int(endTime.timeIntervalSince1970),
-			"ownerID": ownerID ?? "no id",
-		]
+		let newEventRequset: NewEventRequest = .init(
+			title: name,
+			description: description,
+			start: Int(startTime.timeIntervalSince1970),
+			end: Int(endTime.timeIntervalSince1970),
+			ownerID: ownerID ?? "no id"
+		)
 
-		Task { @MainActor in
-			do {
-				let response = try await eventService.newEvent(json: json)
-				Logger.log(level: .info, "\(response)")
+		await MainActor.run {
+			isLoading = true
+		}
+
+		do {
+			let _ = try await eventService.newEvent(request: newEventRequset)
+			await MainActor.run {
+				isLoading = false
 				shouldDismiss = true
-			} catch {
+			}
+		} catch {
+			await MainActor.run {
+				isLoading = false
 				showPopUp = true
-				Logger.log(level: .error(error), "")
 			}
 		}
 	}

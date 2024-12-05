@@ -11,7 +11,7 @@ import SwiftUI
 /// Вью экрана Входа
 struct SignInView: View {
 	// MARK: - Private Properties
-	@EnvironmentObject private var networkManager: NetworkManager
+	@EnvironmentObject private var networkManager: NetworkConnection
 	@EnvironmentObject private var coordinator: AppCoordinator
 	@StateObject private var viewModel: SignInViewModel
 

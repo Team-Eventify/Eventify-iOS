@@ -54,14 +54,14 @@ final class AppCoordinator: ObservableObject {
 		case .auth:
 			NavigationStack(path: authPathBinding) {
 				let authProvider = AuthenticationProvider()
-				let signUpService = SignUpService()
-				let viewModel = SignUpViewModel(signUpService: signUpService, authProvider: authProvider)
+				let authService = AuthService()
+				let viewModel = SignUpViewModel(authService: authService, authProvider: authProvider)
 				SignUpView(viewModel: viewModel).coordinatorDestination()
 			}
 		case .main:
 			NavigationStack(path: mainPathBinding) {
-				let eventsService = EventsService()
-				TabBarView(eventsService: eventsService).coordinatorDestination()
+				let eventsService = EventService()
+				TabBarView(eventService: eventsService).coordinatorDestination()
 			}
 		}
 	}
@@ -76,7 +76,7 @@ final class AppCoordinator: ObservableObject {
 			 let viewModel = SearchViewModel()
 			 SearchView(viewModel: viewModel)
 		 case .profile:
-			 let userService = UserService()
+			 let userService = UsersService()
 			 let viewModel = ProfileViewModel(userService: userService)
 			 ProfileView(viewModel: viewModel)
 		 case .myEvents:
@@ -119,4 +119,8 @@ final class AppCoordinator: ObservableObject {
 			self.authProvider.logout()
 		}
 	}
+}
+
+extension Notification.Name {
+	static let logoutUser = Notification.Name("LogoutUser")
 }

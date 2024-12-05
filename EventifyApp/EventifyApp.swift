@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct EventifyApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-	@StateObject private var networkManager = NetworkManager()
+	@StateObject private var networkManager = NetworkConnection()
 	@StateObject private var appCoordinator = AppCoordinator()
 
 	var body: some Scene {

@@ -14,8 +14,8 @@ struct TabBarView: View {
 	
 	// MARK: - Initialization
 	
-	init(eventsService: EventsServiceProtocol) {
-		_homeVM = StateObject(wrappedValue: HomeViewModel(eventsService: eventsService))
+	init(eventService: EventServiceProtocol) {
+		_homeVM = StateObject(wrappedValue: HomeViewModel(eventService: eventService))
 	}
 
 	// MARK: - Body

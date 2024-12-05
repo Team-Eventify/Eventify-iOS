@@ -19,7 +19,7 @@ final class SignInViewModel: ObservableObject {
 	// MARK: - Private Properties
 	
 	/// Приватное свойство для сервиса входа
-	private let signInService: SignInServiceProtocol
+	private let authService: AuthServiceProtocol
 	private let authProvider: AuthenticationProviderProtocol
 	
 	// MARK: - Initialization
@@ -28,10 +28,10 @@ final class SignInViewModel: ObservableObject {
 	/// - Parameters:
 	///   - signInService: сервис входа
 	init(
-		signInService: SignInServiceProtocol,
+		authService: AuthServiceProtocol,
 		authProvider: AuthenticationProviderProtocol
 	) {
-		self.signInService = signInService
+		self.authService = authService
 		self.authProvider = authProvider
 	}
 	
@@ -45,25 +45,35 @@ final class SignInViewModel: ObservableObject {
 		}
 		
 		loadingState = .loading
-		let userData: JSON = ["email": email, "password": password]
+		let signInRequest: SignInRequest = .init(email: email, password: password)
 		
 		Task { @MainActor in
 			do {
-				let response = try await signInService.signIn(json: userData)
-				KeychainManager.shared.set(response.userID, key: KeychainKeys.userId)
-				KeychainManager.shared.set(response.accessToken, key: KeychainKeys.accessToken)
-				KeychainManager.shared.set(response.refreshToken, key: KeychainKeys.refreshToken)
-				KeychainManager.shared.set(email, key: KeychainKeys.userEmail)
-				KeychainManager.shared.set(password, key: KeychainKeys.userPassword)
+				let response = try await authService.signIn(request: signInRequest)
+				saveUserData(response: response)
 				loadingState = .loaded
 				authProvider.authenticate()
 				coordinator.flow = .main
 			} catch {
-				loginAttempts += 1
-				loadingState = .failure
-				try? await Task.sleep(nanoseconds: 2_000_000_000)
-				loadingState = .none
+				handleSignInError(error)
 			}
+		}
+	}
+	
+	private func saveUserData(response: AuthResponse   ) {
+		KeychainManager.shared.set(response.userID, key: KeychainKeys.userId)
+		KeychainManager.shared.set(response.accessToken, key: KeychainKeys.accessToken)
+		KeychainManager.shared.set(response.refreshToken, key: KeychainKeys.refreshToken)
+		KeychainManager.shared.set(email, key: KeychainKeys.userEmail)
+		KeychainManager.shared.set(password, key: KeychainKeys.userPassword)
+	}
+	
+	private func handleSignInError(_ error: Error) {
+		loginAttempts += 1
+		loadingState = .failure
+		Task { @MainActor in
+			try? await Task.sleep(nanoseconds: 2_000_000_000)
+			loadingState = .none
 		}
 	}
 }

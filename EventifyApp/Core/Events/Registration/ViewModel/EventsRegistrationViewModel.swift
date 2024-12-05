@@ -8,32 +8,22 @@
 import SwiftUI
 
 final class EventsRegistrationViewModel: ObservableObject {
-	@Published var register: Bool
-	@Published var isRegistered: Bool = false
-	@Published var currentPage: Int = 0
-	@Published var name: String
-	@Published var eventImages: [String]
-	@Published var cheepsTitles: [String]
-	@Published var description: String
-	@Published var eventId: String?
+	@Published var currentPage = 0
+	@Published var isDescriptionExpanded = false
+	
+	private let eventService: EventServiceProtocol
 	
 	init(
-		register: Bool,
-		isRegistered: Bool,
-		currentPage: Int,
-		name: String,
-		eventImages: [String],
-		cheepsTitles: [String],
-		description: String,
-		eventId: String? = nil
+		eventService: EventServiceProtocol
 	) {
-		self.register = register
-		self.isRegistered = isRegistered
-		self.currentPage = currentPage
-		self.name = name
-		self.eventImages = eventImages
-		self.cheepsTitles = cheepsTitles
-		self.description = description
-		self.eventId = eventId
+		self.eventService = eventService
+	}
+	
+	func subscribe(eventId: String) async {
+		do {
+			let _ = try await eventService.subscribeForEvent(eventId: eventId)
+		} catch {
+			Logger.log(level: .error(error), "Error while subscribing for event")
+		}
 	}
 }

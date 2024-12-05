@@ -20,9 +20,9 @@ final class ProfileDetailViewModel: ObservableObject {
 	@Published var isLoading: Bool = false
 	@Published var shouldDismiss: Bool = false
 
-	private let userService: UserServiceProtocol
+	private let userService: UsersServiceProtocol
 
-	init(userService: UserServiceProtocol) {
+	init(userService: UsersServiceProtocol) {
 		self.userService = userService
 		loadFromUserDefaults()
 	}
@@ -77,15 +77,18 @@ final class ProfileDetailViewModel: ObservableObject {
 			return
 		}
 		isLoading = true
-		let json: JSON = [
-			"firstName": name, "middleName": surname,
-			"lastName": lastName ?? "", "telegramName": telegram,
-		]
+
+		let userInfoRequest = PatchUserInfoRequest(
+			firstName: name,
+			middleName: surname,
+			lastName: lastName ?? "",
+			telegramName: telegram
+		)
 
 		Task { @MainActor in
 			do {
-				let _ = try await userService.patchUser(
-					id: userID ?? "No key", json: json)
+				let _ = try await userService.patchUserInfo(
+					id: userID ?? "No key", request: userInfoRequest)
 				shouldDismiss = true
 				saveToUserDefaults()
 			} catch {

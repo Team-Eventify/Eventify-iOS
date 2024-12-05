@@ -13,10 +13,10 @@ final class CategoriesViewModel: ObservableObject {
 	@Published var isLoading: Bool = false
 
 	private var authProvider: AuthenticationProviderProtocol?
-	private let categoriesService: CategoriesServiceProtocol
+	private let categoriesService: CategoryServiceProtocol
 	private let userId = KeychainManager.shared.get(key: KeychainKeys.userId)
 
-	init(categoriesService: CategoriesServiceProtocol) {
+	init(categoriesService: CategoryServiceProtocol) {
 		self.categoriesService = categoriesService
 	}
 	
@@ -92,3 +92,4 @@ extension CategoriesViewModel {
 		return response.map { Categories(id: $0.id, title: $0.title) }
 	}
 }
+ 

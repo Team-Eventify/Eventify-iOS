@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct EventsRegistationView: View {
-	
 	let model: EventifyRecommendationModel
 
-	@State private var currentPage = 0
-	@State private var isDescriptionExpanded = false
+	@StateObject private var viewModel: EventsRegistrationViewModel
+	@EnvironmentObject private var coordinator: AppCoordinator
 
+	init(model: EventifyRecommendationModel, eventService: EventServiceProtocol) {
+		self.model = model
+		_viewModel = StateObject(wrappedValue: EventsRegistrationViewModel(eventService: eventService))
+	}
+	
 	var body: some View {
 		ScrollView(showsIndicators: false) {
 			VStack(alignment: .leading, spacing: 16) {
@@ -30,7 +34,7 @@ struct EventsRegistationView: View {
 
 	private var photoCarousel: some View {
 		VStack(spacing: 16) {
-			TabView(selection: $currentPage) {
+			TabView(selection: $viewModel.currentPage) {
 				ForEach(0..<model.image.count, id: \.self) { index in
 					Image(model.image[index])
 						.resizable()
@@ -42,7 +46,7 @@ struct EventsRegistationView: View {
 			.frame(height: 250)
 			.clipShape(RoundedRectangle(cornerRadius: 10))
 
-			PageControl(numberOfPages: model.image.count, currentPage: $currentPage)
+			PageControl(numberOfPages: model.image.count, currentPage: $viewModel.currentPage)
 		}
 	}
 
@@ -51,8 +55,8 @@ struct EventsRegistationView: View {
 			EventifyCheeps(items: model.cheepsItems, style: .registation)
 			Text(model.description ?? "")
 				.font(.regularCompact(size: 17))
-				.lineLimit(isDescriptionExpanded ? nil : 10)
-				.animation(.easeInOut, value: isDescriptionExpanded)
+				.lineLimit(viewModel.isDescriptionExpanded ? nil : 10)
+				.animation(.easeInOut, value: viewModel.isDescriptionExpanded)
 		}
 	}
 
@@ -60,11 +64,11 @@ struct EventsRegistationView: View {
 		VStack(alignment: .leading, spacing: 0) {
 			Button {
 				withAnimation {
-					isDescriptionExpanded.toggle()
+					viewModel.isDescriptionExpanded.toggle()
 				}
 			} label: {
 				Text(
-					isDescriptionExpanded
+					viewModel.isDescriptionExpanded
 						? String(localized: "less_description_title") + "▲"
 						: String(localized: "full_description_title") + "▼"
 				)
@@ -92,7 +96,10 @@ struct EventsRegistationView: View {
 				configuration: /*model.isRegistered ? */.registration,
 				isLoading: false, isDisabled: false
 			) {
-				print("tapнул хомяка")
+				Task {
+					await viewModel.subscribe(eventId: model.id)
+					coordinator.pop()
+				}
 			}
 			.padding(.top, 24)
 		}

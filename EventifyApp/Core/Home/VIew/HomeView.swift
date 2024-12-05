@@ -14,7 +14,7 @@ struct HomeView: View {
 
 	@EnvironmentObject private var viewModel: HomeViewModel
 	@EnvironmentObject private var coordinator: AppCoordinator
-	@EnvironmentObject private var networkManager: NetworkManager
+	@EnvironmentObject private var networkManager: NetworkConnection
 
 	// MARK: - Body
 
@@ -58,7 +58,8 @@ struct HomeView: View {
 				LazyVStack(spacing: 30) {
 					ForEach(viewModel.events) { event in
 						Button {
-							coordinator.push(.eventsDetail(event))
+							let eventService = EventService()
+							coordinator.push(.eventsDetail(event, eventService))
 						} label: {
 							EventifyRecommendationEvent(
 								configuration: event.asDomain())

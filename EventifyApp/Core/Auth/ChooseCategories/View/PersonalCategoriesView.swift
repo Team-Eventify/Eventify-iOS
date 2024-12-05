@@ -11,7 +11,7 @@ import SwiftUI
 
 struct PersonalCategoriesView: View {
 	// MARK: - Private Properties
-	@EnvironmentObject private var networkManager: NetworkManager
+	@EnvironmentObject private var networkManager: NetworkConnection
 	@EnvironmentObject private var coordinator: AppCoordinator
 
 	/// ViewModel для управления логикой вью

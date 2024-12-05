@@ -11,7 +11,7 @@ import SwiftUI
 /// Вью экрана Сброса Пароля
 struct ForgotPasswordView: View {
 	// MARK: - Private Properties
-	@EnvironmentObject private var networkManager: NetworkManager
+	@EnvironmentObject private var networkManager: NetworkConnection
 
 	@StateObject private var viewModel: ForgotPasswordViewModel
 

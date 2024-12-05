@@ -43,7 +43,7 @@ class AppDelegate: NSObject, UIApplicationDelegate,
 	}
 
 	/// Обработка входящих уведомлений когда приложение открыто
-	func userNotificationCenter(
+	nonisolated func userNotificationCenter(
 		_ center: UNUserNotificationCenter,
 		willPresent notification: UNNotification,
 		withCompletionHandler completionHandler: @escaping (
@@ -54,7 +54,7 @@ class AppDelegate: NSObject, UIApplicationDelegate,
 	}
 
 	/// Получение FCM токена
-	func messaging(
+	nonisolated func messaging(
 		_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?
 	) {
 		Logger.log(

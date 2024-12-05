@@ -25,7 +25,7 @@ final class SignUpViewModel: ObservableObject {
 		|| password != confirmPassword || email.isEmpty
 	}
 	
-	private let signUpService: SignUpServiceProtocol
+	private let authService: AuthServiceProtocol
 	private var cancellables = Set<AnyCancellable>()
 	private let authProvider: AuthenticationProviderProtocol
 	
@@ -69,8 +69,8 @@ final class SignUpViewModel: ObservableObject {
 		),
 	]
 	
-	init(signUpService: SignUpServiceProtocol, authProvider: AuthenticationProviderProtocol) {
-		self.signUpService = signUpService
+	init(authService: AuthServiceProtocol, authProvider: AuthenticationProviderProtocol) {
+		self.authService = authService
 		self.authProvider = authProvider
 		setupBindings()
 	}
@@ -83,32 +83,18 @@ final class SignUpViewModel: ObservableObject {
 		}
 
 		loadingState = .loading
-		let userData: JSON = ["password": password, "email": email]
+		
+		let signUpRequest = SignUpRequest(email: email, password: password)
 		
 		Task { @MainActor in
 			do {
-				let response = try await signUpService.signUp(json: userData)
-				KeychainManager.shared.set(
-					response.userID, key: KeychainKeys.userId)
-				KeychainManager.shared.set(
-					response.accessToken, key: KeychainKeys.accessToken)
-				KeychainManager.shared.set(
-					response.refreshToken, key: KeychainKeys.refreshToken)
-				KeychainManager.shared.set(email, key: KeychainKeys.userEmail)
-				KeychainManager.shared.set(
-					password, key: KeychainKeys.userPassword)
+				let response = try await authService.signUp(request: signUpRequest)
+				saveUserData(response: response)
 				loadingState = .loaded
 				isLogin = true
-				let categoriesService = CategoriesService()
-				let authProvider = AuthenticationProvider()
-				let viewModel = CategoriesViewModel(categoriesService: categoriesService)
-				viewModel.initAuthProvider(authProvider: authProvider)
-				coordinator.push(.setCategories(viewModel))
+				navigateToCategoriesView(coordinator: coordinator)
 			} catch {
-				loginAttempts += 1
-				loadingState = .failure
-				try? await Task.sleep(nanoseconds: 2_000_000_000)
-				loadingState = .none
+				handleSignUpError(error)
 			}
 		}
 	}
@@ -156,5 +142,30 @@ final class SignUpViewModel: ObservableObject {
 		}
 		
 		return match.range == range && match.url?.scheme == "mailto"
+	}
+	
+	private func saveUserData(response: AuthResponse) {
+		KeychainManager.shared.set(response.userID, key: KeychainKeys.userId)
+		KeychainManager.shared.set(response.accessToken, key: KeychainKeys.accessToken)
+		KeychainManager.shared.set(response.refreshToken, key: KeychainKeys.refreshToken)
+		KeychainManager.shared.set(email, key: KeychainKeys.userEmail)
+		KeychainManager.shared.set(password, key: KeychainKeys.userPassword)
+	}
+
+	private func navigateToCategoriesView(coordinator: AppCoordinator) {
+		let categoryService = CategoryService()
+		let authProvider = AuthenticationProvider()
+		let viewModel = CategoriesViewModel(categoriesService: categoryService)
+		viewModel.initAuthProvider(authProvider: authProvider)
+		coordinator.push(.setCategories(viewModel))
+	}
+
+	private func handleSignUpError(_ error: Error) {
+		loginAttempts += 1
+		loadingState = .failure
+		Task { @MainActor in
+			try? await Task.sleep(nanoseconds: 2_000_000_000)
+			loadingState = .none
+		}
 	}
 }

@@ -10,7 +10,7 @@ import SwiftUI
 /// Вью, которое показывается в случае отсутствия
 /// соединения с интернетом
 struct NoInternetView: View {
-	@EnvironmentObject var networkConnection: NetworkManager
+	@EnvironmentObject var networkConnection: NetworkConnection
 	var body: some View {
 		VStack(spacing: 16) {
 			Spacer()
@@ -43,5 +43,5 @@ struct NoInternetView: View {
 
 #Preview {
     NoInternetView()
-		.environmentObject(NetworkManager())
+		.environmentObject(NetworkConnection())
 }

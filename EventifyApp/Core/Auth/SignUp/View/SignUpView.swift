@@ -10,7 +10,7 @@ import PopupView
 
 struct SignUpView: View {
 	@StateObject private var viewModel: SignUpViewModel
-	@EnvironmentObject private var networkManager: NetworkManager
+	@EnvironmentObject private var networkManager: NetworkConnection
 	@EnvironmentObject private var coordinator: AppCoordinator
 	
 	init(viewModel: SignUpViewModel) {
@@ -136,9 +136,9 @@ struct SignUpView: View {
 			Text("have_account_question")
 				.font(.regularCompact(size: 16))
 			Button {
-				let signInService = SignInService()
+				let authService = AuthService()
 				let authProvider = AuthenticationProvider()
-				let viewModel = SignInViewModel(signInService: signInService, authProvider: authProvider)
+				let viewModel = SignInViewModel(authService: authService, authProvider: authProvider)
 				coordinator.push(.login(viewModel))
 			} label: {
 				Text("login_title")

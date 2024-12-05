@@ -10,12 +10,12 @@ import SwiftUI
 /// Вью ячейки организаторов
 struct EventifyRecommendationEvent: View {
 	let configuration: RecommendationEventConfiguration
-
+	
 	/// Инициализирует `EventifyRecommendationEvent` с изображением, заголовком, описанием, элементами и размером.
 	init(configuration: RecommendationEventConfiguration) {
 		self.configuration = configuration
 	}
-
+	
 	var body: some View {
 		VStack(alignment: .leading, spacing: configuration.isFlexible ? 8 : 16) {
 			Image(configuration.image[0])
@@ -24,7 +24,7 @@ struct EventifyRecommendationEvent: View {
 				.frame(
 					width: configuration.size.width,
 					height: configuration.isFlexible
-						? 200 : (configuration.size.height ?? 0) / 2
+					? 200 : (configuration.size.height ?? 0) / 2
 				)
 				.clipped()
 			contentWithPadding
@@ -36,7 +36,7 @@ struct EventifyRecommendationEvent: View {
 		.background(configuration.isFlexible ? .bg : .cards)
 		.clipShape(.rect(cornerRadius: 10))
 	}
-
+	
 	private var contentWithPadding: some View {
 		VStack(alignment: .leading, spacing: configuration.isFlexible ? 8 : 16) {
 			Text(configuration.title)
@@ -52,7 +52,7 @@ struct EventifyRecommendationEvent: View {
 		}
 		.padding(.horizontal, configuration.isFlexible ? 2 : 16)
 	}
-
+	
 	@ViewBuilder
 	private var cheepsView: some View {
 		if configuration.isFlexible {
@@ -63,12 +63,14 @@ struct EventifyRecommendationEvent: View {
 				.padding(.horizontal, 16)
 		}
 	}
-
+	
 	@ViewBuilder
 	private var descriptionView: some View {
 		if let description = configuration.description {
 			VStack(alignment: .leading) {
 				Text(description)
+					.lineLimit(4)
+					.multilineTextAlignment(.leading)
 					.font(.regularCompact(size: 17))
 					.foregroundStyle(.mainText)
 			}

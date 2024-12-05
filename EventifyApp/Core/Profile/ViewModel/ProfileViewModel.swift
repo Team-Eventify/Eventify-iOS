@@ -15,9 +15,9 @@ final class ProfileViewModel: ObservableObject {
 	@Published var showingExitAlert: Bool = false
 	@Published var navigateToSignUp: Bool = false
 
-	private let userService: UserServiceProtocol
+	private let userService: UsersServiceProtocol
 
-	init(userService: UserServiceProtocol) {
+	init(userService: UsersServiceProtocol) {
 		self.userService = userService
 	}
 

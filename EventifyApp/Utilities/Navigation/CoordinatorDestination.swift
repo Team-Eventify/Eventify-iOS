@@ -35,8 +35,8 @@ extension View {
 				NotificationUtilityView()
 			case .feedback:
 				FeedbackView()
-			case .eventsDetail(let model):
-				EventsRegistationView(model: model)
+			case .eventsDetail(let model, let eventsService):
+				EventsRegistationView(model: model, eventService: eventsService)
 			}
 		}
 	}

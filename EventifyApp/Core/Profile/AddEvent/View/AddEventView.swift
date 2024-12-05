@@ -11,12 +11,12 @@ import PopupView
 import SwiftUI
 
 struct AddEventView: View {
-	@EnvironmentObject private var networkManager: NetworkManager
-	@Environment(\.dismiss) var dismiss
+	@EnvironmentObject private var coordinator: AppCoordinator
+	@EnvironmentObject private var networkManager: NetworkConnection
 
 	/// ViewModel для управления логикой вью
-	@StateObject private var viewModel = AddEventViewModel(eventService: EventsService())
-	@StateObject private var categoriesVM = CategoriesViewModel(categoriesService: CategoriesService())
+	@StateObject private var viewModel = AddEventViewModel(eventService: EventService())
+	@StateObject private var categoriesVM = CategoriesViewModel(categoriesService: CategoryService())
 	
 	var body: some View {
         if networkManager.isDisconnected {
@@ -197,7 +197,7 @@ struct AddEventView: View {
 		}
 		.onChange(of: viewModel.shouldDismiss) { newValue in
 			if newValue {
-				dismiss()
+				coordinator.pop()
 			}
 		}
 	}
@@ -205,5 +205,5 @@ struct AddEventView: View {
 
 #Preview {
 	AddEventView()
-		.environmentObject(NetworkManager())
+		.environmentObject(NetworkConnection())
 }

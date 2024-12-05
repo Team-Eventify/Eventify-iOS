@@ -23,7 +23,7 @@ extension AppCoordinator {
 		case addEvent
 		case notifications
 		case feedback
-		case eventsDetail(EventifyRecommendationModel)
+		case eventsDetail(EventifyRecommendationModel, EventServiceProtocol)
 		
 		var id: String {
 			`case`.id

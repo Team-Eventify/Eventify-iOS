@@ -10,7 +10,7 @@ import SwiftUI
 
 /// Вью экрана "Мои Ивенты"
 struct MyEventsView: View {
-	@EnvironmentObject private var networkManager: NetworkManager
+	@EnvironmentObject private var networkManager: NetworkConnection
 	@EnvironmentObject private var coordinator: AppCoordinator
 	
 	// MARK: - Body
@@ -71,7 +71,8 @@ private extension MyEventsView {
 			LazyVStack(spacing: 8) {
 				ForEach(MyEventsMockData.upcomingEventsData) { event in
 					Button {
-						coordinator.push(.eventsDetail(event))
+						let eventService = EventService()
+						coordinator.push(.eventsDetail(event, eventService))
 					} label: {
 						EventifyRegisteredCard(
 							title: event.title,
@@ -109,6 +110,6 @@ private extension MyEventsView {
 
 #Preview {
 	MyEventsView()
-		.environmentObject(NetworkManager())
+		.environmentObject(NetworkConnection())
 		.environmentObject(AppCoordinator())
 }

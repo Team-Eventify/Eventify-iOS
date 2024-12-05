@@ -13,10 +13,10 @@ final class HomeViewModel: ObservableObject {
     var isLoading: Bool = false
 
     /// Сервис управляющий евентами
-    private let eventsService: EventsServiceProtocol
+	private let eventService: EventServiceProtocol
 
-    init(eventsService: EventsServiceProtocol) {
-        self.eventsService = eventsService
+    init(eventService: EventServiceProtocol) {
+        self.eventService = eventService
         
         fetchEventsList()
     }
@@ -30,8 +30,8 @@ final class HomeViewModel: ObservableObject {
         Task { @MainActor in
             do {
                 isLoading = true
-                let response = try await eventsService.listEvents()
-                self.events = response.map { eventsResponse in
+                let response = try await eventService.listEvents()
+				self.events = response.map { eventsResponse in
                     let startDate = Date(timeIntervalSince1970: TimeInterval(eventsResponse.start))
                     let endDate = Date(timeIntervalSince1970: TimeInterval(eventsResponse.end))
                     let (formattedDate, formattedTime) = startDate.formatForEvent(endDate: endDate)

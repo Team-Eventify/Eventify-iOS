@@ -13,24 +13,13 @@ import SwiftUI
 /// Вью детального экрана профиля
 struct ProfileDetailView: View {
 	// MARK: - Private Properties
-	@StateObject private var viewModel = ProfileDetailViewModel(userService: UserService())
-	@StateObject private var categoriesModel = CategoriesViewModel(categoriesService: CategoriesService())
+	@StateObject private var viewModel = ProfileDetailViewModel(userService: UsersService())
+	@StateObject private var categoriesModel = CategoriesViewModel(categoriesService: CategoryService())
 	
 	@EnvironmentObject private var coordinator: AppCoordinator
-	@EnvironmentObject private var networkManager: NetworkManager
+	@EnvironmentObject private var networkManager: NetworkConnection
 
 	@State private var animation: Bool = true
-
-
-	// MARK: - Initialization
-//	init() {
-//		_viewModel = StateObject(
-//			wrappedValue: ProfileDetailViewModel(userService: UserService())
-//		)
-//		_categoriesModel = StateObject(
-//			wrappedValue: CategoriesViewModel(categoriesService: CategoriesService())
-//		)
-//	}
 
 	// MARK: - Body
 

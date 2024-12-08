@@ -18,9 +18,11 @@ struct HomeView: View {
 
 	// MARK: - Body
 
-	var body: some View {
+    var body: some View {
         if networkManager.isDisconnected {
             NoInternetView()
+        } else if viewModel.events.isEmpty {
+            noUpcomingEvents
         } else {
             ScrollView {
                 popularEventsSection
@@ -30,12 +32,42 @@ struct HomeView: View {
             .navigationTitle(String(localized: "tab_main"))
             .navigationBarTitleDisplayMode(.large)
             .background(.bg, ignoresSafeAreaEdges: .all)
-			.refreshable {
-				viewModel.fetchEventsList()
-			}
+            .refreshable {
+                viewModel.fetchEventsList()
+            }
         }
-	}
+    }
 
+    private var noUpcomingEvents: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "clock.fill")
+                .foregroundStyle(.secondaryText)
+                .font(.system(size: 52))
+                .padding(8)
+                .background(
+                    RoundedRectangle(cornerRadius: 22)
+                        .stroke(Color.secondaryText, lineWidth: 2)
+                )
+            Text("no_upcoming_events_message")
+                .font(.semiboldCompact(size: 20))
+            Text("no_events_scheduled_message")
+                .font(.mediumCompact(size: 16))
+                .foregroundStyle(.secondaryText)
+                .multilineTextAlignment(.center)
+            Button {
+                viewModel.fetchEventsList()
+            } label: {
+                Text("refresh_title")
+                    .font(.mediumCompact(size: 17))
+                    .foregroundStyle(.black)
+                    .padding(.vertical, 11)
+                    .padding(.horizontal, 16)
+                    .background(.brandCyan)
+                    .clipShape(.capsule)
+            }
+        }
+    }
+    
 	private var popularEventsSection: some View {
 		VStack(alignment: .leading) {
 			Text("popular_events_title")

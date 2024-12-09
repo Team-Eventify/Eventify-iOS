@@ -965,6 +965,22 @@
         }
       }
     },
+    "no_events_scheduled_message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Currently, there are no scheduled events.\nPlease check back later!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сейчас нет запланированных мероприятий.\nЗагляните позже!"
+          }
+        }
+      }
+    },
     "no_internet_description" : {
       "localizations" : {
         "en" : {
@@ -1299,6 +1315,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Рекомендации"
+          }
+        }
+      }
+    },
+    "refresh_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновить"
           }
         }
       }

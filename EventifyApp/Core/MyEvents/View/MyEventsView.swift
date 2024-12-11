@@ -10,9 +10,10 @@ import SwiftUI
 
 /// Вью экрана "Мои Ивенты"
 struct MyEventsView: View {
+	@EnvironmentObject private var viewModel: MyEventsViewModel
 	@EnvironmentObject private var networkManager: NetworkConnection
 	@EnvironmentObject private var coordinator: AppCoordinator
-	
+
 	// MARK: - Body
 	
 	var body: some View {
@@ -22,7 +23,6 @@ struct MyEventsView: View {
 			} else {
 				ScrollView(showsIndicators: false) {
 					contentForUpcomingEventsSection
-					recomendedEvents
 					Spacer()
 				}
 			}
@@ -31,6 +31,11 @@ struct MyEventsView: View {
 		.navigationBarTitleDisplayMode(.large)
 		.padding(.horizontal, 16)
 		.background(.bg, ignoresSafeAreaEdges: .all)
+		.onAppear {
+			Task {
+				viewModel.fetchSubscribedEvents()
+			}
+		}
 	}
 }
 
@@ -40,7 +45,7 @@ private extension MyEventsView {
 	/// Функция для отображения секции предстоящих мероприятий
 	@ViewBuilder
 	var contentForUpcomingEventsSection: some View {
-		if MyEventsMockData.upcomingEventsData.isEmpty {
+		if viewModel.eventsArray.isEmpty {
 			emptyUpcomingEvents
 		} else {
 			upcomingEvents
@@ -69,7 +74,7 @@ private extension MyEventsView {
 				.font(.mediumCompact(size: 20))
 				.foregroundStyle(.mainText)
 			LazyVStack(spacing: 8) {
-				ForEach(MyEventsMockData.upcomingEventsData) { event in
+				ForEach(viewModel.eventsArray) { event in
 					Button {
 						let eventService = EventService()
 						coordinator.push(.eventsDetail(event, eventService))
@@ -84,32 +89,11 @@ private extension MyEventsView {
 			}
 		}
 	}
-	
-	/// Карточки рекомендуемых мероприятий
-	var recomendedEvents: some View {
-		VStack(alignment: .leading) {
-			Text("recommendation_title")
-				.font(.mediumCompact(size: 20))
-				.foregroundStyle(.mainText)
-			ScrollView(.horizontal, showsIndicators: false) {
-				LazyHStack(spacing: 8) {
-					ForEach(MyEventsMockData.recommendedEventsData) { event in
-						Button {
-							coordinator.push(.empty)
-						} label: {
-							EventifyRecommendationEvent(
-								configuration: event.asDomain())
-						}
-						.buttonStyle(.plain)
-					}
-				}
-			}
-		}
-	}
 }
 
 #Preview {
 	MyEventsView()
+		.environmentObject(MyEventsViewModel(usersService: UsersService()))
 		.environmentObject(NetworkConnection())
 		.environmentObject(AppCoordinator())
 }

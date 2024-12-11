@@ -10,12 +10,19 @@ import SwiftUI
 /// Вью Таб-бара
 struct TabBarView: View {
 	@StateObject private var homeVM: HomeViewModel
+	@StateObject private var searchVM: SearchViewModel
+	@StateObject private var myEventsVM: MyEventsViewModel
+	@StateObject private var profileVM: ProfileViewModel
+	
 	@EnvironmentObject private var coordinator: AppCoordinator
 	
 	// MARK: - Initialization
 	
-	init(eventService: EventServiceProtocol) {
+	init(eventService: EventServiceProtocol, userService: UsersServiceProtocol) {
 		_homeVM = StateObject(wrappedValue: HomeViewModel(eventService: eventService))
+		_searchVM = StateObject(wrappedValue: SearchViewModel())
+		_myEventsVM = StateObject(wrappedValue: MyEventsViewModel(usersService: userService))
+		_profileVM = StateObject(wrappedValue: ProfileViewModel(userService: userService))
 	}
 
 	// MARK: - Body
@@ -23,6 +30,9 @@ struct TabBarView: View {
 	var body: some View {
 		tabbarContent
 			.environmentObject(homeVM)
+			.environmentObject(searchVM)
+			.environmentObject(myEventsVM)
+			.environmentObject(profileVM)
 			.navigationBarBackButtonHidden()
 	}
 }

@@ -17,6 +17,7 @@ struct RecommendationEventConfiguration {
 	let title: String
 	/// Описание события.
 	let description: String?
+	
 	/// Элементы для отображения (например, дата, время, формат).
 	let cheepsItems: [String]
 	/// Размер ячейки события.

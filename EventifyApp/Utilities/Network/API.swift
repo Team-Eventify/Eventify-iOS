@@ -26,6 +26,7 @@ enum API {
 	enum UserEndpoints {
 		case getUserInfo(id: String)
 		case patchUserInfo(id: String, request: PatchUserInfoRequest)
+		case subscribedEvents(id: String)
 	}
 	
 	enum CategoriesEndpoints {

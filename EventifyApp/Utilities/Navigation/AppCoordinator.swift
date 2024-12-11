@@ -61,7 +61,8 @@ final class AppCoordinator: ObservableObject {
 		case .main:
 			NavigationStack(path: mainPathBinding) {
 				let eventsService = EventService()
-				TabBarView(eventService: eventsService).coordinatorDestination()
+				let userService = UsersService()
+				TabBarView(eventService: eventsService, userService: userService).coordinatorDestination()
 			}
 		}
 	}
@@ -73,12 +74,9 @@ final class AppCoordinator: ObservableObject {
 		 case .main:
 			 HomeView()
 		 case .search:
-			 let viewModel = SearchViewModel()
-			 SearchView(viewModel: viewModel)
+			 SearchView()
 		 case .profile:
-			 let userService = UsersService()
-			 let viewModel = ProfileViewModel(userService: userService)
-			 ProfileView(viewModel: viewModel)
+			 ProfileView()
 		 case .myEvents:
 			 MyEventsView()
 		 }

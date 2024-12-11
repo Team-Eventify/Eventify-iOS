@@ -11,12 +11,8 @@ import SwiftUI
 struct ProfileView: View {
 	// MARK: - Private Properties
 	
-	@StateObject private var viewModel: ProfileViewModel
+	@EnvironmentObject private var viewModel: ProfileViewModel
 	@EnvironmentObject private var coordinator: AppCoordinator
-	
-	init(viewModel: ProfileViewModel) {
-		_viewModel = StateObject(wrappedValue: viewModel)
-	}
 	
 	// MARK: - Body
 	

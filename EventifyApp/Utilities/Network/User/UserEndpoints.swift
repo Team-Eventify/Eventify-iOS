@@ -17,12 +17,14 @@ extension API.UserEndpoints: TargetType, AccessTokenAuthorizable {
 		switch self {
 		case .getUserInfo(let id), .patchUserInfo(let id, _):
 			return "users/\(id)"
+		case .subscribedEvents(let id):
+			return "users/\(id)/events"
 		}
 	}
 	
 	var method: Moya.Method {
 		switch self {
-		case .getUserInfo:
+		case .getUserInfo, .subscribedEvents:
 			return .get
 		case .patchUserInfo:
 			return .patch
@@ -31,10 +33,10 @@ extension API.UserEndpoints: TargetType, AccessTokenAuthorizable {
 	
 	var task: Moya.Task {
 		switch self {
-		case .getUserInfo:
-				.requestPlain
 		case .patchUserInfo(_, let request):
 				.requestJSONEncodable(request)
+		default:
+				.requestPlain
 		}
 	}
 	
@@ -44,7 +46,7 @@ extension API.UserEndpoints: TargetType, AccessTokenAuthorizable {
 	
 	var authorizationType: AuthorizationType? {
 		switch self {
-		case .getUserInfo, .patchUserInfo:
+		case .getUserInfo, .patchUserInfo, .subscribedEvents:
 			return .bearer
 		}
 	}

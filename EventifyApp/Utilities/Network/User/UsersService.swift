@@ -11,6 +11,7 @@ import Moya
 protocol UsersServiceProtocol {
 	func getUser(id: String) async throws -> UserResponse
 	func patchUserInfo(id: String, request: PatchUserInfoRequest) async throws -> UserResponse
+	func getSubscribedEvents(id: String) async throws -> EventsListResponse
 }
 
 final class UsersService: UsersServiceProtocol {
@@ -59,6 +60,24 @@ final class UsersService: UsersServiceProtocol {
 					do {
 						let patchUserInfoResponse = try response.map(UserResponse.self)
 						continuation.resume(returning: patchUserInfoResponse)
+					} catch {
+						continuation.resume(throwing: error)
+					}
+				case .failure(let error):
+					continuation.resume(throwing: error)
+				}
+			}
+		}
+	}
+	
+	func getSubscribedEvents(id: String) async throws -> EventsListResponse {
+		try await withCheckedThrowingContinuation { continuation in
+			provider.request(.subscribedEvents(id: id)) { result in
+				switch result {
+				case .success(let response):
+					do {
+						let eventsResponse = try response.map(EventsListResponse.self)
+						continuation.resume(returning: eventsResponse)
 					} catch {
 						continuation.resume(throwing: error)
 					}

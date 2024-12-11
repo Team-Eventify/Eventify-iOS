@@ -38,7 +38,7 @@ final class EventService: EventServiceProtocol {
 		try await withCheckedThrowingContinuation { continuation in
 			provider.request(.newEvent(request: request)) { result in
 				switch result {
-				case .success(let response):
+				case .success:
 						continuation.resume()
 				case .failure(let error):
 					continuation.resume(throwing: error)
@@ -69,7 +69,7 @@ final class EventService: EventServiceProtocol {
 		try await withCheckedThrowingContinuation { continuation in
 			provider.request(.subscribe(eventId: eventId)) { result in
 				switch result {
-				case .success(let response):
+				case .success:
 					continuation.resume()
 				case .failure(let error):
 						continuation.resume(throwing: error)
@@ -90,7 +90,7 @@ struct NewEventRequest: Encodable {
 }
 
 struct EventsListResponseElement: Codable {
-	let id, state, title, description: String
+	let id, state, title, description, location: String
 	let start, end, capacity: Int
 	let ownerID: String
 	let moderated: Bool
@@ -105,35 +105,6 @@ struct NewEventResponse: Decodable {
 	let ownerID: String
 	let moderated: Bool
 	let CreatedAt, ModifiedAt: Int
-}
-
-struct EventsResponse: Decodable {
-	let id, state, title, description: String
-	let start, end: Int
-	let capacity: Int
-	let categories: CategoriesArray?
-	let ownerID: String
-	let price: Price
-	let subscribers: Subscribers?
-	let moderated: Bool
-	let subscriber: Subscriber?
-	let CreatedAt, ModifiedAt: Int
-}
-
-struct Location: Decodable {
-	let id, title, description: String
-	let address: Address
-	let capacity: Int
-}
-
-struct Address: Decodable {
-	let country, state, city, street, building: String
-	let postalCode, lat, lon: Int
-}
-
-struct Price: Decodable {
-	let amount: Int
-	let currecny: String
 }
 
 struct Categories: Decodable, Identifiable, Hashable {

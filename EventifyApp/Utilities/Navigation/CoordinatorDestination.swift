@@ -21,12 +21,12 @@ extension View {
 				ForgotPasswordView(viewModel: viewModel)
 			case .home:
 				HomeView()
-			case .search(let viewModel):
-				SearchView(viewModel: viewModel)
+			case .search:
+				SearchView()
 			case .myEvents:
 				MyEventsView()
-			case .profile(let viewModel):
-				ProfileView(viewModel: viewModel)
+			case .profile:
+				ProfileView()
 			case .profileDetail:
 				ProfileDetailView()
 			case .addEvent:

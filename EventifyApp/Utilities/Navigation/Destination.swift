@@ -16,9 +16,9 @@ extension AppCoordinator {
 		case login(SignInViewModel)
 		case forgotPassword(ForgotPasswordViewModel)
 		case home
-		case search(SearchViewModel)
+		case search
 		case myEvents
-		case profile(ProfileViewModel)
+		case profile
 		case profileDetail
 		case addEvent
 		case notifications

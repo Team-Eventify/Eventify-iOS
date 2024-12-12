@@ -6,14 +6,12 @@
 //
 
 import Foundation
-
-import Foundation
 import Moya
 
 class AuthorizationPlugin: PluginType {
-	func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
+    func prepare(_ request: URLRequest, target: TargetType) async -> URLRequest {
 		var request = request
-		if let token = KeychainManager.shared.get(key: KeychainKeys.accessToken) {
+		if let token = await KeychainManager.shared.get(key: KeychainKeys.accessToken) {
 			request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 		}
 		return request

@@ -24,7 +24,7 @@ final class TokenService: TokenServiceProtocol {
 	})])
 	
 	func refreshTokens() async throws -> TokenResponse {
-		guard let refreshToken = KeychainManager.shared.get(key: KeychainKeys.refreshToken) else {
+        guard let refreshToken = await KeychainManager.shared.get(key: KeychainKeys.refreshToken) else {
 			throw TokenError.refreshTokenNotFound
 		}
 		

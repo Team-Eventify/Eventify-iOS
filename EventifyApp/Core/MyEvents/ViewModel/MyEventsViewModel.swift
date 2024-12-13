@@ -28,14 +28,14 @@ final class MyEventsViewModel: ObservableObject {
 					
 					return EventifyRecommendationModel(
 						id: event.id,
+						cover: event.cover,
 						image: ["example"],
 						title: event.title,
 						cheepsItems: [
 							formattedDate,
 							formattedTime,
 							event.location
-						],
-						size: .large
+						]
 					)
 				}
 			} catch {

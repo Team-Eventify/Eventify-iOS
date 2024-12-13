@@ -90,7 +90,7 @@ struct NewEventRequest: Encodable {
 }
 
 struct EventsListResponseElement: Codable {
-	let id, state, title, description, location: String
+	let id, state, title, description, location, cover: String
 	let start, end, capacity: Int
 	let ownerID: String
 	let moderated: Bool

@@ -7,10 +7,12 @@
 
 import Foundation
 
-struct RecommendationEventConfiguration {
+struct EventCardConfiguration {
 	/// Индификатор события
 	let id: String
 
+	let cover: String
+	
 	/// Изображение для события.
 	let image: [String]
 	/// Заголовок события.
@@ -20,26 +22,20 @@ struct RecommendationEventConfiguration {
 	
 	/// Элементы для отображения (например, дата, время, формат).
 	let cheepsItems: [String]
-	/// Размер ячейки события.
-	let size: EventCellSize
 
 	init(
 		id: String,
+		cover: String,
 		image: [String],
 		title: String,
 		description: String? = nil,
-		cheepsItems: [String],
-		size: EventCellSize
+		cheepsItems: [String]
 	) {
 		self.id = id
+		self.cover = cover
 		self.image = image
 		self.title = title
 		self.description = description
 		self.cheepsItems = cheepsItems
-		self.size = size
-	}
-
-	var isFlexible: Bool {
-		return size == .flexible
 	}
 }

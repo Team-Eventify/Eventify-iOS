@@ -38,6 +38,7 @@ final class HomeViewModel: ObservableObject {
 					
 					return EventifyRecommendationModel(
 						id: eventsResponse.id,
+						cover: eventsResponse.cover,
 						image: ["example"],
 						title: eventsResponse.title,
 						description: eventsResponse.description,
@@ -45,8 +46,7 @@ final class HomeViewModel: ObservableObject {
 							formattedDate,
 							formattedTime,
 							eventsResponse.location
-						],
-						size: .flexible
+						]
 					)
 				}
 

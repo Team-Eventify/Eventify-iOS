@@ -93,7 +93,7 @@ struct HomeView: View {
 							let eventService = EventService()
 							coordinator.push(.eventsDetail(event, eventService))
 						} label: {
-							EventifyRecommendationEvent(
+							EventCardView(
 								configuration: event.asDomain())
 						}
 						.foregroundStyle(.clear)
@@ -104,4 +104,11 @@ struct HomeView: View {
 		.padding(.top, 10)
 		.padding(.bottom, 20)
 	}
+}
+
+#Preview {
+	HomeView()
+		.environmentObject(HomeViewModel(eventService: EventService()))
+		.environmentObject(AppCoordinator())
+		.environmentObject(NetworkConnection())
 }

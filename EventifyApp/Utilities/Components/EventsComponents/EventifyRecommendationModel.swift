@@ -12,6 +12,8 @@ struct EventifyRecommendationModel: Identifiable {
 
 	/// Уникальный идентификатор для соответствия протоколу Identifiable
 	let id: String
+	
+	let cover: String
 
 	/// Изображение ячейки
 	let image: [String]
@@ -25,37 +27,34 @@ struct EventifyRecommendationModel: Identifiable {
 	/// Дополнительная информация (дата, время, формат)
 	let cheepsItems: [String]
 
-	/// Размер элемента, определённый через EventCellSize
-	let size: EventCellSize
-
 	init(
 		id: String,
+		cover: String,
 		image: [String],
 		title: String,
 		description: String? = nil,
-		cheepsItems: [String],
-		size: EventCellSize
+		cheepsItems: [String]
 	) {
 		self.id = id
+		self.cover = cover
 		self.image = image
 		self.title = title
 		self.description = description
 		self.cheepsItems = cheepsItems
-		self.size = size
 	}
 }
 
 extension EventifyRecommendationModel: DomainConvertable {
-	typealias ConvertableType = RecommendationEventConfiguration
+	typealias ConvertableType = EventCardConfiguration
 
 	func asDomain() -> ConvertableType {
-		return RecommendationEventConfiguration(
+		return EventCardConfiguration(
 			id: id,
+			cover: cover,
 			image: image,
 			title: title,
 			description: description,
-			cheepsItems: cheepsItems,
-			size: size
+			cheepsItems: cheepsItems
 		)
 	}
 }
